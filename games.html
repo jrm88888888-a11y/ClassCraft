@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games — MartinEdu</title>
+  <meta name="description" content="Interactive subject-specific games for Biology, Chemistry, History, Geography and more — KS3 to A-Level." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .games-hero {
+      padding: var(--space-xl) 0 var(--space-lg);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: var(--space-xl);
+    }
+
+    .games-hero .label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .games-hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-bottom: 1rem;
+      max-width: 700px;
+    }
+
+    .games-hero p {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* Subject section */
+    .subject-section {
+      margin-bottom: 4rem;
+    }
+
+    .subject-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .subject-heading h2 {
+      margin: 0;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+    }
+
+    .subject-count {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    /* Game card */
+    .game-card {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .game-card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .game-type {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .game-card h3 {
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    .game-card p {
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      margin: 0;
+      flex: 1;
+    }
+
+    .game-card .btn {
+      margin-top: 1.25rem;
+      align-self: flex-start;
+    }
+
+    /* Level badges */
+    .badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .badge-ks3    { background: #e8f4e8; color: #2d6a2d; border: 1px solid #b8dbb8; }
+    .badge-gcse   { background: #e8f0fb; color: #1a4a8a; border: 1px solid #b8cef5; }
+    .badge-alevel { background: #fdf0e0; color: #8a4a00; border: 1px solid #f5d4a0; }
+
+    /* Terminology Tester CTA strip */
+    .vocab-cta {
+      background: var(--ink);
+      color: var(--parchment);
+      padding: var(--space-xl) 0;
+      margin-top: var(--space-xl);
+    }
+
+    .vocab-cta h2 {
+      color: var(--parchment);
+      margin-bottom: 0.75rem;
+    }
+
+    .vocab-cta p {
+      color: rgba(245,239,230,0.75);
+      max-width: 520px;
+      margin-bottom: 1.75rem;
+    }
+
+    .vocab-cta .btn {
+      border-color: var(--parchment);
+      color: var(--parchment);
+    }
+
+    .vocab-cta .btn-accent {
+      background: var(--accent);
+      color: var(--parchment);
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ───────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Martin<span>Edu</span></a>
+      <div class="nav-overlay" id="nav-overlay"></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="simulations.html">Simulations</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="jokes.html">Jokes</a></li>
+        <li><a href="games.html" class="active">Games</a></li>
+        <li><a href="vocab-hub/vocab-hub.html">Terminology Tester</a></li>
+        <li><a href="homeroom.html">Homeroom</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────── -->
+  <section class="games-hero">
+    <div class="container">
+      <p class="label">Interactive Learning</p>
+      <h1>Subject Games</h1>
+      <p>Hands-on games built around specific curriculum topics — drag-and-drop timelines, label diagrams, categorise compounds and more. Designed for classroom use at KS3, GCSE and A-Level.</p>
+    </div>
+  </section>
+
+  <!-- ── Biology ───────────────────────── -->
+  <main class="container">
+
+    <section class="subject-section">
+      <div class="subject-heading">
+        <h2>Biology</h2>
+        <span class="subject-count">2 games</span>
+      </div>
+      <div class="grid-3">
+
+        <div class="game-card">
+          <div class="game-card-body">
+            <span class="badge badge-gcse">GCSE</span>
+            <span class="game-type">Label the Diagram</span>
+            <h3>Human Body Organs</h3>
+            <p>Drag and drop organ labels onto the correct positions on a human body diagram. Tests knowledge of organ location and function.</p>
+            <a href="games/biology-organs.html" class="btn btn-accent" target="_blank">Play →</a>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-body">
+            <span class="badge badge-gcse">GCSE</span>
+            <span class="game-type">Memory Match</span>
+            <h3>Biology Terms</h3>
+            <p>Flip cards to match biological terms with their definitions. Six difficulty levels from 4 pairs up to the full deck.</p>
+            <a href="games/biology-memory.html" class="btn btn-accent" target="_blank">Play →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Chemistry ─────────────────────── -->
+    <section class="subject-section">
+      <div class="subject-heading">
+        <h2>Chemistry</h2>
+        <span class="subject-count">1 game</span>
+      </div>
+      <div class="grid-3">
+
+        <div class="game-card">
+          <div class="game-card-body">
+            <span class="badge badge-gcse">GCSE</span>
+            <span class="game-type">Categorise</span>
+            <h3>Elements &amp; Compounds</h3>
+            <p>Sort substances into the correct categories by clicking to assign them. Covers elements, compounds, mixtures and states of matter.</p>
+            <a href="games/chemistry-categorise.html" class="btn btn-accent" target="_blank">Play →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── History ───────────────────────── -->
+    <section class="subject-section">
+      <div class="subject-heading">
+        <h2>History</h2>
+        <span class="subject-count">1 game</span>
+      </div>
+      <div class="grid-3">
+
+        <div class="game-card">
+          <div class="game-card-body">
+            <span class="badge badge-gcse">GCSE</span>
+            <span class="game-type">Timeline</span>
+            <h3>Order of Events</h3>
+            <p>Drag historical events into the correct chronological order. Dates are hidden until you submit — tests true recall, not guesswork.</p>
+            <a href="games/history-timeline.html" class="btn btn-accent" target="_blank">Play →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Geography ─────────────────────── -->
+    <section class="subject-section">
+      <div class="subject-heading">
+        <h2>Geography</h2>
+        <span class="subject-count">1 game</span>
+      </div>
+      <div class="grid-3">
+
+        <div class="game-card">
+          <div class="game-card-body">
+            <span class="badge badge-gcse">GCSE</span>
+            <span class="game-type">Multiple Choice Quiz</span>
+            <h3>Geography Quiz</h3>
+            <p>A mixed quiz covering physical and human geography — multiple choice and true/false questions with immediate feedback.</p>
+            <a href="games/geography-quiz.html" class="btn btn-accent" target="_blank">Play →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Terminology Tester CTA ─────────── -->
+  <section class="vocab-cta">
+    <div class="container">
+      <h2>Want vocabulary games instead?</h2>
+      <p>The Terminology Tester covers 3,500+ terms across every GCSE, A-Level and IB DP subject — playable as Hangman, Memory Match, Crossword, TermGuess and more.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Go to Terminology Tester →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-logo">Martin<span>Edu</span></a>
+      <p class="footer-copy">© 2025 MartinEdu. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links  = document.getElementById('nav-links');
+    const overlay = document.getElementById('nav-overlay');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      links.classList.toggle('open');
+      overlay.classList.toggle('open');
+    });
+    overlay.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+      overlay.classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>

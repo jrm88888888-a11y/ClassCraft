@@ -211,15 +211,19 @@ nav {
     background: none;
     border: none;
     padding: 0;
-    gap: var(--space-md);
+    gap: clamp(0.6rem, 2vw, var(--space-md));
     transform: none;
     box-shadow: none;
+    flex-wrap: nowrap;
   }
 
   .nav-links li { border: none; }
 
   .nav-links a {
     padding: 0 0 2px;
+    font-size: clamp(0.62rem, 1.1vw, 0.85rem);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
     border-bottom: 1px solid transparent;
     transition: color var(--transition), border-color var(--transition);
   }
