@@ -282,7 +282,7 @@ let wordIndex   = 0;
 let currentTerm = '';       // e.g. "CELL MEMBRANE"
 let currentDef  = '';
 let termWords   = [];       // e.g. [["C","E","L","L"],["M","E","M","B","R","A","N","E"]]
-let answerSlots = [];       // flat array of placed letters (null = empty)
+let answerSlots = [];       // answerSlots[wi][li] = {letter, tileId, isHint} or null
 let bankTiles   = [];       // scrambled letters still in bank [{letter, id}]
 let hintsLeft   = MAX_HINTS;
 let score       = 0;
@@ -325,7 +325,7 @@ function loadWord(idx) {
   gameActive  = true;
   tileIdCounter = 0;
 
-  // Build flat answer slots (null = empty), grouped by word
+  // Build answer slots (null = empty), grouped by word
   answerSlots = termWords.map(w => w.map(() => null));
 
   // Build scrambled bank — scramble each word separately so spaces are preserved
@@ -363,11 +363,13 @@ function renderAnswerSlots() {
     word.forEach((_, li) => {
       const tile = document.createElement('div');
       const placed = answerSlots[wi][li];
-      tile.className = 'tile' + (placed ? ' placed' : ' empty');
+      const isHint = placed && placed.isHint;
+      tile.className = 'tile' + (placed ? (isHint ? ' hint-tile' : ' placed') : ' empty');
       tile.dataset.wi = wi;
       tile.dataset.li = li;
-      tile.textContent = placed || '';
-      if (placed) tile.addEventListener('click', () => returnToBank(wi, li));
+      tile.textContent = placed ? placed.letter : '';
+      // Hint tiles cannot be returned; placed tiles can
+      if (placed && !isHint) tile.addEventListener('click', () => returnToBank(wi, li));
       group.appendChild(tile);
     });
     groups.appendChild(group);
@@ -407,7 +409,7 @@ function placeFromBank(tileId) {
   for (let wi = 0; wi < answerSlots.length; wi++) {
     for (let li = 0; li < answerSlots[wi].length; li++) {
       if (answerSlots[wi][li] === null) {
-        answerSlots[wi][li] = tile.letter;
+        answerSlots[wi][li] = { letter: tile.letter, tileId: tile.id, isHint: false };
         tile.used = true;
         placed = true;
         break;
@@ -422,11 +424,11 @@ function placeFromBank(tileId) {
 // ── RETURN LETTER FROM ANSWER → BANK ──
 function returnToBank(wi, li) {
   if (!gameActive) return;
-  const letter = answerSlots[wi][li];
-  if (!letter) return;
+  const slot = answerSlots[wi][li];
+  if (!slot || slot.isHint) return; // hint tiles are locked
   answerSlots[wi][li] = null;
-  // Find the first used tile with this letter and un-use it
-  const tile = bankTiles.find(t => t.used && t.letter === letter);
+  // Use tileId for precise lookup — avoids duplicate-letter confusion
+  const tile = bankTiles.find(t => t.id === slot.tileId);
   if (tile) tile.used = false;
   renderAnswerSlots();
   renderBank();
@@ -435,8 +437,17 @@ function returnToBank(wi, li) {
 
 // ── CLEAR ──
 function clearAnswer() {
-  answerSlots = termWords.map(w => w.map(() => null));
-  bankTiles.forEach(t => t.used = false);
+  // Preserve hint-locked slots; return only student-placed tiles to bank
+  for (let wi = 0; wi < answerSlots.length; wi++) {
+    for (let li = 0; li < answerSlots[wi].length; li++) {
+      const slot = answerSlots[wi][li];
+      if (slot && !slot.isHint) {
+        const tile = bankTiles.find(t => t.id === slot.tileId);
+        if (tile) tile.used = false;
+        answerSlots[wi][li] = null;
+      }
+    }
+  }
   renderAnswerSlots();
   renderBank();
   updateCheckBtn();
@@ -451,19 +462,16 @@ function useHint() {
     for (let li = 0; li < termWords[wi].length; li++) {
       if (answerSlots[wi][li] === null) {
         const correctLetter = termWords[wi][li];
-        answerSlots[wi][li] = correctLetter;
-        // Mark matching bank tile as used
         const tile = bankTiles.find(t => !t.used && t.letter === correctLetter);
         if (tile) tile.used = true;
+        // Store as hint object — locked, not clearable
+        answerSlots[wi][li] = { letter: correctLetter, tileId: tile ? tile.id : -1, isHint: true };
         hintsLeft--;
         document.getElementById('hint-count').textContent = `(${hintsLeft} left)`;
         if (hintsLeft <= 0) document.getElementById('btn-hint').disabled = true;
         renderAnswerSlots();
         renderBank();
         updateCheckBtn();
-        // Mark the slot as a hint tile
-        const slotEl = document.querySelector(`[data-wi="${wi}"][data-li="${li}"]`);
-        if (slotEl) { slotEl.classList.add('hint-tile'); slotEl.classList.remove('placed'); }
         return;
       }
     }
@@ -473,7 +481,7 @@ function useHint() {
 // ── CHECK ──
 function checkAnswer() {
   if (!gameActive) return;
-  const attempt = answerSlots.map(w => w.join('')).join(' ');
+  const attempt = answerSlots.map(w => w.map(s => s ? s.letter : '').join('')).join(' ');
   const isCorrect = attempt === currentTerm;
 
   const groups = document.getElementById('answer-groups');

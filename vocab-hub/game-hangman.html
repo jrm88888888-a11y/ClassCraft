@@ -341,7 +341,7 @@ function renderWord() {
       const slot = document.createElement('div');
       slot.className = 'letter-slot';
       const charEl = document.createElement('div');
-      charEl.className = 'letter-char' + (guessed.has(ch) ? '' : ' blank');
+      charEl.className = 'letter-char' + (guessed.has(ch) || ch === '-' ? '' : ' blank');
       charEl.textContent = ch;
       const underline = document.createElement('div');
       underline.className = 'letter-underline';
@@ -398,13 +398,13 @@ function guessLetter(ch) {
   guessed.add(ch);
 
   const keyEl = document.getElementById('key-' + ch);
-  const inWord = currentWord.replace(/ /g,'').includes(ch);
+  const inWord = currentWord.replace(/ /g,'').replace(/-/g,'').includes(ch);
 
   if (inWord) {
     keyEl?.classList.add('correct','used');
     renderWord();
     // Check win
-    const letters = new Set(currentWord.replace(/ /g,'').split(''));
+    const letters = new Set(currentWord.replace(/ /g,'').replace(/-/g,'').split(''));
     const allGuessed = [...letters].every(l => guessed.has(l));
     if (allGuessed) { gameActive = false; setTimeout(() => showWordResult(true), 300); }
   } else {
@@ -489,7 +489,10 @@ document.addEventListener('keydown', e => {
 
 // ── BUTTONS ──
 document.getElementById('btn-next-word').addEventListener('click', nextWord);
-document.getElementById('btn-end-early').addEventListener('click', showFinalScore);
+document.getElementById('btn-end-early').addEventListener('click', () => {
+  if (gameActive) { failed++; gameActive = false; }
+  showFinalScore();
+});
 document.getElementById('btn-quit').addEventListener('click', () => window.location.href = 'vocab-hub.html');
 </script>
 </body>
