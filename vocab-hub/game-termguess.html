@@ -58,7 +58,7 @@
     .btn-start:hover{background:#6ef0b0;transform:translateY(-1px);}
 
     /* ── Game screen ── */
-    #screen-game{padding:0.75rem 1.5rem;gap:0.75rem;justify-content:space-between;}
+    #screen-game{padding:0.75rem 1rem;gap:0.6rem;justify-content:flex-start;overflow-y:auto;}
 
     /* Clue */
     .clue-wrap{width:100%;max-width:640px;flex-shrink:0;}
@@ -67,18 +67,18 @@
     .round-badge{font-family:var(--font-d);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);margin-top:0.35rem;}
 
     /* ── TermGuess grid ── */
-    .grid-wrap{display:flex;flex-direction:column;align-items:center;gap:0.3rem;flex-shrink:0;}
+    .grid-wrap{display:flex;flex-direction:column;align-items:center;gap:0.25rem;flex-shrink:0;}
 
     /* One guess row = a flex row of letter tiles + optional space tiles */
     .guess-row{display:flex;gap:0.3rem;align-items:center;}
 
     /* Letter tile */
     .wl-tile{
-      width:46px;height:46px;
+      width:40px;height:40px;
       border:2px solid var(--border);
       border-radius:5px;
       display:flex;align-items:center;justify-content:center;
-      font-family:var(--font-d);font-size:1.3rem;font-weight:800;
+      font-family:var(--font-d);font-size:1.1rem;font-weight:800;
       color:var(--text);
       background:transparent;
       transition:border-color 0.05s;
@@ -103,7 +103,7 @@
 
     /* Space tile — just a narrow gap indicator */
     .wl-space{
-      width:12px;height:46px;
+      width:10px;height:40px;
       display:flex;align-items:center;justify-content:center;
       flex-shrink:0;
     }
@@ -116,6 +116,17 @@
     /* Shake on invalid */
     @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}60%{transform:translateX(5px)}}
     .shake-row{animation:shake 0.3s ease;}
+
+    /* ── Submit button ── */
+    .btn-submit-guess{
+      font-family:var(--font-d);font-size:0.82rem;font-weight:700;
+      letter-spacing:0.06em;text-transform:uppercase;
+      background:var(--accent2);color:#fff;border:none;
+      padding:0.6rem 2rem;border-radius:var(--r);
+      cursor:pointer;transition:all var(--trans);
+      flex-shrink:0;width:100%;max-width:500px;
+    }
+    .btn-submit-guess:hover{background:#9a8fff;transform:translateY(-1px);}
 
     /* ── Keyboard ── */
     .keyboard{flex-shrink:0;width:100%;max-width:500px;}
@@ -221,6 +232,7 @@
     <div class="round-badge" id="round-badge"></div>
   </div>
   <div class="grid-wrap" id="grid-wrap"></div>
+  <button class="btn-submit-guess" id="btn-submit-guess" onclick="submitGuess()">Submit ↵</button>
   <div class="keyboard" id="keyboard"></div>
 </div>
 
