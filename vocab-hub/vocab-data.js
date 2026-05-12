@@ -1564,3 +1564,680 @@ VOCAB['astronomy']['aqa-gcse'] = {
   ],
 
 };
+
+// ────────────────────────────────────────────────────────────
+// BIOLOGY — Edexcel GCSE (1BI0)
+// Topics: 1 Key Concepts, 2 Cells & Control, 3 Genetics,
+//         4 Natural Selection, 5 Health & Disease,
+//         6 Plant Structures, 7 Animal Coordination,
+//         8 Exchange & Transport, 9 Ecosystems
+// Source: Edexcel 1BI0 spec + PMT definitions
+// ────────────────────────────────────────────────────────────
+VOCAB['biology']['edexcel-gcse'] = {
+
+  'Key Concepts in Biology': [
+    { term:'Cell',                  definition:'The basic building block of all living organisms.',                                                    hint:'Smallest unit of life' },
+    { term:'Cell membrane',         definition:'A partially permeable barrier that surrounds the cell, controlling what enters and exits.',            hint:'Controls entry/exit of substances' },
+    { term:'Cell wall',             definition:'An outer layer made of cellulose that strengthens plant cells.',                                       hint:'Cellulose — plant cells only' },
+    { term:'Chloroplast',           definition:'An organelle that is the site of photosynthesis.',                                                     hint:'Site of photosynthesis' },
+    { term:'Mitochondria',          definition:'An organelle that is the site of respiration.',                                                        hint:'Site of respiration' },
+    { term:'Nucleus',               definition:'An organelle in eukaryotic cells that contains the genetic material and controls cell activities.',    hint:'Contains DNA — controls cell' },
+    { term:'Ribosome',              definition:'A sub-cellular structure where protein synthesis takes place.',                                        hint:'Makes proteins' },
+    { term:'Vacuole',               definition:'An organelle in plant cells that stores cell sap and supports the cell.',                              hint:'Stores cell sap — plant cells' },
+    { term:'Plasmid',               definition:'A small loop of DNA found in the cytoplasm of prokaryotic cells.',                                    hint:'Small DNA loop in bacteria' },
+    { term:'Eukaryotic cell',       definition:'A cell found in plants and animals that contains a membrane-bound nucleus.',                          hint:'Has a membrane-bound nucleus' },
+    { term:'Prokaryotic cell',      definition:'A cell found in bacteria that does not contain a nucleus.',                                           hint:'No nucleus — bacteria' },
+    { term:'Enzyme',                definition:'A biological catalyst that increases the rate of reactions in living organisms.',                      hint:'Biological catalyst — protein' },
+    { term:'Active site',           definition:'The specific region on an enzyme where the substrate binds and the reaction takes place.',            hint:'Where substrate binds on enzyme' },
+    { term:'Denaturation',          definition:'The permanent change in the shape of an enzyme\'s active site caused by high temperature or extreme pH.', hint:'Active site shape destroyed' },
+    { term:'Lock and key hypothesis', definition:'The theory that substrates must be the correct complementary shape to fit the active site of an enzyme.', hint:'Substrate must fit active site' },
+    { term:'Diffusion',             definition:'The net movement of particles from high concentration to low concentration.',                         hint:'High to low concentration — passive' },
+    { term:'Osmosis',               definition:'The diffusion of water molecules from a high water concentration to a lower concentration across a partially permeable membrane.', hint:'Water through semi-permeable membrane' },
+    { term:'Active transport',      definition:'The movement of substances against a concentration gradient using energy from respiration.',          hint:'Against gradient — needs energy' },
+    { term:'Magnification',         definition:'How many times bigger an image appears compared to the real object.',                                 hint:'Image size ÷ real size' },
+    { term:'Resolution',            definition:'The smallest distance between two objects that can be distinguished using a microscope.',             hint:'Clarity of detail under microscope' },
+    { term:'Specificity',           definition:'The ability of an enzyme to catalyse only specific reactions in which a substrate fits its active site.', hint:'One enzyme — one substrate type' },
+  ],
+
+  'Cells and Control': [
+    { term:'Mitosis',               definition:'Cell division producing two genetically identical daughter cells, used for growth and repair.',        hint:'Two identical cells — growth/repair' },
+    { term:'Cell cycle',            definition:'A series of events involving cell growth, DNA replication and cell division.',                        hint:'Growth → DNA copy → divide' },
+    { term:'Stem cell',             definition:'An undifferentiated cell that can divide and develop into specialised cell types.',                  hint:'Undifferentiated — can become anything' },
+    { term:'Differentiation',       definition:'The process by which a cell becomes specialised to carry out a particular function.',               hint:'Cell becomes specialised' },
+    { term:'Cancer',                definition:'Uncontrolled cell division resulting in a tumour — caused by mutations in DNA.',                    hint:'Uncontrolled cell division' },
+    { term:'Tumour',                definition:'A mass of abnormal cells resulting from uncontrolled cell division.',                              hint:'Mass of abnormally dividing cells' },
+    { term:'Neurone',               definition:'A specialised cell that transmits electrical impulses around the body.',                            hint:'Transmits electrical impulses' },
+    { term:'Synapse',               definition:'A junction between two neurones where chemical neurotransmitters pass the signal across.',         hint:'Gap between neurones' },
+    { term:'Reflex arc',            definition:'The pathway of a nerve impulse from receptor to effector during a reflex action.',                 hint:'Pathway of a reflex — receptor to effector' },
+    { term:'Central nervous system', definition:'The brain and spinal cord — processes information and coordinates responses.',                   hint:'Brain and spinal cord' },
+  ],
+
+  'Genetics': [
+    { term:'DNA',                   definition:'A double-stranded polymer in a double helix that carries the genetic code for an organism.',         hint:'Double helix — genetic code' },
+    { term:'Gene',                  definition:'A section of DNA that codes for a specific sequence of amino acids to make a protein.',             hint:'Section of DNA — codes for protein' },
+    { term:'Allele',                definition:'A version of a gene.',                                                                              hint:'Version of a gene' },
+    { term:'Chromosome',            definition:'A long coiled DNA molecule carrying genetic information in the form of genes.',                    hint:'Coiled DNA — in nucleus' },
+    { term:'Genotype',              definition:'The genetic composition of an organism — the alleles it possesses.',                               hint:'Alleles an organism carries' },
+    { term:'Phenotype',             definition:'The observable characteristics of an organism, determined by genotype and environment.',           hint:'Observable characteristics' },
+    { term:'Dominant',              definition:'An allele that is always expressed in the phenotype when present.',                               hint:'Always expressed — capital letter' },
+    { term:'Recessive',             definition:'An allele only expressed when two copies are present (homozygous).',                              hint:'Only expressed when two copies present' },
+    { term:'Homozygous',            definition:'Having two identical alleles for a gene.',                                                        hint:'Two same alleles — AA or aa' },
+    { term:'Heterozygous',          definition:'Having two different alleles for a gene.',                                                        hint:'Two different alleles — Aa' },
+    { term:'Meiosis',               definition:'Cell division producing four genetically different gametes, each with half the chromosome number.', hint:'Produces gametes — halves chromosomes' },
+    { term:'Gamete',                definition:'A sex cell (sperm or egg) containing half the normal chromosome number.',                        hint:'Sex cell — half chromosomes' },
+    { term:'Mutation',              definition:'A random change in the base sequence of DNA.',                                                   hint:'Random change in DNA' },
+    { term:'Punnett square',        definition:'A grid used to predict the possible genotypes and phenotypes of offspring from a genetic cross.', hint:'Genetic cross prediction grid' },
+    { term:'Sex chromosomes',       definition:'The pair of chromosomes that determine biological sex — XX in females, XY in males.',          hint:'XX female, XY male' },
+  ],
+
+  'Natural Selection and Evolution': [
+    { term:'Natural selection',     definition:'The process by which advantageous traits become more frequent in a population over time.',         hint:'Survival of the fittest' },
+    { term:'Evolution',             definition:'The gradual change in inherited traits in a population over successive generations.',             hint:'Change in population over time' },
+    { term:'Mutation',              definition:'A random change in DNA that may produce new alleles — the source of genetic variation.',         hint:'Source of new variation' },
+    { term:'Selective breeding',    definition:'The process where humans choose organisms with desirable traits to breed together.',            hint:'Humans choose traits to breed' },
+    { term:'Genetic engineering',   definition:'Modifying an organism\'s genome by inserting a gene from another organism.',                   hint:'Inserting genes from other organisms' },
+    { term:'Fossil',                definition:'The preserved remains of organisms found in rock, used as evidence for evolution.',            hint:'Preserved remains in rock' },
+    { term:'Classification',        definition:'The organisation of organisms into groups based on shared characteristics.',                   hint:'Grouping organisms by features' },
+    { term:'Taxonomy',              definition:'The classification of organisms into kingdom, phylum, class, order, family, genus and species.', hint:'Kingdom to species classification' },
+    { term:'Antibiotic resistance', definition:'When bacteria mutate and become resistant to antibiotics, surviving and reproducing rapidly.', hint:'Bacteria survive antibiotics — mutation' },
+    { term:'Vector',                definition:'A carrier used to transfer a gene from one organism to another in genetic engineering.',       hint:'Carrier of a gene in genetic engineering' },
+    { term:'Recombinant DNA',       definition:'DNA combining sequences from two different organisms.',                                       hint:'DNA from two organisms combined' },
+  ],
+
+  'Health, Disease and Medicines': [
+    { term:'Pathogen',              definition:'A microorganism that causes disease.',                                                         hint:'Disease-causing microorganism' },
+    { term:'Communicable disease',  definition:'A disease that can be passed between individuals through various routes.',                   hint:'Can be passed between people' },
+    { term:'Non-communicable disease', definition:'A disease that cannot be passed between individuals — often linked to genetics or lifestyle.', hint:'Cannot be passed between people' },
+    { term:'Antibody',              definition:'A protein produced by white blood cells that binds specifically to an antigen on a pathogen.', hint:'Produced by white blood cells — binds antigen' },
+    { term:'Antigen',               definition:'A molecule on the surface of a pathogen that triggers an immune response.',                  hint:'Triggers immune response' },
+    { term:'Vaccination',           definition:'Introducing dead or inactive pathogens to stimulate the immune system to produce antibodies.', hint:'Trains immune system with harmless pathogen' },
+    { term:'Antibiotic',            definition:'A medicine that kills or inhibits bacteria — ineffective against viruses.',                 hint:'Kills bacteria — not viruses' },
+    { term:'Monoclonal antibody',   definition:'An antibody produced from a single clone of cells, specific to one antigen.',              hint:'One type — one antigen specific' },
+    { term:'Risk factor',           definition:'A variable associated with a greater chance of developing a disease or condition.',        hint:'Increases chance of disease' },
+    { term:'Placebo',               definition:'A dummy treatment containing no active ingredient, used as a control in drug trials.',    hint:'Dummy treatment — no active ingredient' },
+    { term:'Double blind trial',    definition:'A drug trial where neither patients nor researchers know who receives the drug or placebo.', hint:'Neither side knows who has drug' },
+    { term:'Phagocytosis',          definition:'The process by which white blood cells engulf and destroy pathogens.',                    hint:'White blood cells engulf pathogens' },
+  ],
+
+  'Plant Structures and Functions': [
+    { term:'Photosynthesis',        definition:'An endothermic reaction where light energy converts CO₂ and water into glucose and oxygen in chloroplasts.', hint:'Light + CO₂ + water → glucose + O₂' },
+    { term:'Transpiration',         definition:'The evaporation of water from leaves, drawing water up from roots through the xylem.',    hint:'Water evaporates from leaves' },
+    { term:'Xylem',                 definition:'A plant tissue that transports water and minerals from roots to leaves.',               hint:'Carries water upwards — roots to leaves' },
+    { term:'Phloem',                definition:'A plant tissue that transports dissolved sugars from leaves to other parts of the plant.', hint:'Carries sugar — from leaves' },
+    { term:'Stomata',               definition:'Tiny pores on the underside of leaves through which gas exchange and transpiration occur.', hint:'Tiny pores — gas exchange in leaves' },
+    { term:'Guard cells',           definition:'Cells that surround stomata and control their opening and closing.',                   hint:'Control stomata opening' },
+    { term:'Auxin',                 definition:'A plant hormone that controls cell elongation, responsible for phototropism and gravitropism.', hint:'Plant hormone — cell elongation' },
+    { term:'Phototropism',          definition:'The growth of a plant in response to light.',                                         hint:'Plant grows towards light' },
+    { term:'Gravitropism',          definition:'The growth of a plant in response to gravity.',                                      hint:'Plant responds to gravity' },
+    { term:'Limiting factor',       definition:'A factor that limits the rate of photosynthesis when in short supply — e.g. light, CO₂ or temperature.', hint:'Limits rate of photosynthesis' },
+  ],
+
+  'Animal Coordination and Homeostasis': [
+    { term:'Homeostasis',           definition:'The regulation of internal conditions to maintain a stable environment for cells.',    hint:'Maintaining internal stability' },
+    { term:'Negative feedback',     definition:'A mechanism that reverses a change to restore optimal conditions.',                  hint:'Reverses changes — restores optimum' },
+    { term:'Insulin',               definition:'A hormone from the pancreas that lowers blood glucose by stimulating cells to absorb glucose.', hint:'Lowers blood glucose — pancreas' },
+    { term:'Glucagon',              definition:'A hormone from the pancreas that raises blood glucose by converting glycogen to glucose.', hint:'Raises blood glucose — pancreas' },
+    { term:'Type 1 diabetes',       definition:'A condition where the pancreas fails to produce insulin, requiring insulin injections.', hint:'Pancreas produces no insulin' },
+    { term:'Type 2 diabetes',       definition:'A condition where body cells no longer respond to insulin, often linked to obesity.', hint:'Cells resist insulin' },
+    { term:'Oestrogen',             definition:'A female reproductive hormone that stimulates the development of secondary sexual characteristics and controls the menstrual cycle.', hint:'Female hormone — reproductive cycle' },
+    { term:'Testosterone',          definition:'A male reproductive hormone that stimulates sperm production and development of secondary sexual characteristics.', hint:'Male hormone — sperm production' },
+    { term:'Adrenaline',            definition:'A hormone released in response to stress that prepares the body for fight or flight.', hint:'Fight or flight hormone' },
+    { term:'Thermoregulation',      definition:'The process by which the body maintains its core temperature.',                    hint:'Maintaining body temperature' },
+    { term:'ADH',                   definition:'Antidiuretic hormone — released by the pituitary gland, increases water reabsorption in the kidneys.', hint:'Kidney water reabsorption hormone' },
+    { term:'Dialysis',              definition:'An artificial process that filters the blood to remove waste products when the kidneys have failed.', hint:'Artificial kidney filtration' },
+  ],
+
+  'Exchange and Transport': [
+    { term:'Alveoli',               definition:'Tiny air sacs in the lungs where gas exchange between air and blood takes place.',   hint:'Air sacs in lungs — gas exchange' },
+    { term:'Gas exchange',          definition:'The movement of oxygen into the blood and carbon dioxide out, occurring at the alveoli.', hint:'O₂ in, CO₂ out — at alveoli' },
+    { term:'Haemoglobin',           definition:'The protein in red blood cells that binds oxygen for transport around the body.',  hint:'Oxygen-carrying protein in red blood cells' },
+    { term:'Red blood cell',        definition:'A biconcave cell containing haemoglobin, specialised for carrying oxygen around the body.', hint:'Biconcave — carries oxygen' },
+    { term:'White blood cell',      definition:'An immune system cell that defends the body against pathogens.',                 hint:'Immune defence cell' },
+    { term:'Plasma',                definition:'The liquid component of blood that transports dissolved substances.',             hint:'Liquid part of blood' },
+    { term:'Platelet',              definition:'A cell fragment in blood involved in blood clotting.',                          hint:'Blood clotting cell fragment' },
+    { term:'Artery',                definition:'A blood vessel carrying blood at high pressure away from the heart.',           hint:'Away from heart — thick walls' },
+    { term:'Vein',                  definition:'A blood vessel carrying blood at low pressure back to the heart, containing valves.', hint:'Towards heart — has valves' },
+    { term:'Capillary',             definition:'The smallest blood vessel, one cell thick, where exchange of substances occurs with tissues.', hint:'One cell thick — exchange occurs' },
+  ],
+
+  'Ecosystems and Material Cycles': [
+    { term:'Ecosystem',             definition:'The community of organisms and the non-living environment with which they interact in a defined area.', hint:'Living + non-living — defined area' },
+    { term:'Biodiversity',          definition:'The variety of different species of organisms in an area.',                      hint:'Variety of species' },
+    { term:'Food chain',            definition:'A sequence showing the transfer of energy from one organism to the next.',      hint:'Energy transfer — producer to consumer' },
+    { term:'Food web',              definition:'An interconnected network of food chains in an ecosystem.',                   hint:'Network of food chains' },
+    { term:'Producer',              definition:'An organism that makes its own food through photosynthesis.',                hint:'Makes own food — photosynthesis' },
+    { term:'Consumer',              definition:'An organism that obtains energy by eating other organisms.',                 hint:'Eats other organisms' },
+    { term:'Decomposer',            definition:'An organism such as a bacterium or fungus that breaks down dead organic material.', hint:'Breaks down dead material' },
+    { term:'Carbon cycle',          definition:'The cycling of carbon through living organisms and the non-living environment via photosynthesis, respiration and decomposition.', hint:'Carbon recycled through ecosystem' },
+    { term:'Nitrogen cycle',        definition:'The cycling of nitrogen compounds through the environment, involving bacteria that fix, nitrify and denitrify nitrogen.', hint:'Nitrogen recycled — bacteria involved' },
+    { term:'Deforestation',         definition:'The large-scale removal of forests, reducing biodiversity and increasing atmospheric CO₂.',  hint:'Forest removal — CO₂ increases' },
+    { term:'Global warming',        definition:'The increase in average global temperature caused by rising greenhouse gas levels.',         hint:'Rising global temperature' },
+    { term:'Biomass',               definition:'The total mass of living organisms in a given area or trophic level.',                      hint:'Total mass of living things' },
+    { term:'Trophic level',         definition:'A feeding level in a food chain or food web.',                                             hint:'Feeding position in food chain' },
+    { term:'Sampling',              definition:'A method of estimating population size or species distribution by studying a representative portion.', hint:'Estimating population from a portion' },
+    { term:'Quadrat',               definition:'A square frame used to sample organisms in a given area.',                               hint:'Square frame for counting organisms' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// CHEMISTRY — Edexcel GCSE (1CH0)
+// Topics: 1 States of Matter, 2 Methods of Separating,
+//         3 Atomic Structure, 4 Periodic Table,
+//         5 Ionic Bonding, 6 Covalent Bonding,
+//         7 Metals/Alloys, 8 Acids/Alkalis,
+//         9 Calculations, 10 Electrolysis,
+//         11 Obtaining Metals, 12 Reversible Reactions,
+//         13 Hydrocarbons, 14 Earth & Atmosphere
+// ────────────────────────────────────────────────────────────
+VOCAB['chemistry']['edexcel-gcse'] = {
+
+  'Atomic Structure and Periodic Table': [
+    { term:'Atom',                  definition:'The smallest particle of an element that can take part in a chemical reaction.',                  hint:'Smallest part of an element' },
+    { term:'Element',               definition:'A substance made of only one type of atom.',                                                    hint:'One type of atom only' },
+    { term:'Compound',              definition:'A substance made of two or more elements chemically combined in fixed proportions.',            hint:'Elements chemically joined' },
+    { term:'Mixture',               definition:'Two or more substances not chemically combined — can be separated by physical means.',         hint:'Not chemically combined — separable' },
+    { term:'Proton',                definition:'A positively charged subatomic particle in the nucleus with relative mass 1.',                hint:'Positive — in nucleus — mass 1' },
+    { term:'Neutron',               definition:'A neutral subatomic particle in the nucleus with relative mass 1.',                          hint:'Neutral — in nucleus — mass 1' },
+    { term:'Electron',              definition:'A negatively charged subatomic particle orbiting the nucleus with negligible mass.',         hint:'Negative — orbits nucleus' },
+    { term:'Atomic number',         definition:'The number of protons in the nucleus of an atom — unique to each element.',                hint:'Number of protons — unique per element' },
+    { term:'Mass number',           definition:'The total number of protons and neutrons in the nucleus of an atom.',                      hint:'Protons + neutrons' },
+    { term:'Isotope',               definition:'Atoms of the same element with the same number of protons but different numbers of neutrons.', hint:'Same element — different neutrons' },
+    { term:'Relative atomic mass',  definition:'The weighted average mass of an atom of an element compared to 1/12 the mass of carbon-12.',  hint:'Average mass accounting for isotopes' },
+    { term:'Electronic configuration', definition:'The arrangement of electrons in an atom\'s shells or energy levels.',                   hint:'How electrons are arranged in shells' },
+    { term:'Period',                definition:'A horizontal row of elements in the periodic table — elements in the same period have the same number of electron shells.', hint:'Horizontal row — same number of shells' },
+    { term:'Group',                 definition:'A vertical column in the periodic table — elements in the same group have similar properties.', hint:'Vertical column — similar properties' },
+    { term:'Noble gas',             definition:'An element in Group 0 — unreactive due to a full outer electron shell.',                  hint:'Group 0 — full outer shell — unreactive' },
+    { term:'Transition metal',      definition:'A metal in the central block of the periodic table — good conductors with variable oxidation states.', hint:'Central block — variable oxidation states' },
+  ],
+
+  'Bonding and Structure': [
+    { term:'Ionic bond',            definition:'A bond formed when a metal atom transfers electrons to a non-metal, creating oppositely charged ions.', hint:'Electron transfer — metal to non-metal' },
+    { term:'Covalent bond',         definition:'A shared pair of electrons between two non-metal atoms.',                                 hint:'Shared electrons — non-metals' },
+    { term:'Metallic bond',         definition:'The attraction between positive metal ions and a sea of delocalised electrons.',         hint:'Positive ions + delocalised electrons' },
+    { term:'Ionic lattice',         definition:'A regular three-dimensional arrangement of oppositely charged ions held together by electrostatic forces.', hint:'Regular arrangement of opposite ions' },
+    { term:'Molecular formula',     definition:'The actual number and type of atoms present in a molecule.',                           hint:'Exact atoms in a molecule' },
+    { term:'Empirical formula',     definition:'The simplest whole number ratio of atoms in a compound.',                            hint:'Simplest ratio of atoms' },
+    { term:'Diamond',               definition:'A giant covalent structure of carbon where each atom bonds to four others — very hard and high melting point.', hint:'Giant covalent carbon — very hard' },
+    { term:'Graphite',              definition:'A giant covalent structure of carbon with layered hexagonal sheets — conducts electricity.',  hint:'Carbon layers — conducts electricity' },
+    { term:'Polymer',               definition:'A large molecule made of many small monomer units joined by covalent bonds.',          hint:'Long chain of monomers' },
+    { term:'Nanoparticle',          definition:'A particle 1–100 nm in size with different properties to the bulk material.',         hint:'1–100 nm — tiny particle' },
+    { term:'Alloy',                 definition:'A mixture of a metal with one or more other elements to improve its properties.',    hint:'Metal mixture — improved properties' },
+  ],
+
+  'Quantitative Chemistry': [
+    { term:'Conservation of mass',  definition:'The total mass of reactants equals the total mass of products in a chemical reaction.',   hint:'Mass unchanged in reaction' },
+    { term:'Relative formula mass', definition:'The sum of the relative atomic masses of all atoms in a formula.',                       hint:'Sum of all atomic masses in formula' },
+    { term:'Mole',                  definition:'The unit of amount of substance — 1 mole contains 6.02 × 10²³ particles.',              hint:'Unit of amount — 6.02 × 10²³ particles' },
+    { term:'Concentration',         definition:'The amount of solute dissolved per unit volume of solution.',                           hint:'Amount per unit volume' },
+    { term:'Limiting reactant',     definition:'The reactant used up first in a reaction, determining the maximum yield of product.',   hint:'Runs out first — limits product' },
+    { term:'Percentage yield',      definition:'The actual yield as a percentage of the theoretical yield.',                           hint:'Actual ÷ theoretical × 100' },
+    { term:'Atom economy',          definition:'The percentage of reactant atoms that are converted into useful product.',            hint:'Useful product ÷ all products × 100' },
+  ],
+
+  'Chemical Changes': [
+    { term:'Acid',                  definition:'A substance that produces hydrogen ions (H⁺) in aqueous solution — pH below 7.',        hint:'pH below 7 — H⁺ ions' },
+    { term:'Alkali',                definition:'A soluble base producing hydroxide ions (OH⁻) in aqueous solution — pH above 7.',     hint:'pH above 7 — OH⁻ ions' },
+    { term:'Neutralisation',        definition:'The reaction of an acid with a base producing a salt and water.',                    hint:'Acid + base → salt + water' },
+    { term:'Oxidation',             definition:'The loss of electrons or gain of oxygen.',                                           hint:'Lose electrons or gain oxygen' },
+    { term:'Reduction',             definition:'The gain of electrons or loss of oxygen.',                                          hint:'Gain electrons or lose oxygen' },
+    { term:'Electrolysis',          definition:'Decomposing an ionic compound using electrical energy.',                           hint:'Electricity decomposes ionic compound' },
+    { term:'Electrolyte',           definition:'A molten or dissolved ionic compound that conducts electricity.',                 hint:'Conducts electricity — ionic compound' },
+    { term:'Cathode',               definition:'The negative electrode in electrolysis — where reduction occurs.',               hint:'Negative electrode — reduction' },
+    { term:'Anode',                 definition:'The positive electrode in electrolysis — where oxidation occurs.',              hint:'Positive electrode — oxidation' },
+    { term:'Reactivity series',     definition:'Metals arranged in order of reactivity — used to predict displacement reactions.',  hint:'Metals in order of reactivity' },
+    { term:'Redox reaction',        definition:'A reaction involving simultaneous oxidation and reduction.',                    hint:'Oxidation + reduction occur together' },
+    { term:'Titration',             definition:'A technique using a known-concentration solution to determine the concentration of an unknown solution.', hint:'Find unknown concentration' },
+  ],
+
+  'Energy Changes and Rates': [
+    { term:'Exothermic reaction',   definition:'A reaction that releases energy to the surroundings — temperature increases.',       hint:'Releases heat — temperature rises' },
+    { term:'Endothermic reaction',  definition:'A reaction that absorbs energy from the surroundings — temperature decreases.',    hint:'Absorbs heat — temperature drops' },
+    { term:'Activation energy',     definition:'The minimum energy required for a reaction to occur.',                           hint:'Minimum energy to start reaction' },
+    { term:'Catalyst',              definition:'A substance that increases the rate of a reaction without being used up.',       hint:'Speeds up reaction — not used up' },
+    { term:'Rate of reaction',      definition:'How quickly reactants are converted to products per unit time.',                hint:'Speed of reaction' },
+    { term:'Collision theory',      definition:'Reactions occur when particles collide with sufficient energy.',               hint:'Particles must collide with enough energy' },
+    { term:'Reversible reaction',   definition:'A reaction where products can react to re-form reactants.',                   hint:'Can go forwards and backwards' },
+    { term:'Equilibrium',           definition:'The state in a closed system when the forward and reverse reactions occur at equal rates.', hint:'Forward = reverse rate' },
+  ],
+
+  'Organic Chemistry': [
+    { term:'Hydrocarbon',           definition:'A compound containing only hydrogen and carbon atoms.',                         hint:'Only H and C atoms' },
+    { term:'Crude oil',             definition:'A mixture of hydrocarbons formed from the remains of ancient marine organisms.', hint:'Ancient marine organisms — hydrocarbons' },
+    { term:'Alkane',                definition:'A saturated hydrocarbon with general formula CₙH₂ₙ₊₂.',                      hint:'Saturated — CₙH₂ₙ₊₂' },
+    { term:'Alkene',                definition:'An unsaturated hydrocarbon with a C=C double bond and general formula CₙH₂ₙ.', hint:'Double bond — CₙH₂ₙ' },
+    { term:'Fractional distillation', definition:'Separating crude oil into fractions based on different boiling points.',   hint:'Separates crude oil by boiling point' },
+    { term:'Cracking',              definition:'Breaking large hydrocarbons into smaller, more useful molecules by heating.', hint:'Breaks large hydrocarbons into smaller' },
+    { term:'Combustion',            definition:'The reaction of a fuel with oxygen to release energy.',                    hint:'Fuel + oxygen → energy' },
+    { term:'Polymer',               definition:'A long-chain molecule made of many monomer units joined by covalent bonds.', hint:'Long chain of monomers' },
+    { term:'Monomer',               definition:'A small molecule that can join with others to form a polymer.',           hint:'Small molecule — building block of polymer' },
+  ],
+
+  'Earth and Atmosphere': [
+    { term:'Greenhouse effect',     definition:'Greenhouse gases in the atmosphere trap infrared radiation, warming the Earth.',  hint:'Gases trap heat — warm Earth' },
+    { term:'Greenhouse gas',        definition:'A gas such as CO₂, methane or water vapour that absorbs and re-emits infrared radiation.',   hint:'Absorbs infrared — CO₂, methane' },
+    { term:'Carbon footprint',      definition:'The total amount of CO₂ and other greenhouse gases produced by a product or activity.',       hint:'Total greenhouse gases produced' },
+    { term:'Acid rain',             definition:'Rain made acidic by dissolved sulfur dioxide and nitrogen oxides from burning fossil fuels.',  hint:'Acidic rain from SO₂ and NOₓ' },
+    { term:'Potable water',         definition:'Water that is safe to drink — has been treated to remove harmful substances.',                hint:'Safe drinking water' },
+    { term:'Life cycle assessment', definition:'An analysis of the environmental impact of a product throughout its entire life.',           hint:'Environmental impact — whole life of product' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// PHYSICS — Edexcel GCSE (1PH0)
+// Topics follow Edexcel 1PH0 specification
+// ────────────────────────────────────────────────────────────
+VOCAB['physics']['edexcel-gcse'] = {
+
+  'Motion and Forces': [
+    { term:'Speed',                 definition:'The distance travelled per unit time — a scalar quantity.',                               hint:'Distance ÷ time — no direction' },
+    { term:'Velocity',              definition:'Speed in a given direction — a vector quantity.',                                        hint:'Speed + direction — vector' },
+    { term:'Acceleration',          definition:'The rate of change of velocity.',                                                       hint:'Change in velocity ÷ time' },
+    { term:'Scalar quantity',       definition:'A quantity with magnitude only, no direction.',                                        hint:'Magnitude only — e.g. speed, mass' },
+    { term:'Vector quantity',       definition:'A quantity with both magnitude and direction.',                                       hint:'Magnitude + direction — e.g. force' },
+    { term:'Resultant force',       definition:'The single force equivalent to all forces acting on an object combined.',             hint:'Net force — all forces combined' },
+    { term:'Newton\'s first law',   definition:'An object remains stationary or moves at constant velocity unless a resultant force acts.',  hint:'No resultant force → no change in motion' },
+    { term:'Newton\'s second law',  definition:'Resultant force equals mass times acceleration (F = ma).',                           hint:'F = ma' },
+    { term:'Newton\'s third law',   definition:'Every action force has an equal and opposite reaction force.',                      hint:'Equal and opposite forces' },
+    { term:'Momentum',              definition:'The product of mass and velocity — measured in kg m/s.',                           hint:'Mass × velocity' },
+    { term:'Stopping distance',     definition:'Thinking distance plus braking distance — total distance to stop.',              hint:'Thinking + braking distance' },
+    { term:'Weight',                definition:'The gravitational force acting on an object — mass × gravitational field strength.', hint:'Gravitational force — mass × g' },
+    { term:'Friction',              definition:'A force that opposes the motion of objects in contact.',                        hint:'Opposes motion — opposing force' },
+    { term:'Terminal velocity',     definition:'The constant maximum velocity reached when drag equals driving force.',        hint:'Drag = driving force — constant speed' },
+  ],
+
+  'Energy': [
+    { term:'Energy',                definition:'The capacity to do work — measured in joules.',                                  hint:'Capacity to do work — joules' },
+    { term:'Kinetic energy',        definition:'The energy a moving object possesses — ½mv².',                                 hint:'Energy of motion — ½mv²' },
+    { term:'Gravitational potential energy', definition:'The energy of an object due to its height — mgh.',                  hint:'Energy due to height — mgh' },
+    { term:'Elastic potential energy', definition:'Energy stored in a stretched or compressed spring or elastic object.',    hint:'Energy in stretched/compressed object' },
+    { term:'Conservation of energy', definition:'Energy cannot be created or destroyed, only transferred or transformed.',  hint:'Energy cannot be created or destroyed' },
+    { term:'Work done',             definition:'Energy transferred when a force causes movement — force × distance.',       hint:'Force × distance' },
+    { term:'Power',                 definition:'The rate of energy transfer or work done — measured in watts.',            hint:'Energy ÷ time — watts' },
+    { term:'Efficiency',            definition:'The ratio of useful energy output to total energy input.',               hint:'Useful output ÷ total input' },
+    { term:'Specific heat capacity', definition:'The energy needed to raise 1 kg of a substance by 1°C.',              hint:'Energy per kg per °C' },
+    { term:'Watt',                  definition:'The unit of power — one joule per second.',                            hint:'Unit of power — J/s' },
+  ],
+
+  'Waves': [
+    { term:'Wave',                  definition:'A disturbance that transfers energy from one place to another without transferring matter.',  hint:'Transfers energy — not matter' },
+    { term:'Amplitude',             definition:'The maximum displacement of a wave from its equilibrium position.',              hint:'Maximum displacement from equilibrium' },
+    { term:'Wavelength',            definition:'The distance between two successive points in phase on a wave.',               hint:'Peak to peak distance' },
+    { term:'Frequency',             definition:'The number of complete waves passing a point per second.',                    hint:'Waves per second — hertz' },
+    { term:'Wave speed',            definition:'The speed of wave propagation — frequency × wavelength.',                   hint:'Frequency × wavelength' },
+    { term:'Transverse wave',       definition:'A wave where oscillations are perpendicular to the direction of travel.',   hint:'Oscillations perpendicular to travel' },
+    { term:'Longitudinal wave',     definition:'A wave where oscillations are parallel to the direction of travel.',       hint:'Oscillations parallel to travel' },
+    { term:'Reflection',            definition:'When a wave bounces back from a surface.',                                hint:'Bounces back from surface' },
+    { term:'Refraction',            definition:'The change of direction of a wave when it passes from one medium to another.', hint:'Changes direction at boundary' },
+    { term:'Electromagnetic spectrum', definition:'The family of transverse waves from radio waves to gamma rays, all travelling at 3 × 10⁸ m/s in a vacuum.', hint:'All EM waves — radio to gamma' },
+    { term:'Total internal reflection', definition:'When a wave travelling in a denser medium strikes the boundary at or above the critical angle and is totally reflected.', hint:'Total reflection inside dense medium' },
+  ],
+
+  'Electricity and Magnetism': [
+    { term:'Current',               definition:'The flow of charge — measured in amperes.',                               hint:'Flow of charge — amperes' },
+    { term:'Potential difference',  definition:'The energy transferred per unit charge between two points.',           hint:'Energy per unit charge — volts' },
+    { term:'Resistance',            definition:'The opposition to the flow of current — measured in ohms.',            hint:'Opposition to current — ohms' },
+    { term:'Ohm\'s law',            definition:'Current is directly proportional to potential difference at constant temperature — V = IR.', hint:'V = IR' },
+    { term:'Series circuit',        definition:'A circuit where components are connected in a single loop.',          hint:'Single loop — same current' },
+    { term:'Parallel circuit',      definition:'A circuit where components are connected in separate branches.',     hint:'Separate branches — same voltage' },
+    { term:'Direct current',        definition:'Current that flows in one direction only.',                         hint:'One direction only' },
+    { term:'Alternating current',   definition:'Current that repeatedly changes direction.',                       hint:'Changes direction repeatedly' },
+    { term:'Magnetic field',        definition:'A region where a magnetic force is exerted on magnetic materials or moving charges.', hint:'Region of magnetic force' },
+    { term:'Electromagnet',         definition:'A temporary magnet created by passing current through a coil of wire.',  hint:'Coil + current = temporary magnet' },
+    { term:'Motor effect',          definition:'The force on a current-carrying conductor in a magnetic field.',   hint:'Current in field → force' },
+    { term:'Generator effect',      definition:'The induction of a potential difference when a conductor moves relative to a magnetic field.', hint:'Movement in field → voltage' },
+    { term:'Transformer',           definition:'A device that changes the voltage of an alternating current using electromagnetic induction.', hint:'Changes AC voltage' },
+    { term:'National Grid',         definition:'The network of cables and transformers that distributes electricity from power stations to consumers.', hint:'Power station to consumer network' },
+  ],
+
+  'Radioactivity and Space': [
+    { term:'Radioactive decay',     definition:'The spontaneous disintegration of unstable atomic nuclei, emitting radiation.',    hint:'Unstable nucleus emits radiation' },
+    { term:'Alpha particle',        definition:'A helium nucleus (2 protons + 2 neutrons) emitted during radioactive decay.',   hint:'Helium nucleus — least penetrating' },
+    { term:'Beta particle',         definition:'A fast-moving electron emitted when a neutron becomes a proton in a nucleus.',  hint:'Fast electron — medium penetration' },
+    { term:'Gamma ray',             definition:'High-frequency electromagnetic radiation emitted from a nucleus.',             hint:'EM radiation — most penetrating' },
+    { term:'Half-life',             definition:'The time for half the unstable nuclei in a sample to decay.',               hint:'Time for half to decay' },
+    { term:'Nuclear fission',       definition:'The splitting of a large unstable nucleus into two smaller nuclei, releasing energy.', hint:'Large nucleus splits — releases energy' },
+    { term:'Nuclear fusion',        definition:'The joining of two light nuclei to form a heavier one, releasing energy.',  hint:'Light nuclei join — releases energy' },
+    { term:'Background radiation',  definition:'Low-level radiation from natural and man-made sources present all around us.', hint:'Always-present radiation' },
+    { term:'Red-shift',             definition:'The increase in wavelength of light from distant galaxies, indicating they are moving away.',  hint:'Wavelength increases — galaxies receding' },
+    { term:'Big Bang',              definition:'The theory that the universe began from an extremely hot, dense point approximately 13.8 billion years ago.', hint:'Universe origin ~13.8 billion years ago' },
+    { term:'Star life cycle',       definition:'The sequence of stages a star passes through from nebula to its eventual end state.', hint:'Nebula → main sequence → death' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// GEOGRAPHY — Edexcel GCSE (1GA0)
+// Edexcel B spec — topics differ from AQA
+// ────────────────────────────────────────────────────────────
+VOCAB['geography']['edexcel-gcse'] = {
+
+  'Dynamic Planet': [
+    { term:'Tectonic plate',        definition:'A rigid segment of the Earth\'s lithosphere that moves on the semi-molten asthenosphere.', hint:'Rigid crust segment — moves on mantle' },
+    { term:'Plate boundary',        definition:'The margin where two tectonic plates meet — site of earthquakes and volcanoes.',         hint:'Where two plates meet' },
+    { term:'Constructive boundary', definition:'A plate boundary where plates move apart and new crust is formed by rising magma.',     hint:'Plates apart — new crust forms' },
+    { term:'Destructive boundary',  definition:'A plate boundary where plates move together and oceanic crust is subducted.',          hint:'Plates together — crust destroyed' },
+    { term:'Conservative boundary', definition:'A plate boundary where plates slide past each other — no crust created or destroyed.', hint:'Plates slide past — no crust change' },
+    { term:'Earthquake',            definition:'A sudden violent shaking of the ground caused by movement of tectonic plates.',       hint:'Ground shaking — plate movement' },
+    { term:'Volcano',               definition:'An opening in the Earth\'s surface through which lava, ash and gases are released.',  hint:'Opening emitting lava and gases' },
+    { term:'Seismometer',           definition:'An instrument used to detect and record seismic waves from earthquakes.',           hint:'Detects and records earthquake waves' },
+    { term:'Richter scale',         definition:'A logarithmic scale measuring the magnitude of earthquakes.',                      hint:'Measures earthquake magnitude' },
+    { term:'Tsunami',               definition:'A large ocean wave triggered by an underwater earthquake or volcanic eruption.',  hint:'Giant wave — underwater earthquake' },
+    { term:'Primary effect',        definition:'The immediate, direct impact of a natural hazard on people and property.',      hint:'Immediate direct impact' },
+    { term:'Secondary effect',      definition:'An indirect consequence that develops after a natural hazard.',               hint:'Indirect — develops after event' },
+  ],
+
+  'Coastal Landscapes': [
+    { term:'Erosion',               definition:'The wearing away of coastline by wave action, weathering and mass movement.',     hint:'Wearing away of coastline' },
+    { term:'Deposition',            definition:'The laying down of sediment when waves lose energy.',                           hint:'Sediment laid down — energy lost' },
+    { term:'Hydraulic action',      definition:'The force of water being compressed into cracks in a cliff, breaking it apart.', hint:'Water pressure breaks cliff' },
+    { term:'Abrasion',              definition:'Sand and pebbles carried by waves scrape and wear away cliff faces.',          hint:'Sand/pebbles scrape cliff' },
+    { term:'Attrition',             definition:'Rocks carried by waves collide and break into smaller, smoother pieces.',     hint:'Rocks collide — break smaller' },
+    { term:'Longshore drift',       definition:'The zigzag movement of sediment along a coast as waves approach at an angle.', hint:'Sediment moves along coast in zigzag' },
+    { term:'Spit',                  definition:'A ridge of sand or shingle extending from the shore into the sea.',           hint:'Sand ridge extending into sea' },
+    { term:'Wave-cut platform',     definition:'A flat rocky shelf at sea level, the eroded remnant of former cliffs.',      hint:'Flat rock — eroded cliff base' },
+    { term:'Sea wall',              definition:'A concrete barrier built along a coast to reflect wave energy and prevent erosion.', hint:'Reflects waves — prevents erosion' },
+    { term:'Managed retreat',       definition:'Allowing coastal erosion or flooding to occur by removing coastal defences.', hint:'Allow natural erosion to proceed' },
+    { term:'Hard engineering',      definition:'Using concrete and artificial structures to protect coastlines.',           hint:'Artificial structures — coastal defence' },
+    { term:'Soft engineering',      definition:'Managing erosion using natural processes such as beach nourishment.',       hint:'Works with natural processes' },
+  ],
+
+  'Urbanisation': [
+    { term:'Urbanisation',          definition:'The increase in the proportion of people living in urban areas.',            hint:'More people living in cities' },
+    { term:'Rural-urban migration', definition:'The movement of people from rural areas to urban areas in search of work and better living conditions.', hint:'People move from countryside to city' },
+    { term:'Megacity',              definition:'A city with a population exceeding 10 million people.',                    hint:'City with 10+ million people' },
+    { term:'Urban sprawl',          definition:'The unplanned expansion of urban areas into surrounding countryside.',    hint:'City spreads into countryside' },
+    { term:'Squatter settlement',   definition:'An area of housing built illegally, often on the edge of a city, without proper sanitation or services.', hint:'Illegal housing — no services' },
+    { term:'Brownfield site',       definition:'Previously developed land that can be reused for new development.',       hint:'Previously developed — reusable' },
+    { term:'Greenfield site',       definition:'Land that has not been previously built on.',                           hint:'Never built on before' },
+    { term:'Gentrification',        definition:'The process of improving a run-down area, often displacing existing lower-income residents.',  hint:'Improving area — displacing poor residents' },
+    { term:'Sustainable development', definition:'Development that meets present needs without compromising the ability of future generations to meet their own needs.', hint:'Meets needs now — doesn\'t harm future' },
+    { term:'Infrastructure',        definition:'Basic facilities and services needed for a society — roads, water, electricity, communications.',  hint:'Basic services — roads, water, power' },
+  ],
+
+  'Development and Globalisation': [
+    { term:'Development',           definition:'The level of economic and social progress of a country.',                  hint:'Economic and social progress' },
+    { term:'Gross domestic product', definition:'The total value of goods and services produced by a country in one year.',  hint:'Total economic output of a country' },
+    { term:'HDI',                   definition:'Human Development Index — combines life expectancy, education and income to measure development.', hint:'Life expectancy + education + income' },
+    { term:'Globalisation',         definition:'The increasing interconnection of the world\'s economies, cultures and populations.',  hint:'World becoming more interconnected' },
+    { term:'Transnational corporation', definition:'A large company that operates in multiple countries.',                hint:'Large company — operates globally' },
+    { term:'Fair trade',            definition:'A trading system that ensures producers in developing countries receive fair prices.',  hint:'Fair prices for developing world producers' },
+    { term:'Aid',                   definition:'Money, goods or services given by one country or organisation to another in need.', hint:'Help given to countries in need' },
+    { term:'Trade',                 definition:'The exchange of goods and services between countries.',                 hint:'Exchange of goods between countries' },
+    { term:'Inequality',            definition:'Differences in wealth, income, opportunity or access to services between people or regions.', hint:'Unequal distribution of wealth/opportunity' },
+  ],
+
+  'Changing Environments': [
+    { term:'Climate change',        definition:'Long-term change in global average temperature and weather patterns.',   hint:'Long-term temperature and weather change' },
+    { term:'Carbon dioxide',        definition:'A greenhouse gas produced by burning fossil fuels and respiration — a major cause of climate change.', hint:'Main greenhouse gas — CO₂' },
+    { term:'Deforestation',         definition:'The widespread removal of forests, reducing biodiversity and increasing CO₂.',  hint:'Forest removal — CO₂ rises' },
+    { term:'Biodiversity',          definition:'The variety of living species in a given area.',                        hint:'Variety of species' },
+    { term:'Ecosystem',             definition:'A community of living organisms interacting with each other and their non-living environment.', hint:'Community + non-living environment' },
+    { term:'Desertification',       definition:'The process by which fertile land becomes desert due to drought, deforestation or unsuitable farming.', hint:'Fertile land turns to desert' },
+    { term:'Sustainability',        definition:'Using resources to meet present needs without depleting them for future generations.', hint:'Meeting needs now — preserving for future' },
+    { term:'Renewable energy',      definition:'Energy from sources that are naturally replenished — e.g. solar, wind, hydroelectric.',  hint:'Naturally replenished — solar, wind' },
+    { term:'Carbon footprint',      definition:'The total greenhouse gas emissions caused by an individual, organisation or product.', hint:'Total greenhouse gases from an activity' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// HISTORY — Edexcel GCSE (1HI0)
+// Edexcel History has thematic and period studies
+// Core concepts are shared; period vocab differs slightly
+// ────────────────────────────────────────────────────────────
+VOCAB['history']['edexcel-gcse'] = {
+
+  'Historical Concepts': [
+    { term:'Causation',             definition:'The relationship between causes and effects — explaining why events happened.',    hint:'Why events happened — cause and effect' },
+    { term:'Consequence',           definition:'The result or effect of a historical event or decision.',                       hint:'Results of historical events' },
+    { term:'Significance',          definition:'The historical importance of a person, event or development.',                hint:'Historical importance' },
+    { term:'Change',                definition:'Aspects of historical periods that were different from before.',             hint:'Things that became different' },
+    { term:'Continuity',            definition:'Aspects of historical periods that remained the same over time.',           hint:'Things that stayed the same' },
+    { term:'Primary source',        definition:'Evidence created at the time of the events being studied.',                hint:'Created at the time — e.g. diary' },
+    { term:'Secondary source',      definition:'Evidence created after the events, interpreting or analysing the past.',  hint:'Created after — interpretation' },
+    { term:'Bias',                  definition:'A tendency in a source to present a one-sided view of events.',          hint:'One-sided view' },
+    { term:'Reliability',           definition:'The degree to which a source can be trusted to give an accurate account of events.', hint:'How trustworthy a source is' },
+    { term:'Interpretation',        definition:'A historian\'s analysis or judgement about historical events.',          hint:'Historian\'s view or judgement' },
+    { term:'Propaganda',            definition:'Information — often biased or misleading — used to promote a political viewpoint.', hint:'Biased info to influence opinion' },
+    { term:'Chronology',            definition:'The arrangement of events in the order in which they occurred.',         hint:'Events in time order' },
+  ],
+
+  'Medicine Through Time': [
+    { term:'Germ theory',           definition:'Louis Pasteur\'s theory that disease is caused by microorganisms.',       hint:'Pasteur — disease from microorganisms' },
+    { term:'Miasma theory',         definition:'The incorrect belief that disease was caused by bad air from rotting matter.',  hint:'Old belief — disease from bad air' },
+    { term:'Vaccination',           definition:'Introducing a weakened pathogen to stimulate immunity against disease.',  hint:'Stimulates immunity against disease' },
+    { term:'Anaesthetic',           definition:'A drug that prevents pain or induces unconsciousness during surgery.',  hint:'Removes pain in surgery' },
+    { term:'Antiseptic',            definition:'A substance that kills or prevents the growth of microorganisms, reducing infection.',  hint:'Kills bacteria — reduces infection' },
+    { term:'Public health',         definition:'Government action to prevent disease and promote the health of the whole population.',  hint:'Government promotes population health' },
+    { term:'NHS',                   definition:'The National Health Service — free healthcare for all British citizens, established 1948.',  hint:'Free healthcare — established 1948' },
+    { term:'Surgery',               definition:'Medical treatment involving cutting into the body — developed significantly in the 19th and 20th centuries.',  hint:'Medical treatment by cutting' },
+    { term:'Clinical trial',        definition:'A carefully controlled scientific test of a new treatment on human patients.',  hint:'Controlled test of new treatment' },
+  ],
+
+  'Weimar and Nazi Germany': [
+    { term:'Weimar Republic',       definition:'The democratic government of Germany 1919–1933, established after World War One.',  hint:'German democracy 1919–1933' },
+    { term:'Nazi Party',            definition:'The National Socialist German Workers\' Party, led by Hitler, ruling Germany 1933–1945.',  hint:'Hitler\'s party — ruled Germany' },
+    { term:'Hyperinflation',        definition:'An extreme and rapid rise in prices making money nearly worthless — Germany 1923.',  hint:'Extreme price rises — 1923 Germany' },
+    { term:'Totalitarianism',       definition:'A system of government with absolute control over all aspects of life.',           hint:'Total state control over all life' },
+    { term:'Holocaust',             definition:'The systematic murder of six million Jews and millions of others by the Nazi regime.',  hint:'Systematic Nazi genocide' },
+    { term:'Propaganda',            definition:'Biased information used by the Nazis to control what people believed.',            hint:'Biased info to control beliefs' },
+    { term:'Appeasement',           definition:'The British and French policy of making concessions to Hitler to avoid war.',      hint:'Giving in to Hitler to avoid war' },
+    { term:'Reichstag',             definition:'The German parliament building — burned down in 1933 and used by Hitler to justify emergency powers.',  hint:'German parliament — burned 1933' },
+    { term:'Gestapo',               definition:'The Nazi secret state police that monitored and suppressed opposition.',          hint:'Nazi secret police' },
+    { term:'SS',                    definition:'The Schutzstaffel — Hitler\'s elite personal guard and later a major force in running concentration camps.',  hint:'Hitler\'s elite guard' },
+  ],
+
+  'Cold War': [
+    { term:'Cold War',              definition:'The period of political and military tension between the USA and USSR from 1945 to 1991, without direct armed conflict.',  hint:'USA vs USSR — no direct fighting' },
+    { term:'Containment',          definition:'The US policy of preventing the spread of communism beyond where it already existed.',  hint:'US policy — stop communism spreading' },
+    { term:'Iron Curtain',         definition:'The ideological and physical division between communist Eastern Europe and democratic Western Europe.',  hint:'Divide — communist East, democratic West' },
+    { term:'NATO',                 definition:'North Atlantic Treaty Organisation — a military alliance of Western nations formed in 1949.',  hint:'Western military alliance — 1949' },
+    { term:'Warsaw Pact',          definition:'A military alliance of communist Eastern European nations under Soviet leadership, formed in 1955.',  hint:'Communist military alliance — 1955' },
+    { term:'Nuclear deterrence',   definition:'The strategy of possessing nuclear weapons to prevent enemy attack by threatening devastating retaliation.',  hint:'Nuclear weapons prevent attack' },
+    { term:'Arms race',            definition:'The competition between the USA and USSR to develop more powerful weapons.',  hint:'USA and USSR competing for weapons' },
+    { term:'Space race',           definition:'The competition between the USA and USSR to achieve superiority in space exploration.',  hint:'USA vs USSR in space exploration' },
+    { term:'Détente',              definition:'A period of easing tensions between the USA and USSR in the 1970s.',  hint:'Relaxed tensions — 1970s' },
+    { term:'Berlin Wall',          definition:'The barrier built in 1961 separating East and West Berlin — a symbol of the Iron Curtain.',  hint:'Wall dividing Berlin — 1961' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// MATHS — Edexcel GCSE (1MA1)
+// Core content is near-identical to AQA — same national DfE curriculum
+// Adding Edexcel-specific notation and a few extra topics
+// ────────────────────────────────────────────────────────────
+VOCAB['maths']['edexcel-gcse'] = {
+
+  'Number': [
+    { term:'Integer',               definition:'A whole number, either positive, negative or zero.',                                hint:'Whole number — no decimal' },
+    { term:'Prime number',          definition:'A number greater than 1 with exactly two factors: 1 and itself.',                hint:'Only divisible by 1 and itself' },
+    { term:'Factor',                definition:'A number that divides exactly into another without a remainder.',                hint:'Divides exactly — no remainder' },
+    { term:'Multiple',              definition:'A number obtained by multiplying a given number by a positive integer.',        hint:'In the times table of a number' },
+    { term:'HCF',                   definition:'Highest Common Factor — the largest number that is a factor of two or more given numbers.',  hint:'Largest shared factor' },
+    { term:'LCM',                   definition:'Lowest Common Multiple — the smallest number that is a multiple of two or more given numbers.',  hint:'Smallest shared multiple' },
+    { term:'Surd',                  definition:'An irrational number expressed as a root, such as √2, which cannot be simplified to a rational number.',  hint:'Irrational root — e.g. √2' },
+    { term:'Standard form',         definition:'Writing a number as a × 10ⁿ where 1 ≤ a < 10 and n is an integer.',           hint:'a × 10ⁿ — very large or small numbers' },
+    { term:'Rational number',       definition:'A number that can be expressed as a fraction p/q where p and q are integers.',  hint:'Can be written as a fraction' },
+    { term:'Irrational number',     definition:'A number that cannot be expressed as a fraction — decimal is infinite and non-repeating.',  hint:'Cannot be written as a fraction — e.g. π' },
+  ],
+
+  'Algebra': [
+    { term:'Expression',            definition:'A mathematical phrase with numbers and/or variables but no equals sign.',      hint:'Numbers and letters — no equals' },
+    { term:'Equation',              definition:'A mathematical statement where two expressions are equal.',                   hint:'Two expressions — equals sign' },
+    { term:'Formula',               definition:'A rule using symbols to show a relationship between quantities.',            hint:'Rule using symbols — e.g. A = lw' },
+    { term:'Inequality',            definition:'A mathematical statement showing one expression is greater or less than another.',  hint:'< > ≤ ≥ — not equal' },
+    { term:'Expand',                definition:'To multiply out brackets and simplify the result.',                         hint:'Multiply out the brackets' },
+    { term:'Factorise',             definition:'To express an algebraic expression as a product of its factors.',          hint:'Put brackets in — reverse of expand' },
+    { term:'Gradient',              definition:'The slope of a straight line — change in y divided by change in x.',      hint:'Rise ÷ run — steepness of line' },
+    { term:'Quadratic',             definition:'A polynomial of degree 2 — containing a term in x².',                    hint:'Contains x² — degree 2' },
+    { term:'Simultaneous equations', definition:'Two equations with the same variables that are solved at the same time.',  hint:'Two equations — same unknowns — solve together' },
+    { term:'Function',              definition:'A rule that maps each input to exactly one output.',                     hint:'Input → exactly one output' },
+  ],
+
+  'Geometry and Measures': [
+    { term:'Perimeter',             definition:'The total length of the boundary of a 2D shape.',                          hint:'Distance around the outside' },
+    { term:'Area',                  definition:'The measure of the space enclosed within a 2D shape.',                   hint:'Space inside a 2D shape' },
+    { term:'Volume',                definition:'The measure of space enclosed within a 3D shape.',                      hint:'Space inside a 3D shape' },
+    { term:'Circumference',         definition:'The perimeter of a circle — πd or 2πr.',                              hint:'Perimeter of a circle — πd' },
+    { term:'Congruent',             definition:'Two shapes that are identical in shape and size — all corresponding sides and angles are equal.',  hint:'Identical shape and size' },
+    { term:'Similar',               definition:'Two shapes with the same angles but different sizes — sides in the same ratio.',  hint:'Same shape — different size' },
+    { term:'Pythagoras\' theorem',  definition:'In a right-angled triangle: a² + b² = c², where c is the hypotenuse.',  hint:'a² + b² = c² in right triangle' },
+    { term:'Trigonometry',          definition:'The study of relationships between angles and sides in triangles.',    hint:'Sin, cos, tan — angles and sides' },
+    { term:'Vector',                definition:'A quantity with both magnitude and direction, often represented as a column vector.',  hint:'Magnitude + direction' },
+    { term:'Locus',                 definition:'The set of all points satisfying a given condition.',                 hint:'Path traced following a rule' },
+  ],
+
+  'Statistics and Probability': [
+    { term:'Mean',                  definition:'The sum of all values divided by the number of values.',              hint:'Sum ÷ number of values' },
+    { term:'Median',                definition:'The middle value when data is arranged in order.',                   hint:'Middle value when ordered' },
+    { term:'Mode',                  definition:'The value that occurs most frequently in a data set.',             hint:'Most common value' },
+    { term:'Range',                 definition:'The difference between the highest and lowest values.',           hint:'Highest − lowest' },
+    { term:'Probability',           definition:'A numerical measure of how likely an event is to occur — between 0 and 1.',  hint:'Likelihood of event — 0 to 1' },
+    { term:'Relative frequency',    definition:'The proportion of times an event occurs in an experiment — used to estimate probability.',  hint:'Times event occurs ÷ total trials' },
+    { term:'Correlation',           definition:'The relationship or pattern between two variables on a scatter diagram.',  hint:'Pattern between two variables' },
+    { term:'Cumulative frequency',  definition:'A running total of frequencies used to find the median and quartiles.',  hint:'Running total of frequencies' },
+    { term:'Interquartile range',   definition:'The difference between the upper and lower quartiles — Q3 − Q1.',  hint:'Q3 − Q1 — spread of middle 50%' },
+    { term:'Outlier',               definition:'A data value significantly different from the rest of the data set.',  hint:'Value far from others' },
+  ],
+
+  'Ratio and Proportion': [
+    { term:'Ratio',                 definition:'A comparison of two quantities by division — written as a:b.',       hint:'Comparison — written a:b' },
+    { term:'Proportion',            definition:'A statement that two ratios are equal — or a part compared to a whole.',  hint:'Equal ratios — part to whole' },
+    { term:'Percentage',            definition:'A fraction expressed as parts per hundred.',                       hint:'Out of 100' },
+    { term:'Direct proportion',     definition:'Two quantities that increase or decrease at the same rate — y = kx.',  hint:'Both increase together — y = kx' },
+    { term:'Inverse proportion',    definition:'Two quantities where one increases as the other decreases — y = k/x.',  hint:'One increases, other decreases — y = k/x' },
+    { term:'Scale factor',          definition:'The ratio of corresponding lengths in two similar shapes.',       hint:'Ratio of lengths in similar shapes' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// ENGLISH — Edexcel GCSE (1EN0 Language / 1ET0 Literature)
+// Core literary and language terms are the same nationally
+// Adding Edexcel-specific structural terms
+// ────────────────────────────────────────────────────────────
+VOCAB['english']['edexcel-gcse'] = {
+
+  'Language Techniques': [
+    { term:'Simile',               definition:'A comparison using "like" or "as".',                                        hint:'Comparison using like or as' },
+    { term:'Metaphor',             definition:'A direct comparison stating one thing is another.',                        hint:'Direct comparison — not like/as' },
+    { term:'Personification',      definition:'Giving human qualities to non-human things.',                             hint:'Human qualities to non-human things' },
+    { term:'Alliteration',         definition:'Repetition of the same initial consonant sound in nearby words.',        hint:'Same starting consonant repeated' },
+    { term:'Onomatopoeia',         definition:'Words that sound like what they describe.',                             hint:'Word sounds like the noise — e.g. bang' },
+    { term:'Hyperbole',            definition:'Deliberate exaggeration for emphasis or effect.',                      hint:'Deliberate exaggeration' },
+    { term:'Irony',                definition:'Saying the opposite of what is meant, or events turning out contrary to expectations.',  hint:'Opposite of what is meant/expected' },
+    { term:'Juxtaposition',        definition:'Placing two contrasting ideas or images side by side.',               hint:'Contrasting ideas placed together' },
+    { term:'Imagery',              definition:'Vivid descriptive language creating mental pictures.',               hint:'Vivid description — mental picture' },
+    { term:'Symbolism',            definition:'Using an object or image to represent a deeper meaning.',           hint:'Object represents deeper meaning' },
+    { term:'Repetition',           definition:'Using the same word or phrase more than once for emphasis.',        hint:'Same word repeated for emphasis' },
+    { term:'Rhetorical question',  definition:'A question asked for effect — no answer expected.',               hint:'Question for effect — no answer needed' },
+    { term:'Tone',                 definition:'The writer\'s attitude towards the subject conveyed through language choices.',  hint:'Writer\'s attitude through language' },
+    { term:'Emotive language',     definition:'Language designed to provoke an emotional response.',            hint:'Language that creates emotion' },
+  ],
+
+  'Structure and Form': [
+    { term:'Structure',            definition:'The way a text is organised — sequence of ideas, use of paragraphs, openings and endings.',  hint:'How a text is organised' },
+    { term:'Narrative perspective', definition:'The viewpoint from which a story is told — first, second or third person.',  hint:'Viewpoint of the narrator' },
+    { term:'Chronological',        definition:'Organised in time order from earliest to latest.',                hint:'In time order — earliest to latest' },
+    { term:'Non-chronological',    definition:'Organised in a way that does not follow time order — may use flashbacks.',  hint:'Not in time order' },
+    { term:'Foreshadowing',        definition:'Hints or clues about events that will happen later in the text.',  hint:'Hints about later events' },
+    { term:'Flashback',            definition:'A narrative technique returning to an earlier time.',           hint:'Goes back in time in narrative' },
+    { term:'Stanza',               definition:'A group of lines forming a unit in a poem.',                  hint:'Group of lines in a poem' },
+    { term:'Rhyme scheme',         definition:'The pattern of rhymes at the ends of lines in a poem — shown as ABAB, ABBA etc.',  hint:'Pattern of rhymes — ABAB etc.' },
+    { term:'Enjambment',           definition:'When a sentence or phrase continues across a line break in poetry.',  hint:'Sentence continues over line break' },
+    { term:'Caesura',              definition:'A pause or break within a line of poetry.',                 hint:'Pause in the middle of a line' },
+  ],
+
+  'Literature Concepts': [
+    { term:'Theme',                definition:'The central idea or message running through a text.',          hint:'Central message of the text' },
+    { term:'Protagonist',          definition:'The main character of a narrative.',                          hint:'Main character' },
+    { term:'Antagonist',           definition:'The character or force that opposes the protagonist.',       hint:'Opposes the main character' },
+    { term:'Conflict',             definition:'A struggle between opposing forces — internal or external.',  hint:'Struggle — internal or external' },
+    { term:'Connotation',          definition:'The implied or associated meaning of a word beyond its literal definition.',  hint:'Implied meaning beyond literal' },
+    { term:'Motif',                definition:'A recurring image, symbol or idea that reinforces theme.',  hint:'Recurring image or idea' },
+    { term:'Setting',              definition:'The time and place in which a narrative takes place.',     hint:'Time and place of the story' },
+    { term:'Genre',                definition:'The category of a literary work defined by its style and conventions.',  hint:'Category of literary work' },
+    { term:'Dramatic irony',       definition:'When the audience knows something a character does not.',  hint:'Audience knows more than character' },
+    { term:'Pathetic fallacy',     definition:'Using weather or environment to reflect a character\'s emotions.',  hint:'Weather reflects character emotion' },
+  ],
+
+  'Reading and Writing Skills': [
+    { term:'Inference',            definition:'Drawing a conclusion that is suggested but not directly stated.',  hint:'Conclusion drawn from clues' },
+    { term:'Explicit',             definition:'Clearly and directly stated in the text.',                hint:'Clearly stated — directly' },
+    { term:'Implicit',             definition:'Suggested or implied rather than directly stated.',      hint:'Suggested — not directly stated' },
+    { term:'Audience',             definition:'The intended readers or viewers of a text.',           hint:'Who the text is written for' },
+    { term:'Purpose',              definition:'The reason a text was written — to inform, persuade, entertain etc.',  hint:'Why the text was written' },
+    { term:'Form',                 definition:'The type of text — e.g. letter, article, speech, story.',  hint:'Type of text — letter, speech etc.' },
+    { term:'Register',             definition:'The level of formality and style appropriate to the audience and purpose.',  hint:'Level of formality in language' },
+    { term:'Cohesion',             definition:'The way a text holds together logically and flows clearly from one idea to the next.',  hint:'Text flows and holds together logically' },
+  ],
+
+};
+
+// ────────────────────────────────────────────────────────────
+// COMPUTING — Edexcel GCSE (1CP1)
+// Very similar to AQA but with slightly different topic organisation
+// ────────────────────────────────────────────────────────────
+VOCAB['computing']['edexcel-gcse'] = {
+
+  'Algorithms and Programming': [
+    { term:'Algorithm',            definition:'A step-by-step set of instructions for solving a problem.',                hint:'Step-by-step problem solution' },
+    { term:'Decomposition',        definition:'Breaking a complex problem into smaller, manageable sub-problems.',        hint:'Breaking problem into smaller parts' },
+    { term:'Abstraction',          definition:'Removing unnecessary details to focus on essential features of a problem.', hint:'Removing unnecessary detail' },
+    { term:'Pseudocode',           definition:'An informal high-level description of an algorithm using plain language.',  hint:'Plain language resembling code' },
+    { term:'Flowchart',            definition:'A visual diagram showing an algorithm using standard symbols.',           hint:'Diagram showing algorithm steps' },
+    { term:'Sequence',             definition:'Instructions executed in order, one after another.',                     hint:'Instructions in order' },
+    { term:'Selection',            definition:'A decision structure — IF/THEN/ELSE — that executes different code based on a condition.',  hint:'IF statement — decision in code' },
+    { term:'Iteration',            definition:'Repeating a block of code — using FOR, WHILE or REPEAT loops.',         hint:'Repeating a block of code' },
+    { term:'Variable',             definition:'A named memory location storing a value that can change during execution.',  hint:'Named storage — can change' },
+    { term:'Constant',             definition:'A named value that does not change during the execution of a program.',  hint:'Named storage — cannot change' },
+    { term:'Data type',            definition:'The classification of data — integer, real, Boolean, string or character.',  hint:'Type of data stored' },
+    { term:'Array',                definition:'A data structure holding multiple values of the same type under one name.',  hint:'Multiple values — one variable name' },
+    { term:'Subroutine',           definition:'A named block of code — a function or procedure — that can be called from elsewhere in a program.',  hint:'Named reusable block of code' },
+  ],
+
+  'Data Representation': [
+    { term:'Binary',               definition:'Base-2 number system using digits 0 and 1.',                            hint:'Base-2 — only 0 and 1' },
+    { term:'Bit',                  definition:'A single binary digit — 0 or 1.',                                      hint:'Single binary digit' },
+    { term:'Byte',                 definition:'A group of 8 bits.',                                                   hint:'8 bits' },
+    { term:'Denary',               definition:'The base-10 number system used in everyday life.',                    hint:'Base-10 — everyday number system' },
+    { term:'Hexadecimal',          definition:'Base-16 number system using digits 0–9 and letters A–F.',           hint:'Base-16 — 0-9 and A-F' },
+    { term:'ASCII',                definition:'American Standard Code for Information Interchange — a character encoding using 7 or 8 bits per character.',  hint:'Character encoding — letters/symbols' },
+    { term:'Unicode',              definition:'A character encoding standard supporting all world languages and symbols.',  hint:'Expanded character encoding — all languages' },
+    { term:'Pixel',                definition:'The smallest unit of a digital image.',                             hint:'Smallest unit of digital image' },
+    { term:'Compression',          definition:'Reducing file size to save storage or reduce transmission time.',   hint:'Reducing file size' },
+    { term:'Lossless compression', definition:'Compression that reduces file size without losing any data.',     hint:'No data lost — original recoverable' },
+    { term:'Lossy compression',    definition:'Compression that reduces file size by permanently removing some data.',  hint:'Data permanently removed' },
+    { term:'Sampling rate',        definition:'The number of audio samples taken per second — affects sound quality.',  hint:'Audio samples per second' },
+  ],
+
+  'Computer Systems': [
+    { term:'CPU',                  definition:'Central Processing Unit — executes instructions and processes data.',  hint:'Brain of the computer' },
+    { term:'RAM',                  definition:'Random Access Memory — volatile memory holding currently running programs and data.',  hint:'Temporary volatile memory' },
+    { term:'ROM',                  definition:'Read Only Memory — non-volatile memory storing permanent boot instructions.',  hint:'Permanent read-only memory' },
+    { term:'Cache',                definition:'A small, fast memory between the CPU and RAM storing frequently accessed data.',  hint:'Fast memory close to CPU' },
+    { term:'Clock speed',          definition:'The number of CPU instruction cycles per second — measured in GHz.',  hint:'Instructions per second — GHz' },
+    { term:'Secondary storage',    definition:'Non-volatile storage for long-term data — e.g. hard drives, SSDs, optical discs.',  hint:'Long-term non-volatile storage' },
+    { term:'Operating system',     definition:'Software that manages hardware resources and provides an interface for users and applications.',  hint:'Manages hardware and software' },
+    { term:'Embedded system',      definition:'A computer system built into a device to control a specific function.',  hint:'Computer built into a device' },
+  ],
+
+  'Networks and Cyber Security': [
+    { term:'Network',              definition:'Two or more connected devices that can communicate and share resources.',  hint:'Connected devices sharing resources' },
+    { term:'LAN',                  definition:'Local Area Network — a network in a small area such as a building.',  hint:'Small area network' },
+    { term:'WAN',                  definition:'Wide Area Network — a network spanning a large geographical area.',  hint:'Large area network — e.g. internet' },
+    { term:'Internet',             definition:'A global WAN connecting billions of devices worldwide.',           hint:'Global network of networks' },
+    { term:'Protocol',             definition:'A set of rules governing data transmission between devices.',     hint:'Rules for data transmission' },
+    { term:'IP address',           definition:'A unique numerical identifier assigned to each device on a network.',  hint:'Unique address for each device' },
+    { term:'Packet switching',     definition:'Data is broken into packets that travel independently and are reassembled at the destination.',  hint:'Data sent in packets — reassembled' },
+    { term:'Encryption',           definition:'Encoding data so only authorised parties can read it.',          hint:'Encoding data for security' },
+    { term:'Firewall',             definition:'Hardware or software that filters network traffic to protect against threats.',  hint:'Filters traffic — blocks threats' },
+    { term:'Malware',              definition:'Software designed to damage or gain unauthorised access to systems.',  hint:'Malicious software' },
+    { term:'Phishing',             definition:'A cyber attack using deceptive messages to trick users into revealing personal information.',  hint:'Fake messages steal personal info' },
+    { term:'Social engineering',   definition:'Manipulating people into revealing confidential information rather than using technical attacks.',  hint:'Manipulating people — not technology' },
+  ],
+
+};
