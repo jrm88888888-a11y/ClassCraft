@@ -2241,3 +2241,458 @@ VOCAB['computing']['edexcel-gcse'] = {
   ],
 
 };
+
+// ────────────────────────────────────────────────────────────
+// KS3 — SCIENCE (Biology, Chemistry, Physics combined)
+// Generic — no specific exam board
+// Age 11–14, Years 7–9
+// Source: National Curriculum KS3 + school vocabulary lists
+// ────────────────────────────────────────────────────────────
+VOCAB['biology']['ks3'] = {
+
+  'Cells': [
+    { term:'Cell',               definition:'The basic unit of all living organisms.',                                                hint:'Smallest unit of life' },
+    { term:'Cell membrane',      definition:'A thin layer surrounding the cell that controls what enters and leaves.',              hint:'Controls what enters/leaves cell' },
+    { term:'Cell wall',          definition:'A rigid layer outside the cell membrane in plant cells, made of cellulose.',          hint:'Rigid layer — plant cells only' },
+    { term:'Nucleus',            definition:'The control centre of the cell, containing DNA.',                                     hint:'Control centre — contains DNA' },
+    { term:'Cytoplasm',          definition:'The jelly-like fluid inside a cell where chemical reactions take place.',             hint:'Jelly-like fluid inside cell' },
+    { term:'Chloroplast',        definition:'A structure in plant cells that absorbs light energy for photosynthesis.',            hint:'Absorbs light — photosynthesis' },
+    { term:'Vacuole',            definition:'A large space in plant cells filled with cell sap.',                                  hint:'Large space — cell sap — plants' },
+    { term:'Mitochondria',       definition:'Structures in the cell where energy is released during respiration.',                hint:'Energy release — respiration' },
+    { term:'Tissue',             definition:'A group of similar cells working together to perform a function.',                   hint:'Group of similar cells' },
+    { term:'Organ',              definition:'A structure made of different tissues working together.',                           hint:'Made of tissues — e.g. heart' },
+    { term:'Organ system',       definition:'A group of organs working together to carry out a major function.',                hint:'Group of organs — major function' },
+    { term:'Microscope',         definition:'An instrument that magnifies objects too small to see with the naked eye.',        hint:'Magnifies tiny objects' },
+    { term:'Magnification',      definition:'How many times larger an image appears compared to the real object.',            hint:'Image size ÷ real size' },
+    { term:'Diffusion',          definition:'The movement of particles from high concentration to low concentration.',         hint:'High to low concentration — passive' },
+    { term:'Osmosis',            definition:'The movement of water from a dilute to a concentrated solution through a membrane.', hint:'Water movement through a membrane' },
+    { term:'Specialised cell',   definition:'A cell adapted in structure to carry out a specific function.',                  hint:'Adapted for one purpose' },
+  ],
+
+  'Reproduction and Life Processes': [
+    { term:'Reproduction',       definition:'The process by which organisms produce offspring.',                               hint:'Producing new organisms' },
+    { term:'Sexual reproduction', definition:'Reproduction involving the fusion of male and female sex cells.',              hint:'Involves egg and sperm joining' },
+    { term:'Asexual reproduction', definition:'Reproduction involving a single parent, producing genetically identical offspring.', hint:'One parent — identical offspring' },
+    { term:'Gamete',             definition:'A sex cell — sperm in males, egg in females.',                                 hint:'Sex cell — sperm or egg' },
+    { term:'Fertilisation',      definition:'The fusion of a sperm cell and an egg cell.',                                 hint:'Sperm and egg join' },
+    { term:'Embryo',             definition:'An early stage of development from a fertilised egg.',                       hint:'Early stage of development' },
+    { term:'Puberty',            definition:'The period during which a child develops physically into an adult capable of reproduction.', hint:'Physical changes to adult body' },
+    { term:'Ovulation',          definition:'The release of an egg from the ovary.',                                     hint:'Egg released from ovary' },
+    { term:'Pollination',        definition:'The transfer of pollen from anther to stigma in plants.',                  hint:'Pollen moves from anther to stigma' },
+    { term:'Germination',        definition:'The process by which a seed begins to grow.',                             hint:'Seed starts to grow' },
+    { term:'Variation',          definition:'Differences between individual organisms of the same species.',           hint:'Differences between individuals' },
+    { term:'Inherited',          definition:'Characteristics passed on from parents to offspring through genes.',     hint:'Passed from parent to offspring' },
+    { term:'Chromosome',         definition:'A thread-like structure in the nucleus made of DNA and carrying genetic information.',  hint:'Thread-like DNA structure in nucleus' },
+    { term:'DNA',                definition:'The molecule that carries genetic information — shaped like a double helix.',  hint:'Carries genetic information' },
+    { term:'Gene',               definition:'A section of DNA that codes for a characteristic.',                    hint:'Section of DNA — controls a characteristic' },
+  ],
+
+  'Body Systems': [
+    { term:'Digestion',          definition:'The breakdown of food into small soluble molecules that can be absorbed into the blood.',  hint:'Food broken into small molecules' },
+    { term:'Enzyme',             definition:'A biological catalyst that speeds up chemical reactions in the body.',               hint:'Biological catalyst — speeds reactions' },
+    { term:'Aerobic respiration', definition:'The release of energy from glucose using oxygen — produces CO₂ and water.',         hint:'Glucose + oxygen → energy' },
+    { term:'Anaerobic respiration', definition:'The release of energy from glucose without oxygen — produces lactic acid.',      hint:'No oxygen — produces lactic acid' },
+    { term:'Photosynthesis',     definition:'The process by which plants make glucose using light energy, CO₂ and water.',       hint:'Plants make glucose using light' },
+    { term:'Circulation',        definition:'The movement of blood around the body through the heart and blood vessels.',      hint:'Blood moving through heart and vessels' },
+    { term:'Artery',             definition:'A blood vessel that carries blood away from the heart under high pressure.',       hint:'Away from heart — high pressure' },
+    { term:'Vein',               definition:'A blood vessel that carries blood back to the heart under low pressure.',        hint:'Towards heart — low pressure' },
+    { term:'Capillary',          definition:'A tiny blood vessel where exchange of substances between blood and tissues occurs.', hint:'Tiny — exchange of substances' },
+    { term:'Pathogen',           definition:'A microorganism that causes disease.',                                          hint:'Disease-causing microorganism' },
+    { term:'Immune system',      definition:'The body\'s defence system against pathogens.',                               hint:'Body\'s defence against disease' },
+    { term:'Vaccine',            definition:'A preparation of dead or weakened pathogens used to stimulate immunity.',    hint:'Stimulates immunity — weakened pathogen' },
+  ],
+
+  'Ecology': [
+    { term:'Ecosystem',          definition:'A community of organisms and the non-living environment they live in.',       hint:'Living things + their environment' },
+    { term:'Habitat',            definition:'The natural environment in which an organism lives.',                        hint:'Where an organism lives' },
+    { term:'Food chain',         definition:'A sequence showing how energy passes from one organism to another.',       hint:'Energy transfer sequence' },
+    { term:'Food web',           definition:'An interconnected network of food chains.',                               hint:'Network of food chains' },
+    { term:'Producer',           definition:'An organism that makes its own food through photosynthesis.',            hint:'Makes own food — green plants' },
+    { term:'Consumer',           definition:'An organism that feeds on other organisms.',                            hint:'Feeds on other organisms' },
+    { term:'Predator',           definition:'An animal that hunts and eats other animals.',                         hint:'Hunts and eats other animals' },
+    { term:'Prey',               definition:'An animal that is hunted and eaten by a predator.',                   hint:'Eaten by a predator' },
+    { term:'Decomposer',         definition:'An organism that breaks down dead organic matter.',                   hint:'Breaks down dead material' },
+    { term:'Adaptation',         definition:'A feature of an organism that helps it survive in its environment.',  hint:'Feature helping survival' },
+    { term:'Competition',        definition:'When organisms compete for the same limited resources.',             hint:'Struggle for same resources' },
+    { term:'Population',         definition:'All the organisms of the same species in an area.',                hint:'Same species — same area' },
+    { term:'Biodiversity',       definition:'The variety of different living organisms in an area.',           hint:'Variety of species' },
+    { term:'Extinction',         definition:'When all members of a species die out permanently.',             hint:'Species no longer exists' },
+    { term:'Pollution',          definition:'The introduction of harmful substances into the environment.',  hint:'Harmful substances in environment' },
+  ],
+};
+
+VOCAB['chemistry']['ks3'] = {
+
+  'Particles and States of Matter': [
+    { term:'Particle',           definition:'A tiny piece of matter such as an atom, ion or molecule.',                         hint:'Tiny piece of matter' },
+    { term:'Atom',               definition:'The smallest particle of an element that can exist.',                              hint:'Smallest part of an element' },
+    { term:'Molecule',           definition:'Two or more atoms joined together by chemical bonds.',                            hint:'Two or more atoms bonded' },
+    { term:'Solid',              definition:'A state of matter with a fixed shape and volume — particles close together.',     hint:'Fixed shape — particles close together' },
+    { term:'Liquid',             definition:'A state of matter with a fixed volume but no fixed shape — particles can move.',  hint:'Fixed volume — no fixed shape' },
+    { term:'Gas',                definition:'A state of matter with no fixed shape or volume — particles move freely.',       hint:'No fixed shape or volume' },
+    { term:'Melting',            definition:'Changing from solid to liquid by heating.',                                      hint:'Solid → liquid — heating' },
+    { term:'Boiling',            definition:'Changing from liquid to gas throughout the liquid by heating.',                 hint:'Liquid → gas throughout — boiling point' },
+    { term:'Condensing',         definition:'Changing from gas to liquid by cooling.',                                      hint:'Gas → liquid — cooling' },
+    { term:'Freezing',           definition:'Changing from liquid to solid by cooling.',                                   hint:'Liquid → solid — cooling' },
+    { term:'Evaporation',        definition:'Changing from liquid to gas at the surface, below the boiling point.',       hint:'Surface liquid → gas — below boiling point' },
+    { term:'Diffusion',          definition:'The spreading of particles from high concentration to low concentration.',    hint:'Spreading from high to low concentration' },
+    { term:'Density',            definition:'Mass per unit volume of a substance.',                                       hint:'Mass ÷ volume' },
+    { term:'Mixture',            definition:'Two or more substances not chemically combined.',                          hint:'Not chemically combined' },
+    { term:'Pure substance',     definition:'A substance consisting of only one type of element or compound.',         hint:'Only one type of element or compound' },
+    { term:'Solution',           definition:'A mixture formed when a solute dissolves in a solvent.',                hint:'Solute dissolved in solvent' },
+    { term:'Solute',             definition:'The substance that dissolves in a solvent to form a solution.',         hint:'Dissolves in the solvent' },
+    { term:'Solvent',            definition:'The liquid that dissolves the solute to form a solution.',            hint:'Liquid that does the dissolving' },
+    { term:'Filtration',         definition:'A separation technique that separates insoluble solids from liquids.',hint:'Separates solid from liquid' },
+    { term:'Distillation',       definition:'A separation technique that separates liquids with different boiling points.',hint:'Separates liquids by boiling point' },
+  ],
+
+  'Elements, Compounds and Reactions': [
+    { term:'Element',            definition:'A substance made of only one type of atom — cannot be split into simpler substances.',  hint:'Only one type of atom' },
+    { term:'Compound',           definition:'A substance made from two or more elements chemically joined in fixed proportions.',    hint:'Elements chemically joined' },
+    { term:'Periodic table',     definition:'A table of all known elements arranged in order of atomic number.',                   hint:'All elements — ordered by atomic number' },
+    { term:'Chemical reaction',  definition:'A process in which substances are changed into different substances.',               hint:'Substances changed into new substances' },
+    { term:'Reactant',           definition:'A substance that takes part in and is changed by a chemical reaction.',             hint:'Substance that reacts' },
+    { term:'Product',            definition:'A new substance formed in a chemical reaction.',                                   hint:'New substance made in reaction' },
+    { term:'Combustion',         definition:'The reaction of a substance with oxygen, releasing heat and light.',              hint:'Burning — reacts with oxygen' },
+    { term:'Oxidation',          definition:'A reaction in which a substance gains oxygen.',                                  hint:'Gains oxygen' },
+    { term:'Acid',               definition:'A substance with a pH below 7 that produces H⁺ ions in solution.',             hint:'pH below 7 — H⁺ ions' },
+    { term:'Alkali',             definition:'A soluble base with a pH above 7 that produces OH⁻ ions.',                    hint:'pH above 7 — OH⁻ ions' },
+    { term:'Neutralisation',     definition:'The reaction between an acid and an alkali to produce a salt and water.',     hint:'Acid + alkali → salt + water' },
+    { term:'pH scale',           definition:'A scale from 0 to 14 measuring how acidic or alkaline a solution is.',      hint:'0–14 — acidity/alkalinity scale' },
+    { term:'Indicator',          definition:'A dye that changes colour depending on whether a substance is acidic or alkaline.',  hint:'Changes colour — shows pH' },
+    { term:'Conservation of mass', definition:'The total mass of reactants equals the total mass of products in a reaction.',  hint:'Mass stays the same in reaction' },
+    { term:'Exothermic',         definition:'A reaction that releases energy to the surroundings — feels hot.',          hint:'Releases heat — temperature rises' },
+    { term:'Endothermic',        definition:'A reaction that takes in energy from the surroundings — feels cold.',      hint:'Absorbs heat — temperature drops' },
+  ],
+
+  'Atoms and the Periodic Table': [
+    { term:'Proton',             definition:'A positively charged particle in the nucleus of an atom.',                  hint:'Positive — in nucleus' },
+    { term:'Neutron',            definition:'A neutral particle in the nucleus of an atom.',                            hint:'Neutral — in nucleus' },
+    { term:'Electron',           definition:'A negatively charged particle that orbits the nucleus.',                  hint:'Negative — orbits nucleus' },
+    { term:'Atomic number',      definition:'The number of protons in the nucleus of an atom.',                       hint:'Number of protons' },
+    { term:'Mass number',        definition:'The total number of protons and neutrons in the nucleus.',              hint:'Protons + neutrons' },
+    { term:'Ion',                definition:'An atom or group of atoms with an electric charge due to gaining or losing electrons.', hint:'Charged atom — gained/lost electrons' },
+    { term:'Group',              definition:'A vertical column in the periodic table — elements with similar properties.',  hint:'Vertical column — similar properties' },
+    { term:'Period',             definition:'A horizontal row in the periodic table.',                               hint:'Horizontal row' },
+    { term:'Metal',              definition:'An element that is typically shiny, conducts electricity and is malleable.',  hint:'Shiny, conducts electricity, malleable' },
+    { term:'Non-metal',          definition:'An element that is typically dull and does not conduct electricity.',  hint:'Dull — poor conductor' },
+    { term:'Isotope',            definition:'Atoms of the same element with different numbers of neutrons.',       hint:'Same element — different neutrons' },
+  ],
+};
+
+VOCAB['physics']['ks3'] = {
+
+  'Forces and Motion': [
+    { term:'Force',              definition:'A push or pull that can change the shape, speed or direction of an object.',     hint:'Push or pull on an object' },
+    { term:'Gravity',            definition:'The attractive force between objects with mass — pulls objects towards Earth.',  hint:'Attractive force — pulls to Earth' },
+    { term:'Weight',             definition:'The force of gravity acting on an object — measured in newtons.',              hint:'Gravitational force — newtons' },
+    { term:'Mass',               definition:'The amount of matter in an object — measured in kilograms.',                  hint:'Amount of matter — kilograms' },
+    { term:'Friction',           definition:'A force that opposes the motion of two surfaces in contact.',                hint:'Opposes motion — between surfaces' },
+    { term:'Air resistance',     definition:'A frictional force that opposes the motion of objects moving through air.',  hint:'Friction in air — opposes motion' },
+    { term:'Upthrust',           definition:'The upward force exerted by a fluid on an object placed in it.',           hint:'Upward force from fluid' },
+    { term:'Speed',              definition:'The distance travelled per unit of time — measured in m/s.',              hint:'Distance ÷ time — m/s' },
+    { term:'Acceleration',       definition:'The rate at which speed or velocity changes.',                           hint:'Change in speed ÷ time' },
+    { term:'Balanced forces',    definition:'When forces acting on an object are equal and opposite, so there is no change in motion.', hint:'Equal and opposite — no movement change' },
+    { term:'Unbalanced forces',  definition:'When forces acting on an object are not equal, causing a change in motion.',  hint:'Not equal — causes change in motion' },
+    { term:'Newton',             definition:'The unit of force.',                                                    hint:'Unit of force — N' },
+    { term:'Pressure',           definition:'The force applied per unit area — measured in pascals.',              hint:'Force ÷ area — pascals' },
+    { term:'Moment',             definition:'The turning effect of a force about a pivot — force × distance.',    hint:'Turning effect — force × distance' },
+  ],
+
+  'Energy': [
+    { term:'Energy',             definition:'The ability to do work or cause change — measured in joules.',            hint:'Ability to do work — joules' },
+    { term:'Kinetic energy',     definition:'The energy an object has because it is moving.',                         hint:'Energy of movement' },
+    { term:'Potential energy',   definition:'Stored energy — gravitational potential or elastic potential.',         hint:'Stored energy' },
+    { term:'Thermal energy',     definition:'The energy stored in the movement of particles — heat energy.',        hint:'Heat energy — particle movement' },
+    { term:'Conservation of energy', definition:'Energy cannot be created or destroyed, only transferred.',        hint:'Energy cannot be created or destroyed' },
+    { term:'Work done',          definition:'Energy transferred when a force moves an object — force × distance.',  hint:'Force × distance' },
+    { term:'Power',              definition:'The rate of energy transfer — measured in watts.',                   hint:'Energy per second — watts' },
+    { term:'Conduction',         definition:'The transfer of heat through a material by particle vibration.',    hint:'Heat transfer through material' },
+    { term:'Convection',         definition:'The transfer of heat through a fluid by the movement of particles.', hint:'Heat transfer through fluid movement' },
+    { term:'Radiation',          definition:'The transfer of heat energy by infrared waves — does not need a medium.',  hint:'Heat transfer by waves — no medium needed' },
+    { term:'Insulator',          definition:'A material that does not conduct heat or electricity well.',       hint:'Poor conductor of heat/electricity' },
+    { term:'Conductor',          definition:'A material that conducts heat or electricity well.',             hint:'Good conductor of heat/electricity' },
+    { term:'Renewable energy',   definition:'Energy from sources that are naturally replenished.',           hint:'Naturally replenished — solar, wind' },
+    { term:'Non-renewable energy', definition:'Energy from sources that will run out and cannot be replaced.',  hint:'Will run out — fossil fuels' },
+  ],
+
+  'Waves and Light': [
+    { term:'Wave',               definition:'A disturbance that transfers energy from one place to another.',         hint:'Transfers energy — not matter' },
+    { term:'Amplitude',          definition:'The maximum displacement of a wave from its rest position.',           hint:'Maximum displacement from rest' },
+    { term:'Wavelength',         definition:'The distance between two successive identical points on a wave.',     hint:'Peak to peak distance' },
+    { term:'Frequency',          definition:'The number of waves passing a point per second — measured in hertz.',  hint:'Waves per second — hertz' },
+    { term:'Reflection',         definition:'When a wave bounces back from a surface.',                          hint:'Wave bounces off surface' },
+    { term:'Refraction',         definition:'When a wave changes speed and direction as it passes from one medium to another.',  hint:'Wave bends at boundary' },
+    { term:'Transverse wave',    definition:'A wave where vibrations are perpendicular to the direction of travel.',  hint:'Vibrations perpendicular to travel' },
+    { term:'Longitudinal wave',  definition:'A wave where vibrations are parallel to the direction of travel.',   hint:'Vibrations parallel to travel' },
+    { term:'Electromagnetic spectrum', definition:'The family of transverse waves including visible light, radio waves and X-rays.',  hint:'Family of light waves — radio to gamma' },
+    { term:'Visible light',      definition:'The part of the electromagnetic spectrum that can be detected by the human eye.',  hint:'EM waves we can see' },
+    { term:'Absorption',         definition:'When a wave transfers its energy to a surface rather than being reflected.',  hint:'Energy transferred to surface' },
+    { term:'Opaque',             definition:'A material that does not allow light to pass through.',              hint:'Does not transmit light' },
+    { term:'Transparent',        definition:'A material that allows light to pass through it.',                  hint:'Allows light to pass through' },
+  ],
+
+  'Electricity and Magnetism': [
+    { term:'Electric current',   definition:'The flow of electric charge — measured in amperes.',                hint:'Flow of charge — amperes' },
+    { term:'Voltage',            definition:'The energy transferred per unit of charge — measured in volts.',   hint:'Energy per charge — volts' },
+    { term:'Resistance',         definition:'The opposition to the flow of electric current — measured in ohms.',  hint:'Opposition to current — ohms' },
+    { term:'Circuit',            definition:'A closed path through which electric current flows.',              hint:'Closed path for current' },
+    { term:'Series circuit',     definition:'A circuit where components are connected in a single loop.',     hint:'Single loop — same current everywhere' },
+    { term:'Parallel circuit',   definition:'A circuit where components are in separate branches.',          hint:'Separate branches' },
+    { term:'Conductor',          definition:'A material that allows electric current to flow through it easily.',  hint:'Allows current to flow easily' },
+    { term:'Insulator',          definition:'A material that does not allow electric current to flow through it.',  hint:'Does not allow current to flow' },
+    { term:'Magnet',             definition:'An object that produces a magnetic field and can attract magnetic materials.',  hint:'Produces magnetic field' },
+    { term:'Magnetic field',     definition:'The region around a magnet where magnetic forces act.',         hint:'Region of magnetic force' },
+    { term:'Electromagnet',      definition:'A magnet created by passing an electric current through a coil of wire.',  hint:'Current in coil = temporary magnet' },
+    { term:'Static electricity', definition:'The build-up of electric charge on the surface of an insulating material.',  hint:'Charge build-up on insulator' },
+  ],
+};
+
+// ────────────────────────────────────────────────────────────
+// KS3 MATHS — generic, no board
+// ────────────────────────────────────────────────────────────
+VOCAB['maths']['ks3'] = {
+
+  'Number': [
+    { term:'Integer',            definition:'A whole number — positive, negative or zero.',                            hint:'Whole number — no decimal' },
+    { term:'Positive number',    definition:'A number greater than zero.',                                            hint:'Greater than zero' },
+    { term:'Negative number',    definition:'A number less than zero.',                                              hint:'Less than zero' },
+    { term:'Factor',             definition:'A number that divides exactly into another number.',                    hint:'Divides exactly — no remainder' },
+    { term:'Multiple',           definition:'A number in the times table of a given number.',                      hint:'In the times table' },
+    { term:'Prime number',       definition:'A number with exactly two factors: 1 and itself.',                   hint:'Only divisible by 1 and itself' },
+    { term:'Square number',      definition:'The result of multiplying a number by itself — e.g. 4 × 4 = 16.',  hint:'Number multiplied by itself' },
+    { term:'Cube number',        definition:'The result of multiplying a number by itself three times — e.g. 2³ = 8.',  hint:'Number × itself × itself' },
+    { term:'Square root',        definition:'A number that when multiplied by itself gives the original number.',  hint:'Reverse of squaring' },
+    { term:'HCF',                definition:'Highest Common Factor — the largest factor shared by two or more numbers.',  hint:'Largest shared factor' },
+    { term:'LCM',                definition:'Lowest Common Multiple — the smallest multiple shared by two or more numbers.',  hint:'Smallest shared multiple' },
+    { term:'Fraction',           definition:'A number expressed as one integer divided by another — e.g. ¾.',   hint:'One number divided by another' },
+    { term:'Decimal',            definition:'A number expressed using a decimal point — e.g. 0.75.',          hint:'Uses a decimal point' },
+    { term:'Percentage',         definition:'A number expressed as parts per hundred.',                       hint:'Out of 100' },
+    { term:'Ratio',              definition:'A comparison of two or more quantities — written as a:b.',      hint:'Comparison written as a:b' },
+    { term:'Proportion',         definition:'A part compared to the whole, or a statement that two ratios are equal.',  hint:'Part to whole — or equal ratios' },
+  ],
+
+  'Algebra': [
+    { term:'Variable',           definition:'A letter used to represent an unknown or changing value.',              hint:'Letter representing unknown value' },
+    { term:'Expression',         definition:'A combination of numbers, variables and operations without an equals sign.',  hint:'Numbers and letters — no equals' },
+    { term:'Equation',           definition:'A mathematical statement showing two expressions are equal.',          hint:'Two expressions equal — has = sign' },
+    { term:'Formula',            definition:'A rule written using letters and numbers to show a relationship.',    hint:'Rule using letters — e.g. A = lw' },
+    { term:'Expand',             definition:'To multiply out brackets.',                                          hint:'Multiply out the brackets' },
+    { term:'Simplify',           definition:'To collect like terms and write an expression in its simplest form.',  hint:'Collect like terms — simplest form' },
+    { term:'Substitute',         definition:'To replace a variable with a number to evaluate an expression.',   hint:'Replace letter with number' },
+    { term:'Solve',              definition:'To find the value of the unknown that makes an equation true.',   hint:'Find the value of the unknown' },
+    { term:'Sequence',           definition:'An ordered list of numbers following a pattern or rule.',        hint:'Ordered list following a rule' },
+    { term:'Term',               definition:'A number or variable, or a product of numbers and variables, in an expression.',  hint:'Each separate part of an expression' },
+    { term:'Coefficient',        definition:'The number multiplied by a variable in a term — e.g. 3 in 3x.',  hint:'Number in front of a variable' },
+    { term:'Inequality',         definition:'A mathematical statement showing that one value is greater or less than another.',  hint:'< or > — not equal' },
+    { term:'Coordinates',        definition:'A pair of numbers (x, y) describing the position of a point on a grid.',  hint:'(x, y) position on a grid' },
+    { term:'Gradient',           definition:'The steepness of a line on a graph.',                           hint:'Steepness of a line' },
+  ],
+
+  'Geometry and Measures': [
+    { term:'Angle',              definition:'The amount of turn between two lines meeting at a point — measured in degrees.',  hint:'Amount of turn — degrees' },
+    { term:'Acute angle',        definition:'An angle between 0° and 90°.',                                    hint:'Less than 90°' },
+    { term:'Obtuse angle',       definition:'An angle between 90° and 180°.',                                hint:'Between 90° and 180°' },
+    { term:'Reflex angle',       definition:'An angle greater than 180°.',                                  hint:'Greater than 180°' },
+    { term:'Parallel lines',     definition:'Lines that never meet — always the same distance apart.',     hint:'Never meet — equal distance apart' },
+    { term:'Perpendicular',      definition:'Lines that meet at a right angle (90°).',                    hint:'Meet at 90°' },
+    { term:'Perimeter',          definition:'The total distance around the outside of a shape.',         hint:'Distance around the outside' },
+    { term:'Area',               definition:'The amount of space inside a 2D shape.',                  hint:'Space inside a 2D shape' },
+    { term:'Volume',             definition:'The amount of space inside a 3D shape.',                 hint:'Space inside a 3D shape' },
+    { term:'Symmetry',           definition:'A shape has symmetry if it looks the same after a reflection or rotation.',  hint:'Looks the same after flip/turn' },
+    { term:'Polygon',            definition:'A closed 2D shape with straight sides.',                hint:'Closed 2D shape — straight sides' },
+    { term:'Congruent',          definition:'Shapes that are identical in shape and size.',         hint:'Identical shape and size' },
+    { term:'Similar',            definition:'Shapes with the same angles but different sizes.',   hint:'Same shape — different size' },
+    { term:'Pythagoras',         definition:'In a right-angled triangle: a² + b² = c².',         hint:'a² + b² = c² — right-angled triangle' },
+    { term:'Circumference',      definition:'The perimeter of a circle — πd.',                  hint:'Perimeter of a circle' },
+    { term:'Diameter',           definition:'The distance across a circle through its centre.',  hint:'Across circle through centre' },
+    { term:'Radius',             definition:'The distance from the centre to the edge of a circle.',  hint:'Centre to edge of circle' },
+  ],
+
+  'Statistics and Probability': [
+    { term:'Data',               definition:'Information collected for analysis.',                            hint:'Collected information' },
+    { term:'Mean',               definition:'The average found by adding all values and dividing by how many there are.',  hint:'Sum ÷ number of values' },
+    { term:'Median',             definition:'The middle value when data is arranged in order.',             hint:'Middle value when ordered' },
+    { term:'Mode',               definition:'The most common value in a data set.',                       hint:'Most common value' },
+    { term:'Range',              definition:'The difference between the largest and smallest values.',   hint:'Largest − smallest' },
+    { term:'Frequency',          definition:'How many times a value occurs in a data set.',            hint:'How many times it occurs' },
+    { term:'Bar chart',          definition:'A graph using rectangular bars to show frequencies of categories.',  hint:'Rectangular bars showing frequency' },
+    { term:'Pie chart',          definition:'A circular chart divided into sectors to show proportions.',  hint:'Circle divided into sectors' },
+    { term:'Scatter graph',      definition:'A graph plotting two variables to see if there is a relationship.',  hint:'Two variables plotted — shows relationship' },
+    { term:'Correlation',        definition:'A relationship or pattern between two variables.',         hint:'Pattern between two variables' },
+    { term:'Probability',        definition:'A measure of how likely an event is — from 0 (impossible) to 1 (certain).',  hint:'Likelihood — 0 to 1' },
+    { term:'Outcome',            definition:'A possible result of a trial or experiment.',            hint:'Possible result' },
+    { term:'Sample space',       definition:'The set of all possible outcomes of an experiment.',   hint:'All possible outcomes listed' },
+  ],
+};
+
+// ────────────────────────────────────────────────────────────
+// KS3 ENGLISH — generic
+// ────────────────────────────────────────────────────────────
+VOCAB['english']['ks3'] = {
+
+  'Language Techniques': [
+    { term:'Simile',             definition:'A comparison using "like" or "as".',                                      hint:'Comparison using like or as' },
+    { term:'Metaphor',           definition:'A direct comparison — saying one thing is another.',                     hint:'Direct comparison — one thing is another' },
+    { term:'Personification',    definition:'Giving human feelings or actions to non-human things.',                 hint:'Human qualities to non-human things' },
+    { term:'Alliteration',       definition:'Repetition of the same consonant sound at the start of nearby words.',  hint:'Same starting sound repeated' },
+    { term:'Onomatopoeia',       definition:'A word that sounds like the noise it describes.',                      hint:'Word sounds like the noise' },
+    { term:'Rhyme',              definition:'Words that end with the same sound.',                                  hint:'Same ending sound' },
+    { term:'Rhythm',             definition:'A regular pattern of beats or stresses in speech or writing.',        hint:'Regular pattern of beats' },
+    { term:'Repetition',         definition:'Using the same word or phrase more than once for effect.',           hint:'Same word repeated' },
+    { term:'Hyperbole',          definition:'Deliberate exaggeration for emphasis.',                             hint:'Deliberate exaggeration' },
+    { term:'Imagery',            definition:'Language that creates a vivid mental picture using the senses.',   hint:'Vivid description — uses senses' },
+    { term:'Tone',               definition:'The mood or attitude of a piece of writing.',                     hint:'Mood or attitude in writing' },
+    { term:'Adjective',          definition:'A word that describes a noun.',                                  hint:'Describes a noun' },
+    { term:'Adverb',             definition:'A word that describes a verb, adjective or another adverb.',    hint:'Describes a verb or adjective' },
+    { term:'Noun',               definition:'A word that names a person, place, thing or idea.',           hint:'Names a person, place or thing' },
+    { term:'Verb',               definition:'A doing or being word.',                                    hint:'Action or state — doing word' },
+  ],
+
+  'Reading and Writing': [
+    { term:'Narrative',          definition:'A story or account of events.',                                      hint:'A told story' },
+    { term:'Character',          definition:'A person (or animal) in a story.',                                  hint:'Person in a story' },
+    { term:'Setting',            definition:'The time and place where a story takes place.',                    hint:'Time and place of story' },
+    { term:'Plot',               definition:'The sequence of events in a story.',                             hint:'Sequence of events' },
+    { term:'Theme',              definition:'The main idea or message in a piece of writing.',               hint:'Main idea or message' },
+    { term:'Viewpoint',          definition:'The perspective from which a story is told.',                  hint:'Perspective of the narrator' },
+    { term:'First person',       definition:'Narrating using "I" — the narrator is a character.',         hint:'Narrating using I' },
+    { term:'Third person',       definition:'Narrating using "he", "she" or "they" — narrator is outside the story.',  hint:'Narrating using he/she/they' },
+    { term:'Audience',           definition:'The person or people a text is written for.',               hint:'Who the text is for' },
+    { term:'Purpose',            definition:'The reason a text was written.',                          hint:'Why the text was written' },
+    { term:'Formal language',    definition:'Language that is serious and follows grammatical rules — used in official contexts.',  hint:'Serious language — official contexts' },
+    { term:'Informal language',  definition:'Casual, everyday language — used with friends and family.',  hint:'Casual everyday language' },
+    { term:'Structure',          definition:'How a piece of writing is organised.',                   hint:'How writing is organised' },
+    { term:'Paragraph',          definition:'A group of sentences about the same topic.',           hint:'Group of sentences — same topic' },
+    { term:'Dialogue',           definition:'Conversation between characters, shown with speech marks.',  hint:'Characters speaking — speech marks' },
+  ],
+
+  'Grammar': [
+    { term:'Sentence',           definition:'A group of words that makes complete sense — contains a subject and a verb.',  hint:'Complete sense — subject and verb' },
+    { term:'Subject',            definition:'The person or thing that the sentence is about.',                           hint:'Who or what the sentence is about' },
+    { term:'Object',             definition:'The person or thing that the action of the verb is done to.',             hint:'Receives the action of the verb' },
+    { term:'Clause',             definition:'A group of words containing a subject and a verb.',                      hint:'Contains subject and verb' },
+    { term:'Phrase',             definition:'A group of words that does not contain a verb.',                        hint:'Group of words — no verb' },
+    { term:'Punctuation',        definition:'Marks used in writing to organise and clarify meaning.',               hint:'Marks organising meaning in writing' },
+    { term:'Apostrophe',         definition:'A punctuation mark used to show possession or contraction.',         hint:'Shows possession or contraction' },
+    { term:'Conjunction',        definition:'A word that joins clauses or sentences — e.g. and, but, because.',  hint:'Joining word — and, but, because' },
+    { term:'Preposition',        definition:'A word showing the relationship between a noun and another word — e.g. in, on, under.',  hint:'Shows relationship — in, on, under' },
+    { term:'Synonym',            definition:'A word with the same or similar meaning to another word.',         hint:'Same meaning — different word' },
+    { term:'Antonym',            definition:'A word with the opposite meaning to another word.',             hint:'Opposite meaning' },
+    { term:'Tense',              definition:'The form of a verb that shows when something happened.',       hint:'Shows when — past, present, future' },
+  ],
+};
+
+// ────────────────────────────────────────────────────────────
+// KS3 HISTORY — generic
+// ────────────────────────────────────────────────────────────
+VOCAB['history']['ks3'] = {
+
+  'Historical Skills and Concepts': [
+    { term:'Primary source',     definition:'Evidence created at the time of the events — e.g. letters, photographs, artefacts.',  hint:'Created at the time — original evidence' },
+    { term:'Secondary source',   definition:'Evidence created after the event, analysing or interpreting what happened.',        hint:'Created after — analysis of the past' },
+    { term:'Cause',              definition:'A reason why an event happened.',                                                  hint:'Reason why something happened' },
+    { term:'Consequence',        definition:'A result or effect of an event.',                                                 hint:'Result of an event' },
+    { term:'Change',             definition:'Something that is different from before.',                                       hint:'Something that became different' },
+    { term:'Continuity',         definition:'Something that stayed the same over time.',                                     hint:'Something that stayed the same' },
+    { term:'Chronology',         definition:'Events arranged in the order they happened.',                                  hint:'Events in time order' },
+    { term:'Bias',               definition:'A one-sided view that favours one group or idea.',                           hint:'One-sided — favours one view' },
+    { term:'Reliability',        definition:'How trustworthy a source of information is.',                               hint:'How trustworthy a source is' },
+    { term:'Significance',       definition:'The importance or impact of a person or event in history.',                hint:'Historical importance' },
+    { term:'Interpretation',     definition:'A view or explanation of what happened in history — different historians may disagree.',  hint:'A view of what happened in history' },
+    { term:'Evidence',           definition:'Information used to support a claim or argument about the past.',         hint:'Information supporting a claim' },
+  ],
+
+  'Medieval England': [
+    { term:'Feudal system',      definition:'The social hierarchy of medieval England with the king at the top and peasants at the bottom.',  hint:'Social hierarchy — king at top' },
+    { term:'Monarch',            definition:'A king or queen who rules a country.',                                hint:'King or queen — rules a country' },
+    { term:'Noble',              definition:'A member of the upper class — e.g. lord or baron — who held land from the king.',  hint:'Upper class landowner' },
+    { term:'Serf / peasant',     definition:'A poor farmer who worked land owned by a lord and had few rights.',    hint:'Poor farmer — worked lord\'s land' },
+    { term:'Domesday Book',      definition:'A detailed survey of England ordered by William I in 1086 to record land and resources.',  hint:'William I\'s survey of England — 1086' },
+    { term:'Crusade',            definition:'A series of religious wars fought by Christian Europeans to capture the Holy Land.',  hint:'Religious wars — Holy Land' },
+    { term:'Plague',             definition:'A deadly disease — the Black Death of 1348–49 killed about one third of Europe\'s population.',  hint:'Deadly disease — Black Death 1348' },
+    { term:'Magna Carta',        definition:'A charter signed by King John in 1215 limiting royal power and establishing rights.',  hint:'Charter limiting royal power — 1215' },
+    { term:'Parliament',         definition:'The group of people who make laws — developed during the medieval period.',  hint:'Law-making group' },
+    { term:'Pope',               definition:'The head of the Roman Catholic Church.',                             hint:'Head of the Catholic Church' },
+  ],
+
+  'Early Modern Period': [
+    { term:'Reformation',        definition:'A 16th-century religious movement that led to the creation of Protestantism.',  hint:'Religious split — created Protestantism' },
+    { term:'Renaissance',        definition:'A period of renewed interest in classical art, science and learning from the 14th to 17th centuries.',  hint:'Revival of art and learning — 14th–17th c.' },
+    { term:'Protestant',         definition:'A Christian who broke away from the Catholic Church following the Reformation.',  hint:'Non-Catholic Christian — after Reformation' },
+    { term:'Catholic',           definition:'A member of the Roman Catholic Church, led by the Pope.',                hint:'Roman Catholic — led by Pope' },
+    { term:'Empire',             definition:'A group of countries or territories controlled by one ruler or country.',  hint:'Group of territories under one ruler' },
+    { term:'Colonisation',       definition:'The process by which a country takes control of another territory and settles there.',  hint:'Taking control of other territories' },
+    { term:'Slavery',            definition:'The practice of owning people as property and forcing them to work without pay.',  hint:'Owning people — forced unpaid labour' },
+    { term:'Industrial Revolution', definition:'The period of rapid industrialisation beginning in Britain in the late 18th century.',  hint:'Rapid industrialisation — 18th–19th c.' },
+    { term:'Democracy',          definition:'A system of government where citizens vote for their representatives.',  hint:'Citizens vote for government' },
+    { term:'Revolution',         definition:'A sudden and fundamental change in government, society or ideas.',  hint:'Sudden fundamental change' },
+  ],
+
+  'The World Wars': [
+    { term:'World War One',      definition:'The global war of 1914–1918, fought mainly in Europe.',                   hint:'Global war 1914–1918' },
+    { term:'World War Two',      definition:'The global war of 1939–1945 involving most of the world\'s nations.',    hint:'Global war 1939–1945' },
+    { term:'Trench warfare',     definition:'A type of combat where soldiers fight from long ditches dug into the ground.',  hint:'Fighting from ditches in the ground' },
+    { term:'Treaty of Versailles', definition:'The peace treaty of 1919 that ended World War One and imposed harsh terms on Germany.',  hint:'Peace treaty ending WW1 — 1919' },
+    { term:'Propaganda',         definition:'Biased information used by governments to influence public opinion.',  hint:'Biased government information' },
+    { term:'Rationing',          definition:'Limiting the amount of food or goods available to ensure fair distribution during wartime.',  hint:'Limiting food/goods during war' },
+    { term:'Evacuation',         definition:'The process of moving people from dangerous areas to safer ones — especially children in WW2.',  hint:'Moving people to safety during war' },
+    { term:'D-Day',              definition:'The Allied invasion of Normandy on 6 June 1944 — a turning point in WW2.',  hint:'Allied Normandy invasion — June 1944' },
+    { term:'Holocaust',          definition:'The systematic murder of six million Jews and millions of others by the Nazi regime.',  hint:'Nazi systematic genocide' },
+    { term:'Armistice',          definition:'An agreement to stop fighting — WW1 ended with an armistice on 11 November 1918.',  hint:'Agreement to stop fighting' },
+  ],
+};
+
+// ────────────────────────────────────────────────────────────
+// KS3 GEOGRAPHY — generic
+// ────────────────────────────────────────────────────────────
+VOCAB['geography']['ks3'] = {
+
+  'Physical Geography': [
+    { term:'Tectonic plate',     definition:'A large piece of the Earth\'s crust that moves slowly.',                 hint:'Moving piece of Earth\'s crust' },
+    { term:'Earthquake',         definition:'A sudden violent shaking of the ground caused by movement of tectonic plates.',  hint:'Ground shaking — plate movement' },
+    { term:'Volcano',            definition:'An opening in the Earth\'s surface through which lava and gases erupt.',  hint:'Opening — lava erupts' },
+    { term:'Erosion',            definition:'The wearing away of rocks and soil by water, wind or ice.',            hint:'Wearing away by water/wind/ice' },
+    { term:'Weathering',         definition:'The breaking down of rocks in place by physical or chemical processes.',  hint:'Breaking down rocks in place' },
+    { term:'River',              definition:'A large natural flow of water towards the sea.',                      hint:'Natural water flow to the sea' },
+    { term:'Flood',              definition:'When water overflows its banks and covers normally dry land.',       hint:'Water overflows onto dry land' },
+    { term:'Climate',            definition:'The average weather conditions of a place over a long period.',    hint:'Average weather over a long time' },
+    { term:'Weather',            definition:'The atmospheric conditions in a place at a specific time.',       hint:'Conditions right now' },
+    { term:'Water cycle',        definition:'The continuous movement of water between the atmosphere, land and sea.',  hint:'Water moving through atmosphere and land' },
+    { term:'Evaporation',        definition:'The process of liquid water turning into water vapour.',         hint:'Liquid → water vapour' },
+    { term:'Condensation',       definition:'The process of water vapour turning back into liquid water.',   hint:'Water vapour → liquid' },
+    { term:'Precipitation',      definition:'Water falling from the atmosphere — rain, snow, sleet or hail.',  hint:'Water falling from atmosphere' },
+    { term:'Glacier',            definition:'A large, slow-moving body of ice.',                            hint:'Large slow-moving ice' },
+    { term:'Biome',              definition:'A large-scale ecosystem with distinctive climate, plants and animals.',  hint:'Large ecosystem — distinctive climate' },
+  ],
+
+  'Human Geography': [
+    { term:'Population',         definition:'The number of people living in an area.',                           hint:'Number of people in an area' },
+    { term:'Migration',          definition:'The movement of people from one place to another.',               hint:'People moving from place to place' },
+    { term:'Urbanisation',       definition:'The growth of towns and cities as more people move to urban areas.',  hint:'Growth of cities — rural to urban' },
+    { term:'Rural',              definition:'Relating to the countryside.',                                  hint:'Countryside area' },
+    { term:'Urban',              definition:'Relating to towns and cities.',                                hint:'Town or city area' },
+    { term:'Settlement',         definition:'A place where people live — from a small hamlet to a large city.',  hint:'Where people live — any size' },
+    { term:'Economy',            definition:'The system of production, trade and consumption in a country.',  hint:'System of production and trade' },
+    { term:'Trade',              definition:'The exchange of goods and services between countries.',        hint:'Exchange of goods between countries' },
+    { term:'Development',        definition:'The level of economic and social progress in a country.',    hint:'Economic and social progress' },
+    { term:'Poverty',            definition:'The state of lacking basic needs such as food, shelter and income.',  hint:'Lacking basic needs' },
+    { term:'Sustainability',     definition:'Using resources in a way that doesn\'t prevent future generations from meeting their needs.',  hint:'Using resources without harming future' },
+    { term:'Deforestation',      definition:'The removal of trees from a forested area.',                hint:'Removing forest trees' },
+    { term:'Globalisation',      definition:'The increasing connection between countries through trade, culture and communication.',  hint:'Countries becoming more connected' },
+  ],
+
+  'Map Skills and Fieldwork': [
+    { term:'Map',                definition:'A flat diagram representing an area from above.',                hint:'Flat diagram of an area from above' },
+    { term:'Scale',              definition:'The ratio between a distance on a map and the real distance.',  hint:'Map distance ÷ real distance' },
+    { term:'Contour line',       definition:'A line on a map connecting points of equal height.',           hint:'Line connecting equal heights' },
+    { term:'Grid reference',     definition:'A number system used to pinpoint a location on a map.',      hint:'Numbers locating a point on map' },
+    { term:'Compass',            definition:'A tool showing direction — North, South, East, West.',      hint:'Shows direction — N, S, E, W' },
+    { term:'Latitude',           definition:'The distance north or south of the Equator — measured in degrees.',  hint:'Distance north/south of Equator' },
+    { term:'Longitude',          definition:'The distance east or west of the Prime Meridian — measured in degrees.',  hint:'Distance east/west of Prime Meridian' },
+    { term:'Key / legend',       definition:'An explanation of the symbols and colours used on a map.',  hint:'Explains map symbols and colours' },
+    { term:'Fieldwork',          definition:'The collection of data in the real world outside the classroom.',  hint:'Collecting data in the real world' },
+    { term:'Hypothesis',         definition:'A prediction that can be tested through investigation.',   hint:'Prediction to be tested' },
+    { term:'Data',               definition:'Facts and statistics collected for analysis.',           hint:'Facts and statistics for analysis' },
+  ],
+};
