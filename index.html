@@ -21,6 +21,7 @@
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="simulations.html">Simulations</a></li>
         <li><a href="books.html">Books</a></li>
+        <li><a href="jokes.html">Jokes</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -197,7 +198,7 @@
   <!-- ── Footer ─────────────────────────── -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 MartinEdu &nbsp;·&nbsp; martinedu.co.uk</p>
+      <p>&copy; 2025 MartinEducopy; <span id="year"></span> MartinEdu &nbsp;·&nbsp; martinedu.co.uk</p>
     </div>
   </footer>
 
@@ -229,5 +230,6 @@
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   </script>
 
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </body>
 </html>
