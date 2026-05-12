@@ -345,6 +345,7 @@ function clearSlot(id) {
     txt.style.fontSize = '';
   }
 }
+function buildBank() {
   const b = document.getElementById('label-bank');
   b.innerHTML = '';
   [...ORGANS].sort(() => Math.random() - 0.5).forEach(o => {
