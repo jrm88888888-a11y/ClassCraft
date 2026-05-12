@@ -5258,3 +5258,125 @@ VOCAB['geography']['edexcel-igcse'] = VOCAB['geography']['aqa-gcse'];
 VOCAB['computing']['edexcel-igcse'] = VOCAB['computing']['aqa-gcse'];
 VOCAB['economics']['edexcel-igcse'] = VOCAB['economics']['aqa-gcse'];
 VOCAB['psychology']['edexcel-igcse'] = VOCAB['psychology']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// GEOGRAPHY — IB Diploma SL and HL
+// IB Geography: Themes A–G plus HL Extension
+// Core themes shared by SL and HL; HL adds extra depth + theme
+// New 2024 syllabus: Power, Places, Futures, Connections
+// ────────────────────────────────────────────────────────────
+VOCAB['geography']['ib-sl'] = {
+  'Changing Populations (Theme 1)': [
+    { term:'Demographic transition model', definition:'A model showing how birth and death rates change as a country develops through four stages.',  hint:'Birth and death rates through development stages' },
+    { term:'Natural increase',     definition:'The difference between birth rate and death rate — the rate of population growth excluding migration.',  hint:'Birth rate minus death rate' },
+    { term:'Total fertility rate', definition:'The average number of children a woman would have over her lifetime.',                                  hint:'Average children per woman over lifetime' },
+    { term:'Dependency ratio',     definition:'The ratio of dependants (children and elderly) to working-age people in a population.',               hint:'Dependants ÷ working-age people' },
+    { term:'Ageing population',    definition:'A population with an increasing proportion of elderly people — caused by falling birth rates and increasing life expectancy.', hint:'Growing proportion of elderly' },
+    { term:'Youthful population',  definition:'A population with a large proportion of young people — typical of less developed countries.',         hint:'Large proportion of young people' },
+    { term:'Population pyramid',   definition:'A bar chart showing the age and sex structure of a population.',                                       hint:'Bar chart — age and sex structure' },
+    { term:'Pro-natalist policy',  definition:'Government policy encouraging higher birth rates — e.g. financial incentives for having children.',    hint:'Government encourages more births' },
+    { term:'Anti-natalist policy', definition:'Government policy to reduce birth rates — e.g. China\'s one-child policy.',                           hint:'Government discourages births' },
+    { term:'Migration',            definition:'The movement of people from one place to another, either temporarily or permanently.',                 hint:'People moving from place to place' },
+    { term:'Push factor',          definition:'A negative factor driving people to leave their home area.',                                           hint:'Negative — drives people to leave' },
+    { term:'Pull factor',          definition:'A positive factor attracting people to a destination.',                                               hint:'Positive — attracts people to destination' },
+    { term:'Refugee',              definition:'A person forced to flee their country due to persecution, war or natural disaster.',                  hint:'Forced to flee — persecution or disaster' },
+    { term:'Internally displaced person', definition:'Someone forced to leave their home but remaining within their own country.',                  hint:'Forced to move — stays in own country' },
+    { term:'Remittances',          definition:'Money sent by migrants back to their families in their home country.',                               hint:'Money migrants send home' },
+  ],
+  'Global Climate and Change (Theme 2)': [
+    { term:'Greenhouse effect',    definition:'The natural process where greenhouse gases trap infrared radiation and warm Earth\'s surface.',         hint:'Gases trap heat — warm Earth' },
+    { term:'Enhanced greenhouse effect', definition:'The intensification of the greenhouse effect due to human emissions of CO₂, methane and other gases.', hint:'Human emissions intensify natural warming' },
+    { term:'Carbon cycle',         definition:'The movement of carbon between the atmosphere, biosphere, hydrosphere and lithosphere.',              hint:'Carbon moving through Earth\'s systems' },
+    { term:'Feedback mechanism',   definition:'A process where climate change causes further changes that either amplify (positive) or dampen (negative) the original change.', hint:'Amplifies or dampens the original change' },
+    { term:'Albedo',               definition:'The reflectivity of a surface — ice has high albedo, dark ocean has low albedo.',                    hint:'Reflectivity — ice reflects more than ocean' },
+    { term:'Sea level rise',       definition:'The increase in mean sea level due to thermal expansion of water and melting ice sheets.',           hint:'Rising sea from warming and melting ice' },
+    { term:'Ocean acidification',  definition:'The decrease in ocean pH as CO₂ dissolves in seawater to form carbonic acid.',                      hint:'CO₂ in ocean → more acidic' },
+    { term:'Mitigation',           definition:'Actions taken to reduce greenhouse gas emissions and limit climate change.',                          hint:'Reducing emissions — limiting change' },
+    { term:'Adaptation',           definition:'Adjusting systems and practices to cope with the effects of climate change.',                        hint:'Coping with climate change effects' },
+    { term:'Paris Agreement',      definition:'A 2015 international climate accord aiming to limit global warming to 1.5–2°C above pre-industrial levels.', hint:'2015 accord — limit warming to 1.5–2°C' },
+    { term:'IPCC',                 definition:'Intergovernmental Panel on Climate Change — the UN body that assesses scientific evidence on climate change.', hint:'UN body assessing climate science' },
+    { term:'Carbon sink',          definition:'A reservoir absorbing more carbon from the atmosphere than it releases — e.g. forests and oceans.', hint:'Absorbs more carbon than releases' },
+    { term:'Tipping point',        definition:'A threshold beyond which climate changes become self-reinforcing and potentially irreversible.',      hint:'Threshold — change becomes self-reinforcing' },
+  ],
+  'Global Resource Consumption and Security (Theme 3)': [
+    { term:'Food security',        definition:'When all people have reliable access to sufficient, safe and nutritious food.',                        hint:'Reliable access to sufficient safe food' },
+    { term:'Water security',       definition:'When all people have reliable access to adequate quantities of clean water.',                         hint:'Reliable access to adequate clean water' },
+    { term:'Energy security',      definition:'When a country has reliable access to affordable energy supplies.',                                   hint:'Reliable affordable energy access' },
+    { term:'Ecological footprint', definition:'The area of productive land and water needed to sustain a population\'s resource consumption and absorb its waste.', hint:'Land needed to sustain consumption' },
+    { term:'Carrying capacity',    definition:'The maximum population size an area can sustainably support given available resources.',              hint:'Maximum sustainable population' },
+    { term:'Virtual water',        definition:'The water embedded in the production of goods — importing food imports the water used to produce it.', hint:'Water embedded in traded goods' },
+    { term:'Food miles',           definition:'The distance food travels from where it is produced to where it is consumed.',                       hint:'Distance food travels to consumer' },
+    { term:'Caloric intake',       definition:'The amount of food energy consumed per person per day — measured in kilocalories.',                  hint:'Food energy per person per day — kcal' },
+    { term:'Green Revolution',     definition:'The 1960s–70s agricultural transformation using high-yield crop varieties, irrigation and fertilisers to increase food production.', hint:'1960s–70s high-yield crop transformation' },
+    { term:'Sustainable agriculture', definition:'Farming that meets present food needs without compromising the ability of future generations to meet theirs.', hint:'Farming that doesn\'t deplete future resources' },
+    { term:'Agroecology',          definition:'An approach to farming using ecological principles to design sustainable food systems.',              hint:'Ecological principles applied to farming' },
+  ],
+  'Power, Places and Networks (Theme 4)': [
+    { term:'Globalisation',        definition:'The increasing integration of economies, cultures and populations through trade, communication and migration.', hint:'Increasing world integration' },
+    { term:'Transnational corporation', definition:'A large company operating production, sales and services across multiple countries.',           hint:'Company operating in multiple countries' },
+    { term:'Global shift',         definition:'The movement of manufacturing industry from developed to developing countries seeking lower costs.', hint:'Manufacturing moves to lower-cost countries' },
+    { term:'Geopolitics',          definition:'The study of how geography influences international relations, politics and power.',                  hint:'Geography + power + international relations' },
+    { term:'Supranational organisation', definition:'An organisation with authority over member states — e.g. the United Nations, World Trade Organization.', hint:'Authority over member states — e.g. UN, WTO' },
+    { term:'Trade bloc',           definition:'A group of countries with reduced trade barriers between members — e.g. the EU.',                   hint:'Reduced trade barriers between members' },
+    { term:'Development gap',      definition:'The difference in wealth, health and opportunity between the richest and poorest countries.',       hint:'Rich–poor divide between countries' },
+    { term:'Core-periphery model', definition:'Wallerstein\'s model — wealthy core countries exploit poorer peripheral countries.',                hint:'Rich core exploits poor periphery — Wallerstein' },
+    { term:'Dependency theory',    definition:'The argument that developing countries remain poor because of their economic relationships with developed nations.', hint:'Poor countries kept poor by rich countries' },
+    { term:'Neoliberalism',        definition:'An economic ideology favouring free markets, privatisation and reduced government intervention.',    hint:'Free markets — minimal government' },
+    { term:'Digital divide',       definition:'The gap between those with access to digital technology and those without.',                        hint:'Gap between tech haves and have-nots' },
+    { term:'Diaspora',             definition:'A dispersed community of people living outside their country of origin but maintaining cultural ties.', hint:'Community living away from homeland' },
+  ],
+  'Human Development and Diversity (Theme 5)': [
+    { term:'Human Development Index', definition:'A composite measure of development combining life expectancy, education and income per capita.',  hint:'Life expectancy + education + income' },
+    { term:'Multidimensional Poverty Index', definition:'A measure of poverty considering health, education and living standards — beyond income alone.', hint:'Poverty beyond income — health, education, living standards' },
+    { term:'Gender inequality',    definition:'Unequal treatment and opportunities for people based on gender.',                                    hint:'Unequal treatment based on gender' },
+    { term:'Gender Inequality Index', definition:'A measure combining reproductive health, empowerment and labour market participation to assess gender inequality.', hint:'Reproductive health + empowerment + labour' },
+    { term:'Cultural diversity',   definition:'The existence of a variety of cultural identities, languages, religions and practices in a society.', hint:'Variety of cultures in a society' },
+    { term:'Ethnocentrism',        definition:'Evaluating other cultures using the standards of one\'s own culture.',                             hint:'Judging others by own cultural standards' },
+    { term:'Post-colonialism',     definition:'A critical perspective examining the continuing impact of colonialism on cultures, economies and identities.', hint:'Continuing impact of colonialism' },
+    { term:'Social capital',       definition:'The networks, norms and trust that enable people to cooperate effectively within communities.',     hint:'Networks and trust enabling cooperation' },
+    { term:'Inclusive development', definition:'Development that benefits all members of society, reducing inequality and increasing participation.', hint:'Development benefiting everyone' },
+  ],
+  'Oceans and Coastal Margins (Theme 6)': [
+    { term:'Littoral zone',        definition:'The coastal area between the high and low water marks — the intertidal zone.',                      hint:'Between high and low tide marks' },
+    { term:'Wave energy',          definition:'The energy carried by ocean waves — determined by wind speed, fetch and duration.',                 hint:'Energy of waves — wind speed, fetch, duration' },
+    { term:'Fetch',                definition:'The unobstructed distance of open water over which wind blows to generate waves.',                  hint:'Open water distance for wave generation' },
+    { term:'Longshore drift',      definition:'The movement of sediment along a coastline as waves approach at an oblique angle.',               hint:'Sediment moves along coast — angled waves' },
+    { term:'Coral reef',           definition:'A diverse marine ecosystem built by coral polyps depositing calcium carbonate skeletons.',         hint:'Diverse ecosystem — calcium carbonate structure' },
+    { term:'Coral bleaching',      definition:'The loss of algae from coral due to thermal stress — caused by rising ocean temperatures.',        hint:'Coral turns white — thermal stress' },
+    { term:'Sea level change',     definition:'Changes in the relative height of sea level — eustatic (global) or isostatic (local).',            hint:'Eustatic global or isostatic local change' },
+    { term:'Coastal management',   definition:'Strategies to protect and manage coastlines — hard engineering, soft engineering or managed retreat.', hint:'Protect coastlines — hard, soft or retreat' },
+    { term:'Blue carbon',          definition:'Carbon stored in coastal and marine ecosystems — mangroves, salt marshes and seagrass.',           hint:'Carbon stored in coastal ecosystems' },
+    { term:'Exclusive Economic Zone', definition:'A sea zone extending 200 nautical miles from a country\'s coast where it has exclusive resource rights.', hint:'200 nautical miles — exclusive resource rights' },
+  ],
+};
+
+// IB Geography HL adds Theme 7 (Urban Environments) plus deeper
+// quantitative and conceptual treatment of all SL themes
+VOCAB['geography']['ib-hl'] = {
+  'Urban Environments (Theme 7 — HL only)': [
+    { term:'Urbanisation',         definition:'The increase in the proportion of a population living in urban areas.',                              hint:'More people living in cities' },
+    { term:'Counter-urbanisation', definition:'The movement of people away from cities to smaller towns and rural areas.',                          hint:'People moving away from cities' },
+    { term:'Urban primacy',        definition:'When the largest city is disproportionately large compared to other cities in a country.',           hint:'One city dominates all others' },
+    { term:'Rank-size rule',       definition:'A pattern where the population of a city is inversely proportional to its rank — second city is half the size of the first, etc.', hint:'City size ∝ 1/rank' },
+    { term:'Squatter settlement',  definition:'Informal housing built illegally on land the occupants do not own — typical in rapidly urbanising cities.', hint:'Illegal informal housing — rapid urbanisation' },
+    { term:'Gentrification',       definition:'The transformation of a lower-income neighbourhood by wealthier residents — raising property values and displacing original residents.', hint:'Wealthier residents displace poorer ones' },
+    { term:'Megacity',             definition:'A city with a population exceeding 10 million people.',                                             hint:'10+ million people' },
+    { term:'World city',           definition:'A city with a concentration of global financial, cultural and political influence — e.g. London, New York, Tokyo.', hint:'Global financial and cultural hub' },
+    { term:'Urban heat island',    definition:'The phenomenon where urban areas are significantly warmer than surrounding rural areas due to human activity and built surfaces.', hint:'Cities warmer than surrounding countryside' },
+    { term:'Smart city',           definition:'A city using digital technology and data to improve efficiency, sustainability and quality of life.', hint:'Digital technology improving city management' },
+    { term:'Urban metabolism',     definition:'The flows of energy, water, food, materials and waste through an urban system.',                    hint:'Flows of energy and materials through a city' },
+    { term:'Sustainable urban development', definition:'Urban development meeting the needs of present residents without compromising those of future generations.', hint:'Urban development that doesn\'t harm future' },
+    { term:'Informal economy',     definition:'Economic activity that is not taxed, regulated or monitored by the government.',                    hint:'Unregulated unmonitored economic activity' },
+    { term:'Urban governance',     definition:'The processes and institutions through which cities are managed and decisions are made.',            hint:'How cities are managed and decisions made' },
+  ],
+  'HL Quantitative and Research Skills': [
+    { term:'Gini coefficient',     definition:'A measure of income inequality within a country — 0 is perfect equality, 1 is perfect inequality.',  hint:'0 = equal, 1 = unequal — income distribution' },
+    { term:'Lorenz curve',         definition:'A graph showing the cumulative distribution of income in a country — the further from the diagonal, the greater the inequality.', hint:'Cumulative income distribution — gap from diagonal' },
+    { term:'Spearman\'s rank correlation', definition:'A non-parametric measure of the strength of association between two ranked variables.',    hint:'Rank correlation — non-parametric' },
+    { term:'Chi-squared test',     definition:'A statistical test comparing observed and expected frequencies to test for a relationship.',         hint:'Observed vs expected — tests for relationship' },
+    { term:'Geographic Information System', definition:'Computer software for capturing, storing, analysing and displaying geographic data.',     hint:'Computer system for geographic data analysis' },
+    { term:'Remote sensing',       definition:'Gathering information about Earth\'s surface from satellites or aircraft without direct contact.',   hint:'Satellite or aerial data collection' },
+    { term:'Field investigation',  definition:'Data collection in real-world settings to test a geographical hypothesis.',                         hint:'Real-world data collection — testing hypothesis' },
+    { term:'Composite index',      definition:'A single indicator combining multiple variables — e.g. HDI combines health, education and income.', hint:'Single measure combining multiple variables' },
+  ],
+};
