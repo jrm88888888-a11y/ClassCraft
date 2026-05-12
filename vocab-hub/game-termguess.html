@@ -64,8 +64,11 @@
       justify-content:space-between;
       overflow:hidden;
     }
-    .clue-wrap{flex-shrink:0;margin-bottom:0.6rem;}
-    .grid-wrap{flex-shrink:0;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.25rem;}
+    /* Clue at top */
+    .clue-wrap{width:100%;max-width:640px;flex-shrink:0;margin-bottom:0.5rem;}
+    /* Grid centred in remaining space */
+    .grid-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.25rem;min-height:0;}
+    /* Submit + keyboard pinned to bottom */
     .kb-submit-wrap{
       flex-shrink:0;
       display:flex;
@@ -76,8 +79,8 @@
       padding-bottom:0.25rem;
     }
 
-    /* Clue */
-    .clue-wrap{width:100%;max-width:640px;flex-shrink:0;}
+    /* Clue internals */
+    .clue-wrap-inner{width:100%;max-width:640px;}
     .clue-label{font-family:var(--font-d);font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.35rem;}
     .clue-box{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:0.85rem 1.1rem;font-family:var(--font-d);font-size:clamp(0.85rem,1.5vw,1.05rem);font-weight:600;color:var(--text);line-height:1.4;}
     .round-badge{font-family:var(--font-d);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);margin-top:0.35rem;}
