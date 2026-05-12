@@ -58,7 +58,23 @@
     .btn-start:hover{background:#6ef0b0;transform:translateY(-1px);}
 
     /* ── Game screen ── */
-    #screen-game{padding:0.75rem 1rem;gap:0.6rem;justify-content:flex-start;overflow-y:auto;}
+    #screen-game{
+      padding:0.75rem 1rem;
+      gap:0;
+      justify-content:space-between;
+      overflow:hidden;
+    }
+    .clue-wrap{flex-shrink:0;margin-bottom:0.6rem;}
+    .grid-wrap{flex-shrink:0;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.25rem;}
+    .kb-submit-wrap{
+      flex-shrink:0;
+      display:flex;
+      flex-direction:column;
+      gap:0.4rem;
+      width:100%;
+      max-width:500px;
+      padding-bottom:0.25rem;
+    }
 
     /* Clue */
     .clue-wrap{width:100%;max-width:640px;flex-shrink:0;}
@@ -67,7 +83,7 @@
     .round-badge{font-family:var(--font-d);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);margin-top:0.35rem;}
 
     /* ── TermGuess grid ── */
-    .grid-wrap{display:flex;flex-direction:column;align-items:center;gap:0.25rem;flex-shrink:0;}
+    /* grid-wrap layout handled by #screen-game rules above */
 
     /* One guess row = a flex row of letter tiles + optional space tiles */
     .guess-row{display:flex;gap:0.3rem;align-items:center;}
@@ -124,7 +140,7 @@
       background:var(--accent2);color:#fff;border:none;
       padding:0.6rem 2rem;border-radius:var(--r);
       cursor:pointer;transition:all var(--trans);
-      flex-shrink:0;width:100%;max-width:500px;
+      width:100%;
     }
     .btn-submit-guess:hover{background:#9a8fff;transform:translateY(-1px);}
 
@@ -232,8 +248,10 @@
     <div class="round-badge" id="round-badge"></div>
   </div>
   <div class="grid-wrap" id="grid-wrap"></div>
-  <button class="btn-submit-guess" id="btn-submit-guess" onclick="submitGuess()">Submit ↵</button>
-  <div class="keyboard" id="keyboard"></div>
+  <div class="kb-submit-wrap">
+    <button class="btn-submit-guess" id="btn-submit-guess" onclick="submitGuess()">Submit ↵</button>
+    <div class="keyboard" id="keyboard"></div>
+  </div>
 </div>
 
 <!-- Per-word result -->
