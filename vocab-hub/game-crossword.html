@@ -61,6 +61,7 @@
 
     /* Left: crossword grid */
     .grid-panel{
+      position:relative;
       flex:1;
       display:flex;
       flex-direction:column;
@@ -236,6 +237,11 @@
       <button class="btn-reveal" onclick="revealAll()">Reveal All</button>
       <button class="btn-new" onclick="newPuzzle()">↺ New Puzzle</button>
     </div>
+    <!-- Hidden input captures on-screen keyboard on tablets -->
+    <input id="tablet-input" type="text"
+      autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false"
+      style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;top:0;left:0;"
+    />
   </div>
   <div class="clues-panel">
     <div class="clues-header">Clues</div>
@@ -278,7 +284,6 @@ if (META.topic) {
 
 // ── CONSTANTS ──
 const MAX_GRID = 15;
-const DIRECTIONS = ['across','down'];
 
 // ── STATE ──
 let selectedWords = 0;
@@ -405,17 +410,11 @@ function tryPlace(words, targetCount) {
         hasIntersection = true;
       } else {
         // Check adjacent cells won't create accidental words
+        // Only check perpendicular neighbours — parallel neighbours are fine
         if (dir === 'across') {
-          // Check above and below
-          if (gridMap[`${r-1},${c}`] || gridMap[`${r+1},${c}`]) {
-            // Only ok if this cell intersects (existing letter check above handles it)
-            if (!existing) return false;
-          }
+          if (gridMap[`${r-1},${c}`] || gridMap[`${r+1},${c}`]) return false;
         } else {
-          // Check left and right
-          if (gridMap[`${r},${c-1}`] || gridMap[`${r},${c+1}`]) {
-            if (!existing) return false;
-          }
+          if (gridMap[`${r},${c-1}`] || gridMap[`${r},${c+1}`]) return false;
         }
       }
     }
@@ -524,25 +523,26 @@ function buildGridData() {
     }
   });
 
-  // Assign clue numbers
+  // Assign clue numbers — scan grid top-left to bottom-right
   let num = 1;
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[r].length; c++) {
       if (grid[r][c].isBlack) continue;
-      let needsNum = false;
-      // Starts an across word?
       const startsAcross = placedWords.some(w => w.dir==='across' && w.row===r && w.col===c);
       const startsDown   = placedWords.some(w => w.dir==='down'   && w.row===r && w.col===c);
       if (startsAcross || startsDown) {
         grid[r][c].num = num;
-        // Assign number to word
-        placedWords.forEach((w,wi) => {
-          if ((w.dir==='across'||w.dir==='down') && w.row===r && w.col===c) w.number = num;
+        placedWords.forEach(w => {
+          if (w.row===r && w.col===c) w.number = num;
         });
         num++;
       }
     }
   }
+  // Safety: any word without a number gets one at the end
+  placedWords.forEach(w => {
+    if (w.number === undefined) { w.number = num++; }
+  });
 
   // Calculate cell size based on available space
   const panel = document.getElementById('grid-panel');
@@ -684,6 +684,12 @@ function selectCell(r, c, dir) {
     }
     // Highlight selected cell on top
     document.querySelector(`.cw-cell[data-r="${r}"][data-c="${c}"]`)?.classList.add('selected');
+  }
+  // Focus hidden input to trigger on-screen keyboard on tablets
+  if (!submitted) {
+    const inp = document.getElementById('tablet-input');
+    inp.value = '';
+    inp.focus();
   }
 }
 
@@ -837,7 +843,37 @@ function revealAll() {
   updateProgress();
   selectedCell = null;
   document.querySelectorAll('.cw-cell:not(.black)').forEach(el => el.classList.remove('selected','in-word'));
+  document.getElementById('words-done').textContent = placedWords.length;
 }
+
+// Tablet: handle input from hidden field
+document.getElementById('tablet-input').addEventListener('input', e => {
+  if (!selectedCell || submitted) return;
+  const val = e.target.value.toUpperCase().replace(/[^A-Z]/g,'');
+  if (val.length > 0) {
+    const ch = val[val.length - 1]; // take last character typed
+    const {r, c} = selectedCell;
+    grid[r][c].inputLetter = ch;
+    updateCellDisplay(r, c);
+    updateProgress();
+    moveCursor(1);
+  }
+  e.target.value = ''; // clear so next input is always detected
+});
+
+// Also handle backspace on tablet via keydown
+document.getElementById('tablet-input').addEventListener('keydown', e => {
+  if (e.key === 'Backspace' && selectedCell && !submitted) {
+    e.preventDefault();
+    const {r, c} = selectedCell;
+    if (grid[r][c].inputLetter) {
+      grid[r][c].inputLetter = '';
+      updateCellDisplay(r, c);
+    } else {
+      moveCursor(-1);
+    }
+  }
+});
 
 document.getElementById('btn-quit').addEventListener('click', () => window.location.href = 'vocab-hub.html');
 </script>
