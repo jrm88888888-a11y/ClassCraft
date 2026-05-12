@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homeroom B — MartinEdu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:#1c1712; --ink-mid:#4a3f33; --ink-light:#8a7a6a;
+      --p:#f5efe6; --pm:#ede4d6; --pd:#e0d3c0;
+      --acc:#8b5e3c; --accl:#c4956a;
+      --fd:'Cormorant Garamond',Georgia,serif;
+      --fb:'Archivo',Helvetica,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;overflow:hidden;background:var(--p);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased;}
+    .page{display:flex;flex-direction:column;height:100vh;}
+    .hd{background:var(--ink);color:var(--p);padding:0.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+    .hd-logo{font-family:var(--fd);font-size:1.3rem;color:var(--p);text-decoration:none;}
+    .hd-logo span{color:var(--accl);}
+    .hd-centre{display:flex;flex-direction:column;align-items:center;gap:0.1rem;}
+    .hd-date{font-family:var(--fd);font-size:1.2rem;color:rgba(245,239,230,0.9);}
+    .hd-switch{font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,239,230,0.5);text-decoration:none;border:1px solid rgba(245,239,230,0.2);padding:0.2rem 0.6rem;transition:all 0.2s;}
+    .hd-switch:hover{color:var(--p);border-color:rgba(245,239,230,0.5);}
+    .hd-back{font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,239,230,0.45);text-decoration:none;}
+    .hd-back:hover{color:var(--p);}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:0.65rem;padding:0.65rem;flex:1;min-height:0;overflow:hidden;}
+    .tile{background:var(--pm);border:1px solid var(--pd);border-top:3px solid var(--acc);padding:0.9rem 1.1rem;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
+    .lbl{font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--acc);margin-bottom:0.4rem;white-space:nowrap;flex-shrink:0;}
+    .main{font-family:var(--fd);font-size:clamp(1.6rem,2.5vw,2.8rem);font-weight:400;line-height:1.15;color:var(--ink);flex-shrink:0;}
+    .pos{font-size:clamp(0.8rem,1vw,1rem);color:var(--ink-light);font-style:italic;margin-top:0.2rem;flex-shrink:0;}
+    .body{font-size:clamp(0.85rem,1.1vw,1.15rem);color:var(--ink-mid);line-height:1.45;margin-top:0.4rem;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;}
+    .foot{font-size:clamp(0.72rem,0.9vw,0.9rem);color:var(--ink-light);margin-top:auto;padding-top:0.4rem;border-top:1px solid rgba(139,94,60,0.18);flex-shrink:0;}
+    .rbtn{font-family:var(--fb);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;background:var(--ink);color:var(--p);border:none;padding:0.4rem 1rem;cursor:pointer;margin-top:0.5rem;align-self:flex-start;flex-shrink:0;transition:background 0.2s;}
+    .rbtn:hover{background:var(--acc);}
+    .rans{display:none;font-family:var(--fd);font-size:clamp(1.4rem,2.2vw,2.4rem);color:var(--acc);font-weight:400;margin-top:0.3rem;line-height:1.15;flex-shrink:0;}
+    .elsym{font-family:var(--fd);font-size:clamp(3rem,5.5vw,5rem);font-weight:600;color:var(--acc);line-height:1;flex-shrink:0;}
+    .zh{font-size:clamp(3rem,6vw,5.5rem);line-height:1;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);flex-shrink:0;}
+    .qt{font-family:var(--fd);font-size:clamp(1.1rem,1.7vw,1.8rem);font-style:italic;line-height:1.4;color:var(--ink);flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;}
+    .c1{border-top-color:#4a7ab5;} .c2{border-top-color:#a04040;} .c3{border-top-color:#7a5aa0;}
+    .c4{border-top-color:#8b5e3c;} .c5{border-top-color:#4a8a5a;} .c6{border-top-color:#3a8a8a;}
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hd">
+    <a href="index.html" class="hd-logo">Martin<span>Edu</span></a>
+    <div class="hd-centre">
+      <div class="hd-date" id="hd-date"></div>
+      <a href="homeroom.html" class="hd-switch">← Switch to Set A</a>
+    </div>
+    <a href="index.html" class="hd-back">← Back to site</a>
+  </header>
+
+  <div class="grid">
+
+    <!-- 1. Spelling Challenge -->
+    <div class="tile c2">
+      <p class="lbl">✏️ Spelling Challenge</p>
+      <p class="body" style="font-size:clamp(1rem,1.5vw,1.5rem);font-style:normal;color:var(--ink);flex-shrink:0;" id="sp-hint"></p>
+      <button class="rbtn" onclick="rev('sp-ans',this)">Reveal Spelling</button>
+      <p class="rans" id="sp-ans"></p>
+      <p class="foot" id="sp-def"></p>
+    </div>
+
+    <!-- 2. Latin Phrase -->
+    <div class="tile c3">
+      <p class="lbl">🏛️ Latin Phrase</p>
+      <p class="main" id="lat-phrase"></p>
+      <p class="pos" id="lat-meaning"></p>
+      <p class="body" id="lat-context"></p>
+    </div>
+
+    <!-- 3. Geography Fact -->
+    <div class="tile c5">
+      <p class="lbl">🌍 Geography Fact</p>
+      <p class="body" style="font-size:clamp(1rem,1.4vw,1.4rem);font-style:normal;color:var(--ink);line-height:1.5;" id="geo"></p>
+    </div>
+
+    <!-- 4. Maths Problem -->
+    <div class="tile c1">
+      <p class="lbl">🔢 Maths Problem</p>
+      <p class="body" style="font-size:clamp(1rem,1.5vw,1.5rem);font-style:normal;color:var(--ink);flex-shrink:0;" id="m-q"></p>
+      <button class="rbtn" onclick="rev('m-ans',this)">Show Answer</button>
+      <p class="rans" id="m-ans"></p>
+    </div>
+
+    <!-- 5. Guess the Capital -->
+    <div class="tile c6">
+      <p class="lbl">🏛️ Guess the Capital</p>
+      <p class="main" style="font-size:clamp(1.3rem,2vw,2.2rem);" id="cap-q"></p>
+      <button class="rbtn" onclick="rev('cap-ans',this)">Reveal Capital</button>
+      <p class="rans" id="cap-ans"></p>
+    </div>
+
+    <!-- 6. On This Day -->
+    <div class="tile c5">
+      <p class="lbl">📅 On This Day</p>
+      <p class="main" style="font-size:clamp(2.5rem,4vw,4.5rem);" id="otd-year"></p>
+      <p class="body" id="otd-event"></p>
+    </div>
+
+    <!-- 7. Born Today -->
+    <div class="tile c2">
+      <p class="lbl">🎂 Born Today</p>
+      <p class="main" style="font-size:clamp(1.2rem,1.8vw,2rem);" id="born-name"></p>
+      <p class="body" id="born-desc"></p>
+    </div>
+
+    <!-- 8. Joke of the Day -->
+    <div class="tile c4">
+      <p class="lbl">😄 Joke of the Day</p>
+      <p class="main" id="j-q"></p>
+      <button class="rbtn" onclick="rev('j-ans',this)">Punchline</button>
+      <p class="rans" id="j-ans"></p>
+    </div>
+
+    <!-- 9. German Word -->
+    <div class="tile c1">
+      <p class="lbl">🇩🇪 German Word of the Day</p>
+      <p class="main" id="de-w"></p>
+      <p class="pos" id="de-pos"></p>
+      <p class="body" id="de-m"></p>
+    </div>
+
+    <!-- 10. Spanish Word -->
+    <div class="tile c4">
+      <p class="lbl">🇪🇸 Spanish Word of the Day</p>
+      <p class="main" id="es-w"></p>
+      <p class="pos" id="es-pos"></p>
+      <p class="body" id="es-m"></p>
+    </div>
+
+    <!-- 11. Name the Element -->
+    <div class="tile c5">
+      <p class="lbl">⚗️ Name the Element</p>
+      <p class="elsym" id="el-sym"></p>
+      <p class="pos" id="el-hint"></p>
+      <button class="rbtn" onclick="rev('el-ans',this)">Reveal Element</button>
+      <p class="rans" id="el-ans"></p>
+    </div>
+
+    <!-- 12. Chinese Character -->
+    <div class="tile c2">
+      <p class="lbl">🇨🇳 Chinese Character</p>
+      <p class="zh" id="zh-c"></p>
+      <p class="pos" id="zh-p"></p>
+      <p class="body" id="zh-m"></p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const spellings=[
+  {hint:"The opposite of private",word:"PUBLIC",def:"Open to everyone; not restricted."},
+  {hint:"A sudden event or happening",word:"OCCURRENCE",def:"An event or happening."},
+  {hint:"The group that rules a country",word:"GOVERNMENT",def:"The body that rules a state."},
+  {hint:"Feeling thankful",word:"GRATEFUL",def:"Feeling appreciation for kindness received."},
+  {hint:"Causing awkward embarrassment",word:"EMBARRASSING",def:"Causing self-conscious awkwardness."},
+  {hint:"Absolutely necessary",word:"ESSENTIAL",def:"Absolutely necessary; crucial."},
+  {hint:"Certain to happen",word:"INEVITABLE",def:"Impossible to avoid or prevent."},
+  {hint:"Very large in size",word:"ENORMOUS",def:"Very large; huge."},
+  {hint:"A proposed scientific explanation",word:"HYPOTHESIS",def:"A proposed explanation to be tested."},
+  {hint:"Involving more than one country",word:"INTERNATIONAL",def:"Relating to multiple nations."},
+  {hint:"Causing disagreement",word:"CONTROVERSIAL",def:"Causing public debate or disagreement."},
+  {hint:"Intense eager interest",word:"ENTHUSIASM",def:"Intense and eager enjoyment or interest."},
+  {hint:"Easily broken",word:"FRAGILE",def:"Easily broken or damaged."},
+  {hint:"The highest law-making body",word:"PARLIAMENT",def:"The highest legislative body of a country."},
+  {hint:"Impressively beautiful",word:"MAGNIFICENT",def:"Impressively beautiful or elaborate."},
+  {hint:"Facts gained through experience",word:"KNOWLEDGE",def:"Information and understanding acquired through experience."},
+  {hint:"A place where books are kept",word:"LIBRARY",def:"A building containing books for borrowing."},
+  {hint:"At the same time",word:"SIMULTANEOUSLY",def:"Happening at exactly the same time."},
+  {hint:"Relating to the North Pole",word:"ARCTIC",def:"Relating to the North Pole region."},
+  {hint:"A scientist of ancient civilisations",word:"ARCHAEOLOGIST",def:"A scientist who studies ancient human remains."},
+];
+
+const latinPhrases=[
+  {phrase:"Carpe diem",meaning:"Seize the day",context:"From Horace's Odes — enjoy the present, don't worry about the future."},
+  {phrase:"Cogito, ergo sum",meaning:"I think, therefore I am",context:"René Descartes' famous proof of his own existence."},
+  {phrase:"Veni, vidi, vici",meaning:"I came, I saw, I conquered",context:"Julius Caesar's report of a swift military victory in 47 BC."},
+  {phrase:"In medias res",meaning:"Into the middle of things",context:"A narrative technique that begins a story mid-action."},
+  {phrase:"Ad hominem",meaning:"To the person",context:"An argument that attacks the person rather than their argument."},
+  {phrase:"Status quo",meaning:"The existing state of affairs",context:"The current situation before any change is made."},
+  {phrase:"Bona fide",meaning:"In good faith; genuine",context:"Used to describe something authentic or sincere."},
+  {phrase:"Magna Carta",meaning:"Great Charter",context:"The 1215 document that first limited the power of the English king."},
+  {phrase:"Vice versa",meaning:"The other way around",context:"With the main terms in the reversed order."},
+  {phrase:"Habeas corpus",meaning:"You shall have the body",context:"A legal principle requiring a person to be brought before a court."},
+  {phrase:"Mea culpa",meaning:"My fault",context:"An acknowledgement of one's own error."},
+  {phrase:"Tempus fugit",meaning:"Time flies",context:"A reminder that time passes quickly."},
+  {phrase:"Sine qua non",meaning:"Without which, nothing",context:"An absolutely essential condition."},
+  {phrase:"Terra firma",meaning:"Firm ground; dry land",context:"Solid earth, as opposed to water or air."},
+  {phrase:"Caveat emptor",meaning:"Let the buyer beware",context:"The buyer is responsible for checking quality before purchase."},
+  {phrase:"Verbatim",meaning:"Word for word",context:"Exactly as said or written, without any changes."},
+  {phrase:"In loco parentis",meaning:"In the place of a parent",context:"The legal responsibility of a school for its students."},
+  {phrase:"Prima facie",meaning:"At first sight",context:"Evidence that is accepted as correct until it is disproved."},
+  {phrase:"Ipso facto",meaning:"By the fact itself",context:"As a direct consequence of a particular fact or action."},
+  {phrase:"Per se",meaning:"By itself; in itself",context:"Used to mean 'inherently' or 'as such'."},
+];
+
+const geoFacts=[
+  "Russia covers 17.1 million km² — about 11% of Earth's total land surface.",
+  "The Nile (6,650 km) and Amazon (6,400 km) are the world's two longest rivers.",
+  "The Sahara covers 9.2 million km² — roughly the size of the United States.",
+  "Mount Everest is the world's highest peak at 8,849 metres above sea level.",
+  "The Mariana Trench is the deepest point on Earth at approximately 11,000 metres.",
+  "Vatican City covers just 0.44 km² — the world's smallest country.",
+  "The Amazon Rainforest produces approximately 20% of the world's oxygen.",
+  "90% of the world's earthquakes occur along the Ring of Fire in the Pacific Ocean.",
+  "Canada has the world's longest coastline at approximately 202,080 km.",
+  "The Dead Sea is approximately 34% salt — ten times saltier than the ocean.",
+  "The Pacific Ocean is larger than all of Earth's land combined.",
+  "Angel Falls in Venezuela is the world's highest waterfall at 979 metres.",
+  "The world's population passed 8 billion in November 2022.",
+  "Tokyo is the world's most populous metropolitan area with over 37 million people.",
+  "China shares borders with 14 countries — more than any other nation.",
+  "Australia is the only continent that is also a single country.",
+  "The Equator passes through 13 countries including Brazil, Kenya, and Indonesia.",
+  "Lake Baikal in Russia contains 20% of Earth's unfrozen fresh surface water.",
+  "Indonesia has 147 volcanoes — more than any other country.",
+  "Three-quarters of all international trade is transported by sea.",
+];
+
+const mathsProblems=[
+  {q:"A train travels at 80 km/h for 2.5 hours. How far does it travel?",a:"200 km  (80 × 2.5)"},
+  {q:"What is 15% of 240?",a:"36  (240 × 0.15 = 36)"},
+  {q:"Solve:  5(x − 2) = 20",a:"x = 6  (x − 2 = 4, x = 6)"},
+  {q:"What is the next prime number after 17?",a:"19"},
+  {q:"A £80 item is reduced by 25%. What is the sale price?",a:"£60  (80 × 0.75)"},
+  {q:"What is the area of a circle with radius 7 cm? (π ≈ 3.14)",a:"153.86 cm²  (3.14 × 49)"},
+  {q:"Simplify:  4x² + 3x − x² + 2x",a:"3x² + 5x"},
+  {q:"What is 4! (4 factorial)?",a:"24  (4 × 3 × 2 × 1)"},
+  {q:"If a:b = 2:3 and b:c = 3:4, what is a:c?",a:"2:4  simplified to 1:2"},
+  {q:"Convert 0.625 to a fraction.",a:"5/8  (0.625 = 625/1000 = 5/8)"},
+  {q:"What is the range of: 3, 7, 2, 9, 5, 1?",a:"8  (9 − 1 = 8)"},
+  {q:"A cylinder has radius 3 cm and height 10 cm. Volume? (π ≈ 3.14)",a:"282.6 cm³  (3.14 × 9 × 10)"},
+  {q:"Solve:  x² − 5x + 6 = 0",a:"x = 2 or x = 3  (factorise: (x−2)(x−3))"},
+  {q:"What is the interior angle of a regular hexagon?",a:"120°  ((6−2) × 180 ÷ 6)"},
+  {q:"If P(A) = 0.3, what is P(not A)?",a:"0.7  (1 − 0.3)"},
+  {q:"Express 72 as a product of prime factors.",a:"2³ × 3²  (72 = 8 × 9)"},
+  {q:"What is the median of: 5, 2, 8, 1, 9, 3, 7?",a:"5  (ordered: 1,2,3,5,7,8,9)"},
+  {q:"A recipe for 4 people needs 300g flour. How much for 10 people?",a:"750g  (300 ÷ 4 × 10)"},
+  {q:"What is the nth term of the sequence 3, 7, 11, 15...?",a:"4n − 1"},
+  {q:"Solve:  2x + 3y = 12 and x = 3",a:"y = 2  (6 + 3y = 12, 3y = 6)"},
+];
+
+const capitals=[
+  {country:"France",capital:"Paris"},{country:"Germany",capital:"Berlin"},
+  {country:"Japan",capital:"Tokyo"},{country:"Brazil",capital:"Brasília"},
+  {country:"Canada",capital:"Ottawa"},{country:"Australia",capital:"Canberra"},
+  {country:"India",capital:"New Delhi"},{country:"China",capital:"Beijing"},
+  {country:"Mexico",capital:"Mexico City"},{country:"South Korea",capital:"Seoul"},
+  {country:"Italy",capital:"Rome"},{country:"Spain",capital:"Madrid"},
+  {country:"Argentina",capital:"Buenos Aires"},{country:"Nigeria",capital:"Abuja"},
+  {country:"Egypt",capital:"Cairo"},{country:"South Africa",capital:"Pretoria"},
+  {country:"Turkey",capital:"Ankara"},{country:"Sweden",capital:"Stockholm"},
+  {country:"Norway",capital:"Oslo"},{country:"Netherlands",capital:"Amsterdam"},
+  {country:"Portugal",capital:"Lisbon"},{country:"Greece",capital:"Athens"},
+  {country:"Poland",capital:"Warsaw"},{country:"Ukraine",capital:"Kyiv"},
+  {country:"Kenya",capital:"Nairobi"},{country:"Indonesia",capital:"Jakarta"},
+  {country:"Thailand",capital:"Bangkok"},{country:"New Zealand",capital:"Wellington"},
+  {country:"Ireland",capital:"Dublin"},{country:"Denmark",capital:"Copenhagen"},
+];
+
+const onThisDay=[
+  {year:"1940",event:"Winston Churchill became Prime Minister of the United Kingdom at the start of World War II."},
+  {year:"1869",event:"The Suez Canal opened in Egypt, connecting the Mediterranean Sea to the Red Sea."},
+  {year:"1903",event:"The Wright Brothers completed the first powered aeroplane flight at Kitty Hawk, North Carolina."},
+  {year:"1945",event:"World War II ended in Europe (VE Day) as Germany surrendered unconditionally to the Allies."},
+  {year:"1969",event:"Apollo 11 landed on the Moon. Neil Armstrong became the first human to walk on another world."},
+  {year:"1989",event:"The Berlin Wall fell, marking the end of the Cold War division of Germany and Europe."},
+  {year:"1865",event:"Abraham Lincoln was assassinated at Ford's Theatre, Washington D.C., by John Wilkes Booth."},
+  {year:"1912",event:"The RMS Titanic sank in the North Atlantic Ocean after striking an iceberg."},
+  {year:"1963",event:"Martin Luther King Jr. delivered his 'I Have a Dream' speech at the March on Washington."},
+  {year:"1953",event:"Edmund Hillary and Tenzing Norgay became the first people to summit Mount Everest."},
+  {year:"1492",event:"Christopher Columbus reached the Americas, making landfall in the Bahamas on 12 October."},
+  {year:"1687",event:"Isaac Newton published Principia Mathematica, setting out the laws of motion and gravity."},
+  {year:"1859",event:"Charles Darwin published On the Origin of Species, proposing the theory of evolution."},
+  {year:"1928",event:"Alexander Fleming discovered penicillin, accidentally finding the first antibiotic."},
+  {year:"1955",event:"Rosa Parks refused to give up her seat on a bus in Alabama, sparking the Montgomery Bus Boycott."},
+  {year:"1961",event:"Yuri Gagarin became the first human in space, orbiting Earth once in 108 minutes."},
+  {year:"1990",event:"Nelson Mandela was released from Victor Verster Prison after 27 years of imprisonment."},
+  {year:"1215",event:"King John signed Magna Carta at Runnymede, limiting royal power for the first time."},
+  {year:"1666",event:"The Great Fire of London broke out, destroying 13,200 houses and 87 churches over four days."},
+  {year:"1805",event:"Admiral Nelson defeated the French and Spanish fleets at the Battle of Trafalgar."},
+];
+
+const bornToday=[
+  {name:"Marie Curie",dates:"1867–1934",desc:"First woman to win a Nobel Prize — and the only person to win in two sciences."},
+  {name:"Albert Einstein",dates:"1879–1955",desc:"Developed the theory of relativity. Won the Nobel Prize in Physics in 1921."},
+  {name:"William Shakespeare",dates:"1564–1616",desc:"English playwright — wrote Hamlet, Macbeth, Romeo and Juliet, and 37 other plays."},
+  {name:"Charles Darwin",dates:"1809–1882",desc:"English naturalist who proposed the theory of evolution by natural selection."},
+  {name:"Ada Lovelace",dates:"1815–1852",desc:"English mathematician considered the world's first computer programmer."},
+  {name:"Isaac Newton",dates:"1643–1727",desc:"English physicist who formulated the laws of motion and universal gravitation."},
+  {name:"Florence Nightingale",dates:"1820–1910",desc:"English nurse who founded modern nursing and revolutionised hospital conditions."},
+  {name:"Nelson Mandela",dates:"1918–2013",desc:"South African leader — first democratically elected President of South Africa."},
+  {name:"Alan Turing",dates:"1912–1954",desc:"English mathematician — pioneer of computer science who broke the Enigma code in WWII."},
+  {name:"Malala Yousafzai",dates:"1997–",desc:"Pakistani activist — the youngest Nobel Peace Prize laureate."},
+  {name:"Stephen Hawking",dates:"1942–2018",desc:"English physicist who pioneered work on black holes and wrote A Brief History of Time."},
+  {name:"Nikola Tesla",dates:"1856–1943",desc:"Serbian-American inventor who developed alternating current (AC) electrical systems."},
+  {name:"Harriet Tubman",dates:"1822–1913",desc:"American abolitionist who led dozens of enslaved people to freedom via the Underground Railroad."},
+  {name:"Galileo Galilei",dates:"1564–1642",desc:"Italian astronomer who championed the idea that the Earth orbits the Sun."},
+  {name:"Leonardo da Vinci",dates:"1452–1519",desc:"Italian polymath — artist, engineer and scientist. Painted the Mona Lisa."},
+  {name:"Emmeline Pankhurst",dates:"1858–1928",desc:"British suffragette who led the movement that won women the right to vote in the UK."},
+  {name:"James Watt",dates:"1736–1819",desc:"Scottish inventor who improved the steam engine and helped catalyse the Industrial Revolution."},
+  {name:"Tim Berners-Lee",dates:"1955–",desc:"British computer scientist who invented the World Wide Web in 1989."},
+  {name:"Rosalind Franklin",dates:"1920–1958",desc:"British chemist whose X-ray work was crucial to discovering the structure of DNA."},
+  {name:"Frida Kahlo",dates:"1907–1954",desc:"Mexican artist known for vivid self-portraits exploring identity and the human form."},
+];
+
+const jokes=[
+  {q:"Why did the scarecrow win an award?",a:"He was outstanding in his field!"},
+  {q:"What do you call a fish without eyes?",a:"A fsh!"},
+  {q:"Why did the bicycle fall over?",a:"It was two-tired!"},
+  {q:"What do you call a sleeping dinosaur?",a:"A dino-snore!"},
+  {q:"Why don't scientists trust atoms?",a:"They make up everything!"},
+  {q:"What do elves learn in school?",a:"The elf-abet!"},
+  {q:"Why did the maths book look sad?",a:"It had too many problems!"},
+  {q:"What has ears but cannot hear?",a:"A field of corn!"},
+  {q:"Why couldn't the leopard play hide and seek?",a:"He was always spotted!"},
+  {q:"What did the ocean say to the beach?",a:"Nothing — it just waved!"},
+  {q:"Why did the teacher wear sunglasses?",a:"Her students were so bright!"},
+  {q:"Why was the broom late?",a:"It over-swept!"},
+  {q:"What starts with E, ends with E, has only one letter?",a:"An envelope!"},
+  {q:"Why did the clock get in trouble?",a:"It tocked too much!"},
+  {q:"Why did the golfer bring extra trousers?",a:"In case he got a hole in one!"},
+  {q:"What do you call a bear with no teeth?",a:"A gummy bear!"},
+  {q:"Why is the ocean salty?",a:"Because the land never waves back!"},
+  {q:"What do you call a snowman with a six-pack?",a:"An abdominal snowman!"},
+  {q:"Why can't Cinderella play football?",a:"She always runs away from the ball!"},
+  {q:"What do you call a fake noodle?",a:"An impasta!"},
+];
+
+const deWords=[
+  {w:"Guten Morgen",pos:"phrase",m:"Good morning — used until midday."},
+  {w:"Danke",pos:"exclamation",m:"Thank you — 'Danke schön' = thank you very much."},
+  {w:"Bitte",pos:"exclamation",m:"Please / You're welcome — a very versatile word."},
+  {w:"Sprechen",pos:"verb",m:"To speak — ich spreche, du sprichst, er spricht."},
+  {w:"Gehen",pos:"verb",m:"To go — ich gehe, du gehst, er geht."},
+  {w:"Haben",pos:"irregular verb",m:"To have — ich habe, du hast, er hat."},
+  {w:"Sein",pos:"irregular verb",m:"To be — ich bin, du bist, er ist."},
+  {w:"Das Buch",pos:"noun (neuter)",m:"The book — neuter gender in German."},
+  {w:"Die Schule",pos:"noun (feminine)",m:"The school — feminine gender in German."},
+  {w:"Groß",pos:"adjective",m:"Big / tall / great — opposite of klein (small)."},
+  {w:"Heute",pos:"adverb",m:"Today — used in 'Heute ist Montag' (Today is Monday)."},
+  {w:"Können",pos:"modal verb",m:"Can / to be able to — ich kann, du kannst, er kann."},
+  {w:"Wollen",pos:"modal verb",m:"To want — ich will, du willst, er will."},
+  {w:"Müssen",pos:"modal verb",m:"Must / to have to — ich muss, du musst, er muss."},
+  {w:"Schön",pos:"adjective",m:"Beautiful / nice / lovely."},
+  {w:"Neu",pos:"adjective",m:"New — opposite of alt (old)."},
+  {w:"Die Welt",pos:"noun (feminine)",m:"The world."},
+  {w:"Das Leben",pos:"noun (neuter)",m:"Life."},
+  {w:"Morgen",pos:"adverb / noun (m)",m:"Tomorrow / morning — context determines meaning."},
+  {w:"Klein",pos:"adjective",m:"Small / little — opposite of groß (big)."},
+];
+
+const esWords=[
+  {w:"Buenos días",pos:"phrase",m:"Good morning — used until midday."},
+  {w:"Gracias",pos:"exclamation",m:"Thank you."},
+  {w:"Por favor",pos:"phrase",m:"Please."},
+  {w:"Hablar",pos:"verb",m:"To speak — hablo, hablas, habla."},
+  {w:"Ir",pos:"irregular verb",m:"To go — voy, vas, va, vamos, vais, van."},
+  {w:"Tener",pos:"irregular verb",m:"To have — tengo, tienes, tiene."},
+  {w:"Ser",pos:"irregular verb",m:"To be (permanent) — soy, eres, es."},
+  {w:"Estar",pos:"irregular verb",m:"To be (temporary) — estoy, estás, está."},
+  {w:"Grande",pos:"adjective",m:"Big / great — opposite of pequeño (small)."},
+  {w:"Hoy",pos:"adverb",m:"Today."},
+  {w:"El libro",pos:"noun (masculine)",m:"The book."},
+  {w:"La escuela",pos:"noun (feminine)",m:"The school."},
+  {w:"Poder",pos:"irregular verb",m:"Can / to be able to — puedo, puedes, puede."},
+  {w:"Querer",pos:"irregular verb",m:"To want / to love — quiero, quieres, quiere."},
+  {w:"Saber",pos:"irregular verb",m:"To know (a fact) — sé, sabes, sabe."},
+  {w:"Nuevo/a",pos:"adjective",m:"New — changes ending by gender: nuevo (m), nueva (f)."},
+  {w:"Bonito/a",pos:"adjective",m:"Beautiful / pretty — bonito (m), bonita (f)."},
+  {w:"La vida",pos:"noun (feminine)",m:"Life."},
+  {w:"El mundo",pos:"noun (masculine)",m:"The world."},
+  {w:"Mañana",pos:"adverb",m:"Tomorrow — also means 'morning' as a noun."},
+];
+
+const elements=[
+  {sym:"H",name:"Hydrogen",hint:"Lightest element · atomic number 1"},
+  {sym:"He",name:"Helium",hint:"Noble gas · used in balloons"},
+  {sym:"C",name:"Carbon",hint:"Basis of all organic life"},
+  {sym:"N",name:"Nitrogen",hint:"78% of Earth's atmosphere"},
+  {sym:"O",name:"Oxygen",hint:"Essential for breathing · atomic number 8"},
+  {sym:"Na",name:"Sodium",hint:"From Latin 'Natrium' · found in salt"},
+  {sym:"Fe",name:"Iron",hint:"From Latin 'Ferrum' · magnetic metal"},
+  {sym:"Cu",name:"Copper",hint:"From Latin 'Cuprum' · reddish conductor"},
+  {sym:"Au",name:"Gold",hint:"From Latin 'Aurum' · symbol of wealth"},
+  {sym:"Ag",name:"Silver",hint:"From Latin 'Argentum' · best conductor"},
+  {sym:"Hg",name:"Mercury",hint:"Only liquid metal at room temperature"},
+  {sym:"Pb",name:"Lead",hint:"From Latin 'Plumbum' · dense soft metal"},
+  {sym:"K",name:"Potassium",hint:"From Latin 'Kalium' · found in bananas"},
+  {sym:"Ca",name:"Calcium",hint:"Essential for bones and teeth"},
+  {sym:"Cl",name:"Chlorine",hint:"Yellow-green gas · purifies water"},
+  {sym:"P",name:"Phosphorus",hint:"Essential for DNA and ATP"},
+  {sym:"S",name:"Sulfur",hint:"Yellow solid · smell of rotten eggs"},
+  {sym:"Mg",name:"Magnesium",hint:"Burns with a bright white flame"},
+  {sym:"Al",name:"Aluminium",hint:"Most abundant metal in Earth's crust"},
+  {sym:"U",name:"Uranium",hint:"Radioactive · used in nuclear fuel"},
+];
+
+const zhChars=[
+  {c:"人",p:"rén",m:"Person, people — one of the most common characters in Chinese."},
+  {c:"大",p:"dà",m:"Big, large, great — opposite of 小 (xiǎo, small)."},
+  {c:"小",p:"xiǎo",m:"Small, little — used in 小学 (xiǎoxué, primary school)."},
+  {c:"中",p:"zhōng",m:"Middle, centre — also short for China (中国, Zhōngguó)."},
+  {c:"国",p:"guó",m:"Country, nation — used in 中国 (China) and 英国 (England)."},
+  {c:"好",p:"hǎo",m:"Good, well, fine — used in 你好 (nǐhǎo, hello)."},
+  {c:"你",p:"nǐ",m:"You (singular) — used in 你好 (hello) and 你是 (you are)."},
+  {c:"我",p:"wǒ",m:"I, me — one of the first characters learned."},
+  {c:"是",p:"shì",m:"To be, is, are — the main verb 'to be' in Chinese."},
+  {c:"不",p:"bù",m:"No, not — the main negation word in Chinese."},
+  {c:"有",p:"yǒu",m:"To have, there is/are — 没有 (méiyǒu) means 'don't have'."},
+  {c:"说",p:"shuō",m:"To say, to speak, to tell."},
+  {c:"来",p:"lái",m:"To come — opposite of 去 (qù, to go)."},
+  {c:"去",p:"qù",m:"To go — opposite of 来 (lái, to come)."},
+  {c:"学",p:"xué",m:"To study, to learn — used in 学生 (xuésheng, student)."},
+  {c:"年",p:"nián",m:"Year — used in 今年 (jīnnián, this year)."},
+  {c:"月",p:"yuè",m:"Month, moon — 一月 (yīyuè) = January."},
+  {c:"日",p:"rì",m:"Day, sun — also the character for Japan (日本, Rìběn)."},
+  {c:"时",p:"shí",m:"Time, hour, season."},
+  {c:"想",p:"xiǎng",m:"To think, to want, to miss someone."},
+];
+
+function doy(){const n=new Date(),s=new Date(n.getFullYear(),0,0);return Math.floor((n-s)/86400000)-1;}
+function pick(arr){return arr[doy()%arr.length];}
+function rev(id,btn){document.getElementById(id).style.display='block';btn.style.display='none';}
+
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const now=new Date();
+document.getElementById('hd-date').textContent=`${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+
+const sp=pick(spellings);
+document.getElementById('sp-hint').textContent=sp.hint;
+document.getElementById('sp-ans').textContent=sp.word;
+document.getElementById('sp-def').textContent=sp.def;
+
+const lat=pick(latinPhrases);
+document.getElementById('lat-phrase').textContent=lat.phrase;
+document.getElementById('lat-meaning').textContent=lat.meaning;
+document.getElementById('lat-context').textContent=lat.context;
+
+document.getElementById('geo').textContent=pick(geoFacts);
+
+const mp=pick(mathsProblems);
+document.getElementById('m-q').textContent=mp.q;
+document.getElementById('m-ans').textContent=mp.a;
+
+const cap=pick(capitals);
+document.getElementById('cap-q').textContent='What is the capital of '+cap.country+'?';
+document.getElementById('cap-ans').textContent=cap.capital;
+
+const otd=pick(onThisDay);
+document.getElementById('otd-year').textContent=otd.year;
+document.getElementById('otd-event').textContent=otd.event;
+
+const born=pick(bornToday);
+document.getElementById('born-name').textContent=born.name+' ('+born.dates+')';
+document.getElementById('born-desc').textContent=born.desc;
+
+const jk=pick(jokes);
+document.getElementById('j-q').textContent=jk.q;
+document.getElementById('j-ans').textContent=jk.a;
+
+const de=pick(deWords);
+document.getElementById('de-w').textContent=de.w;
+document.getElementById('de-pos').textContent=de.pos;
+document.getElementById('de-m').textContent=de.m;
+
+const es=pick(esWords);
+document.getElementById('es-w').textContent=es.w;
+document.getElementById('es-pos').textContent=es.pos;
+document.getElementById('es-m').textContent=es.m;
+
+const el=pick(elements);
+document.getElementById('el-sym').textContent=el.sym;
+document.getElementById('el-hint').textContent=el.hint;
+document.getElementById('el-ans').textContent=el.name;
+
+const zh=pick(zhChars);
+document.getElementById('zh-c').textContent=zh.c;
+document.getElementById('zh-p').textContent=zh.p;
+document.getElementById('zh-m').textContent=zh.m;
+</script>
+</body>
+</html>

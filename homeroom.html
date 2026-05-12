@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homeroom — MartinEdu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Homeroom A — MartinEdu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink:#1c1712; --ink-mid:#4a3f33; --ink-light:#8a7a6a;
@@ -19,61 +19,47 @@
     .page{display:flex;flex-direction:column;height:100vh;}
 
     /* Header */
-    .hd{background:var(--ink);color:var(--p);padding:0.4rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-    .hd-logo{font-family:var(--fd);font-size:1.1rem;color:var(--p);text-decoration:none;}
+    .hd{background:var(--ink);color:var(--p);padding:0.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+    .hd-logo{font-family:var(--fd);font-size:1.3rem;color:var(--p);text-decoration:none;}
     .hd-logo span{color:var(--accl);}
-    .hd-date{font-family:var(--fd);font-size:1rem;color:rgba(245,239,230,0.8);}
+    .hd-centre{display:flex;flex-direction:column;align-items:center;gap:0.1rem;}
+    .hd-date{font-family:var(--fd);font-size:1.2rem;color:rgba(245,239,230,0.9);}
+    .hd-switch{font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,239,230,0.5);text-decoration:none;border:1px solid rgba(245,239,230,0.2);padding:0.2rem 0.6rem;transition:all 0.2s;}
+    .hd-switch:hover{color:var(--p);border-color:rgba(245,239,230,0.5);}
     .hd-back{font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,239,230,0.45);text-decoration:none;}
     .hd-back:hover{color:var(--p);}
 
-    /* Grid: 6 cols × 3 rows, fills remaining height */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(6,1fr);
-      grid-template-rows:repeat(3,1fr);
-      gap:0.5rem;
-      padding:0.5rem;
-      flex:1;
-      min-height:0;
-      overflow:hidden;
-    }
+    /* 4×3 grid */
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:0.65rem;padding:0.65rem;flex:1;min-height:0;overflow:hidden;}
 
     /* Tile */
-    .tile{
-      background:var(--pm);
-      border:1px solid var(--pd);
-      border-top:2.5px solid var(--acc);
-      padding:0.7rem 0.9rem;
-      display:flex;
-      flex-direction:column;
-      overflow:hidden;
-      min-height:0;
-    }
+    .tile{background:var(--pm);border:1px solid var(--pd);border-top:3px solid var(--acc);padding:0.9rem 1.1rem;display:flex;flex-direction:column;overflow:hidden;min-height:0;}
 
-    .lbl{font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--acc);margin-bottom:0.2rem;white-space:nowrap;overflow:hidden;}
-    .main{font-family:var(--fd);font-size:clamp(1.3rem,2vw,2.2rem);font-weight:400;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
-    .sub{font-size:clamp(0.78rem,1.1vw,1rem);color:var(--ink-mid);line-height:1.35;font-style:italic;margin-top:0.15rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
-    .detail{font-size:clamp(0.7rem,0.9vw,0.88rem);color:var(--ink-light);line-height:1.3;margin-top:auto;padding-top:0.25rem;border-top:1px solid rgba(139,94,60,0.15);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+    /* Typography */
+    .lbl{font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--acc);margin-bottom:0.4rem;white-space:nowrap;flex-shrink:0;}
+    .main{font-family:var(--fd);font-size:clamp(1.6rem,2.5vw,2.8rem);font-weight:400;line-height:1.15;color:var(--ink);flex-shrink:0;}
+    .pos{font-size:clamp(0.8rem,1vw,1rem);color:var(--ink-light);font-style:italic;margin-top:0.2rem;flex-shrink:0;}
+    .body{font-size:clamp(0.85rem,1.1vw,1.15rem);color:var(--ink-mid);line-height:1.45;margin-top:0.4rem;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;}
+    .foot{font-size:clamp(0.72rem,0.9vw,0.9rem);color:var(--ink-light);margin-top:auto;padding-top:0.4rem;border-top:1px solid rgba(139,94,60,0.18);flex-shrink:0;}
 
-    .rbtn{font-family:var(--fb);font-size:0.65rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;background:var(--ink);color:var(--p);border:none;padding:0.35rem 0.9rem;cursor:pointer;margin-top:0.3rem;align-self:flex-start;flex-shrink:0;transition:background 0.2s;}
+    /* Reveal */
+    .rbtn{font-family:var(--fb);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;background:var(--ink);color:var(--p);border:none;padding:0.4rem 1rem;cursor:pointer;margin-top:0.5rem;align-self:flex-start;flex-shrink:0;transition:background 0.2s;}
     .rbtn:hover{background:var(--acc);}
-    .rans{display:none;font-family:var(--fd);font-size:clamp(1.1rem,1.8vw,1.8rem);color:var(--acc);font-weight:400;margin-top:0.15rem;line-height:1.2;}
+    .rans{display:none;font-family:var(--fd);font-size:clamp(1.4rem,2.2vw,2.4rem);color:var(--acc);font-weight:400;margin-top:0.3rem;line-height:1.15;flex-shrink:0;}
 
-    .flag-img{width:80px;height:auto;border:1px solid var(--pd);margin:0.2rem 0;flex-shrink:0;}
-    .zh{font-size:clamp(2rem,4vw,3.5rem);line-height:1;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;}
-    .elsym{font-family:var(--fd);font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--acc);line-height:1;}
-    .qt{font-family:var(--fd);font-size:clamp(0.9rem,1.3vw,1.3rem);font-style:italic;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+    /* Specials */
+    .flag-img{height:clamp(50px,6vh,80px);width:auto;border:1px solid var(--pd);margin:0.4rem 0;flex-shrink:0;}
+    .zh{font-size:clamp(3rem,6vw,5.5rem);line-height:1;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);flex-shrink:0;}
+    .elsym{font-family:var(--fd);font-size:clamp(3rem,5.5vw,5rem);font-weight:600;color:var(--acc);line-height:1;flex-shrink:0;}
+    .qt{font-family:var(--fd);font-size:clamp(1.1rem,1.7vw,1.8rem);font-style:italic;line-height:1.4;color:var(--ink);flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;}
 
-    /* Colour top borders */
+    /* Colour variants */
     .c1{border-top-color:#4a7ab5;}
     .c2{border-top-color:#a04040;}
     .c3{border-top-color:#7a5aa0;}
     .c4{border-top-color:#8b5e3c;}
     .c5{border-top-color:#4a8a5a;}
     .c6{border-top-color:#3a8a8a;}
-
-    /* Wide tile */
-    .wide{grid-column:span 2;}
   </style>
 </head>
 <body>
@@ -81,48 +67,40 @@
 
   <header class="hd">
     <a href="index.html" class="hd-logo">Martin<span>Edu</span></a>
-    <div class="hd-date" id="hd-date"></div>
+    <div class="hd-centre">
+      <div class="hd-date" id="hd-date"></div>
+      <a href="homeroom2.html" class="hd-switch">Switch to Set B →</a>
+    </div>
     <a href="index.html" class="hd-back">← Back to site</a>
   </header>
 
   <div class="grid">
 
-    <!-- Row 1 -->
+    <!-- 1. Word of the Day -->
     <div class="tile c1">
       <p class="lbl">📖 Word of the Day</p>
       <p class="main" id="w-word"></p>
-      <p class="sub" id="w-pos"></p>
-      <p class="detail" id="w-def"></p>
+      <p class="pos" id="w-pos"></p>
+      <p class="body" id="w-def"></p>
     </div>
 
-    <div class="tile c2">
-      <p class="lbl">✏️ Spelling Challenge</p>
-      <p class="sub" style="font-style:normal;font-size:clamp(0.85rem,1.1vw,1.1rem);" id="sp-hint"></p>
-      <button class="rbtn" onclick="rev('sp-ans',this)">Reveal</button>
-      <p class="rans" id="sp-ans"></p>
-      <p class="detail" id="sp-def"></p>
-    </div>
-
+    <!-- 2. Idiom of the Day -->
     <div class="tile c3">
       <p class="lbl">💬 Idiom of the Day</p>
       <p class="main" id="id-idiom"></p>
-      <p class="sub" id="id-meaning"></p>
+      <p class="body" id="id-meaning"></p>
+      <p class="foot" id="id-example"></p>
     </div>
 
-    <div class="tile c4">
-      <p class="lbl">🏛️ Latin Phrase</p>
-      <p class="main" id="lat-phrase"></p>
-      <p class="sub" id="lat-meaning"></p>
-      <p class="detail" id="lat-context"></p>
-    </div>
-
+    <!-- 3. Maths Problem -->
     <div class="tile c1">
       <p class="lbl">🔢 Maths Problem</p>
-      <p class="sub" style="font-style:normal;font-size:clamp(0.85rem,1.1vw,1.1rem);" id="m-q"></p>
-      <button class="rbtn" onclick="rev('m-ans',this)">Answer</button>
+      <p class="body" style="font-size:clamp(1rem,1.5vw,1.5rem);font-style:normal;color:var(--ink);flex-shrink:0;" id="m-q"></p>
+      <button class="rbtn" onclick="rev('m-ans',this)">Show Answer</button>
       <p class="rans" id="m-ans"></p>
     </div>
 
+    <!-- 4. Joke of the Day -->
     <div class="tile c4">
       <p class="lbl">😄 Joke of the Day</p>
       <p class="main" id="j-q"></p>
@@ -130,374 +108,149 @@
       <p class="rans" id="j-ans"></p>
     </div>
 
-    <!-- Row 2 -->
+    <!-- 5. Literary Quote -->
     <div class="tile c4">
       <p class="lbl">📚 Literary Quote</p>
       <p class="qt" id="qt-text"></p>
-      <p class="detail" id="qt-author"></p>
+      <p class="foot" id="qt-author"></p>
     </div>
 
+    <!-- 6. On This Day -->
     <div class="tile c5">
       <p class="lbl">📅 On This Day</p>
-      <p class="main" id="otd-year" style="font-size:clamp(1.1rem,1.8vw,1.8rem);"></p>
-      <p class="sub" id="otd-event"></p>
+      <p class="main" style="font-size:clamp(2.5rem,4vw,4.5rem);" id="otd-year"></p>
+      <p class="body" id="otd-event"></p>
     </div>
 
+    <!-- 7. Born Today -->
     <div class="tile c2">
       <p class="lbl">🎂 Born Today</p>
-      <p class="main" id="born-name" style="font-size:clamp(0.85rem,1.1vw,1.1rem);"></p>
-      <p class="sub" id="born-desc"></p>
+      <p class="main" style="font-size:clamp(1.2rem,1.8vw,2rem);" id="born-name"></p>
+      <p class="body" id="born-desc"></p>
     </div>
 
+    <!-- 8. Science Fact -->
+    <div class="tile c6">
+      <p class="lbl">🔬 Science Fact</p>
+      <p class="body" style="font-size:clamp(1rem,1.4vw,1.4rem);font-style:normal;color:var(--ink);line-height:1.5;" id="sci"></p>
+    </div>
+
+    <!-- 9. Guess the Flag -->
     <div class="tile c6">
       <p class="lbl">🚩 Guess the Flag</p>
       <img class="flag-img" id="flag-img" src="" alt="Flag" />
-      <button class="rbtn" onclick="rev('flag-ans',this)">Reveal</button>
+      <button class="rbtn" onclick="rev('flag-ans',this)">Reveal Country</button>
       <p class="rans" id="flag-ans"></p>
     </div>
 
-    <div class="tile c1">
-      <p class="lbl">🏛️ Guess the Capital</p>
-      <p class="main" id="cap-q" style="font-size:clamp(1rem,1.4vw,1.5rem);"></p>
-      <button class="rbtn" onclick="rev('cap-ans',this)">Reveal</button>
-      <p class="rans" id="cap-ans"></p>
-    </div>
-
-    <!-- Row 3 -->
-    <div class="tile c6">
-      <p class="lbl">🔬 Science Fact</p>
-      <p class="sub" style="font-style:normal;font-size:clamp(0.82rem,1.1vw,1.1rem);line-height:1.45;" id="sci"></p>
-    </div>
-
-    <div class="tile c5">
-      <p class="lbl">🌍 Geography Fact</p>
-      <p class="sub" style="font-style:normal;font-size:clamp(0.82rem,1.1vw,1.1rem);line-height:1.45;" id="geo"></p>
-    </div>
-
+    <!-- 10. Name the Element -->
     <div class="tile c5">
       <p class="lbl">⚗️ Name the Element</p>
       <p class="elsym" id="el-sym"></p>
-      <p class="sub" id="el-hint"></p>
-      <button class="rbtn" onclick="rev('el-ans',this)">Reveal</button>
+      <p class="pos" id="el-hint"></p>
+      <button class="rbtn" onclick="rev('el-ans',this)">Reveal Element</button>
       <p class="rans" id="el-ans"></p>
     </div>
 
+    <!-- 11. French Word -->
     <div class="tile c1">
-      <p class="lbl">🇫🇷 French</p>
+      <p class="lbl">🇫🇷 French Word of the Day</p>
       <p class="main" id="fr-w"></p>
-      <p class="sub" id="fr-pos"></p>
-      <p class="detail" id="fr-m"></p>
+      <p class="pos" id="fr-pos"></p>
+      <p class="body" id="fr-m"></p>
     </div>
 
-    <div class="tile c2">
-      <p class="lbl">🇩🇪 German</p>
-      <p class="main" id="de-w"></p>
-      <p class="sub" id="de-pos"></p>
-      <p class="detail" id="de-m"></p>
-    </div>
-
-    <div class="tile c4">
-      <p class="lbl">🇪🇸 Spanish</p>
-      <p class="main" id="es-w"></p>
-      <p class="sub" id="es-pos"></p>
-      <p class="detail" id="es-m"></p>
-    </div>
-
+    <!-- 12. Chinese Character -->
     <div class="tile c2">
       <p class="lbl">🇨🇳 Chinese Character</p>
       <p class="zh" id="zh-c"></p>
-      <p class="sub" id="zh-p"></p>
-      <p class="detail" id="zh-m"></p>
+      <p class="pos" id="zh-p"></p>
+      <p class="body" id="zh-m"></p>
     </div>
 
   </div>
 </div>
 
 <script>
-// ── ALL DATA DEFINED FIRST ────────────────────────────────────────────
+// ── ALL DATA ─────────────────────────────────────────────────────────
 
 const words=[
-  {w:"Ephemeral",pos:"adj.",def:"Lasting only a short time. Greek ephemeros, 'lasting a day'."},
-  {w:"Mellifluous",pos:"adj.",def:"Sweet and musical to hear. Latin mel (honey) + fluere (flow)."},
-  {w:"Perspicacious",pos:"adj.",def:"Having shrewd insight. Latin perspicax, 'sharp-sighted'."},
-  {w:"Sanguine",pos:"adj.",def:"Optimistic in difficulty. Latin sanguis, 'blood'."},
-  {w:"Tenacious",pos:"adj.",def:"Persistent; holding firmly. Latin tenax, 'holding fast'."},
-  {w:"Loquacious",pos:"adj.",def:"Tending to talk a great deal. Latin loquax."},
+  {w:"Ephemeral",pos:"adjective",def:"Lasting only a short time. From Greek ephemeros, 'lasting a day'."},
+  {w:"Mellifluous",pos:"adjective",def:"Sweet and musical to hear. Latin mel (honey) + fluere (to flow)."},
+  {w:"Perspicacious",pos:"adjective",def:"Having shrewd insight into things. Latin perspicax, 'sharp-sighted'."},
+  {w:"Sanguine",pos:"adjective",def:"Optimistic, especially in a difficult situation. Latin sanguis, 'blood'."},
+  {w:"Tenacious",pos:"adjective",def:"Persistent; holding firmly to something. Latin tenax, 'holding fast'."},
+  {w:"Loquacious",pos:"adjective",def:"Tending to talk a great deal. Latin loquax, 'chattering'."},
   {w:"Obfuscate",pos:"verb",def:"To make unclear or confusing. Latin obfuscare, 'to darken'."},
-  {w:"Serendipity",pos:"noun",def:"Happy events by chance. Coined by Horace Walpole, 1754."},
-  {w:"Eloquent",pos:"adj.",def:"Fluent and persuasive. Latin eloqui, 'to speak out'."},
-  {w:"Magnanimous",pos:"adj.",def:"Generous in forgiving. Latin magnus + animus."},
-  {w:"Pernicious",pos:"adj.",def:"Gradually harmful. Latin perniciosus, 'destructive'."},
-  {w:"Cogent",pos:"adj.",def:"Clear, logical, convincing. Latin cogens, 'compelling'."},
-  {w:"Erudite",pos:"adj.",def:"Having great knowledge. Latin eruditus, 'educated'."},
-  {w:"Gregarious",pos:"adj.",def:"Fond of company. Latin gregarius, 'of a flock'."},
-  {w:"Hubris",pos:"noun",def:"Excessive pride. Greek hybris."},
-  {w:"Laconic",pos:"adj.",def:"Using very few words. From Laconia (Sparta)."},
-  {w:"Meticulous",pos:"adj.",def:"Great attention to detail. Latin meticulosus."},
-  {w:"Pragmatic",pos:"adj.",def:"Dealing with things practically. Greek pragmatikos."},
-  {w:"Resilient",pos:"adj.",def:"Recovering quickly from difficulty. Latin resilire."},
-  {w:"Ubiquitous",pos:"adj.",def:"Present everywhere. Latin ubique, 'everywhere'."},
-];
-
-const spellings=[
-  {hint:"The opposite of private",word:"PUBLIC",def:"Open to everyone."},
-  {hint:"A sudden event",word:"OCCURRENCE",def:"An event or happening."},
-  {hint:"The group that rules a country",word:"GOVERNMENT",def:"The body that rules a state."},
-  {hint:"Feeling thankful",word:"GRATEFUL",def:"Feeling appreciation for kindness."},
-  {hint:"Causing awkwardness",word:"EMBARRASSING",def:"Causing self-conscious awkwardness."},
-  {hint:"Absolutely necessary",word:"ESSENTIAL",def:"Absolutely necessary; crucial."},
-  {hint:"Certain to happen",word:"INEVITABLE",def:"Impossible to avoid or prevent."},
-  {hint:"Very large in size",word:"ENORMOUS",def:"Very large; huge."},
-  {hint:"A proposed scientific explanation",word:"HYPOTHESIS",def:"A proposed explanation to be tested."},
-  {hint:"Involving more than one country",word:"INTERNATIONAL",def:"Relating to multiple nations."},
-  {hint:"Causing disagreement",word:"CONTROVERSIAL",def:"Causing public debate."},
-  {hint:"Intense eager interest",word:"ENTHUSIASM",def:"Intense and eager enjoyment."},
-  {hint:"Easily broken",word:"FRAGILE",def:"Easily broken or damaged."},
-  {hint:"The highest law-making body",word:"PARLIAMENT",def:"The highest legislative body."},
-  {hint:"Impressively beautiful",word:"MAGNIFICENT",def:"Impressively beautiful."},
-  {hint:"Facts gained through experience",word:"KNOWLEDGE",def:"Information acquired through experience."},
-  {hint:"A place where books are kept",word:"LIBRARY",def:"A building containing books for borrowing."},
-  {hint:"At the same time",word:"SIMULTANEOUSLY",def:"Happening at exactly the same time."},
-  {hint:"Relating to the North Pole",word:"ARCTIC",def:"Relating to the North Pole region."},
-  {hint:"A scientist of ancient civilisations",word:"ARCHAEOLOGIST",def:"A scientist who studies ancient remains."},
+  {w:"Serendipity",pos:"noun",def:"Happy events occurring by chance. Coined by Horace Walpole, 1754."},
+  {w:"Eloquent",pos:"adjective",def:"Fluent and persuasive in speech or writing. Latin eloqui, 'to speak out'."},
+  {w:"Magnanimous",pos:"adjective",def:"Generous in forgiving. Latin magnus (great) + animus (soul)."},
+  {w:"Pernicious",pos:"adjective",def:"Gradually harmful. Latin perniciosus, 'destructive'."},
+  {w:"Cogent",pos:"adjective",def:"Clear, logical and convincing. Latin cogens, 'compelling'."},
+  {w:"Erudite",pos:"adjective",def:"Having great knowledge. Latin eruditus, 'educated'."},
+  {w:"Gregarious",pos:"adjective",def:"Fond of company; sociable. Latin gregarius, 'of a flock'."},
+  {w:"Hubris",pos:"noun",def:"Excessive pride or self-confidence. Greek hybris."},
+  {w:"Laconic",pos:"adjective",def:"Using very few words. From Laconia (Sparta), known for brief speech."},
+  {w:"Meticulous",pos:"adjective",def:"Showing great attention to detail. Latin meticulosus, 'fearful'."},
+  {w:"Pragmatic",pos:"adjective",def:"Dealing with things sensibly and practically. Greek pragmatikos."},
+  {w:"Resilient",pos:"adjective",def:"Recovering quickly from difficulties. Latin resilire, 'to spring back'."},
+  {w:"Ubiquitous",pos:"adjective",def:"Present everywhere at once. Latin ubique, 'everywhere'."},
+  {w:"Zealous",pos:"adjective",def:"Having great energy for a cause. Greek zelos, 'ardour'."},
+  {w:"Acrimony",pos:"noun",def:"Bitterness in speech or manner. Latin acrimonia, 'sharpness'."},
+  {w:"Nefarious",pos:"adjective",def:"Wicked and criminal. Latin nefarius, 'wicked'."},
+  {w:"Sagacious",pos:"adjective",def:"Having good judgement. Latin sagax, 'keen-scented'."},
+  {w:"Taciturn",pos:"adjective",def:"Reserved; saying little. Latin taciturnus, 'silent'."},
+  {w:"Verbose",pos:"adjective",def:"Using more words than needed. Latin verbosus, 'full of words'."},
+  {w:"Wistful",pos:"adjective",def:"Having a feeling of vague longing or regret."},
+  {w:"Impetuous",pos:"adjective",def:"Acting quickly without thinking. Latin impetuosus, 'violent'."},
+  {w:"Mendacious",pos:"adjective",def:"Not telling the truth. Latin mendax, 'lying'."},
+  {w:"Circumspect",pos:"adjective",def:"Wary and careful. Latin circumspectus, 'looking around'."},
 ];
 
 const idioms=[
-  {idiom:"Break the ice",meaning:"Make people feel comfortable in a new situation."},
-  {idiom:"Hit the nail on the head",meaning:"Say exactly the right thing."},
-  {idiom:"Bite the bullet",meaning:"Endure a difficult situation bravely."},
-  {idiom:"Beat around the bush",meaning:"Avoid the main point."},
-  {idiom:"Burn the midnight oil",meaning:"Work late into the night."},
-  {idiom:"Every cloud has a silver lining",meaning:"Something positive exists in every bad situation."},
-  {idiom:"Kill two birds with one stone",meaning:"Achieve two things with one action."},
-  {idiom:"Let the cat out of the bag",meaning:"Accidentally reveal a secret."},
-  {idiom:"Once in a blue moon",meaning:"Very rarely."},
-  {idiom:"Sit on the fence",meaning:"Avoid committing to an opinion."},
-  {idiom:"The tip of the iceberg",meaning:"A small visible part of a much larger problem."},
-  {idiom:"Under the weather",meaning:"Feeling slightly unwell."},
-  {idiom:"Back to the drawing board",meaning:"Start again after a failure."},
-  {idiom:"Miss the boat",meaning:"Miss an opportunity."},
-  {idiom:"No pain, no gain",meaning:"Hard work leads to success."},
-  {idiom:"Strike while the iron is hot",meaning:"Act at the right moment."},
-  {idiom:"Raining cats and dogs",meaning:"Raining very heavily."},
-  {idiom:"Put your foot in your mouth",meaning:"Say something that embarrasses someone."},
-  {idiom:"In the heat of the moment",meaning:"Acting on emotion without thinking."},
-  {idiom:"Don't judge a book by its cover",meaning:"Don't judge by appearances alone."},
-];
-
-const latinPhrases=[
-  {phrase:"Carpe diem",meaning:"Seize the day",context:"Horace — enjoy the present."},
-  {phrase:"Cogito, ergo sum",meaning:"I think, therefore I am",context:"Descartes — proof of existence."},
-  {phrase:"Veni, vidi, vici",meaning:"I came, I saw, I conquered",context:"Julius Caesar, 47 BC."},
-  {phrase:"In medias res",meaning:"Into the middle of things",context:"Narrative technique — starting mid-action."},
-  {phrase:"Ad hominem",meaning:"To the person",context:"Attacking the person, not the argument."},
-  {phrase:"Status quo",meaning:"The existing state of affairs",context:"The current situation before change."},
-  {phrase:"Bona fide",meaning:"In good faith; genuine",context:"Something authentic or sincere."},
-  {phrase:"Magna Carta",meaning:"Great Charter",context:"1215 — limited royal power in England."},
-  {phrase:"Vice versa",meaning:"The other way around",context:"With the main terms reversed."},
-  {phrase:"Habeas corpus",meaning:"You shall have the body",context:"Right to be brought before a court."},
-  {phrase:"Mea culpa",meaning:"My fault",context:"An acknowledgement of one's own error."},
-  {phrase:"Tempus fugit",meaning:"Time flies",context:"Time passes quickly — use it wisely."},
-  {phrase:"Sine qua non",meaning:"Without which, nothing",context:"An absolutely essential condition."},
-  {phrase:"Terra firma",meaning:"Firm ground",context:"Solid earth, as opposed to water."},
-  {phrase:"Caveat emptor",meaning:"Let the buyer beware",context:"The buyer must check quality before purchasing."},
-  {phrase:"Verbatim",meaning:"Word for word",context:"Exactly as said or written."},
-  {phrase:"In loco parentis",meaning:"In the place of a parent",context:"A school's legal responsibility for students."},
-  {phrase:"Prima facie",meaning:"At first sight",context:"Evidence accepted as correct until disproved."},
-  {phrase:"Ipso facto",meaning:"By the fact itself",context:"As a direct consequence of a particular fact."},
-  {phrase:"Per se",meaning:"By itself; in itself",context:"Used to mean 'inherently' or 'as such'."},
+  {idiom:"Break the ice",meaning:"Do something to make people feel comfortable in a new situation.",example:"He told a joke to break the ice at the start of the lesson."},
+  {idiom:"Hit the nail on the head",meaning:"Say exactly the right thing; be completely accurate.",example:"You hit the nail on the head with that analysis."},
+  {idiom:"Bite the bullet",meaning:"Endure a painful or difficult situation bravely.",example:"I had to bite the bullet and redo the whole essay."},
+  {idiom:"Beat around the bush",meaning:"Avoid coming to the main point; talk around a subject.",example:"Stop beating around the bush and tell me what happened."},
+  {idiom:"Burn the midnight oil",meaning:"Work or study late into the night.",example:"She burned the midnight oil finishing her revision."},
+  {idiom:"Every cloud has a silver lining",meaning:"There is something positive in every bad situation.",example:"He failed the test but learned a lot — every cloud has a silver lining."},
+  {idiom:"Kill two birds with one stone",meaning:"Achieve two things with a single action.",example:"I'll kill two birds with one stone and post the letter on the way to school."},
+  {idiom:"Let the cat out of the bag",meaning:"Accidentally reveal a secret.",example:"She let the cat out of the bag about the surprise party."},
+  {idiom:"Once in a blue moon",meaning:"Very rarely.",example:"We only have a snow day once in a blue moon."},
+  {idiom:"Sit on the fence",meaning:"Avoid committing to an opinion or decision.",example:"Politicians often sit on the fence on difficult questions."},
+  {idiom:"The tip of the iceberg",meaning:"A small visible part of a much larger problem.",example:"These exam results are just the tip of the iceberg."},
+  {idiom:"Under the weather",meaning:"Feeling slightly unwell.",example:"I'm a bit under the weather today — I have a headache."},
+  {idiom:"Back to the drawing board",meaning:"Start something again after a failure.",example:"The plan didn't work — it's back to the drawing board."},
+  {idiom:"Miss the boat",meaning:"Miss an opportunity.",example:"If you don't apply now, you'll miss the boat."},
+  {idiom:"No pain, no gain",meaning:"Hard work and effort lead to success.",example:"Keep revising — no pain, no gain."},
+  {idiom:"Strike while the iron is hot",meaning:"Act at the right moment; seize an opportunity.",example:"Apply now — strike while the iron is hot."},
+  {idiom:"Raining cats and dogs",meaning:"Raining very heavily.",example:"Take an umbrella — it's raining cats and dogs."},
+  {idiom:"Don't judge a book by its cover",meaning:"Don't judge something solely by its appearance.",example:"He seemed unfriendly at first, but don't judge a book by its cover."},
+  {idiom:"In the heat of the moment",meaning:"Acting on emotion without thinking first.",example:"She said something she regretted in the heat of the moment."},
+  {idiom:"Put your foot in your mouth",meaning:"Say something that embarrasses or upsets someone.",example:"I really put my foot in my mouth at the meeting."},
 ];
 
 const mathsProblems=[
-  {q:"Train: 80 km/h for 2.5 hours. Distance?",a:"200 km  (80 × 2.5)"},
-  {q:"What is 15% of 240?",a:"36  (240 × 0.15)"},
-  {q:"Rectangle: 12 cm × 7 cm. Area?",a:"84 cm²"},
-  {q:"Solve: 3x + 7 = 22",a:"x = 5  (3x = 15)"},
-  {q:"Next prime number after 13?",a:"17"},
-  {q:"£60 reduced by 20%. Sale price?",a:"£48  (60 × 0.8)"},
-  {q:"HCF of 36 and 48?",a:"12"},
-  {q:"3 red, 5 blue balls. P(red)?",a:"3/8"},
-  {q:"What is 2⁸?",a:"256"},
-  {q:"Mean of: 4, 7, 9, 12, 8?",a:"8  (sum=40, ÷5)"},
-  {q:"What is √144?",a:"12"},
-  {q:"Convert 3/8 to a decimal.",a:"0.375  (3÷8)"},
-  {q:"Volume of cube, side 4 cm?",a:"64 cm³  (4³)"},
-  {q:"y = 2x − 3. Find y when x = 7.",a:"y = 11  (14−3)"},
-  {q:"Triangle: base 10, height 6. Area?",a:"30 cm²  (½×10×6)"},
-  {q:"Expand: (x + 3)(x + 5)",a:"x² + 8x + 15"},
-  {q:"LCM of 4 and 6?",a:"12"},
-  {q:"What is 3/4 + 1/6?",a:"11/12"},
-  {q:"Gradient of y = 3x + 7?",a:"3  (coefficient of x)"},
+  {q:"A train travels at 80 km/h for 2.5 hours. How far does it travel?",a:"200 km  (80 × 2.5)"},
+  {q:"What is 15% of 240?",a:"36  (240 × 0.15 = 36)"},
+  {q:"A rectangle has length 12 cm and width 7 cm. What is its area?",a:"84 cm²  (12 × 7)"},
+  {q:"Solve:  3x + 7 = 22",a:"x = 5  (3x = 15, x = 5)"},
+  {q:"What is the next prime number after 13?",a:"17  (primes: 2, 3, 5, 7, 11, 13, 17...)"},
+  {q:"A £60 item is reduced by 20%. What is the sale price?",a:"£48  (60 × 0.8 = 48)"},
+  {q:"What is the HCF of 36 and 48?",a:"12"},
+  {q:"A bag has 3 red and 5 blue balls. What is P(red)?",a:"3/8"},
+  {q:"What is 2⁸?",a:"256  (2×2×2×2×2×2×2×2)"},
+  {q:"Find the mean of: 4, 7, 9, 12, 8",a:"8  (sum = 40, ÷ 5 = 8)"},
+  {q:"What is √144?",a:"12  (12 × 12 = 144)"},
+  {q:"Convert 3/8 to a decimal.",a:"0.375  (3 ÷ 8)"},
+  {q:"What is the volume of a cube with side 4 cm?",a:"64 cm³  (4³ = 64)"},
+  {q:"If y = 2x − 3, what is y when x = 7?",a:"y = 11  (14 − 3 = 11)"},
+  {q:"A triangle has base 10 cm and height 6 cm. What is its area?",a:"30 cm²  (½ × 10 × 6)"},
+  {q:"Expand:  (x + 3)(x + 5)",a:"x² + 8x + 15"},
+  {q:"What is the LCM of 4 and 6?",a:"12"},
+  {q:"What is 3/4 + 1/6?",a:"11/12  (9/12 + 2/12)"},
+  {q:"What is the gradient of  y = 3x + 7?",a:"3  (coefficient of x)"},
   {q:"What is 0.35 as a percentage?",a:"35%  (× 100)"},
-];
-
-const quotes=[
-  {t:"To be, or not to be, that is the question.",a:"Shakespeare — Hamlet (c.1600)"},
-  {t:"It was the best of times, it was the worst of times.",a:"Dickens — A Tale of Two Cities (1859)"},
-  {t:"All animals are equal, but some are more equal than others.",a:"Orwell — Animal Farm (1945)"},
-  {t:"Not all those who wander are lost.",a:"Tolkien — The Fellowship of the Ring (1954)"},
-  {t:"We accept the love we think we deserve.",a:"Chbosky — The Perks of Being a Wallflower (1999)"},
-  {t:"So we beat on, boats against the current, borne back ceaselessly into the past.",a:"Fitzgerald — The Great Gatsby (1925)"},
-  {t:"Two roads diverged in a wood, and I took the one less travelled by.",a:"Robert Frost — The Road Not Taken (1916)"},
-  {t:"To thine own self be true.",a:"Shakespeare — Hamlet (c.1600)"},
-  {t:"Knowledge is power.",a:"Francis Bacon — Meditationes Sacrae (1597)"},
-  {t:"I am no bird; and no net ensnares me.",a:"Charlotte Brontë — Jane Eyre (1847)"},
-  {t:"War is peace. Freedom is slavery. Ignorance is strength.",a:"Orwell — Nineteen Eighty-Four (1949)"},
-  {t:"There is no friend as loyal as a book.",a:"Ernest Hemingway"},
-  {t:"You never really understand a person until you consider things from his point of view.",a:"Harper Lee — To Kill a Mockingbird (1960)"},
-  {t:"Whatever our souls are made of, his and mine are the same.",a:"Emily Brontë — Wuthering Heights (1847)"},
-  {t:"The mystery of existence lies not in staying alive, but in finding something to live for.",a:"Dostoevsky — The Brothers Karamazov (1880)"},
-  {t:"It is our choices that show what we truly are, far more than our abilities.",a:"J.K. Rowling — Harry Potter (1998)"},
-  {t:"I took a deep breath and listened to the old brag of my heart: I am, I am, I am.",a:"Sylvia Plath — The Bell Jar (1963)"},
-  {t:"The greatest glory lies not in never falling, but in rising every time we fall.",a:"Nelson Mandela"},
-  {t:"It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",a:"Jane Austen — Pride and Prejudice (1813)"},
-  {t:"The world is a book, and those who do not travel read only one page.",a:"Saint Augustine (354–430 AD)"},
-];
-
-const scienceFacts=[
-  "Light travels at 299,792,458 m/s — fast enough to circle Earth 7.5 times per second.",
-  "DNA contains the genetic instructions for all living organisms.",
-  "The human body has approximately 37.2 trillion cells.",
-  "Water expands by about 9% when it freezes, making ice less dense than liquid water.",
-  "The Sun makes up 99.86% of the total mass of the Solar System.",
-  "Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
-  "The human brain uses 20% of the body's energy despite being only 2% of its mass.",
-  "Absolute zero is −273.15°C (0 Kelvin) — the coldest possible temperature.",
-  "Lightning strikes Earth approximately 100 times every second.",
-  "Diamonds are pure carbon — the same element as graphite in pencils.",
-  "Sound cannot travel through a vacuum — space is completely silent.",
-  "The heart beats approximately 100,000 times per day.",
-  "The ozone layer absorbs 97–99% of the Sun's ultraviolet radiation.",
-  "Octopuses have three hearts and blue blood due to copper-based haemocyanin.",
-  "A day on Venus is longer than a year on Venus.",
-  "Hydrogen makes up about 75% of all matter in the universe.",
-  "Enzymes are biological catalysts — they speed up reactions without being consumed.",
-  "The mantis shrimp can punch at 23 m/s — the speed of a bullet.",
-  "Gold is so malleable that 1 gram can be beaten into a 1 m² sheet.",
-  "The cornea is the only tissue in the human body with no blood supply.",
-];
-
-const geoFacts=[
-  "Russia covers 17.1 million km² — about 11% of Earth's total land surface.",
-  "The Nile (6,650 km) and Amazon (6,400 km) are the world's two longest rivers.",
-  "The Sahara covers 9.2 million km² — roughly the size of the United States.",
-  "Mount Everest is 8,849 metres above sea level — the world's highest peak.",
-  "The Mariana Trench is approximately 11,000 metres deep.",
-  "Vatican City covers just 0.44 km² — the world's smallest country.",
-  "The Amazon Rainforest produces approximately 20% of the world's oxygen.",
-  "90% of the world's earthquakes occur along the Pacific Ring of Fire.",
-  "Canada has the world's longest coastline at 202,080 km.",
-  "The Dead Sea is approximately 34% salt — ten times saltier than the ocean.",
-  "The Pacific Ocean is larger than all of Earth's land combined.",
-  "Angel Falls in Venezuela is the world's highest waterfall at 979 metres.",
-  "The world's population passed 8 billion in November 2022.",
-  "Tokyo is the world's most populous metro area with over 37 million people.",
-  "China shares borders with 14 countries — more than any other nation.",
-  "Australia is the only continent that is also a single country.",
-  "The Equator passes through 13 countries including Brazil, Kenya, and Indonesia.",
-  "Lake Baikal contains 20% of Earth's unfrozen fresh surface water.",
-  "Indonesia has 147 volcanoes — more than any other country.",
-  "Three-quarters of all international trade is transported by sea.",
-];
-
-const onThisDay=[
-  {year:"1940",event:"Winston Churchill became British Prime Minister during World War II."},
-  {year:"1869",event:"The Suez Canal opened, connecting the Mediterranean to the Red Sea."},
-  {year:"1903",event:"The Wright Brothers completed the first powered aeroplane flight at Kitty Hawk."},
-  {year:"1945",event:"World War II ended in Europe (VE Day) as Germany surrendered unconditionally."},
-  {year:"1969",event:"Apollo 11 landed on the Moon. Neil Armstrong became the first human to walk on it."},
-  {year:"1989",event:"The Berlin Wall fell, marking the end of Cold War division in Germany."},
-  {year:"1865",event:"Abraham Lincoln was assassinated at Ford's Theatre, Washington D.C."},
-  {year:"1912",event:"The Titanic sank in the North Atlantic after striking an iceberg."},
-  {year:"1963",event:"Martin Luther King Jr. delivered his 'I Have a Dream' speech in Washington D.C."},
-  {year:"1953",event:"Hillary and Tenzing Norgay became the first to summit Mount Everest."},
-  {year:"1492",event:"Columbus reached the Americas, making landfall in the Bahamas."},
-  {year:"1687",event:"Isaac Newton published Principia Mathematica, describing the laws of gravity."},
-  {year:"1859",event:"Darwin published On the Origin of Species, introducing the theory of evolution."},
-  {year:"1928",event:"Alexander Fleming discovered penicillin, revolutionising medicine."},
-  {year:"1955",event:"Rosa Parks refused to give up her bus seat, sparking the Montgomery Bus Boycott."},
-  {year:"1961",event:"Yuri Gagarin became the first human in space, orbiting Earth once."},
-  {year:"1990",event:"Nelson Mandela was released from prison after 27 years."},
-  {year:"1215",event:"King John signed Magna Carta at Runnymede, limiting royal power."},
-  {year:"1666",event:"The Great Fire of London destroyed much of the medieval city."},
-  {year:"1805",event:"Admiral Nelson won the Battle of Trafalgar, securing British naval supremacy."},
-];
-
-const bornToday=[
-  {name:"Marie Curie (1867–1934)",desc:"First woman to win a Nobel Prize; only person to win in two sciences."},
-  {name:"Albert Einstein (1879–1955)",desc:"Developed the theory of relativity; Nobel Prize in Physics 1921."},
-  {name:"William Shakespeare (1564–1616)",desc:"English playwright — wrote Hamlet, Macbeth, Romeo and Juliet."},
-  {name:"Charles Darwin (1809–1882)",desc:"Proposed the theory of evolution by natural selection."},
-  {name:"Ada Lovelace (1815–1852)",desc:"Considered the world's first computer programmer."},
-  {name:"Isaac Newton (1643–1727)",desc:"Formulated the laws of motion and universal gravitation."},
-  {name:"Florence Nightingale (1820–1910)",desc:"Founded modern nursing; revolutionised hospital conditions."},
-  {name:"Nelson Mandela (1918–2013)",desc:"First democratically elected President of South Africa."},
-  {name:"Alan Turing (1912–1954)",desc:"Pioneer of computer science; broke the Enigma code in WWII."},
-  {name:"Malala Yousafzai (1997–)",desc:"Youngest Nobel Peace Prize laureate; campaigns for girls' education."},
-  {name:"Stephen Hawking (1942–2018)",desc:"Pioneered work on black holes; wrote A Brief History of Time."},
-  {name:"Nikola Tesla (1856–1943)",desc:"Developed alternating current (AC) electrical systems."},
-  {name:"Harriet Tubman (1822–1913)",desc:"Led enslaved people to freedom via the Underground Railroad."},
-  {name:"Galileo Galilei (1564–1642)",desc:"Championed heliocentrism; improved the telescope."},
-  {name:"Leonardo da Vinci (1452–1519)",desc:"Artist, engineer, scientist — painted the Mona Lisa."},
-  {name:"Emmeline Pankhurst (1858–1928)",desc:"Led the suffragette movement that won women the vote in the UK."},
-  {name:"James Watt (1736–1819)",desc:"Improved the steam engine, catalysing the Industrial Revolution."},
-  {name:"Tim Berners-Lee (1955–)",desc:"British computer scientist — invented the World Wide Web in 1989."},
-  {name:"Frida Kahlo (1907–1954)",desc:"Mexican artist known for vivid self-portraits exploring identity."},
-  {name:"Rosalind Franklin (1920–1958)",desc:"Chemist whose X-ray work was crucial to discovering DNA's structure."},
-];
-
-const flags=[
-  {country:"Italy",code:"it"},{country:"France",code:"fr"},{country:"Germany",code:"de"},
-  {country:"Japan",code:"jp"},{country:"Brazil",code:"br"},{country:"Canada",code:"ca"},
-  {country:"Australia",code:"au"},{country:"India",code:"in"},{country:"China",code:"cn"},
-  {country:"Mexico",code:"mx"},{country:"South Korea",code:"kr"},{country:"Spain",code:"es"},
-  {country:"Argentina",code:"ar"},{country:"Nigeria",code:"ng"},{country:"Egypt",code:"eg"},
-  {country:"South Africa",code:"za"},{country:"Turkey",code:"tr"},{country:"Sweden",code:"se"},
-  {country:"Norway",code:"no"},{country:"Netherlands",code:"nl"},{country:"Portugal",code:"pt"},
-  {country:"Greece",code:"gr"},{country:"Poland",code:"pl"},{country:"Ukraine",code:"ua"},
-  {country:"Kenya",code:"ke"},{country:"Indonesia",code:"id"},{country:"Thailand",code:"th"},
-  {country:"New Zealand",code:"nz"},{country:"Ireland",code:"ie"},{country:"Denmark",code:"dk"},
-];
-
-const capitals=[
-  {country:"France",capital:"Paris"},{country:"Germany",capital:"Berlin"},
-  {country:"Japan",capital:"Tokyo"},{country:"Brazil",capital:"Brasília"},
-  {country:"Canada",capital:"Ottawa"},{country:"Australia",capital:"Canberra"},
-  {country:"India",capital:"New Delhi"},{country:"China",capital:"Beijing"},
-  {country:"Mexico",capital:"Mexico City"},{country:"South Korea",capital:"Seoul"},
-  {country:"Italy",capital:"Rome"},{country:"Spain",capital:"Madrid"},
-  {country:"Argentina",capital:"Buenos Aires"},{country:"Nigeria",capital:"Abuja"},
-  {country:"Egypt",capital:"Cairo"},{country:"South Africa",capital:"Pretoria"},
-  {country:"Turkey",capital:"Ankara"},{country:"Sweden",capital:"Stockholm"},
-  {country:"Norway",capital:"Oslo"},{country:"Netherlands",capital:"Amsterdam"},
-  {country:"Portugal",capital:"Lisbon"},{country:"Greece",capital:"Athens"},
-  {country:"Poland",capital:"Warsaw"},{country:"Ukraine",capital:"Kyiv"},
-  {country:"Kenya",capital:"Nairobi"},{country:"Indonesia",capital:"Jakarta"},
-  {country:"Thailand",capital:"Bangkok"},{country:"New Zealand",capital:"Wellington"},
-  {country:"Ireland",capital:"Dublin"},{country:"Denmark",capital:"Copenhagen"},
-];
-
-const elements=[
-  {sym:"H",name:"Hydrogen",hint:"Lightest element; atomic number 1"},
-  {sym:"He",name:"Helium",hint:"Noble gas; used in balloons"},
-  {sym:"C",name:"Carbon",hint:"Basis of all organic life"},
-  {sym:"N",name:"Nitrogen",hint:"Makes up 78% of Earth's atmosphere"},
-  {sym:"O",name:"Oxygen",hint:"Essential for breathing; atomic number 8"},
-  {sym:"Na",name:"Sodium",hint:"From Latin 'Natrium'; found in salt"},
-  {sym:"Fe",name:"Iron",hint:"From Latin 'Ferrum'; magnetic metal"},
-  {sym:"Cu",name:"Copper",hint:"From Latin 'Cuprum'; reddish conductor"},
-  {sym:"Au",name:"Gold",hint:"From Latin 'Aurum'; symbol of wealth"},
-  {sym:"Ag",name:"Silver",hint:"From Latin 'Argentum'; best conductor"},
-  {sym:"Hg",name:"Mercury",hint:"Only liquid metal at room temperature"},
-  {sym:"Pb",name:"Lead",hint:"From Latin 'Plumbum'; dense soft metal"},
-  {sym:"K",name:"Potassium",hint:"From Latin 'Kalium'; found in bananas"},
-  {sym:"Ca",name:"Calcium",hint:"Essential for bones and teeth"},
-  {sym:"Cl",name:"Chlorine",hint:"Yellow-green gas; used to purify water"},
-  {sym:"P",name:"Phosphorus",hint:"Essential for DNA and ATP"},
-  {sym:"S",name:"Sulfur",hint:"Yellow solid; smell of rotten eggs"},
-  {sym:"Mg",name:"Magnesium",hint:"Burns with a bright white flame"},
-  {sym:"Al",name:"Aluminium",hint:"Most abundant metal in Earth's crust"},
-  {sym:"U",name:"Uranium",hint:"Radioactive; used in nuclear fuel"},
 ];
 
 const jokes=[
@@ -523,99 +276,181 @@ const jokes=[
   {q:"What do you call a fake noodle?",a:"An impasta!"},
 ];
 
+const quotes=[
+  {t:"To be, or not to be, that is the question.",a:"Shakespeare — Hamlet (c.1600)"},
+  {t:"It was the best of times, it was the worst of times.",a:"Dickens — A Tale of Two Cities (1859)"},
+  {t:"All animals are equal, but some animals are more equal than others.",a:"Orwell — Animal Farm (1945)"},
+  {t:"Not all those who wander are lost.",a:"Tolkien — The Fellowship of the Ring (1954)"},
+  {t:"We accept the love we think we deserve.",a:"Chbosky — The Perks of Being a Wallflower (1999)"},
+  {t:"So we beat on, boats against the current, borne back ceaselessly into the past.",a:"Fitzgerald — The Great Gatsby (1925)"},
+  {t:"Two roads diverged in a wood, and I took the one less travelled by.",a:"Robert Frost — The Road Not Taken (1916)"},
+  {t:"To thine own self be true.",a:"Shakespeare — Hamlet (c.1600)"},
+  {t:"Knowledge is power.",a:"Francis Bacon (1597)"},
+  {t:"I am no bird; and no net ensnares me.",a:"Charlotte Brontë — Jane Eyre (1847)"},
+  {t:"War is peace. Freedom is slavery. Ignorance is strength.",a:"Orwell — Nineteen Eighty-Four (1949)"},
+  {t:"There is no friend as loyal as a book.",a:"Ernest Hemingway"},
+  {t:"You never really understand a person until you consider things from his point of view.",a:"Harper Lee — To Kill a Mockingbird (1960)"},
+  {t:"Whatever our souls are made of, his and mine are the same.",a:"Emily Brontë — Wuthering Heights (1847)"},
+  {t:"The greatest glory lies not in never falling, but in rising every time we fall.",a:"Nelson Mandela"},
+  {t:"It is our choices that show what we truly are, far more than our abilities.",a:"J.K. Rowling — Harry Potter (1998)"},
+  {t:"I took a deep breath and listened to the old brag of my heart: I am, I am, I am.",a:"Sylvia Plath — The Bell Jar (1963)"},
+  {t:"The world is a book, and those who do not travel read only one page.",a:"Saint Augustine"},
+  {t:"It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",a:"Jane Austen — Pride and Prejudice (1813)"},
+  {t:"The mystery of existence lies not in staying alive, but in finding something to live for.",a:"Dostoevsky — The Brothers Karamazov (1880)"},
+];
+
+const scienceFacts=[
+  "Light travels at 299,792,458 m/s — fast enough to circle Earth 7.5 times per second.",
+  "DNA contains the genetic instructions for all living organisms. It stands for Deoxyribonucleic Acid.",
+  "The human body has approximately 37.2 trillion cells.",
+  "Water expands by about 9% when it freezes, which is why ice floats on water.",
+  "The Sun makes up about 99.86% of the total mass of the Solar System.",
+  "Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
+  "The human brain uses 20% of the body's energy despite being just 2% of its mass.",
+  "Absolute zero — the coldest possible temperature — is −273.15°C (0 Kelvin).",
+  "Lightning strikes Earth approximately 100 times every second.",
+  "Diamonds are made of pure carbon — the same element as graphite in pencils.",
+  "Sound cannot travel through a vacuum. Space is completely silent.",
+  "The heart beats approximately 100,000 times per day.",
+  "The ozone layer absorbs 97–99% of the Sun's ultraviolet radiation.",
+  "Octopuses have three hearts and blue blood due to copper-based haemocyanin.",
+  "A day on Venus is longer than a year on Venus.",
+  "Hydrogen makes up about 75% of all matter in the universe.",
+  "Enzymes are biological catalysts — they speed up reactions without being consumed.",
+  "The mantis shrimp can punch at 23 m/s — comparable to the speed of a bullet.",
+  "Gold is so malleable that 1 gram can be beaten into a 1 m² sheet.",
+  "The cornea is the only tissue in the human body with no blood supply.",
+];
+
+const onThisDay=[
+  {year:"1940",event:"Winston Churchill became Prime Minister of the United Kingdom at the start of World War II."},
+  {year:"1869",event:"The Suez Canal opened in Egypt, connecting the Mediterranean Sea to the Red Sea."},
+  {year:"1903",event:"The Wright Brothers completed the first powered aeroplane flight at Kitty Hawk, North Carolina."},
+  {year:"1945",event:"World War II ended in Europe (VE Day) as Germany surrendered unconditionally to the Allies."},
+  {year:"1969",event:"Apollo 11 landed on the Moon. Neil Armstrong became the first human to walk on another world."},
+  {year:"1989",event:"The Berlin Wall fell, marking the end of the Cold War division of Germany and Europe."},
+  {year:"1865",event:"Abraham Lincoln was assassinated at Ford's Theatre, Washington D.C., by John Wilkes Booth."},
+  {year:"1912",event:"The RMS Titanic sank in the North Atlantic Ocean after striking an iceberg, killing over 1,500 people."},
+  {year:"1963",event:"Martin Luther King Jr. delivered his 'I Have a Dream' speech at the March on Washington."},
+  {year:"1953",event:"Edmund Hillary and Tenzing Norgay became the first people to summit Mount Everest."},
+  {year:"1492",event:"Christopher Columbus reached the Americas, making landfall in the Bahamas on 12 October."},
+  {year:"1687",event:"Isaac Newton published Principia Mathematica, setting out the laws of motion and gravity."},
+  {year:"1859",event:"Charles Darwin published On the Origin of Species, proposing the theory of evolution."},
+  {year:"1928",event:"Alexander Fleming discovered penicillin, accidentally finding the first antibiotic."},
+  {year:"1955",event:"Rosa Parks refused to give up her seat on a bus in Alabama, sparking the Montgomery Bus Boycott."},
+  {year:"1961",event:"Yuri Gagarin became the first human in space, orbiting Earth once in 108 minutes."},
+  {year:"1990",event:"Nelson Mandela was released from Victor Verster Prison after 27 years of imprisonment."},
+  {year:"1215",event:"King John signed Magna Carta at Runnymede, limiting royal power for the first time."},
+  {year:"1666",event:"The Great Fire of London broke out, destroying 13,200 houses and 87 churches over four days."},
+  {year:"1805",event:"Admiral Nelson defeated the French and Spanish fleets at the Battle of Trafalgar, dying in victory."},
+];
+
+const bornToday=[
+  {name:"Marie Curie",dates:"1867–1934",desc:"First woman to win a Nobel Prize — and the only person to win in two sciences (Physics and Chemistry)."},
+  {name:"Albert Einstein",dates:"1879–1955",desc:"Developed the theory of relativity. Won the Nobel Prize in Physics in 1921."},
+  {name:"William Shakespeare",dates:"1564–1616",desc:"English playwright and poet — wrote Hamlet, Macbeth, Romeo and Juliet, and 37 other plays."},
+  {name:"Charles Darwin",dates:"1809–1882",desc:"English naturalist who proposed the theory of evolution by natural selection."},
+  {name:"Ada Lovelace",dates:"1815–1852",desc:"English mathematician considered the world's first computer programmer."},
+  {name:"Isaac Newton",dates:"1643–1727",desc:"English physicist who formulated the laws of motion and universal gravitation."},
+  {name:"Florence Nightingale",dates:"1820–1910",desc:"English nurse who founded modern nursing and revolutionised hospital conditions."},
+  {name:"Nelson Mandela",dates:"1918–2013",desc:"South African leader — first democratically elected President; icon of the anti-apartheid movement."},
+  {name:"Alan Turing",dates:"1912–1954",desc:"English mathematician — pioneer of computer science who broke the Enigma code in World War II."},
+  {name:"Malala Yousafzai",dates:"1997–",desc:"Pakistani activist — the youngest Nobel Peace Prize laureate, campaigning for girls' education."},
+  {name:"Stephen Hawking",dates:"1942–2018",desc:"English physicist who pioneered work on black holes and wrote A Brief History of Time."},
+  {name:"Nikola Tesla",dates:"1856–1943",desc:"Serbian-American inventor who developed alternating current (AC) electrical systems."},
+  {name:"Harriet Tubman",dates:"1822–1913",desc:"American abolitionist who led dozens of enslaved people to freedom via the Underground Railroad."},
+  {name:"Galileo Galilei",dates:"1564–1642",desc:"Italian astronomer who championed the idea that the Earth orbits the Sun."},
+  {name:"Leonardo da Vinci",dates:"1452–1519",desc:"Italian polymath — artist, engineer and scientist. Painted the Mona Lisa."},
+  {name:"Emmeline Pankhurst",dates:"1858–1928",desc:"British suffragette who led the movement that won women the right to vote in the UK."},
+  {name:"James Watt",dates:"1736–1819",desc:"Scottish inventor who improved the steam engine and helped catalyse the Industrial Revolution."},
+  {name:"Tim Berners-Lee",dates:"1955–",desc:"British computer scientist who invented the World Wide Web in 1989."},
+  {name:"Rosalind Franklin",dates:"1920–1958",desc:"British chemist whose X-ray work was crucial to discovering the structure of DNA."},
+  {name:"Frida Kahlo",dates:"1907–1954",desc:"Mexican artist known for vivid self-portraits exploring identity, pain, and the human form."},
+];
+
+const flags=[
+  {country:"Italy",code:"it"},{country:"France",code:"fr"},{country:"Germany",code:"de"},
+  {country:"Japan",code:"jp"},{country:"Brazil",code:"br"},{country:"Canada",code:"ca"},
+  {country:"Australia",code:"au"},{country:"India",code:"in"},{country:"China",code:"cn"},
+  {country:"Mexico",code:"mx"},{country:"South Korea",code:"kr"},{country:"Spain",code:"es"},
+  {country:"Argentina",code:"ar"},{country:"Nigeria",code:"ng"},{country:"Egypt",code:"eg"},
+  {country:"South Africa",code:"za"},{country:"Turkey",code:"tr"},{country:"Sweden",code:"se"},
+  {country:"Norway",code:"no"},{country:"Netherlands",code:"nl"},{country:"Portugal",code:"pt"},
+  {country:"Greece",code:"gr"},{country:"Poland",code:"pl"},{country:"Ukraine",code:"ua"},
+  {country:"Kenya",code:"ke"},{country:"Indonesia",code:"id"},{country:"Thailand",code:"th"},
+  {country:"New Zealand",code:"nz"},{country:"Ireland",code:"ie"},{country:"Denmark",code:"dk"},
+];
+
+const elements=[
+  {sym:"H",name:"Hydrogen",hint:"Lightest element · atomic number 1"},
+  {sym:"He",name:"Helium",hint:"Noble gas · used in balloons"},
+  {sym:"C",name:"Carbon",hint:"Basis of all organic life"},
+  {sym:"N",name:"Nitrogen",hint:"78% of Earth's atmosphere"},
+  {sym:"O",name:"Oxygen",hint:"Essential for breathing · atomic number 8"},
+  {sym:"Na",name:"Sodium",hint:"From Latin 'Natrium' · found in salt"},
+  {sym:"Fe",name:"Iron",hint:"From Latin 'Ferrum' · magnetic metal"},
+  {sym:"Cu",name:"Copper",hint:"From Latin 'Cuprum' · reddish conductor"},
+  {sym:"Au",name:"Gold",hint:"From Latin 'Aurum' · symbol of wealth"},
+  {sym:"Ag",name:"Silver",hint:"From Latin 'Argentum' · best conductor"},
+  {sym:"Hg",name:"Mercury",hint:"Only liquid metal at room temperature"},
+  {sym:"Pb",name:"Lead",hint:"From Latin 'Plumbum' · dense soft metal"},
+  {sym:"K",name:"Potassium",hint:"From Latin 'Kalium' · found in bananas"},
+  {sym:"Ca",name:"Calcium",hint:"Essential for bones and teeth"},
+  {sym:"Cl",name:"Chlorine",hint:"Yellow-green gas · purifies water"},
+  {sym:"P",name:"Phosphorus",hint:"Essential for DNA and ATP"},
+  {sym:"S",name:"Sulfur",hint:"Yellow solid · smell of rotten eggs"},
+  {sym:"Mg",name:"Magnesium",hint:"Burns with a bright white flame"},
+  {sym:"Al",name:"Aluminium",hint:"Most abundant metal in Earth's crust"},
+  {sym:"U",name:"Uranium",hint:"Radioactive · used in nuclear fuel"},
+];
+
 const frWords=[
-  {w:"Bonjour",pos:"excl.",m:"Hello / Good day."},
-  {w:"Merci",pos:"excl.",m:"Thank you."},
-  {w:"Manger",pos:"verb",m:"To eat — je mange, tu manges."},
-  {w:"Parler",pos:"verb",m:"To speak — je parle, tu parles."},
-  {w:"Aller",pos:"verb (irr.)",m:"To go — je vais, tu vas."},
-  {w:"Avoir",pos:"verb (irr.)",m:"To have — j'ai, tu as, il a."},
-  {w:"Être",pos:"verb (irr.)",m:"To be — je suis, tu es, il est."},
-  {w:"Grand(e)",pos:"adj.",m:"Big / tall / great."},
-  {w:"Aujourd'hui",pos:"adv.",m:"Today."},
-  {w:"La maison",pos:"noun (f)",m:"The house / home."},
-  {w:"Le livre",pos:"noun (m)",m:"The book."},
-  {w:"L'école",pos:"noun (f)",m:"The school."},
-  {w:"Pouvoir",pos:"verb (irr.)",m:"Can — je peux, tu peux."},
-  {w:"Vouloir",pos:"verb (irr.)",m:"To want — je veux, tu veux."},
-  {w:"Savoir",pos:"verb (irr.)",m:"To know (a fact) — je sais."},
-  {w:"S'il vous plaît",pos:"phrase",m:"Please (formal)."},
-  {w:"Demain",pos:"adv.",m:"Tomorrow."},
-  {w:"Petit(e)",pos:"adj.",m:"Small / little."},
-  {w:"La vie",pos:"noun (f)",m:"Life."},
-  {w:"Le monde",pos:"noun (m)",m:"The world."},
-];
-
-const deWords=[
-  {w:"Guten Morgen",pos:"phrase",m:"Good morning."},
-  {w:"Danke",pos:"excl.",m:"Thank you."},
-  {w:"Bitte",pos:"excl.",m:"Please / You're welcome."},
-  {w:"Sprechen",pos:"verb",m:"To speak — ich spreche."},
-  {w:"Gehen",pos:"verb",m:"To go — ich gehe, du gehst."},
-  {w:"Haben",pos:"verb (irr.)",m:"To have — ich habe, du hast."},
-  {w:"Sein",pos:"verb (irr.)",m:"To be — ich bin, du bist."},
-  {w:"Das Buch",pos:"noun (n)",m:"The book."},
-  {w:"Die Schule",pos:"noun (f)",m:"The school."},
-  {w:"Groß",pos:"adj.",m:"Big / tall / great."},
-  {w:"Heute",pos:"adv.",m:"Today."},
-  {w:"Können",pos:"modal",m:"Can — ich kann, du kannst."},
-  {w:"Wollen",pos:"modal",m:"To want — ich will, du willst."},
-  {w:"Müssen",pos:"modal",m:"Must — ich muss, du musst."},
-  {w:"Schön",pos:"adj.",m:"Beautiful / nice."},
-  {w:"Neu",pos:"adj.",m:"New."},
-  {w:"Die Welt",pos:"noun (f)",m:"The world."},
-  {w:"Das Leben",pos:"noun (n)",m:"Life."},
-  {w:"Morgen",pos:"adv./noun",m:"Tomorrow / morning."},
-  {w:"Klein",pos:"adj.",m:"Small / little."},
-];
-
-const esWords=[
-  {w:"Buenos días",pos:"phrase",m:"Good morning."},
-  {w:"Gracias",pos:"excl.",m:"Thank you."},
-  {w:"Por favor",pos:"phrase",m:"Please."},
-  {w:"Hablar",pos:"verb",m:"To speak — hablo, hablas."},
-  {w:"Ir",pos:"verb (irr.)",m:"To go — voy, vas, va."},
-  {w:"Tener",pos:"verb (irr.)",m:"To have — tengo, tienes."},
-  {w:"Ser",pos:"verb (irr.)",m:"To be (permanent) — soy, eres."},
-  {w:"Estar",pos:"verb (irr.)",m:"To be (temporary) — estoy, estás."},
-  {w:"Grande",pos:"adj.",m:"Big / great."},
-  {w:"Hoy",pos:"adv.",m:"Today."},
-  {w:"El libro",pos:"noun (m)",m:"The book."},
-  {w:"La escuela",pos:"noun (f)",m:"The school."},
-  {w:"Poder",pos:"verb (irr.)",m:"Can — puedo, puedes."},
-  {w:"Querer",pos:"verb (irr.)",m:"To want/love — quiero, quieres."},
-  {w:"Saber",pos:"verb (irr.)",m:"To know (a fact) — sé, sabes."},
-  {w:"Nuevo/a",pos:"adj.",m:"New."},
-  {w:"Bonito/a",pos:"adj.",m:"Beautiful / pretty."},
-  {w:"La vida",pos:"noun (f)",m:"Life."},
-  {w:"El mundo",pos:"noun (m)",m:"The world."},
-  {w:"Mañana",pos:"adv.",m:"Tomorrow."},
+  {w:"Bonjour",pos:"exclamation",m:"Hello / Good day — the standard French greeting."},
+  {w:"Merci",pos:"exclamation",m:"Thank you."},
+  {w:"S'il vous plaît",pos:"phrase",m:"Please (formal) — literally 'if it pleases you'."},
+  {w:"Au revoir",pos:"phrase",m:"Goodbye — literally 'until we see again'."},
+  {w:"Manger",pos:"verb",m:"To eat — je mange, tu manges, il mange."},
+  {w:"Parler",pos:"verb",m:"To speak — je parle, tu parles, il parle."},
+  {w:"Aller",pos:"irregular verb",m:"To go — je vais, tu vas, il va."},
+  {w:"Avoir",pos:"irregular verb",m:"To have — j'ai, tu as, il a."},
+  {w:"Être",pos:"irregular verb",m:"To be — je suis, tu es, il est."},
+  {w:"Grand(e)",pos:"adjective",m:"Big / tall / great."},
+  {w:"Aujourd'hui",pos:"adverb",m:"Today."},
+  {w:"Demain",pos:"adverb",m:"Tomorrow."},
+  {w:"La maison",pos:"noun (feminine)",m:"The house / home."},
+  {w:"Le livre",pos:"noun (masculine)",m:"The book."},
+  {w:"L'école",pos:"noun (feminine)",m:"The school."},
+  {w:"Pouvoir",pos:"irregular verb",m:"To be able to / can — je peux, tu peux, il peut."},
+  {w:"Vouloir",pos:"irregular verb",m:"To want — je veux, tu veux, il veut."},
+  {w:"Savoir",pos:"irregular verb",m:"To know (a fact) — je sais, tu sais, il sait."},
+  {w:"Beau / Belle",pos:"adjective",m:"Beautiful — changes form by gender."},
+  {w:"Nouveau / Nouvelle",pos:"adjective",m:"New — changes form by gender."},
 ];
 
 const zhChars=[
-  {c:"人",p:"rén",m:"Person, people"},
-  {c:"大",p:"dà",m:"Big, large, great"},
-  {c:"小",p:"xiǎo",m:"Small, little"},
-  {c:"中",p:"zhōng",m:"Middle, centre, China"},
-  {c:"国",p:"guó",m:"Country, nation"},
-  {c:"好",p:"hǎo",m:"Good, well, fine"},
-  {c:"你",p:"nǐ",m:"You (singular)"},
-  {c:"我",p:"wǒ",m:"I, me"},
-  {c:"是",p:"shì",m:"To be, is, are"},
-  {c:"不",p:"bù",m:"No, not (negation)"},
-  {c:"有",p:"yǒu",m:"To have, there is"},
-  {c:"说",p:"shuō",m:"To say, to speak"},
-  {c:"来",p:"lái",m:"To come"},
-  {c:"去",p:"qù",m:"To go"},
-  {c:"学",p:"xué",m:"To study, school"},
-  {c:"年",p:"nián",m:"Year"},
-  {c:"月",p:"yuè",m:"Month, moon"},
-  {c:"日",p:"rì",m:"Day, sun"},
-  {c:"好",p:"hǎo",m:"Good, well, fine"},
-  {c:"时",p:"shí",m:"Time, hour, season"},
+  {c:"人",p:"rén",m:"Person, people — one of the most common characters in Chinese."},
+  {c:"大",p:"dà",m:"Big, large, great — opposite of 小 (xiǎo, small)."},
+  {c:"小",p:"xiǎo",m:"Small, little — used in 小学 (xiǎoxué, primary school)."},
+  {c:"中",p:"zhōng",m:"Middle, centre — also short for China (中国, Zhōngguó)."},
+  {c:"国",p:"guó",m:"Country, nation — used in 中国 (China) and 英国 (England)."},
+  {c:"好",p:"hǎo",m:"Good, well, fine — used in 你好 (nǐhǎo, hello)."},
+  {c:"你",p:"nǐ",m:"You (singular) — used in 你好 (hello) and 你是 (you are)."},
+  {c:"我",p:"wǒ",m:"I, me — one of the first characters learned."},
+  {c:"是",p:"shì",m:"To be, is, are — the main verb 'to be' in Chinese."},
+  {c:"不",p:"bù",m:"No, not — the main negation word. Tone changes before 4th tone."},
+  {c:"有",p:"yǒu",m:"To have, there is/are — 没有 (méiyǒu) means 'don't have / no'."},
+  {c:"说",p:"shuō",m:"To say, to speak, to tell."},
+  {c:"来",p:"lái",m:"To come — opposite of 去 (qù, to go)."},
+  {c:"去",p:"qù",m:"To go — opposite of 来 (lái, to come)."},
+  {c:"学",p:"xué",m:"To study, to learn — used in 学生 (xuésheng, student)."},
+  {c:"年",p:"nián",m:"Year — used in 今年 (jīnnián, this year)."},
+  {c:"月",p:"yuè",m:"Month, moon — 一月 (yīyuè) = January."},
+  {c:"日",p:"rì",m:"Day, sun — also the character for Japan (日本, Rìběn)."},
+  {c:"时",p:"shí",m:"Time, hour, season — used in 什么时候 (what time / when)."},
+  {c:"想",p:"xiǎng",m:"To think, to want, to miss someone."},
 ];
 
-// ── HELPERS ───────────────────────────────────────────────────────────
+// ── HELPERS ──────────────────────────────────────────────────────────
 function doy(){const n=new Date(),s=new Date(n.getFullYear(),0,0);return Math.floor((n-s)/86400000)-1;}
 function pick(arr){return arr[doy()%arr.length];}
 function rev(id,btn){document.getElementById(id).style.display='block';btn.style.display='none';}
@@ -632,19 +467,10 @@ document.getElementById('w-word').textContent=wd.w;
 document.getElementById('w-pos').textContent=wd.pos;
 document.getElementById('w-def').textContent=wd.def;
 
-const sp=pick(spellings);
-document.getElementById('sp-hint').textContent=sp.hint;
-document.getElementById('sp-ans').textContent=sp.word;
-document.getElementById('sp-def').textContent=sp.def;
-
 const id=pick(idioms);
 document.getElementById('id-idiom').textContent='"'+id.idiom+'"';
 document.getElementById('id-meaning').textContent=id.meaning;
-
-const lat=pick(latinPhrases);
-document.getElementById('lat-phrase').textContent=lat.phrase;
-document.getElementById('lat-meaning').textContent=lat.meaning;
-document.getElementById('lat-context').textContent=lat.context;
+document.getElementById('id-example').textContent='e.g. '+id.example;
 
 const mp=pick(mathsProblems);
 document.getElementById('m-q').textContent=mp.q;
@@ -663,19 +489,14 @@ document.getElementById('otd-year').textContent=otd.year;
 document.getElementById('otd-event').textContent=otd.event;
 
 const born=pick(bornToday);
-document.getElementById('born-name').textContent=born.name;
+document.getElementById('born-name').textContent=born.name+' ('+born.dates+')';
 document.getElementById('born-desc').textContent=born.desc;
 
-const fl=pick(flags);
-document.getElementById('flag-img').src=`https://flagcdn.com/w120/${fl.code}.png`;
-document.getElementById('flag-ans').textContent=fl.country;
-
-const cap=pick(capitals);
-document.getElementById('cap-q').textContent='Capital of '+cap.country+'?';
-document.getElementById('cap-ans').textContent=cap.capital;
-
 document.getElementById('sci').textContent=pick(scienceFacts);
-document.getElementById('geo').textContent=pick(geoFacts);
+
+const fl=pick(flags);
+document.getElementById('flag-img').src='https://flagcdn.com/w160/'+fl.code+'.png';
+document.getElementById('flag-ans').textContent=fl.country;
 
 const el=pick(elements);
 document.getElementById('el-sym').textContent=el.sym;
@@ -686,16 +507,6 @@ const fr=pick(frWords);
 document.getElementById('fr-w').textContent=fr.w;
 document.getElementById('fr-pos').textContent=fr.pos;
 document.getElementById('fr-m').textContent=fr.m;
-
-const de=pick(deWords);
-document.getElementById('de-w').textContent=de.w;
-document.getElementById('de-pos').textContent=de.pos;
-document.getElementById('de-m').textContent=de.m;
-
-const es=pick(esWords);
-document.getElementById('es-w').textContent=es.w;
-document.getElementById('es-pos').textContent=es.pos;
-document.getElementById('es-m').textContent=es.m;
 
 const zh=pick(zhChars);
 document.getElementById('zh-c').textContent=zh.c;
