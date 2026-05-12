@@ -334,22 +334,27 @@ function renderWord() {
   // Split into words by space, render each letter slot
   const words = currentWord.split(' ');
   words.forEach((word, wi) => {
+    // Wrap each word in a container that won't break mid-word
+    const wordGroup = document.createElement('div');
+    wordGroup.style.cssText = 'display:flex;gap:0.4rem;flex-shrink:0;';
     word.split('').forEach(ch => {
       const slot = document.createElement('div');
       slot.className = 'letter-slot';
       const charEl = document.createElement('div');
-      charEl.className = 'letter-char' + (guessed.has(ch) || ch === ' ' ? '' : ' blank');
+      charEl.className = 'letter-char' + (guessed.has(ch) ? '' : ' blank');
       charEl.textContent = ch;
       const underline = document.createElement('div');
       underline.className = 'letter-underline';
       slot.appendChild(charEl);
       slot.appendChild(underline);
-      disp.appendChild(slot);
+      wordGroup.appendChild(slot);
     });
-    // Add space between words
+    disp.appendChild(wordGroup);
+    // Add space gap between words
     if (wi < words.length - 1) {
       const sp = document.createElement('div');
       sp.className = 'space-slot';
+      sp.style.flexShrink = '0';
       disp.appendChild(sp);
     }
   });
