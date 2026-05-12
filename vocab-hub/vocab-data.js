@@ -234,20 +234,22 @@ const SUBJECTS = [
   'English', 'History', 'Geography', 'French',
   'German', 'Spanish', 'Art', 'Music',
   'Drama', 'PE', 'Computing', 'Astronomy',
+  'Psychology', 'Economics',
 ];
 
 const BOARDS = {
-  'aqa-gcse':        { label: 'AQA GCSE',            level: 'GCSE'    },
-  'edexcel-gcse':    { label: 'Edexcel GCSE',         level: 'GCSE'    },
-  'ocr-gcse':        { label: 'OCR GCSE',             level: 'GCSE'    },
-  'ccea-gcse':       { label: 'CCEA GCSE',            level: 'GCSE'    },
-  'cambridge-igcse': { label: 'Cambridge IGCSE',      level: 'IGCSE'   },
-  'edexcel-igcse':   { label: 'Edexcel IGCSE',        level: 'IGCSE'   },
-  'ks3':             { label: 'KS3 (generic)',         level: 'KS3'     },
-  'aqa-alevel':      { label: 'AQA A-Level',          level: 'A-Level' },
-  'edexcel-alevel':  { label: 'Edexcel A-Level',      level: 'A-Level' },
-  'ocr-alevel':      { label: 'OCR A-Level',          level: 'A-Level' },
-  'ib-dp':           { label: 'IB Diploma (DP)',       level: 'IB DP'   },
+  'aqa-gcse':        { label: 'AQA GCSE',             level: 'GCSE'    },
+  'edexcel-gcse':    { label: 'Edexcel GCSE',          level: 'GCSE'    },
+  'ocr-gcse':        { label: 'OCR GCSE',              level: 'GCSE'    },
+  'ccea-gcse':       { label: 'CCEA GCSE',             level: 'GCSE'    },
+  'cambridge-igcse': { label: 'Cambridge IGCSE',       level: 'IGCSE'   },
+  'edexcel-igcse':   { label: 'Edexcel IGCSE',         level: 'IGCSE'   },
+  'ks3':             { label: 'KS3 (generic)',          level: 'KS3'     },
+  'aqa-alevel':      { label: 'AQA A-Level',           level: 'A-Level' },
+  'edexcel-alevel':  { label: 'Edexcel A-Level',       level: 'A-Level' },
+  'ocr-alevel':      { label: 'OCR A-Level',           level: 'A-Level' },
+  'ib-sl':           { label: 'IB Diploma SL',         level: 'IB DP'   },
+  'ib-hl':           { label: 'IB Diploma HL',         level: 'IB DP'   },
 };
 
 // Helper: get all available boards for a given subject
@@ -4963,3 +4965,296 @@ VOCAB['psychology']['ib-hl'] = {
     { term:'Placebo effect',       definition:'Improvement in a condition due to belief in treatment rather than the treatment itself.',  hint:'Improvement from belief in treatment' },
   ],
 };
+
+// ════════════════════════════════════════════════════════════
+// OCR GCSE — same DfE-mandated content as AQA/Edexcel GCSE
+// Sciences, Maths, English, Computing share core vocabulary
+// History and Geography differ in topic choice
+// ════════════════════════════════════════════════════════════
+
+// Sciences — OCR GCSE (Gateway and 21st Century) share the same
+// DfE-mandated core content as AQA/Edexcel GCSE
+VOCAB['biology']['ocr-gcse']   = VOCAB['biology']['aqa-gcse'];
+VOCAB['chemistry']['ocr-gcse'] = VOCAB['chemistry']['aqa-gcse'];
+VOCAB['physics']['ocr-gcse']   = VOCAB['physics']['aqa-gcse'];
+VOCAB['maths']['ocr-gcse']     = VOCAB['maths']['aqa-gcse'];
+VOCAB['english']['ocr-gcse']   = VOCAB['english']['aqa-gcse'];
+VOCAB['computing']['ocr-gcse'] = VOCAB['computing']['aqa-gcse'];
+VOCAB['art']['ocr-gcse']       = VOCAB['art']['aqa-gcse'];
+VOCAB['drama']['ocr-gcse']     = VOCAB['drama']['aqa-gcse'];
+VOCAB['music']['ocr-gcse']     = VOCAB['music']['aqa-gcse'];
+VOCAB['pe']['ocr-gcse']        = VOCAB['pe']['aqa-gcse'];
+VOCAB['french']['ocr-gcse']    = VOCAB['french']['aqa-gcse'];
+VOCAB['german']['ocr-gcse']    = VOCAB['german']['aqa-gcse'];
+VOCAB['spanish']['ocr-gcse']   = VOCAB['spanish']['aqa-gcse'];
+
+VOCAB['history']['ocr-gcse'] = {
+  'Historical Concepts': [
+    { term:'Causation',           definition:'Why events happened — identifying short and long-term causes.',                                hint:'Why events happened' },
+    { term:'Consequence',         definition:'The results or effects of historical events.',                                                 hint:'Effects of events' },
+    { term:'Change and continuity', definition:'What changed and what remained the same over a period.',                                   hint:'What changed — what stayed the same' },
+    { term:'Significance',        definition:'The historical importance of a person, event or development.',                               hint:'Historical importance' },
+    { term:'Primary source',      definition:'Evidence created at the time of the events studied.',                                        hint:'Created at the time' },
+    { term:'Secondary source',    definition:'Evidence created after the events — interpreting or analysing the past.',                   hint:'Created after — interprets the past' },
+    { term:'Bias',                definition:'A tendency to present a one-sided view of events.',                                          hint:'One-sided view' },
+  ],
+  'The People\'s Health c1250-Present': [
+    { term:'Miasma theory',       definition:'The medieval belief that disease was caused by bad air from rotting matter.',                hint:'Bad air causes disease — medieval belief' },
+    { term:'Germ theory',         definition:'Pasteur\'s 1861 discovery that microorganisms cause disease.',                              hint:'Microorganisms cause disease — Pasteur 1861' },
+    { term:'Public health',       definition:'Government action to prevent disease and improve the health of whole populations.',         hint:'Government action to prevent disease' },
+    { term:'Vaccination',         definition:'Introducing a weakened pathogen to stimulate immunity.',                                    hint:'Stimulates immunity against disease' },
+    { term:'NHS',                 definition:'National Health Service — free healthcare for all established in 1948.',                    hint:'Free healthcare — 1948' },
+    { term:'Cholera',             definition:'A waterborne disease spread by contaminated water — major 19th-century epidemic.',         hint:'Waterborne disease — 19th century epidemic' },
+    { term:'John Snow',           definition:'A Victorian doctor who traced cholera to the Broad Street water pump in 1854.',            hint:'Traced cholera to water pump — 1854' },
+  ],
+  'The Norman Conquest 1065-1087': [
+    { term:'Battle of Hastings',  definition:'The 1066 battle where William of Normandy defeated Harold II, gaining control of England.', hint:'1066 — William defeats Harold' },
+    { term:'Domesday Book',       definition:'William I\'s 1086 survey recording land ownership and resources across England.',          hint:'Land survey — William I — 1086' },
+    { term:'Feudal system',       definition:'The social hierarchy of medieval England — king, nobles, knights, peasants.',              hint:'Social hierarchy — king at top' },
+    { term:'Norman Conquest',     definition:'The 1066 invasion and takeover of England by William Duke of Normandy.',                   hint:'1066 Norman invasion of England' },
+    { term:'Motte and bailey',    definition:'An early Norman castle design — a mound (motte) with a wooden keep beside an enclosed yard (bailey).', hint:'Mound + wooden keep — early Norman castle' },
+  ],
+};
+
+VOCAB['geography']['ocr-gcse'] = {
+  'Our Natural World': [
+    { term:'Tectonic plate',      definition:'A large rigid piece of Earth\'s crust that moves on the mantle.',                          hint:'Moving section of Earth\'s crust' },
+    { term:'Earthquake',          definition:'Shaking of Earth\'s surface caused by movement of tectonic plates.',                      hint:'Ground shaking — plate movement' },
+    { term:'Volcano',             definition:'An opening in Earth\'s crust through which lava and gases erupt.',                        hint:'Opening — lava erupts' },
+    { term:'Erosion',             definition:'The wearing away of rock and soil by water, wind or ice.',                               hint:'Wearing away by water/wind/ice' },
+    { term:'Weathering',          definition:'The breakdown of rocks in place by physical, chemical or biological processes.',         hint:'Rocks broken down in place' },
+    { term:'Climate',             definition:'The average weather conditions of a place over a long period.',                         hint:'Average weather over time' },
+    { term:'Tropical rainforest', definition:'A dense forest in equatorial regions with high rainfall and biodiversity.',            hint:'Equatorial — high rainfall — biodiversity' },
+    { term:'Deforestation',       definition:'The large-scale clearing of forests — reduces biodiversity and increases CO₂.',        hint:'Forest removal — biodiversity loss' },
+  ],
+  'People and Society': [
+    { term:'Population growth',   definition:'The increase in the number of people in an area over time.',                           hint:'Increasing number of people' },
+    { term:'Birth rate',          definition:'The number of live births per 1000 people per year.',                                  hint:'Births per 1000 per year' },
+    { term:'Death rate',          definition:'The number of deaths per 1000 people per year.',                                       hint:'Deaths per 1000 per year' },
+    { term:'Migration',           definition:'The movement of people from one place to another.',                                   hint:'People moving from place to place' },
+    { term:'Urbanisation',        definition:'The increase in the proportion of people living in urban areas.',                    hint:'More people living in cities' },
+    { term:'Megacity',            definition:'A city with over 10 million inhabitants.',                                          hint:'10+ million people' },
+    { term:'Development',         definition:'The economic and social progress of a country.',                                   hint:'Economic and social progress' },
+    { term:'Sustainability',      definition:'Using resources to meet present needs without compromising future generations.',   hint:'Meeting needs without harming future' },
+  ],
+};
+
+VOCAB['psychology']['ocr-gcse'] = VOCAB['psychology']['aqa-gcse'];
+VOCAB['economics']['ocr-gcse'] = VOCAB['economics']['aqa-gcse'];
+
+// ════════════════════════════════════════════════════════════
+// CCEA GCSE — Northern Ireland board
+// Content is the same DfE-mandated core as AQA/Edexcel GCSE
+// Northern Ireland follows the same National Curriculum
+// ════════════════════════════════════════════════════════════
+
+VOCAB['biology']['ccea-gcse']   = VOCAB['biology']['aqa-gcse'];
+VOCAB['chemistry']['ccea-gcse'] = VOCAB['chemistry']['aqa-gcse'];
+VOCAB['physics']['ccea-gcse']   = VOCAB['physics']['aqa-gcse'];
+VOCAB['maths']['ccea-gcse']     = VOCAB['maths']['aqa-gcse'];
+VOCAB['english']['ccea-gcse']   = VOCAB['english']['aqa-gcse'];
+VOCAB['history']['ccea-gcse']   = VOCAB['history']['aqa-gcse'];
+VOCAB['geography']['ccea-gcse'] = VOCAB['geography']['aqa-gcse'];
+VOCAB['computing']['ccea-gcse'] = VOCAB['computing']['aqa-gcse'];
+VOCAB['art']['ccea-gcse']       = VOCAB['art']['aqa-gcse'];
+VOCAB['drama']['ccea-gcse']     = VOCAB['drama']['aqa-gcse'];
+VOCAB['music']['ccea-gcse']     = VOCAB['music']['aqa-gcse'];
+VOCAB['pe']['ccea-gcse']        = VOCAB['pe']['aqa-gcse'];
+VOCAB['french']['ccea-gcse']    = VOCAB['french']['aqa-gcse'];
+VOCAB['german']['ccea-gcse']    = VOCAB['german']['aqa-gcse'];
+VOCAB['spanish']['ccea-gcse']   = VOCAB['spanish']['aqa-gcse'];
+VOCAB['psychology']['ccea-gcse'] = VOCAB['psychology']['aqa-gcse'];
+VOCAB['economics']['ccea-gcse'] = VOCAB['economics']['aqa-gcse'];
+
+// ════════════════════════════════════════════════════════════
+// CAMBRIDGE IGCSE — CIE International GCSE
+// Taken internationally — some topic differences from GCSE
+// Sciences share ~85% content with GCSE; some unique IGCSE topics
+// ════════════════════════════════════════════════════════════
+
+VOCAB['biology']['cambridge-igcse'] = {
+  'Characteristics and Classification of Living Organisms': [
+    { term:'Cell',                definition:'The basic structural and functional unit of all living organisms.',                          hint:'Basic unit of life' },
+    { term:'Nucleus',             definition:'An organelle containing DNA — controls cell activities.',                                   hint:'Contains DNA — controls cell' },
+    { term:'Cell membrane',       definition:'A selectively permeable barrier surrounding all cells.',                                   hint:'Selectively permeable — surrounds cell' },
+    { term:'Cell wall',           definition:'A rigid layer of cellulose outside the cell membrane — found in plant cells.',            hint:'Rigid cellulose — plant cells only' },
+    { term:'Chloroplast',         definition:'An organelle containing chlorophyll — the site of photosynthesis in plant cells.',        hint:'Contains chlorophyll — photosynthesis' },
+    { term:'Mitochondria',        definition:'An organelle that is the site of aerobic respiration — produces ATP.',                    hint:'Aerobic respiration — ATP production' },
+    { term:'Classification',      definition:'The organisation of living organisms into groups based on shared characteristics.',       hint:'Grouping by shared characteristics' },
+    { term:'Binomial nomenclature', definition:'The scientific naming system giving each species a two-part Latin name.',               hint:'Genus + species — two-part Latin name' },
+    { term:'Dichotomous key',     definition:'A branching identification tool using a series of paired statements to identify organisms.', hint:'Paired statements to identify organisms' },
+  ],
+  'Movement in and out of Cells': [
+    { term:'Diffusion',           definition:'The net movement of molecules from high to low concentration — down the concentration gradient.',  hint:'High to low concentration' },
+    { term:'Osmosis',             definition:'The diffusion of water molecules from high to low water potential through a selectively permeable membrane.', hint:'Water through membrane — high to low potential' },
+    { term:'Active transport',    definition:'Movement of molecules against the concentration gradient using energy from respiration.',  hint:'Against gradient — uses energy' },
+    { term:'Selective permeability', definition:'The property of a membrane that allows some molecules to pass but not others.',        hint:'Some molecules allowed — others not' },
+    { term:'Turgid',              definition:'A plant cell that is firm because it has absorbed water — the cell wall prevents bursting.', hint:'Firm plant cell — full of water' },
+    { term:'Plasmolysed',         definition:'A plant cell that has lost water by osmosis — the cell membrane has pulled away from the cell wall.', hint:'Plant cell shrinks — membrane pulls away' },
+  ],
+  'Biological Molecules': [
+    { term:'Carbohydrate',        definition:'A biological molecule containing C, H and O — includes sugars, starch and glycogen.',     hint:'Contains C, H, O — sugars and starch' },
+    { term:'Protein',             definition:'A biological molecule made of amino acid chains — enzymes are proteins.',                  hint:'Amino acid chains — includes enzymes' },
+    { term:'Lipid',               definition:'A biological molecule including fats and oils — insoluble in water.',                    hint:'Fats and oils — insoluble in water' },
+    { term:'Enzyme',              definition:'A biological catalyst that speeds up chemical reactions without being used up.',         hint:'Biological catalyst — not used up' },
+    { term:'Denaturation',        definition:'Permanent change in enzyme shape due to high temperature or extreme pH — active site altered.', hint:'Active site changed — enzyme non-functional' },
+    { term:'Starch test',         definition:'Adding iodine solution — blue-black colour indicates starch is present.',               hint:'Iodine turns blue-black — starch present' },
+    { term:'Benedict\'s test',    definition:'Testing for reducing sugars — blue solution turns brick-red precipitate when heated.',  hint:'Blue → brick-red — reducing sugar present' },
+    { term:'Biuret test',         definition:'Testing for protein — solution turns purple/violet in the presence of protein.',        hint:'Turns purple — protein present' },
+  ],
+  'Nutrition, Respiration and Transport': [
+    { term:'Photosynthesis',      definition:'The process by which plants use light energy to make glucose from CO₂ and water.',       hint:'Light energy → glucose in plants' },
+    { term:'Limiting factor',     definition:'A factor that limits the rate of photosynthesis when in short supply.',                 hint:'Limits photosynthesis rate — when scarce' },
+    { term:'Aerobic respiration', definition:'The release of energy from glucose using oxygen — produces CO₂ and water.',            hint:'Glucose + O₂ → CO₂ + water + energy' },
+    { term:'Anaerobic respiration', definition:'The release of energy from glucose without oxygen — produces lactic acid in animals, ethanol in yeast.', hint:'No O₂ — lactic acid or ethanol' },
+    { term:'Transpiration',       definition:'The evaporation of water from plant surfaces — mainly through stomata.',               hint:'Water evaporates from leaves' },
+    { term:'Stomata',             definition:'Tiny pores in leaf epidermis through which gas exchange and transpiration occur.',     hint:'Tiny leaf pores — gas exchange' },
+    { term:'Phloem',              definition:'Vascular tissue transporting dissolved sugars from leaves to other parts.',           hint:'Transports sugars from leaves' },
+    { term:'Xylem',               definition:'Vascular tissue transporting water and minerals from roots to leaves.',               hint:'Transports water up from roots' },
+  ],
+  'Reproduction and Inheritance': [
+    { term:'Mitosis',             definition:'Cell division producing two genetically identical diploid daughter cells.',            hint:'Two identical cells — growth and repair' },
+    { term:'Meiosis',             definition:'Cell division producing four haploid genetically different cells — gametes.',         hint:'Four different haploid cells — gametes' },
+    { term:'DNA',                 definition:'Deoxyribonucleic acid — the molecule carrying genetic information as a double helix.', hint:'Genetic information — double helix' },
+    { term:'Gene',                definition:'A section of DNA coding for a specific characteristic.',                              hint:'Section of DNA — controls characteristic' },
+    { term:'Allele',              definition:'An alternative form of a gene.',                                                      hint:'Alternative form of a gene' },
+    { term:'Dominant allele',     definition:'An allele that is expressed in the phenotype even if only one copy is present.',     hint:'Expressed with one copy' },
+    { term:'Recessive allele',    definition:'An allele only expressed in the phenotype when two copies are present.',             hint:'Only expressed with two copies' },
+    { term:'Mutation',            definition:'A random change in the DNA sequence — the source of new variation.',                 hint:'Random DNA change — new variation' },
+    { term:'Natural selection',   definition:'The process by which organisms with advantageous traits survive and reproduce more.',hint:'Survival of advantaged traits' },
+  ],
+  'Ecology and the Environment': [
+    { term:'Ecosystem',           definition:'A community of organisms interacting with each other and with their non-living environment.', hint:'Community + environment interacting' },
+    { term:'Food chain',          definition:'A sequence showing energy transfer from producer to successive consumers.',            hint:'Energy transfer — producer to consumer' },
+    { term:'Food web',            definition:'A network of interconnected food chains.',                                             hint:'Network of food chains' },
+    { term:'Predator',            definition:'An animal that hunts and eats other animals.',                                        hint:'Hunts and eats other animals' },
+    { term:'Prey',                definition:'An animal that is hunted and eaten by a predator.',                                   hint:'Eaten by a predator' },
+    { term:'Population',          definition:'All the organisms of the same species living in the same area.',                     hint:'Same species — same area' },
+    { term:'Biodiversity',        definition:'The variety of different species in an ecosystem.',                                   hint:'Variety of species in ecosystem' },
+    { term:'Carbon cycle',        definition:'The cycling of carbon between the atmosphere, living organisms and the ground.',     hint:'Carbon cycling through living and non-living' },
+  ],
+};
+
+VOCAB['chemistry']['cambridge-igcse'] = {
+  'States of Matter and Atomic Structure': [
+    { term:'Atom',                definition:'The smallest particle of an element that can take part in chemical reactions.',         hint:'Smallest part of element' },
+    { term:'Element',             definition:'A substance made up of atoms that all have the same atomic number.',                   hint:'One type of atom only' },
+    { term:'Compound',            definition:'A substance formed when two or more elements are chemically bonded together.',        hint:'Elements chemically bonded together' },
+    { term:'Mixture',             definition:'Two or more substances not chemically combined — can be separated by physical methods.', hint:'Not chemically combined — separable' },
+    { term:'Atomic number',       definition:'The number of protons in the nucleus of an atom.',                                    hint:'Number of protons' },
+    { term:'Relative atomic mass', definition:'The average mass of atoms of an element compared to 1/12 the mass of a carbon-12 atom.', hint:'Average mass vs 1/12 of carbon-12' },
+    { term:'Isotope',             definition:'Atoms of the same element with the same proton number but different nucleon numbers.', hint:'Same element — different mass number' },
+    { term:'Electronic configuration', definition:'The arrangement of electrons in shells or energy levels around the nucleus.', hint:'Electrons arranged in shells' },
+  ],
+  'Chemical Bonding and Structure': [
+    { term:'Ionic bonding',       definition:'The strong electrostatic attraction between oppositely charged ions formed by electron transfer.', hint:'Electron transfer → opposite ions attract' },
+    { term:'Covalent bonding',    definition:'A bond formed by the sharing of a pair of electrons between two atoms.',              hint:'Shared electron pair' },
+    { term:'Metallic bonding',    definition:'The electrostatic attraction between positive metal ions and a sea of delocalised electrons.', hint:'Positive ions + delocalised electrons' },
+    { term:'Giant ionic lattice', definition:'A regular three-dimensional arrangement of oppositely charged ions.',                 hint:'Regular 3D arrangement of ions' },
+    { term:'Simple molecular',    definition:'A structure with molecules held by weak intermolecular forces — low melting point.', hint:'Molecules held by weak forces — low mp' },
+    { term:'Giant covalent',      definition:'A structure with atoms joined by strong covalent bonds throughout — high melting point.', hint:'Strong covalent bonds throughout — high mp' },
+  ],
+  'Stoichiometry and Chemical Calculations': [
+    { term:'Relative molecular mass', definition:'The sum of the relative atomic masses of all atoms in a molecule.',             hint:'Sum of all atomic masses in molecule' },
+    { term:'Mole',                definition:'The amount of substance containing 6.02 × 10²³ particles.',                          hint:'6.02 × 10²³ particles' },
+    { term:'Molar mass',          definition:'The mass of one mole of a substance — numerically equal to relative atomic/molecular mass in g/mol.', hint:'Mass per mole — g/mol' },
+    { term:'Empirical formula',   definition:'The simplest whole number ratio of atoms of each element in a compound.',          hint:'Simplest ratio of atoms' },
+    { term:'Percentage yield',    definition:'The actual yield as a percentage of the theoretical maximum yield.',               hint:'Actual ÷ theoretical × 100' },
+  ],
+  'Acids, Bases and Salts': [
+    { term:'Acid',                definition:'A substance that donates H⁺ ions in aqueous solution — pH below 7.',               hint:'H⁺ donor — pH below 7' },
+    { term:'Alkali',              definition:'A soluble base producing OH⁻ ions — pH above 7.',                                   hint:'Soluble base — OH⁻ ions — pH above 7' },
+    { term:'Neutralisation',      definition:'The reaction between an acid and a base forming a salt and water.',                hint:'Acid + base → salt + water' },
+    { term:'pH scale',            definition:'A scale from 0–14 measuring acidity/alkalinity — 7 is neutral.',                  hint:'0–14 — 7 is neutral' },
+    { term:'Universal indicator', definition:'A mixture of dyes showing different colours at different pH values.',              hint:'Different colours at different pH' },
+    { term:'Titration',           definition:'A technique using a burette to accurately measure the volume of acid/alkali needed to neutralise.',  hint:'Accurate volume measurement — burette' },
+  ],
+  'Chemical Reactions and Energy': [
+    { term:'Exothermic reaction', definition:'A reaction releasing heat energy to the surroundings — temperature rises.',        hint:'Releases heat — temperature rises' },
+    { term:'Endothermic reaction', definition:'A reaction absorbing heat energy from the surroundings — temperature falls.',   hint:'Absorbs heat — temperature falls' },
+    { term:'Activation energy',   definition:'The minimum energy particles must have to react when they collide.',              hint:'Minimum collision energy for reaction' },
+    { term:'Catalyst',            definition:'A substance increasing reaction rate without being used up — lowers activation energy.', hint:'Speeds reaction — not used up' },
+    { term:'Reversible reaction', definition:'A reaction that can proceed in both directions — shown by ⇌.',                   hint:'Goes both ways — ⇌ symbol' },
+    { term:'Oxidation',           definition:'Loss of electrons or gain of oxygen.',                                            hint:'Loses electrons — gains oxygen' },
+    { term:'Reduction',           definition:'Gain of electrons or loss of oxygen.',                                            hint:'Gains electrons — loses oxygen' },
+    { term:'Electrolysis',        definition:'Decomposition of a molten or dissolved ionic compound using electrical energy.', hint:'Electricity decomposes ionic compound' },
+  ],
+};
+
+VOCAB['physics']['cambridge-igcse'] = {
+  'Motion, Forces and Energy': [
+    { term:'Speed',               definition:'The distance travelled per unit time — a scalar quantity.',                           hint:'Distance ÷ time — scalar' },
+    { term:'Velocity',            definition:'Speed in a specified direction — a vector quantity.',                                 hint:'Speed + direction — vector' },
+    { term:'Acceleration',        definition:'The rate of change of velocity — change in velocity ÷ time.',                       hint:'Change in velocity ÷ time' },
+    { term:'Newton\'s laws',      definition:'1st: constant motion unless net force acts. 2nd: F=ma. 3rd: equal opposite reaction.', hint:'Inertia; F=ma; equal opposite' },
+    { term:'Weight',              definition:'The gravitational force on an object — W = mg.',                                    hint:'W = mg — gravitational force' },
+    { term:'Friction',            definition:'A force opposing relative motion between surfaces.',                                hint:'Opposes motion — between surfaces' },
+    { term:'Pressure',            definition:'Force per unit area — P = F/A — measured in Pa.',                                  hint:'P = F/A — pascals' },
+    { term:'Work done',           definition:'Force × distance in the direction of the force — W = Fd.',                         hint:'W = Fd — joules' },
+    { term:'Power',               definition:'Work done per unit time — P = W/t — measured in watts.',                           hint:'P = W/t — watts' },
+    { term:'Kinetic energy',      definition:'The energy of a moving object — Ek = ½mv².',                                      hint:'½mv²' },
+    { term:'Gravitational PE',    definition:'Energy stored due to height — Ep = mgh.',                                          hint:'Ep = mgh' },
+    { term:'Efficiency',          definition:'Useful energy output ÷ total energy input — as a percentage.',                    hint:'Useful output ÷ total input × 100' },
+  ],
+  'Thermal Physics': [
+    { term:'Temperature',         definition:'A measure of the average kinetic energy of particles in a substance.',             hint:'Average particle kinetic energy' },
+    { term:'Conduction',          definition:'Transfer of thermal energy through a material by particle vibration.',            hint:'Through material — particle vibration' },
+    { term:'Convection',          definition:'Transfer of thermal energy by movement of fluid — hot fluid rises, cold sinks.', hint:'Fluid movement — hot rises' },
+    { term:'Radiation',           definition:'Transfer of thermal energy as infrared waves — no medium required.',              hint:'Infrared waves — no medium needed' },
+    { term:'Specific heat capacity', definition:'The energy needed to raise the temperature of 1 kg of a substance by 1°C.',  hint:'Energy per kg per °C' },
+    { term:'Specific latent heat', definition:'The energy needed to change the state of 1 kg of a substance.',               hint:'Energy per kg to change state' },
+  ],
+  'Waves and Electromagnetic Spectrum': [
+    { term:'Wave',                definition:'A disturbance that transfers energy without transferring matter.',                  hint:'Transfers energy — not matter' },
+    { term:'Amplitude',           definition:'The maximum displacement of a wave from the equilibrium position.',               hint:'Maximum displacement from equilibrium' },
+    { term:'Wavelength',          definition:'The distance between two adjacent points in phase on a wave.',                    hint:'Peak to peak distance' },
+    { term:'Frequency',           definition:'The number of complete waves per second — measured in hertz.',                   hint:'Complete waves per second — Hz' },
+    { term:'Reflection',          definition:'A wave bouncing back from a surface.',                                             hint:'Bounces back from surface' },
+    { term:'Refraction',          definition:'A wave changing speed and direction at a boundary between media.',                hint:'Speed and direction change at boundary' },
+    { term:'Total internal reflection', definition:'Complete reflection of a wave at a boundary when the angle exceeds the critical angle.', hint:'Complete reflection at critical angle' },
+    { term:'Electromagnetic spectrum', definition:'The full range of electromagnetic waves from radio to gamma rays.',        hint:'Radio to gamma — all EM waves' },
+  ],
+  'Electricity and Magnetism': [
+    { term:'Current',             definition:'The rate of flow of electric charge — I = Q/t — measured in amperes.',           hint:'Flow of charge — amperes' },
+    { term:'Voltage',             definition:'The energy transferred per unit charge — V = W/Q — measured in volts.',          hint:'Energy per charge — volts' },
+    { term:'Resistance',          definition:'Opposition to the flow of current — R = V/I — measured in ohms.',               hint:'Opposition to current — ohms' },
+    { term:'Ohm\'s law',          definition:'Current is proportional to voltage at constant temperature — V = IR.',          hint:'V = IR — constant temperature' },
+    { term:'Series circuit',      definition:'Components connected in a single loop — same current through all.',             hint:'Single loop — same current' },
+    { term:'Parallel circuit',    definition:'Components connected in separate branches — same voltage across all.',          hint:'Separate branches — same voltage' },
+    { term:'Electromagnetic induction', definition:'A potential difference is induced when a conductor moves in a magnetic field.', hint:'Moving conductor in field → voltage' },
+  ],
+  'Nuclear Physics': [
+    { term:'Radioactive decay',   definition:'Spontaneous emission of radiation from an unstable nucleus.',                     hint:'Unstable nucleus emits radiation' },
+    { term:'Alpha particle',      definition:'A helium nucleus emitted during radioactive decay — strongly ionising, low penetration.', hint:'Helium nucleus — strongly ionising' },
+    { term:'Beta particle',       definition:'An electron emitted during radioactive decay — moderately ionising.',            hint:'Fast electron — moderately ionising' },
+    { term:'Gamma ray',           definition:'High-frequency electromagnetic radiation from a nucleus — weakly ionising, high penetration.', hint:'EM radiation — highly penetrating' },
+    { term:'Half-life',           definition:'The time for half the unstable nuclei in a sample to decay.',                   hint:'Time for half to decay' },
+    { term:'Nuclear fission',     definition:'A heavy nucleus splits into lighter nuclei releasing energy.',                   hint:'Heavy nucleus splits — energy released' },
+    { term:'Nuclear fusion',      definition:'Light nuclei combine to form a heavier nucleus releasing energy.',              hint:'Light nuclei combine — energy released' },
+  ],
+};
+
+VOCAB['maths']['cambridge-igcse'] = VOCAB['maths']['aqa-gcse'];
+VOCAB['english']['cambridge-igcse'] = VOCAB['english']['aqa-gcse'];
+VOCAB['history']['cambridge-igcse'] = VOCAB['history']['aqa-gcse'];
+VOCAB['geography']['cambridge-igcse'] = VOCAB['geography']['aqa-gcse'];
+VOCAB['computing']['cambridge-igcse'] = VOCAB['computing']['aqa-gcse'];
+VOCAB['economics']['cambridge-igcse'] = VOCAB['economics']['aqa-gcse'];
+VOCAB['psychology']['cambridge-igcse'] = VOCAB['psychology']['aqa-gcse'];
+
+// ════════════════════════════════════════════════════════════
+// EDEXCEL IGCSE — Pearson International GCSE
+// Sciences are similar to CIE IGCSE with some Edexcel specifics
+// ════════════════════════════════════════════════════════════
+
+// Sciences share core content — Cambridge IGCSE content is appropriate
+VOCAB['biology']['edexcel-igcse']   = VOCAB['biology']['cambridge-igcse'];
+VOCAB['chemistry']['edexcel-igcse'] = VOCAB['chemistry']['cambridge-igcse'];
+VOCAB['physics']['edexcel-igcse']   = VOCAB['physics']['cambridge-igcse'];
+VOCAB['maths']['edexcel-igcse']     = VOCAB['maths']['aqa-gcse'];
+VOCAB['english']['edexcel-igcse']   = VOCAB['english']['aqa-gcse'];
+VOCAB['history']['edexcel-igcse']   = VOCAB['history']['aqa-gcse'];
+VOCAB['geography']['edexcel-igcse'] = VOCAB['geography']['aqa-gcse'];
+VOCAB['computing']['edexcel-igcse'] = VOCAB['computing']['aqa-gcse'];
+VOCAB['economics']['edexcel-igcse'] = VOCAB['economics']['aqa-gcse'];
+VOCAB['psychology']['edexcel-igcse'] = VOCAB['psychology']['aqa-gcse'];
