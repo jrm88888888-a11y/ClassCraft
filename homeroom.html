@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homeroom — MartinEdu Daily Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── Homeroom overrides — big screen display ── */
+    body { font-size: 18px; }
+
+    .hr-header {
+      background: var(--ink);
+      color: var(--parchment);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .hr-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--parchment);
+      text-decoration: none;
+    }
+    .hr-logo span { color: var(--accent-light); }
+
+    .hr-date {
+      font-size: 1rem;
+      color: rgba(245,239,230,0.7);
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    .hr-nav a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,239,230,0.6);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .hr-nav a:hover { color: var(--parchment); }
+
+    /* ── Grid ── */
+    .hr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      padding: 1.5rem 2rem 2rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1100px) {
+      .hr-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .hr-grid { grid-template-columns: 1fr; padding: 1rem; }
+      body { font-size: 16px; }
+    }
+
+    /* ── Tile ── */
+    .tile {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile-wide { grid-column: span 2; }
+
+    .tile-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .tile-main {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .tile-sub {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .tile-detail {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      margin-top: auto;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* Reveal button */
+    .reveal-btn {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--parchment);
+      border: none;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+      transition: background 0.3s;
+    }
+    .reveal-btn:hover { background: var(--accent); }
+
+    .reveal-answer {
+      display: none;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--accent);
+      font-family: var(--font-display);
+      margin-top: 0.25rem;
+    }
+
+    /* Flag tile */
+    .flag-img {
+      width: 120px;
+      height: auto;
+      border: 1px solid var(--parchment-deep);
+      margin: 0.25rem 0;
+    }
+
+    /* Chinese character */
+    .chinese-char {
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1;
+      color: var(--ink);
+      font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    /* Element tile */
+    .element-symbol {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* API tiles loading state */
+    .loading {
+      color: var(--ink-light);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    /* Maths tile */
+    .maths-problem {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* Language tiles */
+    .lang-word {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      font-family: var(--font-display);
+    }
+
+    /* Quote tile */
+    .quote-text {
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
+      font-style: italic;
+      font-family: var(--font-display);
+      line-height: 1.5;
+    }
+
+    /* Accent colour variants */
+    .tile-blue  { border-top: 3px solid #4a7ab5; }
+    .tile-green { border-top: 3px solid #4a8a5a; }
+    .tile-amber { border-top: 3px solid var(--accent); }
+    .tile-red   { border-top: 3px solid #a04040; }
+    .tile-purple{ border-top: 3px solid #7a5aa0; }
+    .tile-teal  { border-top: 3px solid #3a8a8a; }
+
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ────────────────────────── -->
+  <header class="hr-header">
+    <a href="index.html" class="hr-logo">Martin<span>Edu</span></a>
+    <div class="hr-date" id="hr-date"></div>
+    <nav class="hr-nav">
+      <a href="index.html">← Back to site</a>
+    </nav>
+  </header>
+
+  <!-- ── Grid ──────────────────────────── -->
+  <div class="hr-grid">
+
+    <!-- 1. Word of the Day -->
+    <div class="tile tile-blue">
+      <p class="tile-label">📖 Word of the Day</p>
+      <p class="tile-main" id="word-main"></p>
+      <p class="tile-sub" id="word-pos"></p>
+      <p class="tile-detail" id="word-def"></p>
+    </div>
+
+    <!-- 2. Spelling Challenge -->
+    <div class="tile tile-red">
+      <p class="tile-label">✏️ Spelling Challenge</p>
+      <p class="tile-sub" style="font-style:normal;" id="spell-hint"></p>
+      <button class="reveal-btn" onclick="reveal('spell-answer', this)">Reveal Spelling</button>
+      <p class="reveal-answer" id="spell-answer"></p>
+      <p class="tile-detail" id="spell-def"></p>
+    </div>
+
+    <!-- 3. Idiom of the Day -->
+    <div class="tile tile-purple">
+      <p class="tile-label">💬 Idiom of the Day</p>
+      <p class="tile-main" id="idiom-main"></p>
+      <p class="tile-sub" id="idiom-meaning"></p>
+      <p class="tile-detail" id="idiom-example"></p>
+    </div>
+
+    <!-- 4. Literary Quote -->
+    <div class="tile tile-amber tile-wide">
+      <p class="tile-label">📚 Literary Quote</p>
+      <p class="quote-text" id="quote-text"></p>
+      <p class="tile-detail" id="quote-author"></p>
+    </div>
+
+    <!-- 5. Maths Problem -->
+    <div class="tile tile-blue">
+      <p class="tile-label">🔢 Maths Problem</p>
+      <p class="maths-problem" id="maths-q"></p>
+      <button class="reveal-btn" onclick="reveal('maths-answer', this)">Show Answer</button>
+      <p class="reveal-answer" id="maths-answer"></p>
+    </div>
+
+    <!-- 6. On This Day (Wikipedia API) -->
+    <div class="tile tile-green tile-wide">
+      <p class="tile-label">📅 On This Day</p>
+      <p class="tile-main loading" id="otd-year"></p>
+      <p class="tile-sub" id="otd-event"></p>
+    </div>
+
+    <!-- 7. Famous Person Born Today (Wikipedia API) -->
+    <div class="tile tile-amber">
+      <p class="tile-label">🎂 Born Today</p>
+      <p class="tile-main loading" id="born-name"></p>
+      <p class="tile-sub" id="born-desc"></p>
+    </div>
+
+    <!-- 8. Guess the Flag -->
+    <div class="tile tile-teal">
+      <p class="tile-label">🚩 Guess the Flag</p>
+      <img class="flag-img" id="flag-img" src="" alt="Flag" />
+      <button class="reveal-btn" onclick="reveal('flag-answer', this)">Reveal Country</button>
+      <p class="reveal-answer" id="flag-answer"></p>
+    </div>
+
+    <!-- 9. Guess the Capital -->
+    <div class="tile tile-blue">
+      <p class="tile-label">🏛️ Guess the Capital</p>
+      <p class="tile-main" id="capital-country"></p>
+      <button class="reveal-btn" onclick="reveal('capital-answer', this)">Reveal Capital</button>
+      <p class="reveal-answer" id="capital-answer"></p>
+    </div>
+
+    <!-- 10. Name the Element -->
+    <div class="tile tile-green">
+      <p class="tile-label">⚗️ Name the Element</p>
+      <p class="element-symbol" id="element-symbol"></p>
+      <p class="tile-sub" id="element-hint"></p>
+      <button class="reveal-btn" onclick="reveal('element-answer', this)">Reveal Element</button>
+      <p class="reveal-answer" id="element-answer"></p>
+    </div>
+
+    <!-- 11. Science Fact -->
+    <div class="tile tile-teal tile-wide">
+      <p class="tile-label">🔬 Science Fact</p>
+      <p class="tile-main" id="science-fact"></p>
+    </div>
+
+    <!-- 12. Geography Fact -->
+    <div class="tile tile-green">
+      <p class="tile-label">🌍 Geography Fact</p>
+      <p class="tile-main" id="geo-fact"></p>
+    </div>
+
+    <!-- 13. Joke of the Day -->
+    <div class="tile tile-amber tile-wide">
+      <p class="tile-label">😄 Joke of the Day</p>
+      <p class="tile-main" id="joke-q"></p>
+      <button class="reveal-btn" onclick="reveal('joke-answer', this)">Punchline</button>
+      <p class="reveal-answer" id="joke-answer"></p>
+    </div>
+
+    <!-- 14. Latin Phrase -->
+    <div class="tile tile-purple">
+      <p class="tile-label">🏛️ Latin Phrase</p>
+      <p class="tile-main" id="latin-phrase"></p>
+      <p class="tile-sub" id="latin-meaning"></p>
+      <p class="tile-detail" id="latin-context"></p>
+    </div>
+
+    <!-- 15. French Word -->
+    <div class="tile tile-blue">
+      <p class="tile-label">🇫🇷 French Word</p>
+      <p class="lang-word" id="fr-word"></p>
+      <p class="tile-sub" id="fr-pos"></p>
+      <p class="tile-detail" id="fr-meaning"></p>
+    </div>
+
+    <!-- 16. German Word -->
+    <div class="tile tile-red">
+      <p class="tile-label">🇩🇪 German Word</p>
+      <p class="lang-word" id="de-word"></p>
+      <p class="tile-sub" id="de-pos"></p>
+      <p class="tile-detail" id="de-meaning"></p>
+    </div>
+
+    <!-- 17. Spanish Word -->
+    <div class="tile tile-amber">
+      <p class="tile-label">🇪🇸 Spanish Word</p>
+      <p class="lang-word" id="es-word"></p>
+      <p class="tile-sub" id="es-pos"></p>
+      <p class="tile-detail" id="es-meaning"></p>
+    </div>
+
+    <!-- 18. Chinese Character -->
+    <div class="tile tile-red">
+      <p class="tile-label">🇨🇳 Chinese Character</p>
+      <p class="chinese-char" id="zh-char"></p>
+      <p class="tile-sub" id="zh-pinyin"></p>
+      <p class="tile-detail" id="zh-meaning"></p>
+    </div>
+
+  </div>
+
+  <script>
+  // ── Utility ──────────────────────────────────────────────────────────
+  function dayOfYear() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    return Math.floor(diff / 86400000) - 1; // 0-indexed
+  }
+
+  function pick(arr) {
+    return arr[dayOfYear() % arr.length];
+  }
+
+  function reveal(id, btn) {
+    const el = document.getElementById(id);
+    el.style.display = 'block';
+    btn.style.display = 'none';
+  }
+
+  // ── Date display ─────────────────────────────────────────────────────
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const now = new Date();
+  document.getElementById('hr-date').textContent =
+    `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+
+  // ── DATA ─────────────────────────────────────────────────────────────
+
+  const words = [
+    { w: "Ephemeral", pos: "adjective", def: "Lasting for a very short time. From Greek ephemeros, 'lasting a day'." },
+    { w: "Mellifluous", pos: "adjective", def: "Sweet or musical; pleasant to hear. Latin mel (honey) + fluere (to flow)." },
+    { w: "Perspicacious", pos: "adjective", def: "Having a ready insight; shrewd. Latin perspicax, 'sharp-sighted'." },
+    { w: "Sanguine", pos: "adjective", def: "Optimistic, especially in difficult situations. Latin sanguis, 'blood'." },
+    { w: "Tenacious", pos: "adjective", def: "Holding firmly to something; persistent. Latin tenax, 'holding fast'." },
+    { w: "Loquacious", pos: "adjective", def: "Tending to talk a great deal. Latin loquax, from loqui, 'to talk'." },
+    { w: "Obfuscate", pos: "verb", def: "To make unclear or confusing. Latin obfuscare, 'to darken'." },
+    { w: "Serendipity", pos: "noun", def: "Occurrence of happy events by chance. Coined by Horace Walpole in 1754." },
+    { w: "Eloquent", pos: "adjective", def: "Fluent and persuasive in speech or writing. Latin eloqui, 'to speak out'." },
+    { w: "Magnanimous", pos: "adjective", def: "Generous in forgiving; noble in spirit. Latin magnus (great) + animus (soul)." },
+    { w: "Pernicious", pos: "adjective", def: "Having a harmful effect, especially gradually. Latin perniciosus, 'destructive'." },
+    { w: "Ambiguous", pos: "adjective", def: "Open to more than one interpretation. Latin ambiguus, 'going both ways'." },
+    { w: "Cogent", pos: "adjective", def: "Clear, logical, and convincing. Latin cogens, 'compelling'." },
+    { w: "Diligent", pos: "adjective", def: "Careful and hard-working. Latin diligens, 'careful'." },
+    { w: "Erudite", pos: "adjective", def: "Having or showing great knowledge. Latin eruditus, 'educated'." },
+    { w: "Fortuitous", pos: "adjective", def: "Happening by chance, especially fortunately. Latin fortuitus, 'accidental'." },
+    { w: "Gregarious", pos: "adjective", def: "Fond of company; sociable. Latin gregarius, 'of a flock'." },
+    { w: "Hubris", pos: "noun", def: "Excessive pride or self-confidence. Greek hybris, 'wanton violence'." },
+    { w: "Insidious", pos: "adjective", def: "Proceeding gradually and harmfully. Latin insidiosus, 'cunning'." },
+    { w: "Juxtapose", pos: "verb", def: "Place side by side for comparison. Latin juxta (next) + ponere (to place)." },
+    { w: "Kinetic", pos: "adjective", def: "Relating to motion. Greek kinetikos, 'moving'." },
+    { w: "Laconic", pos: "adjective", def: "Using few words; brief. From Laconia (Sparta), known for brief speech." },
+    { w: "Meticulous", pos: "adjective", def: "Showing great attention to detail. Latin meticulosus, 'fearful'." },
+    { w: "Nonchalant", pos: "adjective", def: "Casually calm and relaxed. French, 'not caring'." },
+    { w: "Omniscient", pos: "adjective", def: "Knowing everything. Latin omnis (all) + sciens (knowing)." },
+    { w: "Pragmatic", pos: "adjective", def: "Dealing with things sensibly and practically. Greek pragmatikos, 'active'." },
+    { w: "Quintessential", pos: "adjective", def: "Representing the most perfect example. Medieval Latin quinta essentia." },
+    { w: "Resilient", pos: "adjective", def: "Able to recover quickly from difficulties. Latin resilire, 'to spring back'." },
+    { w: "Stoic", pos: "adjective", def: "Enduring pain without showing feelings. From the Stoic school of philosophy." },
+    { w: "Tenuous", pos: "adjective", def: "Weak; insubstantial. Latin tenuis, 'thin'." },
+    { w: "Ubiquitous", pos: "adjective", def: "Present everywhere at once. Latin ubique, 'everywhere'." },
+    { w: "Vacuous", pos: "adjective", def: "Lacking intelligence or substance. Latin vacuus, 'empty'." },
+    { w: "Wistful", pos: "adjective", def: "Having a feeling of vague longing. Origin uncertain, possibly from obsolete wistly." },
+    { w: "Xenial", pos: "adjective", def: "Of or relating to hospitality. Greek xenios, 'of a guest'." },
+    { w: "Zealous", pos: "adjective", def: "Having great energy for a cause. Greek zelos, 'ardour'." },
+    { w: "Acrimony", pos: "noun", def: "Bitterness in speech or manner. Latin acrimonia, 'sharpness'." },
+    { w: "Belligerent", pos: "adjective", def: "Aggressive; ready to fight. Latin bellum (war) + gerere (to wage)." },
+    { w: "Circumspect", pos: "adjective", def: "Wary and careful. Latin circumspectus, 'looking around'." },
+    { w: "Duplicity", pos: "noun", def: "Deceitfulness; double-dealing. Latin duplicitas, 'doubleness'." },
+    { w: "Enervate", pos: "verb", def: "Weaken; drain of energy. Latin enervare, 'to remove the sinews'." },
+    { w: "Fastidious", pos: "adjective", def: "Very attentive to accuracy and detail. Latin fastidiosus, 'disdainful'." },
+    { w: "Garrulous", pos: "adjective", def: "Excessively talkative. Latin garrulus, 'chattering'." },
+    { w: "Hapless", pos: "adjective", def: "Unfortunate; unlucky. Old Norse happ, 'luck'." },
+    { w: "Impetuous", pos: "adjective", def: "Acting quickly without thinking. Latin impetuosus, 'violent'." },
+    { w: "Jocular", pos: "adjective", def: "Fond of joking; playful. Latin jocularis, 'of jest'." },
+    { w: "Kaleidoscopic", pos: "adjective", def: "Constantly changing pattern. Greek kalos (beautiful) + eidos (form) + skopein (to look)." },
+    { w: "Languid", pos: "adjective", def: "Relaxed and slow. Latin languidus, 'faint'." },
+    { w: "Mendacious", pos: "adjective", def: "Not telling the truth; lying. Latin mendax, 'lying'." },
+    { w: "Nefarious", pos: "adjective", def: "Wicked; criminal. Latin nefarius, 'wicked'." },
+    { w: "Ostentatious", pos: "adjective", def: "Showy; meant to impress. Latin ostentare, 'to display'." },
+    { w: "Puerile", pos: "adjective", def: "Childishly silly. Latin puerilis, 'of a boy'." },
+    { w: "Querulous", pos: "adjective", def: "Complaining in a whining manner. Latin querulus, 'complaining'." },
+    { w: "Recalcitrant", pos: "adjective", def: "Stubbornly uncooperative. Latin recalcitrare, 'to kick back'." },
+    { w: "Sagacious", pos: "adjective", def: "Having good judgment. Latin sagax, 'keen-scented'." },
+    { w: "Taciturn", pos: "adjective", def: "Reserved; saying little. Latin taciturnus, 'silent'." },
+    { w: "Unctuous", pos: "adjective", def: "Excessively flattering. Latin unctuosus, 'oily'." },
+    { w: "Verbose", pos: "adjective", def: "Using more words than needed. Latin verbosus, 'full of words'." },
+    { w: "Wanton", pos: "adjective", def: "Deliberate and unprovoked. Middle English, 'lacking discipline'." },
+    { w: "Xenophobia", pos: "noun", def: "Fear of foreigners. Greek xenos (stranger) + phobos (fear)." },
+    { w: "Yeoman", pos: "noun", def: "A person of good standing; a loyal worker. Middle English." },
+    { w: "Zephyr", pos: "noun", def: "A soft, gentle breeze. Greek Zephyros, god of the west wind." },
+  ];
+
+  const spellings = [
+    { hint: "The opposite of private", word: "PUBLIC", def: "Open to everyone; not restricted." },
+    { hint: "To cause something to happen", word: "OCCURRENCE", def: "An event or happening." },
+    { hint: "Relating to the government", word: "GOVERNMENT", def: "The group that rules a country." },
+    { hint: "A building for learning", word: "LIBRARY", def: "A place where books are kept and borrowed." },
+    { hint: "Being thankful", word: "GRATEFUL", def: "Feeling appreciation for kindness received." },
+    { hint: "Causing embarrassment", word: "EMBARRASSING", def: "Causing awkward self-consciousness." },
+    { hint: "Happening at the same time", word: "SIMULTANEOUSLY", def: "At the same time; together." },
+    { hint: "Extremely cold", word: "ARCTIC", def: "Relating to the North Pole region." },
+    { hint: "A person who studies the past", word: "ARCHAEOLOGIST", def: "A scientist who studies ancient civilisations." },
+    { hint: "Relating to money", word: "FINANCIAL", def: "Relating to finance and money matters." },
+    { hint: "Very important; necessary", word: "ESSENTIAL", def: "Absolutely necessary; crucial." },
+    { hint: "The ability to do something well", word: "COMPETENCE", def: "The ability to do something effectively." },
+    { hint: "Certain to happen", word: "INEVITABLE", def: "Impossible to avoid or prevent." },
+    { hint: "Extremely large in size", word: "ENORMOUS", def: "Very large; huge." },
+    { hint: "Relating to the environment", word: "ECOLOGICAL", def: "Relating to ecology and the natural world." },
+    { hint: "A word meaning knowledge", word: "KNOWLEDGE", def: "Facts and information acquired through experience." },
+    { hint: "Very detailed and careful", word: "METICULOUS", def: "Showing great attention to detail." },
+    { hint: "The study of living things", word: "BIOLOGICAL", def: "Relating to biology and living organisms." },
+    { hint: "A country's elected leaders", word: "PARLIAMENT", def: "The highest legislative body of a country." },
+    { hint: "Very shiny and impressive", word: "MAGNIFICENT", def: "Impressively beautiful or elaborate." },
+    { hint: "A scientific explanation", word: "HYPOTHESIS", def: "A proposed explanation to be tested." },
+    { hint: "Relating to the whole world", word: "INTERNATIONAL", def: "Involving more than one country." },
+    { hint: "Moving from place to place", word: "MIGRATORY", def: "Relating to regular seasonal movement." },
+    { hint: "Causing a lot of discussion", word: "CONTROVERSIAL", def: "Causing disagreement or debate." },
+    { hint: "The process of becoming", word: "DEVELOPMENT", def: "Growth or advancement over time." },
+    { hint: "Very important; critical", word: "SIGNIFICANT", def: "Having great importance or meaning." },
+    { hint: "Relating to culture", word: "CIVILISATION", def: "A human society with its own culture and way of life." },
+    { hint: "A feeling of excitement", word: "ENTHUSIASM", def: "Intense and eager enjoyment or interest." },
+    { hint: "Easily broken", word: "FRAGILE", def: "Easily broken or damaged." },
+    { hint: "Related to the mind", word: "PSYCHOLOGICAL", def: "Relating to the mind and behaviour." },
+  ];
+
+  const idioms = [
+    { idiom: "Break the ice", meaning: "Do something to make people feel more comfortable in a new situation.", example: "He told a joke to break the ice at the meeting." },
+    { idiom: "Hit the nail on the head", meaning: "Say something exactly right; be completely accurate.", example: "You hit the nail on the head with that analysis." },
+    { idiom: "Bite the bullet", meaning: "Endure a painful or difficult situation bravely.", example: "I had to bite the bullet and apologise first." },
+    { idiom: "The ball is in your court", meaning: "It is up to you to make the next decision.", example: "I've made my offer — the ball is in your court." },
+    { idiom: "Beat around the bush", meaning: "Avoid coming to the main point; talk around a subject.", example: "Stop beating around the bush and tell me what happened." },
+    { idiom: "Burn the midnight oil", meaning: "Work late into the night.", example: "She burned the midnight oil finishing her essay." },
+    { idiom: "Cost an arm and a leg", meaning: "Be extremely expensive.", example: "The repairs cost an arm and a leg." },
+    { idiom: "Every cloud has a silver lining", meaning: "There is something positive in every bad situation.", example: "He lost his job but found a better one — every cloud." },
+    { idiom: "Kill two birds with one stone", meaning: "Achieve two things with a single action.", example: "I'll kill two birds with one stone and post the letter on the way to the shops." },
+    { idiom: "Let the cat out of the bag", meaning: "Reveal a secret accidentally.", example: "She let the cat out of the bag about the surprise party." },
+    { idiom: "Once in a blue moon", meaning: "Very rarely.", example: "We only visit once in a blue moon." },
+    { idiom: "Piece of cake", meaning: "Something very easy.", example: "The exam was a piece of cake." },
+    { idiom: "Sit on the fence", meaning: "Avoid expressing an opinion.", example: "Politicians often sit on the fence." },
+    { idiom: "Spill the beans", meaning: "Reveal secret information.", example: "Who spilled the beans about the merger?" },
+    { idiom: "The tip of the iceberg", meaning: "A small visible part of a much larger problem.", example: "This is just the tip of the iceberg." },
+    { idiom: "Under the weather", meaning: "Feeling slightly ill.", example: "I'm a bit under the weather today." },
+    { idiom: "Back to the drawing board", meaning: "Start something again after a failure.", example: "The plan failed — it's back to the drawing board." },
+    { idiom: "Don't judge a book by its cover", meaning: "Don't judge by appearances alone.", example: "He seemed unfriendly, but don't judge a book by its cover." },
+    { idiom: "Get out of hand", meaning: "Become out of control.", example: "The situation got out of hand quickly." },
+    { idiom: "Hit the sack", meaning: "Go to bed.", example: "I'm exhausted — time to hit the sack." },
+    { idiom: "In the heat of the moment", meaning: "While feeling strong emotion, without thinking.", example: "She said it in the heat of the moment." },
+    { idiom: "Jump on the bandwagon", meaning: "Follow a trend because it is popular.", example: "Many companies jumped on the bandwagon." },
+    { idiom: "Keep your chin up", meaning: "Stay positive in a difficult situation.", example: "Keep your chin up — things will improve." },
+    { idiom: "Let sleeping dogs lie", meaning: "Avoid reviving an old problem.", example: "Don't bring that up — let sleeping dogs lie." },
+    { idiom: "Miss the boat", meaning: "Miss an opportunity.", example: "If you don't apply now, you'll miss the boat." },
+    { idiom: "No pain, no gain", meaning: "Hard work and effort lead to success.", example: "Keep training — no pain, no gain." },
+    { idiom: "On the fence", meaning: "Undecided; neutral.", example: "I'm still on the fence about which university to choose." },
+    { idiom: "Put your foot in your mouth", meaning: "Say something that upsets or embarrasses someone.", example: "I really put my foot in my mouth at dinner." },
+    { idiom: "Raining cats and dogs", meaning: "Raining very heavily.", example: "Take an umbrella — it's raining cats and dogs." },
+    { idiom: "Strike while the iron is hot", meaning: "Act at the right moment; seize an opportunity.", example: "Apply now — strike while the iron is hot." },
+  ];
+
+  const quotes = [
+    { text: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.", author: "Jane Austen — Pride and Prejudice (1813)" },
+    { text: "To be, or not to be, that is the question.", author: "William Shakespeare — Hamlet (c.1600)" },
+    { text: "All animals are equal, but some animals are more equal than others.", author: "George Orwell — Animal Farm (1945)" },
+    { text: "It was the best of times, it was the worst of times.", author: "Charles Dickens — A Tale of Two Cities (1859)" },
+    { text: "Call me Ishmael.", author: "Herman Melville — Moby-Dick (1851)" },
+    { text: "Not all those who wander are lost.", author: "J.R.R. Tolkien — The Fellowship of the Ring (1954)" },
+    { text: "The only way out of the labyrinth of suffering is to forgive.", author: "John Green — Looking for Alaska (2005)" },
+    { text: "Whatever our souls are made of, his and mine are the same.", author: "Emily Brontë — Wuthering Heights (1847)" },
+    { text: "I am no bird; and no net ensnares me.", author: "Charlotte Brontë — Jane Eyre (1847)" },
+    { text: "It does not do to dwell on dreams and forget to live.", author: "J.K. Rowling — Harry Potter and the Philosopher's Stone (1997)" },
+    { text: "We accept the love we think we deserve.", author: "Stephen Chbosky — The Perks of Being a Wallflower (1999)" },
+    { text: "Darkness cannot drive out darkness; only light can do that.", author: "Martin Luther King Jr. — Strength to Love (1963)" },
+    { text: "So we beat on, boats against the current, borne back ceaselessly into the past.", author: "F. Scott Fitzgerald — The Great Gatsby (1925)" },
+    { text: "It is our choices, Harry, that show what we truly are, far more than our abilities.", author: "J.K. Rowling — Harry Potter and the Chamber of Secrets (1998)" },
+    { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu — Tao Te Ching (c.400 BC)" },
+    { text: "To kill a mockingbird is a sin. Mockingbirds don't do one thing but make music for us to enjoy.", author: "Harper Lee — To Kill a Mockingbird (1960)" },
+    { text: "War is peace. Freedom is slavery. Ignorance is strength.", author: "George Orwell — Nineteen Eighty-Four (1949)" },
+    { text: "Men are not prisoners of fate, but only prisoners of their own minds.", author: "Franklin D. Roosevelt — Pan American Day Address (1939)" },
+    { text: "You never really understand a person until you consider things from his point of view.", author: "Harper Lee — To Kill a Mockingbird (1960)" },
+    { text: "The mystery of human existence lies not in just staying alive, but in finding something to live for.", author: "Fyodor Dostoevsky — The Brothers Karamazov (1880)" },
+    { text: "In the beginning was the Word, and the Word was with God, and the Word was God.", author: "The Bible — John 1:1" },
+    { text: "Elementary, my dear Watson.", author: "Arthur Conan Doyle — The Adventure of the Crooked Man (1893)" },
+    { text: "It is a far, far better thing that I do, than I have ever done.", author: "Charles Dickens — A Tale of Two Cities (1859)" },
+    { text: "I took a deep breath and listened to the old brag of my heart: I am, I am, I am.", author: "Sylvia Plath — The Bell Jar (1963)" },
+    { text: "The world is a book, and those who do not travel read only one page.", author: "Saint Augustine (354–430 AD)" },
+    { text: "Knowledge is power.", author: "Francis Bacon — Meditationes Sacrae (1597)" },
+    { text: "Two roads diverged in a wood, and I — I took the one less travelled by.", author: "Robert Frost — The Road Not Taken (1916)" },
+    { text: "To thine own self be true.", author: "William Shakespeare — Hamlet (c.1600)" },
+    { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" },
+    { text: "There is no friend as loyal as a book.", author: "Ernest Hemingway" },
+  ];
+
+  const mathsProblems = [
+    { q: "If a train travels at 80 km/h for 2.5 hours, how far does it travel?", a: "200 km  (Distance = Speed × Time: 80 × 2.5)" },
+    { q: "What is 15% of 240?", a: "36  (240 × 0.15 = 36)" },
+    { q: "A rectangle has length 12 cm and width 7 cm. What is its area?", a: "84 cm²  (Area = length × width)" },
+    { q: "Solve: 3x + 7 = 22", a: "x = 5  (3x = 15, x = 5)" },
+    { q: "What is the next prime number after 13?", a: "17  (Primes: 2, 3, 5, 7, 11, 13, 17...)" },
+    { q: "A shop reduces a £60 item by 20%. What is the sale price?", a: "£48  (60 × 0.8 = 48)" },
+    { q: "What is the area of a circle with radius 5 cm? (Use π ≈ 3.14)", a: "78.5 cm²  (π × r² = 3.14 × 25)" },
+    { q: "If 8 workers complete a job in 6 days, how many days for 4 workers?", a: "12 days  (Inverse proportion: 8 × 6 = 4 × 12)" },
+    { q: "What is the HCF of 36 and 48?", a: "12  (Factors of 36: 1,2,3,4,6,9,12,18,36. Factors of 48: 1,2,3,4,6,8,12,16,24,48)" },
+    { q: "A bag contains 3 red and 5 blue balls. What is the probability of picking red?", a: "3/8  (3 red out of 8 total)" },
+    { q: "What is 2⁸?", a: "256  (2×2×2×2×2×2×2×2)" },
+    { q: "Find the perimeter of a regular hexagon with side 6 cm.", a: "36 cm  (6 × 6 = 36)" },
+    { q: "Simplify: 4x² + 3x − x² + 2x", a: "3x² + 5x" },
+    { q: "What is the mean of: 4, 7, 9, 12, 8?", a: "8  (Sum = 40, ÷ 5 = 8)" },
+    { q: "A car uses 6 litres of fuel per 100 km. How much for 350 km?", a: "21 litres  (6 × 3.5 = 21)" },
+    { q: "What is √144?", a: "12  (12 × 12 = 144)" },
+    { q: "Convert 3/8 to a decimal.", a: "0.375  (3 ÷ 8 = 0.375)" },
+    { q: "What is the volume of a cube with side 4 cm?", a: "64 cm³  (4³ = 64)" },
+    { q: "If y = 2x − 3, what is y when x = 7?", a: "y = 11  (2×7 − 3 = 11)" },
+    { q: "A triangle has base 10 cm and height 6 cm. What is its area?", a: "30 cm²  (½ × 10 × 6 = 30)" },
+    { q: "What is 0.35 as a percentage?", a: "35%  (× 100)" },
+    { q: "Expand: (x + 3)(x + 5)", a: "x² + 8x + 15" },
+    { q: "A ratio of boys to girls is 3:5. If there are 24 boys, how many girls?", a: "40 girls  (24 ÷ 3 × 5 = 40)" },
+    { q: "What is the LCM of 4 and 6?", a: "12  (Multiples of 4: 4,8,12... Multiples of 6: 6,12...)" },
+    { q: "What is 3/4 + 1/6?", a: "11/12  (9/12 + 2/12 = 11/12)" },
+    { q: "A cylinder has radius 3 cm and height 10 cm. What is its volume? (π ≈ 3.14)", a: "282.6 cm³  (π × 3² × 10)" },
+    { q: "Solve: 5(x − 2) = 20", a: "x = 6  (x − 2 = 4, x = 6)" },
+    { q: "What is 4! (4 factorial)?", a: "24  (4 × 3 × 2 × 1 = 24)" },
+    { q: "If a :b = 2:3 and b:c = 3:4, what is a:c?", a: "2:4 = 1:2" },
+    { q: "What is the gradient of the line y = 3x + 7?", a: "3  (coefficient of x in y = mx + c)" },
+  ];
+
+  const scienceFacts = [
+    "The speed of light in a vacuum is approximately 299,792,458 metres per second.",
+    "DNA stands for Deoxyribonucleic Acid and contains the genetic instructions for all living organisms.",
+    "The human body has approximately 37.2 trillion cells.",
+    "Water expands by about 9% when it freezes, which is why ice is less dense than liquid water.",
+    "The Sun makes up about 99.86% of the total mass of the Solar System.",
+    "A neutron star is so dense that a teaspoon of its material would weigh about a billion tonnes.",
+    "Photosynthesis converts light energy into chemical energy stored in glucose: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
+    "The human brain uses approximately 20% of the body's total energy despite being only 2% of its mass.",
+    "Absolute zero, the coldest possible temperature, is −273.15°C (0 Kelvin).",
+    "Lightning strikes Earth approximately 100 times every second.",
+    "The periodic table currently contains 118 confirmed elements.",
+    "Bats are the only mammals capable of sustained flight.",
+    "The Great Barrier Reef is the world's largest living structure, visible from space.",
+    "A single bolt of lightning contains enough energy to toast 100,000 slices of bread.",
+    "Diamonds are made of pure carbon, the same element as graphite in pencils.",
+    "The human eye can distinguish approximately 10 million different colours.",
+    "Viruses are not considered fully alive because they cannot reproduce independently.",
+    "The Milky Way galaxy contains an estimated 100–400 billion stars.",
+    "Sound cannot travel through a vacuum — space is completely silent.",
+    "The heart beats approximately 100,000 times per day.",
+    "Electrons move through a wire at about 1 mm per second, but electrical signals travel at nearly the speed of light.",
+    "The ozone layer absorbs 97–99% of the Sun's medium-frequency ultraviolet radiation.",
+    "Gold is so malleable that one gram can be beaten into a sheet covering one square metre.",
+    "The mantis shrimp can punch with a force equivalent to a bullet, reaching speeds of 23 m/s.",
+    "Octopuses have three hearts and blue blood due to copper-based haemocyanin.",
+    "A day on Venus is longer than a year on Venus.",
+    "The human skeleton is replaced almost entirely every 10 years through bone remodelling.",
+    "Hydrogen is the most abundant element in the universe, making up about 75% of all matter.",
+    "The cornea is the only tissue in the human body that receives no blood supply.",
+    "Enzymes are biological catalysts that speed up chemical reactions without being consumed.",
+  ];
+
+  const geoFacts = [
+    "Russia is the largest country in the world by area, covering 17.1 million km² — about 11% of Earth's land surface.",
+    "The Nile (6,650 km) and the Amazon (6,400 km) are the two longest rivers in the world.",
+    "The Sahara Desert is the world's largest hot desert, covering 9.2 million km² — roughly the size of the USA.",
+    "Mount Everest in the Himalayas is the world's highest peak at 8,849 metres above sea level.",
+    "The Mariana Trench in the Pacific Ocean is the deepest point on Earth at approximately 11,000 metres.",
+    "Vatican City is the world's smallest country, covering just 0.44 km² within Rome, Italy.",
+    "The Amazon Rainforest produces approximately 20% of the world's oxygen.",
+    "Lake Baikal in Russia is the world's deepest lake at 1,642 metres and contains 20% of Earth's fresh surface water.",
+    "The Ring of Fire is a horseshoe-shaped zone in the Pacific Ocean where 90% of the world's earthquakes occur.",
+    "Antarctica is the coldest, driest, and windiest continent on Earth.",
+    "The Caspian Sea is the world's largest lake by surface area at 371,000 km².",
+    "The Great Wall of China stretches approximately 21,196 km in total length.",
+    "Canada has the longest coastline of any country at approximately 202,080 km.",
+    "The Dead Sea, bordering Jordan and Israel, is the saltiest naturally occurring lake at ~34% salinity.",
+    "The Atacama Desert in Chile is the driest non-polar desert on Earth.",
+    "Indonesia has more volcanoes than any other country, with 147 known volcanoes.",
+    "The Pacific Ocean covers approximately 165 million km² — larger than all of Earth's land combined.",
+    "Angel Falls in Venezuela is the world's highest uninterrupted waterfall at 979 metres.",
+    "The Amazon River discharges more water than any other river, accounting for 20% of all fresh water entering the oceans.",
+    "Greenland is the world's largest island (not continent) at 2.17 million km².",
+    "The Gobi Desert is the largest desert in Asia and the fifth largest in the world.",
+    "Australia is the only continent that is also a single country.",
+    "The Equator passes through 13 countries, including Ecuador, Brazil, Congo, Kenya, and Indonesia.",
+    "Iceland is one of the most volcanically active places on Earth, with eruptions every 3–5 years on average.",
+    "The Alps stretch across 8 countries: France, Monaco, Italy, Switzerland, Liechtenstein, Austria, Germany, and Slovenia.",
+    "China shares borders with 14 countries — more than any other nation.",
+    "The world's population passed 8 billion in November 2022.",
+    "Tokyo is the world's most populous metropolitan area with over 37 million people.",
+    "The Congo River in Africa is the world's deepest river at over 220 metres.",
+    "Three-quarters of all international trade is transported by sea.",
+  ];
+
+  const latinPhrases = [
+    { phrase: "Carpe diem", meaning: "Seize the day", context: "From Horace's Odes — enjoy the present and don't worry about the future." },
+    { phrase: "Cogito, ergo sum", meaning: "I think, therefore I am", context: "René Descartes' famous proof of his own existence." },
+    { phrase: "Veni, vidi, vici", meaning: "I came, I saw, I conquered", context: "Julius Caesar's report of a swift military victory in 47 BC." },
+    { phrase: "In medias res", meaning: "Into the middle of things", context: "A narrative technique beginning a story mid-action." },
+    { phrase: "Ad hominem", meaning: "To the person", context: "An argument attacking the person rather than their argument." },
+    { phrase: "Per se", meaning: "By itself; in itself", context: "Used to mean 'inherently' or 'as such'." },
+    { phrase: "Status quo", meaning: "The existing state of affairs", context: "The current situation before any change is made." },
+    { phrase: "Bona fide", meaning: "In good faith; genuine", context: "Used to describe something authentic or sincere." },
+    { phrase: "De facto", meaning: "In practice; in reality", context: "Existing in fact, even if not officially recognised." },
+    { phrase: "Et cetera (etc.)", meaning: "And the rest; and so on", context: "Used to indicate that more examples could be given." },
+    { phrase: "Magna Carta", meaning: "Great Charter", context: "The 1215 document limiting the power of the English king." },
+    { phrase: "Anno Domini (AD)", meaning: "In the year of the Lord", context: "The system for numbering years in the Christian era." },
+    { phrase: "Vice versa", meaning: "The other way around", context: "With the main terms reversed." },
+    { phrase: "Alma mater", meaning: "Nourishing mother", context: "A school or university one has attended." },
+    { phrase: "Curriculum vitae (CV)", meaning: "Course of life", context: "A document listing a person's qualifications and experience." },
+    { phrase: "Habeas corpus", meaning: "You shall have the body", context: "A legal principle requiring a person be brought before a court." },
+    { phrase: "Mea culpa", meaning: "My fault; my mistake", context: "An acknowledgement of one's own error." },
+    { phrase: "Quid pro quo", meaning: "Something for something", context: "An exchange of goods or services of equal value." },
+    { phrase: "Tempus fugit", meaning: "Time flies", context: "A reminder that time passes quickly." },
+    { phrase: "Semper fidelis", meaning: "Always faithful", context: "Motto of the United States Marine Corps." },
+    { phrase: "Sine qua non", meaning: "Without which, nothing", context: "An essential condition; something indispensable." },
+    { phrase: "Post mortem", meaning: "After death", context: "An examination of a body, or an analysis after an event." },
+    { phrase: "Terra firma", meaning: "Firm ground; dry land", context: "Solid earth, as opposed to water or air." },
+    { phrase: "Persona non grata", meaning: "An unwelcome person", context: "Used in diplomacy to describe an expelled official." },
+    { phrase: "Prima facie", meaning: "At first sight", context: "Evidence that is accepted as correct until disproved." },
+    { phrase: "In loco parentis", meaning: "In the place of a parent", context: "The legal responsibility of a school for students." },
+    { phrase: "Caveat emptor", meaning: "Let the buyer beware", context: "The buyer is responsible for checking quality before purchase." },
+    { phrase: "Verbatim", meaning: "Word for word", context: "Exactly as said or written, without any changes." },
+    { phrase: "Ergo", meaning: "Therefore", context: "Used to introduce a logical conclusion." },
+    { phrase: "Ipso facto", meaning: "By the fact itself", context: "As a direct consequence of a particular fact or action." },
+  ];
+
+  const frenchWords = [
+    { word: "Bonjour", pos: "exclamation", meaning: "Hello / Good day — the standard French greeting." },
+    { word: "Merci", pos: "exclamation", meaning: "Thank you — essential politeness." },
+    { word: "S'il vous plaît", pos: "phrase", meaning: "Please (formal) — literally 'if it pleases you'." },
+    { word: "Au revoir", pos: "phrase", meaning: "Goodbye — literally 'until we see again'." },
+    { word: "La maison", pos: "noun (f)", meaning: "The house / home." },
+    { word: "Le travail", pos: "noun (m)", meaning: "Work / job — also means 'labour'." },
+    { word: "L'ami / l'amie", pos: "noun", meaning: "Friend — masculine / feminine forms." },
+    { word: "Manger", pos: "verb", meaning: "To eat — je mange, tu manges, il mange." },
+    { word: "Parler", pos: "verb", meaning: "To speak — je parle, tu parles, il parle." },
+    { word: "Aller", pos: "verb (irregular)", meaning: "To go — je vais, tu vas, il va." },
+    { word: "Avoir", pos: "verb (irregular)", meaning: "To have — j'ai, tu as, il a." },
+    { word: "Être", pos: "verb (irregular)", meaning: "To be — je suis, tu es, il est." },
+    { word: "Le temps", pos: "noun (m)", meaning: "Time / weather — context determines meaning." },
+    { word: "La vie", pos: "noun (f)", meaning: "Life." },
+    { word: "Le monde", pos: "noun (m)", meaning: "The world / people — 'tout le monde' = everyone." },
+    { word: "Aujourd'hui", pos: "adverb", meaning: "Today." },
+    { word: "Demain", pos: "adverb", meaning: "Tomorrow." },
+    { word: "Hier", pos: "adverb", meaning: "Yesterday." },
+    { word: "Grand(e)", pos: "adjective", meaning: "Big / tall / great." },
+    { word: "Petit(e)", pos: "adjective", meaning: "Small / little." },
+    { word: "Beau / Belle", pos: "adjective", meaning: "Beautiful — changes form by gender." },
+    { word: "Nouveau / Nouvelle", pos: "adjective", meaning: "New — changes form by gender." },
+    { word: "Savoir", pos: "verb (irregular)", meaning: "To know (a fact) — je sais, tu sais, il sait." },
+    { word: "Connaître", pos: "verb (irregular)", meaning: "To know (a person/place) — je connais, tu connais." },
+    { word: "Pouvoir", pos: "verb (irregular)", meaning: "To be able to / can — je peux, tu peux, il peut." },
+    { word: "Vouloir", pos: "verb (irregular)", meaning: "To want — je veux, tu veux, il veut." },
+    { word: "Devoir", pos: "verb (irregular)", meaning: "Must / to have to — je dois, tu dois, il doit." },
+    { word: "La nourriture", pos: "noun (f)", meaning: "Food." },
+    { word: "L'école", pos: "noun (f)", meaning: "School." },
+    { word: "Le livre", pos: "noun (m)", meaning: "Book." },
+  ];
+
+  const germanWords = [
+    { word: "Guten Morgen", pos: "phrase", meaning: "Good morning — used until midday." },
+    { word: "Danke", pos: "exclamation", meaning: "Thank you — 'Danke schön' = thank you very much." },
+    { word: "Bitte", pos: "exclamation", meaning: "Please / You're welcome — versatile word." },
+    { word: "Auf Wiedersehen", pos: "phrase", meaning: "Goodbye — literally 'until we see again'." },
+    { word: "Das Haus", pos: "noun (n)", meaning: "The house — neuter gender." },
+    { word: "Die Schule", pos: "noun (f)", meaning: "The school — feminine gender." },
+    { word: "Der Freund", pos: "noun (m)", meaning: "The (male) friend / boyfriend — masculine." },
+    { word: "Sprechen", pos: "verb", meaning: "To speak — ich spreche, du sprichst, er spricht." },
+    { word: "Gehen", pos: "verb", meaning: "To go — ich gehe, du gehst, er geht." },
+    { word: "Haben", pos: "verb (irregular)", meaning: "To have — ich habe, du hast, er hat." },
+    { word: "Sein", pos: "verb (irregular)", meaning: "To be — ich bin, du bist, er ist." },
+    { word: "Die Zeit", pos: "noun (f)", meaning: "Time." },
+    { word: "Das Leben", pos: "noun (n)", meaning: "Life." },
+    { word: "Die Welt", pos: "noun (f)", meaning: "The world." },
+    { word: "Heute", pos: "adverb", meaning: "Today." },
+    { word: "Morgen", pos: "adverb / noun (m)", meaning: "Tomorrow / morning." },
+    { word: "Gestern", pos: "adverb", meaning: "Yesterday." },
+    { word: "Groß", pos: "adjective", meaning: "Big / tall / great." },
+    { word: "Klein", pos: "adjective", meaning: "Small / little." },
+    { word: "Schön", pos: "adjective", meaning: "Beautiful / nice." },
+    { word: "Neu", pos: "adjective", meaning: "New." },
+    { word: "Wissen", pos: "verb (irregular)", meaning: "To know (a fact) — ich weiß, du weißt." },
+    { word: "Kennen", pos: "verb", meaning: "To know (a person/place) — ich kenne." },
+    { word: "Können", pos: "verb (modal)", meaning: "Can / to be able to — ich kann, du kannst." },
+    { word: "Wollen", pos: "verb (modal)", meaning: "To want — ich will, du willst, er will." },
+    { word: "Müssen", pos: "verb (modal)", meaning: "Must / to have to — ich muss, du musst." },
+    { word: "Das Buch", pos: "noun (n)", meaning: "The book." },
+    { word: "Das Essen", pos: "noun (n)", meaning: "Food / meal." },
+    { word: "Die Arbeit", pos: "noun (f)", meaning: "Work / job." },
+    { word: "Der Mensch", pos: "noun (m)", meaning: "The person / human being — plural: die Menschen." },
+  ];
+
+  const spanishWords = [
+    { word: "Buenos días", pos: "phrase", meaning: "Good morning — used until midday." },
+    { word: "Gracias", pos: "exclamation", meaning: "Thank you." },
+    { word: "Por favor", pos: "phrase", meaning: "Please." },
+    { word: "Adiós", pos: "exclamation", meaning: "Goodbye." },
+    { word: "La casa", pos: "noun (f)", meaning: "The house / home." },
+    { word: "El trabajo", pos: "noun (m)", meaning: "Work / job." },
+    { word: "El amigo / la amiga", pos: "noun", meaning: "Friend — masculine / feminine forms." },
+    { word: "Hablar", pos: "verb", meaning: "To speak — hablo, hablas, habla." },
+    { word: "Ir", pos: "verb (irregular)", meaning: "To go — voy, vas, va." },
+    { word: "Tener", pos: "verb (irregular)", meaning: "To have — tengo, tienes, tiene." },
+    { word: "Ser", pos: "verb (irregular)", meaning: "To be (permanent) — soy, eres, es." },
+    { word: "Estar", pos: "verb (irregular)", meaning: "To be (temporary) — estoy, estás, está." },
+    { word: "El tiempo", pos: "noun (m)", meaning: "Time / weather." },
+    { word: "La vida", pos: "noun (f)", meaning: "Life." },
+    { word: "El mundo", pos: "noun (m)", meaning: "The world." },
+    { word: "Hoy", pos: "adverb", meaning: "Today." },
+    { word: "Mañana", pos: "adverb / noun (f)", meaning: "Tomorrow / morning." },
+    { word: "Ayer", pos: "adverb", meaning: "Yesterday." },
+    { word: "Grande", pos: "adjective", meaning: "Big / great." },
+    { word: "Pequeño/a", pos: "adjective", meaning: "Small / little." },
+    { word: "Bonito/a", pos: "adjective", meaning: "Beautiful / pretty." },
+    { word: "Nuevo/a", pos: "adjective", meaning: "New." },
+    { word: "Saber", pos: "verb (irregular)", meaning: "To know (a fact) — sé, sabes, sabe." },
+    { word: "Conocer", pos: "verb (irregular)", meaning: "To know (a person/place) — conozco, conoces." },
+    { word: "Poder", pos: "verb (irregular)", meaning: "Can / to be able to — puedo, puedes, puede." },
+    { word: "Querer", pos: "verb (irregular)", meaning: "To want / love — quiero, quieres, quiere." },
+    { word: "Deber", pos: "verb", meaning: "Must / ought to — debo, debes, debe." },
+    { word: "El libro", pos: "noun (m)", meaning: "The book." },
+    { word: "La comida", pos: "noun (f)", meaning: "Food / meal." },
+    { word: "La escuela", pos: "noun (f)", meaning: "The school." },
+  ];
+
+  const chineseChars = [
+    { char: "人", pinyin: "rén", meaning: "Person, people" },
+    { char: "大", pinyin: "dà", meaning: "Big, large, great" },
+    { char: "小", pinyin: "xiǎo", meaning: "Small, little" },
+    { char: "中", pinyin: "zhōng", meaning: "Middle, centre, China" },
+    { char: "国", pinyin: "guó", meaning: "Country, nation" },
+    { char: "上", pinyin: "shàng", meaning: "Above, up, on" },
+    { char: "下", pinyin: "xià", meaning: "Below, down, under" },
+    { char: "好", pinyin: "hǎo", meaning: "Good, well, fine" },
+    { char: "你", pinyin: "nǐ", meaning: "You (singular)" },
+    { char: "我", pinyin: "wǒ", meaning: "I, me" },
+    { char: "他", pinyin: "tā", meaning: "He, him" },
+    { char: "她", pinyin: "tā", meaning: "She, her" },
+    { char: "们", pinyin: "men", meaning: "Plural marker for pronouns (we, they)" },
+    { char: "是", pinyin: "shì", meaning: "To be, is, are" },
+    { char: "不", pinyin: "bù", meaning: "No, not (negation)" },
+    { char: "有", pinyin: "yǒu", meaning: "To have, there is" },
+    { char: "说", pinyin: "shuō", meaning: "To say, to speak" },
+    { char: "来", pinyin: "lái", meaning: "To come" },
+    { char: "去", pinyin: "qù", meaning: "To go" },
+    { char: "看", pinyin: "kàn", meaning: "To look, to see, to watch" },
+    { char: "吃", pinyin: "chī", meaning: "To eat" },
+    { char: "喝", pinyin: "hē", meaning: "To drink" },
+    { char: "想", pinyin: "xiǎng", meaning: "To think, to want, to miss" },
+    { char: "知", pinyin: "zhī", meaning: "To know, to be aware of" },
+    { char: "道", pinyin: "dào", meaning: "Way, road, the Dao" },
+    { char: "时", pinyin: "shí", meaning: "Time, hour, season" },
+    { char: "年", pinyin: "nián", meaning: "Year" },
+    { char: "月", pinyin: "yuè", meaning: "Month, moon" },
+    { char: "日", pinyin: "rì", meaning: "Day, sun, Japan (short form)" },
+    { char: "学", pinyin: "xué", meaning: "To study, to learn, school" },
+    { char: "生", pinyin: "shēng", meaning: "Life, to be born, student" },
+    { char: "家", pinyin: "jiā", meaning: "Home, family, expert" },
+    { char: "工", pinyin: "gōng", meaning: "Work, craft, labour" },
+    { char: "作", pinyin: "zuò", meaning: "To do, to work, to make" },
+    { char: "地", pinyin: "dì / de", meaning: "Earth, land / adverb marker" },
+    { char: "以", pinyin: "yǐ", meaning: "By means of, with, in order to" },
+    { char: "要", pinyin: "yào", meaning: "To want, need, important, will" },
+    { char: "出", pinyin: "chū", meaning: "To go out, to come out, to exit" },
+    { char: "会", pinyin: "huì", meaning: "Can, will, meeting, association" },
+    { char: "可", pinyin: "kě", meaning: "Can, may, but" },
+    { char: "对", pinyin: "duì", meaning: "Correct, right, towards, pair" },
+    { char: "和", pinyin: "hé", meaning: "And, with, harmonious, peace" },
+    { char: "在", pinyin: "zài", meaning: "At, in, on, to be present" },
+    { char: "为", pinyin: "wéi / wèi", meaning: "To act as, because of, for" },
+    { char: "这", pinyin: "zhè", meaning: "This" },
+    { char: "那", pinyin: "nà", meaning: "That" },
+    { char: "也", pinyin: "yě", meaning: "Also, too, as well" },
+    { char: "到", pinyin: "dào", meaning: "To arrive, to reach, until" },
+    { char: "了", pinyin: "le / liǎo", meaning: "Completed action / to finish" },
+    { char: "就", pinyin: "jiù", meaning: "Then, just, only, right away" },
+    { char: "而", pinyin: "ér", meaning: "And, but, while (conjunction)" },
+    { char: "用", pinyin: "yòng", meaning: "To use, with, by means of" },
+    { char: "从", pinyin: "cóng", meaning: "From, since, follow" },
+    { char: "将", pinyin: "jiāng", meaning: "Will, about to, general" },
+    { char: "都", pinyin: "dōu / dū", meaning: "All, both / capital city" },
+    { char: "把", pinyin: "bǎ", meaning: "Disposal marker, to hold, handle" },
+    { char: "被", pinyin: "bèi", meaning: "Passive marker, by, quilt" },
+    { char: "让", pinyin: "ràng", meaning: "To let, to allow, to make" },
+    { char: "给", pinyin: "gěi", meaning: "To give, for, to" },
+    { char: "还", pinyin: "hái / huán", meaning: "Still, also, yet / to return" },
+  ];
+
+  const flags = [
+    { country: "France", code: "fr" }, { country: "Germany", code: "de" },
+    { country: "Japan", code: "jp" }, { country: "Brazil", code: "br" },
+    { country: "Canada", code: "ca" }, { country: "Australia", code: "au" },
+    { country: "India", code: "in" }, { country: "China", code: "cn" },
+    { country: "Mexico", code: "mx" }, { country: "South Korea", code: "kr" },
+    { country: "Italy", code: "it" }, { country: "Spain", code: "es" },
+    { country: "Argentina", code: "ar" }, { country: "Nigeria", code: "ng" },
+    { country: "Egypt", code: "eg" }, { country: "South Africa", code: "za" },
+    { country: "Turkey", code: "tr" }, { country: "Saudi Arabia", code: "sa" },
+    { country: "Sweden", code: "se" }, { country: "Norway", code: "no" },
+    { country: "Netherlands", code: "nl" }, { country: "Portugal", code: "pt" },
+    { country: "Greece", code: "gr" }, { country: "Poland", code: "pl" },
+    { country: "Ukraine", code: "ua" }, { country: "Kenya", code: "ke" },
+    { country: "Ghana", code: "gh" }, { country: "Ethiopia", code: "et" },
+    { country: "Pakistan", code: "pk" }, { country: "Bangladesh", code: "bd" },
+    { country: "Indonesia", code: "id" }, { country: "Thailand", code: "th" },
+    { country: "Vietnam", code: "vn" }, { country: "Philippines", code: "ph" },
+    { country: "New Zealand", code: "nz" }, { country: "Ireland", code: "ie" },
+    { country: "Denmark", code: "dk" }, { country: "Finland", code: "fi" },
+    { country: "Switzerland", code: "ch" }, { country: "Austria", code: "at" },
+    { country: "Belgium", code: "be" }, { country: "Czech Republic", code: "cz" },
+    { country: "Romania", code: "ro" }, { country: "Hungary", code: "hu" },
+    { country: "Chile", code: "cl" }, { country: "Colombia", code: "co" },
+    { country: "Peru", code: "pe" }, { country: "Venezuela", code: "ve" },
+    { country: "Morocco", code: "ma" }, { country: "Algeria", code: "dz" },
+    { country: "Tanzania", code: "tz" }, { country: "Uganda", code: "ug" },
+    { country: "Cameroon", code: "cm" }, { country: "Senegal", code: "sn" },
+    { country: "Iraq", code: "iq" }, { country: "Iran", code: "ir" },
+    { country: "Israel", code: "il" }, { country: "UAE", code: "ae" },
+    { country: "Malaysia", code: "my" }, { country: "Singapore", code: "sg" },
+  ];
+
+  const capitals = [
+    { country: "France", capital: "Paris" }, { country: "Germany", capital: "Berlin" },
+    { country: "Japan", capital: "Tokyo" }, { country: "Brazil", capital: "Brasília" },
+    { country: "Canada", capital: "Ottawa" }, { country: "Australia", capital: "Canberra" },
+    { country: "India", capital: "New Delhi" }, { country: "China", capital: "Beijing" },
+    { country: "Mexico", capital: "Mexico City" }, { country: "South Korea", capital: "Seoul" },
+    { country: "Italy", capital: "Rome" }, { country: "Spain", capital: "Madrid" },
+    { country: "Argentina", capital: "Buenos Aires" }, { country: "Nigeria", capital: "Abuja" },
+    { country: "Egypt", capital: "Cairo" }, { country: "South Africa", capital: "Pretoria" },
+    { country: "Turkey", capital: "Ankara" }, { country: "Saudi Arabia", capital: "Riyadh" },
+    { country: "Sweden", capital: "Stockholm" }, { country: "Norway", capital: "Oslo" },
+    { country: "Netherlands", capital: "Amsterdam" }, { country: "Portugal", capital: "Lisbon" },
+    { country: "Greece", capital: "Athens" }, { country: "Poland", capital: "Warsaw" },
+    { country: "Ukraine", capital: "Kyiv" }, { country: "Kenya", capital: "Nairobi" },
+    { country: "Ghana", capital: "Accra" }, { country: "Ethiopia", capital: "Addis Ababa" },
+    { country: "Pakistan", capital: "Islamabad" }, { country: "Bangladesh", capital: "Dhaka" },
+    { country: "Indonesia", capital: "Jakarta" }, { country: "Thailand", capital: "Bangkok" },
+    { country: "Vietnam", capital: "Hanoi" }, { country: "Philippines", capital: "Manila" },
+    { country: "New Zealand", capital: "Wellington" }, { country: "Ireland", capital: "Dublin" },
+    { country: "Denmark", capital: "Copenhagen" }, { country: "Finland", capital: "Helsinki" },
+    { country: "Switzerland", capital: "Bern" }, { country: "Austria", capital: "Vienna" },
+    { country: "Belgium", capital: "Brussels" }, { country: "Czech Republic", capital: "Prague" },
+    { country: "Romania", capital: "Bucharest" }, { country: "Hungary", capital: "Budapest" },
+    { country: "Chile", capital: "Santiago" }, { country: "Colombia", capital: "Bogotá" },
+    { country: "Peru", capital: "Lima" }, { country: "Venezuela", capital: "Caracas" },
+    { country: "Morocco", capital: "Rabat" }, { country: "Algeria", capital: "Algiers" },
+    { country: "Tanzania", capital: "Dodoma" }, { country: "Uganda", capital: "Kampala" },
+    { country: "Cameroon", capital: "Yaoundé" }, { country: "Senegal", capital: "Dakar" },
+    { country: "Iraq", capital: "Baghdad" }, { country: "Iran", capital: "Tehran" },
+    { country: "Israel", capital: "Jerusalem" }, { country: "UAE", capital: "Abu Dhabi" },
+    { country: "Malaysia", capital: "Kuala Lumpur" }, { country: "Singapore", capital: "Singapore City" },
+  ];
+
+  const elements = [
+    { symbol: "H", name: "Hydrogen", hint: "Lightest element, atomic number 1" },
+    { symbol: "He", name: "Helium", hint: "Noble gas used in balloons" },
+    { symbol: "Li", name: "Lithium", hint: "Alkali metal used in batteries" },
+    { symbol: "C", name: "Carbon", hint: "Basis of all organic life" },
+    { symbol: "N", name: "Nitrogen", hint: "Makes up 78% of Earth's atmosphere" },
+    { symbol: "O", name: "Oxygen", hint: "Essential for breathing; atomic number 8" },
+    { symbol: "Na", name: "Sodium", hint: "From Latin 'Natrium'; found in salt" },
+    { symbol: "Mg", name: "Magnesium", hint: "Burns with bright white flame" },
+    { symbol: "Al", name: "Aluminium", hint: "Most abundant metal in Earth's crust" },
+    { symbol: "Si", name: "Silicon", hint: "Used in computer chips; semiconductor" },
+    { symbol: "P", name: "Phosphorus", hint: "Essential for DNA and ATP" },
+    { symbol: "S", name: "Sulfur", hint: "Yellow solid; smell of rotten eggs" },
+    { symbol: "Cl", name: "Chlorine", hint: "Yellow-green toxic gas; used to purify water" },
+    { symbol: "K", name: "Potassium", hint: "From Latin 'Kalium'; found in bananas" },
+    { symbol: "Ca", name: "Calcium", hint: "Essential for bones and teeth" },
+    { symbol: "Fe", name: "Iron", hint: "From Latin 'Ferrum'; magnetic metal" },
+    { symbol: "Cu", name: "Copper", hint: "From Latin 'Cuprum'; reddish conductor" },
+    { symbol: "Zn", name: "Zinc", hint: "Used to galvanise steel" },
+    { symbol: "Br", name: "Bromine", hint: "Only liquid non-metallic element at room temperature" },
+    { symbol: "Ag", name: "Silver", hint: "From Latin 'Argentum'; best conductor" },
+    { symbol: "I", name: "Iodine", hint: "Purple vapour; used as antiseptic" },
+    { symbol: "Au", name: "Gold", hint: "From Latin 'Aurum'; symbol of wealth" },
+    { symbol: "Hg", name: "Mercury", hint: "From Latin 'Hydrargyrum'; only liquid metal at room temperature" },
+    { symbol: "Pb", name: "Lead", hint: "From Latin 'Plumbum'; dense, soft metal" },
+    { symbol: "Ne", name: "Neon", hint: "Noble gas used in signs; glows orange-red" },
+    { symbol: "Ar", name: "Argon", hint: "Most common noble gas in atmosphere" },
+    { symbol: "Kr", name: "Krypton", hint: "Noble gas used in high-powered lasers" },
+    { symbol: "Xe", name: "Xenon", hint: "Noble gas used in flash lamps" },
+    { symbol: "U", name: "Uranium", hint: "Radioactive; used in nuclear fuel; atomic number 92" },
+    { symbol: "Pt", name: "Platinum", hint: "Precious metal; used in catalytic converters" },
+  ];
+
+  const jokes = [
+    { q: "Why did the scarecrow win an award?", a: "Because he was outstanding in his field!" },
+    { q: "What do you call a fish without eyes?", a: "A fsh!" },
+    { q: "Why can't you give Elsa a balloon?", a: "Because she'll let it go!" },
+    { q: "What do you call a sleeping dinosaur?", a: "A dino-snore!" },
+    { q: "Why did the bicycle fall over?", a: "Because it was two-tired!" },
+    { q: "What do you call a bear with no teeth?", a: "A gummy bear!" },
+    { q: "Why don't scientists trust atoms?", a: "Because they make up everything!" },
+    { q: "What do you call a lazy kangaroo?", a: "A pouch potato!" },
+    { q: "Why is the ocean so salty?", a: "Because the land never waves back!" },
+    { q: "What do elves learn in school?", a: "The elf-abet!" },
+    { q: "Why did the maths book look so sad?", a: "Because it had too many problems!" },
+    { q: "What do you call a fake noodle?", a: "An impasta!" },
+    { q: "Why did the student eat his homework?", a: "Because the teacher told him it was a piece of cake!" },
+    { q: "What has ears but cannot hear?", a: "A field of corn!" },
+    { q: "What do you call cheese that isn't yours?", a: "Nacho cheese!" },
+    { q: "Why couldn't the leopard play hide and seek?", a: "Because he was always spotted!" },
+    { q: "What did one wall say to the other wall?", a: "I'll meet you at the corner!" },
+    { q: "Why do cows wear bells?", a: "Because their horns don't work!" },
+    { q: "What do you call a snowman with a six-pack?", a: "An abdominal snowman!" },
+    { q: "Why did the golfer bring an extra pair of trousers?", a: "In case he got a hole in one!" },
+    { q: "What do you get when you cross a snowman and a vampire?", a: "Frostbite!" },
+    { q: "Why can't Cinderella play football?", a: "Because she always runs away from the ball!" },
+    { q: "What did the ocean say to the beach?", a: "Nothing, it just waved!" },
+    { q: "Why did the teacher wear sunglasses?", a: "Because her students were so bright!" },
+    { q: "What do you call a sad strawberry?", a: "A blueberry!" },
+    { q: "Why was the broom late?", a: "It over-swept!" },
+    { q: "What starts with E, ends with E, and has only one letter?", a: "An envelope!" },
+    { q: "What's a vampire's favourite fruit?", a: "A blood orange!" },
+    { q: "Why did the clock get in trouble?", a: "Because it tocked too much!" },
+    { q: "What do you call a fish that wears a crown?", a: "King of the sea!" },
+  ];
+
+  // ── POPULATE TILES ───────────────────────────────────────────────────
+  const d = dayOfYear();
+
+  // Word of the Day
+  const w = pick(words);
+  document.getElementById('word-main').textContent = w.w;
+  document.getElementById('word-pos').textContent = w.pos;
+  document.getElementById('word-def').textContent = w.def;
+
+  // Spelling
+  const sp = pick(spellings);
+  document.getElementById('spell-hint').textContent = sp.hint;
+  document.getElementById('spell-answer').textContent = sp.word;
+  document.getElementById('spell-def').textContent = sp.def;
+
+  // Idiom
+  const idiom = pick(idioms);
+  document.getElementById('idiom-main').textContent = '"' + idiom.idiom + '"';
+  document.getElementById('idiom-meaning').textContent = idiom.meaning;
+  document.getElementById('idiom-example').textContent = 'E.g. ' + idiom.example;
+
+  // Quote
+  const qt = pick(quotes);
+  document.getElementById('quote-text').textContent = '"' + qt.text + '"';
+  document.getElementById('quote-author').textContent = '— ' + qt.author;
+
+  // Maths
+  const m = pick(mathsProblems);
+  document.getElementById('maths-q').textContent = m.q;
+  document.getElementById('maths-answer').textContent = m.a;
+
+  // Science
+  document.getElementById('science-fact').textContent = pick(scienceFacts);
+
+  // Geography
+  document.getElementById('geo-fact').textContent = pick(geoFacts);
+
+  // Latin
+  const lat = pick(latinPhrases);
+  document.getElementById('latin-phrase').textContent = lat.phrase;
+  document.getElementById('latin-meaning').textContent = lat.meaning;
+  document.getElementById('latin-context').textContent = lat.context;
+
+  // French
+  const fr = pick(frenchWords);
+  document.getElementById('fr-word').textContent = fr.word;
+  document.getElementById('fr-pos').textContent = fr.pos;
+  document.getElementById('fr-meaning').textContent = fr.meaning;
+
+  // German
+  const de = pick(germanWords);
+  document.getElementById('de-word').textContent = de.word;
+  document.getElementById('de-pos').textContent = de.pos;
+  document.getElementById('de-meaning').textContent = de.meaning;
+
+  // Spanish
+  const es = pick(spanishWords);
+  document.getElementById('es-word').textContent = es.word;
+  document.getElementById('es-pos').textContent = es.pos;
+  document.getElementById('es-meaning').textContent = es.meaning;
+
+  // Chinese
+  const zh = pick(chineseChars);
+  document.getElementById('zh-char').textContent = zh.char;
+  document.getElementById('zh-pinyin').textContent = zh.pinyin;
+  document.getElementById('zh-meaning').textContent = zh.meaning;
+
+  // Flag
+  const fl = pick(flags);
+  document.getElementById('flag-img').src = `https://flagcdn.com/w160/${fl.code}.png`;
+  document.getElementById('flag-answer').textContent = fl.country;
+
+  // Capital
+  const cap = pick(capitals);
+  document.getElementById('capital-country').textContent = 'What is the capital of ' + cap.country + '?';
+  document.getElementById('capital-answer').textContent = cap.capital;
+
+  // Element
+  const el = pick(elements);
+  document.getElementById('element-symbol').textContent = el.symbol;
+  document.getElementById('element-hint').textContent = el.hint;
+  document.getElementById('element-answer').textContent = el.name;
+
+  // Joke
+  const jk = pick(jokes);
+  document.getElementById('joke-q').textContent = jk.q;
+  document.getElementById('joke-answer').textContent = jk.a;
+
+  // ── Wikipedia API: On This Day + Born Today ──────────────────────────
+  const month = now.getMonth() + 1;
+  const day2 = now.getDate();
+
+  fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${month}/${day2}`)
+    .then(r => r.json())
+    .then(data => {
+      // On This Day
+      const events = data.events || [];
+      if (events.length) {
+        const ev = events[d % events.length];
+        document.getElementById('otd-year').textContent = ev.year;
+        document.getElementById('otd-event').textContent = ev.text;
+      }
+      // Born Today
+      const births = data.births || [];
+      if (births.length) {
+        const born = births[d % births.length];
+        document.getElementById('born-name').textContent = born.text.split(',')[0];
+        document.getElementById('born-desc').textContent = born.text;
+      }
+    })
+    .catch(() => {
+      document.getElementById('otd-year').textContent = 'History';
+      document.getElementById('otd-event').textContent = 'Unable to load today\'s events. Check your connection.';
+      document.getElementById('born-name').textContent = '—';
+      document.getElementById('born-desc').textContent = 'Unable to load.';
+    });
+
+  </script>
+
+</body>
+</html>
