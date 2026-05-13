@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Label the Human Organs Games Diagram | GCSE Bio | martinedu.co.uk</title>
-    <meta name="description" content="Label the Human Organs Games diagram — a free interactive GCSE biology revision game. No login required. Test yourself and learn key structures now.">
+  <title>Label the Human Organs | GCSE Biology | martinedu.co.uk</title>
+  <meta name="description" content="Label the Human Organs diagram — a free interactive GCSE biology revision game. No login required. Test yourself and learn key structures now.">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg:       #0f1117;
       --surface:  #1a1d27;
-      --surface2: #222636;
+      --surface2: #22253a;
       --border:   rgba(255,255,255,0.08);
+      --border-hi:rgba(255,255,255,0.14);
       --accent:   #4ade9a;
       --accent2:  #7b6fff;
       --warn:     #ff6b6b;
@@ -58,17 +59,17 @@
     .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; background: var(--text-mid); border-radius: 50%; transition: transform var(--trans), background var(--trans); }
     .toggle input:checked ~ .toggle-thumb { transform: translateX(16px); background: #fff; }
 
-    .hd-timer { font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: var(--accent2); background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r); padding: 0.3rem 0.75rem; min-width: 52px; text-align: center; display: none; }
+    .hd-timer { font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: var(--accent2); background: var(--surface2); border: 1px solid var(--border-hi); border-radius: var(--r); padding: 0.3rem 0.75rem; min-width: 52px; text-align: center; display: none; }
     .hd-timer.active { display: block; }
     .hd-timer.urgent { color: var(--warn); animation: pulse 0.5s ease infinite alternate; }
     @keyframes pulse { from{opacity:1} to{opacity:0.4} }
 
-    .hd-score { font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: var(--text); background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r); padding: 0.3rem 0.75rem; min-width: 60px; text-align: center; }
-    .btn-restart { font-family: var(--font-d); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; border: 1px solid var(--border); color: var(--text-mid); padding: 0.3rem 0.9rem; border-radius: var(--r); cursor: pointer; transition: all var(--trans); }
+    .hd-score { font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: var(--text); background: var(--surface2); border: 1px solid var(--border-hi); border-radius: var(--r); padding: 0.3rem 0.75rem; min-width: 60px; text-align: center; }
+    .btn-restart { font-family: var(--font-d); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; border: 1px solid var(--border-hi); color: var(--text-mid); padding: 0.3rem 0.9rem; border-radius: var(--r); cursor: pointer; transition: all var(--trans); }
     .btn-restart:hover { border-color: var(--accent); color: var(--accent); }
 
-    .progress-bar { height: 2px; background: var(--surface2); flex-shrink: 0; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); width: 0%; transition: width 0.4s ease; }
+    .progress-bar { height: 3px; background: var(--surface2); flex-shrink: 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); width: 0%; transition: width 0.4s ease; box-shadow: 0 0 6px rgba(74,222,154,0.5); }
 
     /* ── Layout ── */
     .main { flex: 1; display: grid; grid-template-columns: 1fr 190px; min-height: 0; overflow: hidden; }
@@ -114,10 +115,10 @@
     .connectors { position: absolute; inset: 0; pointer-events: none; }
 
     /* ── Label bank ── */
-    .bank { background: var(--surface); border-left: 1px solid var(--border); padding: 0.9rem 0.7rem; display: flex; flex-direction: column; gap: 0.35rem; overflow-y: auto; }
+    .bank { background: var(--surface); border-left: 1px solid var(--border-hi); padding: 0.9rem 0.7rem; display: flex; flex-direction: column; gap: 0.35rem; overflow-y: auto; }
     .bank-title { font-family: var(--font-d); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.35rem; flex-shrink: 0; text-align: center; }
 
-    .label-chip { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 6px; padding: 0.4rem 0.5rem; font-family: var(--font-d); font-size: 0.75rem; font-weight: 600; color: var(--text); cursor: grab; user-select: none; transition: all var(--trans); text-align: center; }
+    .label-chip { background: var(--surface2); border: 1.5px solid var(--border-hi); border-radius: 6px; padding: 0.4rem 0.5rem; font-family: var(--font-d); font-size: 0.75rem; font-weight: 600; color: var(--text); cursor: grab; user-select: none; transition: all var(--trans); text-align: center; }
     .label-chip:active { cursor: grabbing; }
     .label-chip:hover { border-color: var(--accent2); color: var(--accent2); }
     .label-chip.dragging { opacity: 0.25; }
@@ -128,9 +129,10 @@
     .drag-ghost.visible { opacity: 1; }
 
     /* ── Results ── */
-    .overlay { display: none; position: fixed; inset: 0; background: rgba(10,12,20,0.88); backdrop-filter: blur(8px); z-index: 500; align-items: center; justify-content: center; padding: 1.5rem; }
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(8,10,18,0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 500; align-items: center; justify-content: center; padding: 1.5rem; }
     .overlay.open { display: flex; }
-    .result-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 2.5rem; max-width: 460px; width: 100%; text-align: center; animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+    .result-card { background: var(--surface); border: 1px solid var(--border-hi); border-radius: 18px; padding: 2rem 2.5rem; max-width: 460px; width: 100%; text-align: center; animation: slideUp 0.38s cubic-bezier(0.34,1.56,0.64,1); position: relative; overflow: hidden; }
+    .result-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent2), var(--accent)); }
     @keyframes slideUp { from{opacity:0;transform:translateY(28px) scale(0.95)} to{opacity:1;transform:none} }
     .result-emoji { font-size: 3rem; margin-bottom: 0.6rem; display: block; }
     .result-heading { font-family: var(--font-d); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.35rem; }
@@ -147,7 +149,7 @@
     .breakdown-correct { color: var(--correct); font-size: 0.76rem; }
     .breakdown-arrow { color: var(--text-dim); font-size: 0.72rem; }
     .btn-retry { font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--accent); color: #0f1117; border: none; padding: 0.85rem 2.5rem; border-radius: var(--r); cursor: pointer; transition: all var(--trans); width: 100%; }
-    .btn-retry:hover { background: #6ef0b0; transform: translateY(-1px); }
+    .btn-retry:hover { background: #6ef0b0; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(74,222,154,0.35); }
   </style>
 </head>
 <body>
@@ -156,7 +158,7 @@
   <div class="hd-left">
     <a href="../index.html" class="hd-logo">Martin<span>Edu</span></a>
     <span class="hd-sep">·</span>
-    <span class="hd-title">Label the Organs</span>
+    <span class="hd-title" id="hd-title">Label the Organs</span>
   </div>
   <div class="hd-right">
     <div class="timer-wrap">
@@ -565,6 +567,7 @@ function stopTimer() { clearInterval(timerInterval); timerInterval = null; }
 function updateTimerDisplay() {
   const m = Math.floor(timerSecs/60), s = timerSecs%60;
   const el = document.getElementById('hd-timer');
+  if (!el) return;
   el.textContent = `${m}:${s.toString().padStart(2,'0')}`;
   el.classList.toggle('urgent', timerSecs<=20);
 }
