@@ -234,7 +234,7 @@ const SUBJECTS = [
   'English', 'History', 'Geography', 'French',
   'German', 'Spanish', 'Art', 'Music',
   'Drama', 'PE', 'Computing', 'Astronomy',
-  'Psychology', 'Economics',
+  'Psychology', 'Economics', 'Religious Education',
 ];
 
 const BOARDS = {
@@ -5380,3 +5380,1285 @@ VOCAB['geography']['ib-hl'] = {
     { term:'Composite index',      definition:'A single indicator combining multiple variables — e.g. HDI combines health, education and income.', hint:'Single measure combining multiple variables' },
   ],
 };
+// ============================================================
+// MartinEdu Vocabulary Data — Additions
+// French A-Level, German A-Level, Spanish A-Level,
+// Religious Education GCSE + A-Level
+// Append this block to the end of vocab-data.js
+// (before the closing lines)
+// ============================================================
+
+// ────────────────────────────────────────────────────────────
+// FRENCH — AQA A-Level (7652)
+// term = French word/phrase, definition = English translation
+// Topics aligned to AQA A-Level French specification themes
+// ────────────────────────────────────────────────────────────
+VOCAB['french'] = VOCAB['french'] || {};
+VOCAB['french']['aqa-alevel'] = {
+
+  'Les aspects de la société française contemporaine': [
+    { term:'la mondialisation',           definition:'globalisation',                                           hint:'Global economic integration' },
+    { term:'la diversité culturelle',     definition:'cultural diversity',                                      hint:'Variety of cultures' },
+    { term:'l\'intégration',             definition:'integration',                                             hint:'Becoming part of a society' },
+    { term:'l\'immigration',             definition:'immigration',                                             hint:'Moving into a country' },
+    { term:'l\'émigration',              definition:'emigration',                                              hint:'Leaving a country' },
+    { term:'le racisme',                 definition:'racism',                                                  hint:'Discrimination based on race' },
+    { term:'la discrimination',          definition:'discrimination',                                          hint:'Unfair treatment of a group' },
+    { term:'les inégalités sociales',    definition:'social inequalities',                                     hint:'Unequal opportunities in society' },
+    { term:'la pauvreté',                definition:'poverty',                                                 hint:'Lack of money/resources' },
+    { term:'l\'exclusion sociale',       definition:'social exclusion',                                       hint:'Being marginalised from society' },
+    { term:'la solidarité',              definition:'solidarity',                                              hint:'Unity and mutual support' },
+    { term:'le bénévolat',               definition:'voluntary work',                                         hint:'Unpaid community service' },
+    { term:'les sans-abri',              definition:'the homeless',                                           hint:'People with no home' },
+    { term:'la précarité',               definition:'precariousness / job insecurity',                        hint:'Unstable living or working conditions' },
+    { term:'les droits de l\'homme',     definition:'human rights',                                          hint:'Fundamental rights of all people' },
+    { term:'la laïcité',                 definition:'secularism / the separation of church and state',        hint:'Principle of religious neutrality in public life' },
+    { term:'le voile',                   definition:'the veil / headscarf',                                   hint:'Religious garment debate in France' },
+    { term:'l\'identité nationale',      definition:'national identity',                                      hint:'Sense of belonging to a nation' },
+    { term:'le multiculturalisme',        definition:'multiculturalism',                                       hint:'Multiple cultures coexisting' },
+    { term:'la cohésion sociale',         definition:'social cohesion',                                       hint:'Unity within a diverse society' },
+  ],
+
+  'La famille en voie de changement': [
+    { term:'le mariage pour tous',       definition:'same-sex marriage / marriage for all',                   hint:'Equal marriage rights legislation' },
+    { term:'le PACS',                    definition:'civil partnership (Pacte Civil de Solidarité)',          hint:'French civil partnership contract' },
+    { term:'le divorce',                 definition:'divorce',                                                hint:'Legal end of a marriage' },
+    { term:'la famille recomposée',      definition:'blended / reconstituted family',                        hint:'Family with step-parents or step-siblings' },
+    { term:'la famille monoparentale',   definition:'single-parent family',                                  hint:'One parent raising children' },
+    { term:'le concubinage',             definition:'cohabitation / living together without marriage',        hint:'Unmarried couple living together' },
+    { term:'la natalité',                definition:'birth rate',                                             hint:'Number of births per population' },
+    { term:'le vieillissement de la population', definition:'ageing of the population',                      hint:'Growing proportion of elderly people' },
+    { term:'la garde des enfants',       definition:'childcare',                                              hint:'Looking after children' },
+    { term:'le congé parental',          definition:'parental leave',                                        hint:'Time off work after having a child' },
+    { term:'l\'égalité des sexes',       definition:'gender equality',                                       hint:'Equal rights for men and women' },
+    { term:'le rôle des femmes',         definition:'the role of women',                                     hint:'Women\'s place in society and work' },
+    { term:'le plafond de verre',        definition:'the glass ceiling',                                     hint:'Invisible barrier to women\'s promotion' },
+    { term:'les stéréotypes de genre',   definition:'gender stereotypes',                                    hint:'Assumptions based on gender' },
+    { term:'la parentalité',             definition:'parenthood / parenting',                                 hint:'Being a parent' },
+  ],
+
+  'Le monde du travail': [
+    { term:'le chômage',                 definition:'unemployment',                                           hint:'Not having a job' },
+    { term:'le syndicat',                definition:'trade union',                                            hint:'Organisation protecting workers\' rights' },
+    { term:'la grève',                   definition:'strike',                                                 hint:'Workers refusing to work' },
+    { term:'le salaire minimum',         definition:'minimum wage',                                           hint:'Lowest legal hourly pay' },
+    { term:'les conditions de travail',  definition:'working conditions',                                    hint:'The environment and terms of employment' },
+    { term:'le télétravail',             definition:'remote working / working from home',                    hint:'Working outside the office' },
+    { term:'la formation professionnelle', definition:'professional training / vocational training',         hint:'Learning skills for a job' },
+    { term:'l\'apprentissage',           definition:'apprenticeship',                                        hint:'Learning a trade on the job' },
+    { term:'les inégalités salariales',  definition:'pay inequalities',                                      hint:'Wage gap between groups' },
+    { term:'l\'économie gig',            definition:'the gig economy',                                       hint:'Short-term contract and freelance work' },
+    { term:'la retraite',                definition:'retirement',                                             hint:'Stopping work at the end of a career' },
+    { term:'le licenciement',            definition:'redundancy / dismissal',                                 hint:'Losing your job' },
+    { term:'l\'insertion professionnelle', definition:'entering the job market',                             hint:'Starting a career — especially for young people' },
+    { term:'les compétences',            definition:'skills',                                                 hint:'Abilities useful in work' },
+    { term:'l\'entreprise',              definition:'the company / business',                                hint:'An organisation providing goods or services' },
+  ],
+
+  'Les enjeux politiques et sociétaux': [
+    { term:'le gouvernement',            definition:'the government',                                         hint:'Those who rule a country' },
+    { term:'l\'Assemblée nationale',     definition:'the National Assembly (lower house of French parliament)', hint:'France\'s lower house of parliament' },
+    { term:'le Sénat',                   definition:'the Senate (upper house of French parliament)',          hint:'France\'s upper house of parliament' },
+    { term:'l\'Élysée',                  definition:'the Élysée Palace — official residence of the President', hint:'French presidential palace' },
+    { term:'la démocratie',              definition:'democracy',                                              hint:'Government by the people' },
+    { term:'les élections',              definition:'elections',                                              hint:'Public vote for representatives' },
+    { term:'le vote',                    definition:'the vote',                                               hint:'Casting a ballot' },
+    { term:'l\'abstention',             definition:'abstention / not voting',                                hint:'Choosing not to vote' },
+    { term:'la corruption',              definition:'corruption',                                             hint:'Dishonest abuse of power' },
+    { term:'la liberté de la presse',    definition:'freedom of the press',                                  hint:'Right to publish without censorship' },
+    { term:'les médias',                 definition:'the media',                                              hint:'TV, radio, newspapers, internet' },
+    { term:'les réseaux sociaux',        definition:'social networks / social media',                        hint:'Facebook, Instagram, TikTok etc.' },
+    { term:'les fake news',              definition:'fake news / misinformation',                            hint:'False stories spread as true' },
+    { term:'la censure',                 definition:'censorship',                                             hint:'Suppression of information' },
+    { term:'le terrorisme',              definition:'terrorism',                                              hint:'Violence for political ends' },
+    { term:'la sécurité nationale',      definition:'national security',                                     hint:'Protecting the state from threats' },
+  ],
+
+  'L\'environnement': [
+    { term:'le changement climatique',   definition:'climate change',                                         hint:'Long-term shift in global temperatures' },
+    { term:'le réchauffement de la planète', definition:'global warming',                                    hint:'Rising average temperatures on Earth' },
+    { term:'les énergies renouvelables', definition:'renewable energies',                                    hint:'Solar, wind, hydro etc.' },
+    { term:'l\'énergie solaire',         definition:'solar energy',                                          hint:'Power from the sun' },
+    { term:'l\'énergie éolienne',        definition:'wind energy',                                           hint:'Power from wind turbines' },
+    { term:'l\'empreinte carbone',       definition:'the carbon footprint',                                  hint:'Total carbon emissions of a person or activity' },
+    { term:'le développement durable',   definition:'sustainable development',                               hint:'Meeting needs without harming future generations' },
+    { term:'la biodiversité',            definition:'biodiversity',                                           hint:'Variety of life on Earth' },
+    { term:'la déforestation',           definition:'deforestation',                                         hint:'Cutting down forests' },
+    { term:'la pollution de l\'air',     definition:'air pollution',                                        hint:'Contamination of the atmosphere' },
+    { term:'le tri des déchets',         definition:'waste sorting / recycling',                             hint:'Separating rubbish for recycling' },
+    { term:'les pesticides',             definition:'pesticides',                                             hint:'Chemicals used to kill pests in farming' },
+    { term:'la surpopulation',           definition:'overpopulation',                                        hint:'Too many people for available resources' },
+    { term:'l\'agriculture biologique',  definition:'organic farming',                                       hint:'Farming without artificial chemicals' },
+    { term:'la consommation responsable', definition:'responsible / ethical consumption',                    hint:'Buying in an environmentally aware way' },
+  ],
+
+  'La culture francophone — arts, cinéma, littérature': [
+    { term:'le cinéma français',         definition:'French cinema',                                          hint:'Film industry of France' },
+    { term:'la Nouvelle Vague',          definition:'the French New Wave — 1950s–60s film movement',         hint:'Innovative 1950s–60s French film movement' },
+    { term:'le roman',                   definition:'the novel',                                              hint:'A long work of fiction' },
+    { term:'la littérature',             definition:'literature',                                             hint:'Written works of artistic value' },
+    { term:'le patrimoine culturel',     definition:'cultural heritage',                                     hint:'Traditions and monuments passed down' },
+    { term:'la Francophonie',            definition:'the French-speaking world / community',                 hint:'All countries where French is spoken' },
+    { term:'la bande dessinée',          definition:'comic strip / graphic novel',                           hint:'Sequential art — a French cultural form' },
+    { term:'le tableau',                 definition:'the painting / picture',                                hint:'A work of visual art' },
+    { term:'la sculpture',               definition:'sculpture',                                              hint:'Three-dimensional artwork' },
+    { term:'l\'architecture',            definition:'architecture',                                          hint:'Design of buildings' },
+    { term:'le musée',                   definition:'the museum',                                             hint:'Place preserving cultural artefacts' },
+    { term:'la chanson française',       definition:'French song / French popular music',                    hint:'Traditional and contemporary French music genre' },
+    { term:'le festival',                definition:'the festival',                                           hint:'Celebration of art, film or music' },
+    { term:'le prix littéraire',         definition:'literary prize',                                        hint:'Award for outstanding writing' },
+    { term:'l\'auteur / l\'auteure',     definition:'the author',                                            hint:'Person who writes books' },
+  ],
+};
+
+// Edexcel and OCR A-Level French share the same core vocabulary
+VOCAB['french']['edexcel-alevel'] = VOCAB['french']['aqa-alevel'];
+VOCAB['french']['ocr-alevel']     = VOCAB['french']['aqa-alevel'];
+
+// ────────────────────────────────────────────────────────────
+// GERMAN — AQA A-Level (7662)
+// term = German word/phrase, definition = English translation
+// Topics aligned to AQA A-Level German specification themes
+// ────────────────────────────────────────────────────────────
+VOCAB['german'] = VOCAB['german'] || {};
+VOCAB['german']['aqa-alevel'] = {
+
+  'Deutsche Gesellschaft im Wandel': [
+    { term:'die Gesellschaft',           definition:'society',                                                hint:'The community of people' },
+    { term:'die Einwanderung',           definition:'immigration',                                           hint:'Moving into a country' },
+    { term:'die Auswanderung',           definition:'emigration',                                            hint:'Leaving a country' },
+    { term:'die Integration',            definition:'integration',                                           hint:'Becoming part of a society' },
+    { term:'die Vielfalt',               definition:'diversity',                                             hint:'A variety of different things' },
+    { term:'der Rassismus',              definition:'racism',                                                hint:'Discrimination based on race' },
+    { term:'die Diskriminierung',        definition:'discrimination',                                        hint:'Unfair treatment of a group' },
+    { term:'die Ungleichheit',           definition:'inequality',                                            hint:'Unequal distribution of rights/resources' },
+    { term:'die Armut',                  definition:'poverty',                                               hint:'Lack of money and resources' },
+    { term:'die soziale Ausgrenzung',    definition:'social exclusion',                                      hint:'Being marginalised from society' },
+    { term:'die Solidarität',            definition:'solidarity',                                            hint:'Unity and mutual support' },
+    { term:'das Ehrenamt',               definition:'voluntary work / honorary office',                      hint:'Unpaid community service' },
+    { term:'die Obdachlosigkeit',        definition:'homelessness',                                          hint:'Having no fixed home' },
+    { term:'die Menschenrechte',         definition:'human rights',                                          hint:'Fundamental rights of all people' },
+    { term:'die nationale Identität',    definition:'national identity',                                     hint:'Sense of belonging to a nation' },
+    { term:'der Multikulturalismus',     definition:'multiculturalism',                                      hint:'Multiple cultures coexisting' },
+    { term:'der sozialer Zusammenhalt',  definition:'social cohesion',                                       hint:'Unity within a diverse society' },
+    { term:'das Grundgesetz',            definition:'the Basic Law — Germany\'s constitution',               hint:'Germany\'s fundamental constitutional document' },
+    { term:'die Leitkultur',             definition:'the dominant / guiding culture',                        hint:'Debate about cultural integration in Germany' },
+    { term:'die Willkommenskultur',      definition:'the welcome culture — openness to refugees',            hint:'Germany\'s open-door attitude to refugees 2015' },
+  ],
+
+  'Familie und Partnerschaft': [
+    { term:'die Ehe',                    definition:'marriage',                                               hint:'Legal union of two people' },
+    { term:'die Scheidung',              definition:'divorce',                                                hint:'Legal end of a marriage' },
+    { term:'die Lebenspartnerschaft',    definition:'civil partnership',                                     hint:'Legal non-marital partnership' },
+    { term:'die Patchwork-Familie',      definition:'blended / step family',                                 hint:'Family with step-parents or step-siblings' },
+    { term:'die alleinerziehende Mutter / der alleinerziehende Vater', definition:'single mother / single father', hint:'One parent raising children alone' },
+    { term:'das Zusammenleben',          definition:'cohabitation / living together',                        hint:'Sharing a home without marriage' },
+    { term:'die Geburtenrate',           definition:'birth rate',                                            hint:'Number of births per population' },
+    { term:'die Überalterung',           definition:'ageing of the population',                              hint:'Growing proportion of elderly' },
+    { term:'die Kinderbetreuung',        definition:'childcare',                                             hint:'Looking after children' },
+    { term:'der Elternurlaub',           definition:'parental leave',                                       hint:'Time off work after having a child' },
+    { term:'die Gleichberechtigung',     definition:'equal rights / gender equality',                       hint:'Equal rights for men and women' },
+    { term:'das Rollenmodell',           definition:'role model',                                            hint:'A person to look up to and emulate' },
+    { term:'die Hausarbeit',             definition:'housework',                                             hint:'Domestic chores' },
+    { term:'der Generationenkonflikt',   definition:'generational conflict',                                 hint:'Tensions between age groups' },
+    { term:'die Erziehung',              definition:'upbringing / education (within family)',                hint:'How children are raised' },
+  ],
+
+  'Arbeit und Wirtschaft': [
+    { term:'die Arbeitslosigkeit',       definition:'unemployment',                                          hint:'Not having a job' },
+    { term:'die Gewerkschaft',           definition:'trade union',                                           hint:'Organisation protecting workers\' rights' },
+    { term:'der Streik',                 definition:'strike',                                                hint:'Workers refusing to work' },
+    { term:'der Mindestlohn',            definition:'minimum wage',                                          hint:'Lowest legal hourly pay' },
+    { term:'die Arbeitsbedingungen',     definition:'working conditions',                                   hint:'The environment and terms of employment' },
+    { term:'das Homeoffice',             definition:'working from home / home office',                      hint:'Remote working' },
+    { term:'die Berufsausbildung',       definition:'vocational training',                                  hint:'Practical training for a career' },
+    { term:'die Lehre',                  definition:'apprenticeship',                                       hint:'Learning a trade on the job' },
+    { term:'die Lohnungleichheit',       definition:'wage inequality',                                      hint:'Pay gap between groups' },
+    { term:'die Automatisierung',        definition:'automation',                                            hint:'Machines replacing human labour' },
+    { term:'die Rente',                  definition:'pension / retirement',                                  hint:'Income after stopping work' },
+    { term:'die Kündigung',              definition:'dismissal / notice of termination',                    hint:'Being fired or resigning' },
+    { term:'der Fachkräftemangel',       definition:'skilled worker shortage',                              hint:'Not enough qualified workers available' },
+    { term:'das Unternehmen',            definition:'the company / business',                               hint:'An organisation providing goods or services' },
+    { term:'die Globalisierung',         definition:'globalisation',                                         hint:'Global economic integration' },
+  ],
+
+  'Politisches Leben in Deutschland': [
+    { term:'der Bundestag',              definition:'the Bundestag — German federal parliament (lower house)', hint:'Germany\'s lower house of parliament' },
+    { term:'der Bundesrat',              definition:'the Bundesrat — German federal council (upper house)',  hint:'Germany\'s upper house — representing states' },
+    { term:'der Bundeskanzler / die Bundeskanzlerin', definition:'the Federal Chancellor',                  hint:'Germany\'s head of government' },
+    { term:'der Bundespräsident',        definition:'the Federal President',                                hint:'Germany\'s head of state' },
+    { term:'die Demokratie',             definition:'democracy',                                             hint:'Government by the people' },
+    { term:'die Partei',                 definition:'political party',                                       hint:'Group with shared political beliefs' },
+    { term:'die Wahl',                   definition:'election',                                              hint:'Public vote for representatives' },
+    { term:'die Pressefreiheit',         definition:'freedom of the press',                                 hint:'Right to publish without censorship' },
+    { term:'die Medien',                 definition:'the media',                                             hint:'TV, radio, newspapers, internet' },
+    { term:'die sozialen Medien',        definition:'social media',                                         hint:'Online platforms for sharing content' },
+    { term:'die Meinungsfreiheit',       definition:'freedom of expression',                                hint:'Right to express views freely' },
+    { term:'der Extremismus',            definition:'extremism',                                             hint:'Radical views outside mainstream politics' },
+    { term:'der Rechtsextremismus',      definition:'right-wing extremism',                                 hint:'Far-right political violence or ideology' },
+    { term:'die Vergangenheitsbewältigung', definition:'coming to terms with the (Nazi) past',              hint:'Germany\'s process of confronting its history' },
+    { term:'die Wiedervereinigung',      definition:'German reunification (1990)',                          hint:'East and West Germany joining in 1990' },
+  ],
+
+  'Umwelt und Zukunft': [
+    { term:'der Klimawandel',            definition:'climate change',                                        hint:'Long-term shift in global temperatures' },
+    { term:'die Erderwärmung',           definition:'global warming',                                       hint:'Rising average Earth temperatures' },
+    { term:'die erneuerbaren Energien',  definition:'renewable energies',                                   hint:'Solar, wind, hydro etc.' },
+    { term:'die Solarenergie',           definition:'solar energy',                                         hint:'Power from the sun' },
+    { term:'die Windenergie',            definition:'wind energy',                                          hint:'Power from wind turbines' },
+    { term:'der CO₂-Ausstoß',           definition:'CO₂ emissions',                                        hint:'Carbon dioxide released into atmosphere' },
+    { term:'der ökologische Fußabdruck', definition:'the ecological / carbon footprint',                   hint:'Total environmental impact of a person' },
+    { term:'die nachhaltige Entwicklung', definition:'sustainable development',                             hint:'Meeting needs without harming future generations' },
+    { term:'die Artenvielfalt',          definition:'biodiversity',                                         hint:'Variety of species on Earth' },
+    { term:'die Abholzung',              definition:'deforestation',                                        hint:'Cutting down forests' },
+    { term:'die Luftverschmutzung',      definition:'air pollution',                                        hint:'Contamination of the atmosphere' },
+    { term:'die Mülltrennung',           definition:'waste separation / recycling',                        hint:'Sorting rubbish for recycling' },
+    { term:'die Überbevölkerung',        definition:'overpopulation',                                       hint:'Too many people for available resources' },
+    { term:'der biologische Anbau',      definition:'organic farming',                                      hint:'Farming without artificial chemicals' },
+    { term:'die Energiewende',           definition:'Germany\'s transition to renewable energy',            hint:'Germany\'s shift away from fossil fuels and nuclear' },
+  ],
+
+  'Kultur und Identität im deutschsprachigen Raum': [
+    { term:'das deutschsprachige Ausland', definition:'German-speaking countries abroad (DACH region)',     hint:'Germany, Austria, Switzerland — the DACH countries' },
+    { term:'das Kulturerbe',             definition:'cultural heritage',                                    hint:'Traditions and monuments passed down' },
+    { term:'die Literatur',              definition:'literature',                                           hint:'Written works of artistic value' },
+    { term:'die Kunst',                  definition:'art',                                                  hint:'Creative visual work' },
+    { term:'die Architektur',            definition:'architecture',                                         hint:'Design of buildings' },
+    { term:'das Museum',                 definition:'the museum',                                           hint:'Place preserving cultural artefacts' },
+    { term:'das Theater',                definition:'the theatre',                                          hint:'Live dramatic performance' },
+    { term:'der Film',                   definition:'the film / movie',                                     hint:'Cinematic work' },
+    { term:'die Identität',              definition:'identity',                                             hint:'Who you are — sense of self' },
+    { term:'die Tradition',              definition:'tradition',                                            hint:'Customs passed down through generations' },
+    { term:'der Dialekt',                definition:'dialect',                                              hint:'Regional variety of a language' },
+    { term:'das Heimatgefühl',           definition:'sense of home / belonging to a place',                hint:'Emotional attachment to one\'s homeland' },
+    { term:'die Jugendkultur',           definition:'youth culture',                                        hint:'Cultural trends among young people' },
+    { term:'der Einfluss',               definition:'the influence',                                        hint:'Effect of one thing on another' },
+    { term:'die Medienwelt',             definition:'the media world / media landscape',                   hint:'The totality of modern media' },
+  ],
+};
+
+VOCAB['german']['edexcel-alevel'] = VOCAB['german']['aqa-alevel'];
+VOCAB['german']['ocr-alevel']     = VOCAB['german']['aqa-alevel'];
+
+// ────────────────────────────────────────────────────────────
+// SPANISH — AQA A-Level (7692)
+// term = Spanish word/phrase, definition = English translation
+// Topics aligned to AQA A-Level Spanish specification themes
+// ────────────────────────────────────────────────────────────
+VOCAB['spanish'] = VOCAB['spanish'] || {};
+VOCAB['spanish']['aqa-alevel'] = {
+
+  'Los aspectos de la sociedad española e hispanoamericana': [
+    { term:'la globalización',           definition:'globalisation',                                         hint:'Global economic integration' },
+    { term:'la diversidad cultural',     definition:'cultural diversity',                                   hint:'Variety of cultures' },
+    { term:'la integración',             definition:'integration',                                          hint:'Becoming part of a society' },
+    { term:'la inmigración',             definition:'immigration',                                          hint:'Moving into a country' },
+    { term:'la emigración',              definition:'emigration',                                           hint:'Leaving a country' },
+    { term:'el racismo',                 definition:'racism',                                               hint:'Discrimination based on race' },
+    { term:'la discriminación',          definition:'discrimination',                                       hint:'Unfair treatment of a group' },
+    { term:'la desigualdad social',      definition:'social inequality',                                    hint:'Unequal opportunities in society' },
+    { term:'la pobreza',                 definition:'poverty',                                              hint:'Lack of money and resources' },
+    { term:'la exclusión social',        definition:'social exclusion',                                     hint:'Being marginalised from society' },
+    { term:'la solidaridad',             definition:'solidarity',                                           hint:'Unity and mutual support' },
+    { term:'el voluntariado',            definition:'voluntary work',                                       hint:'Unpaid community service' },
+    { term:'los sin techo',              definition:'the homeless',                                         hint:'People with no home' },
+    { term:'los derechos humanos',       definition:'human rights',                                         hint:'Fundamental rights of all people' },
+    { term:'la identidad nacional',      definition:'national identity',                                    hint:'Sense of belonging to a nation' },
+    { term:'el multiculturalismo',       definition:'multiculturalism',                                     hint:'Multiple cultures coexisting' },
+    { term:'la cohesión social',         definition:'social cohesion',                                      hint:'Unity within a diverse society' },
+    { term:'el machismo',                definition:'machismo — exaggerated masculinity / male dominance',  hint:'Aggressive or exaggerated masculine behaviour' },
+    { term:'el feminismo',               definition:'feminism',                                             hint:'Advocacy of women\'s equal rights' },
+    { term:'la brecha salarial',         definition:'the gender pay gap',                                   hint:'Difference in pay between men and women' },
+  ],
+
+  'La familia y las relaciones personales': [
+    { term:'el matrimonio',              definition:'marriage',                                             hint:'Legal union of two people' },
+    { term:'el divorcio',                definition:'divorce',                                              hint:'Legal end of a marriage' },
+    { term:'la pareja de hecho',         definition:'civil partnership / unmarried couple',                hint:'Legal non-marital partnership' },
+    { term:'la familia reconstituida',   definition:'blended / reconstituted family',                      hint:'Family with step-parents or step-siblings' },
+    { term:'la familia monoparental',    definition:'single-parent family',                                hint:'One parent raising children' },
+    { term:'la convivencia',             definition:'cohabitation / living together',                      hint:'Sharing a home — also peaceful coexistence' },
+    { term:'la tasa de natalidad',       definition:'birth rate',                                          hint:'Number of births per population' },
+    { term:'el envejecimiento de la población', definition:'ageing of the population',                    hint:'Growing proportion of elderly people' },
+    { term:'el cuidado de los hijos',    definition:'childcare',                                           hint:'Looking after children' },
+    { term:'la baja por maternidad / paternidad', definition:'maternity / paternity leave',                hint:'Time off work after having a child' },
+    { term:'la igualdad de género',      definition:'gender equality',                                     hint:'Equal rights for men and women' },
+    { term:'el papel de la mujer',       definition:'the role of women',                                   hint:'Women\'s place in society' },
+    { term:'el techo de cristal',        definition:'the glass ceiling',                                   hint:'Invisible barrier to women\'s promotion' },
+    { term:'los estereotipos de género', definition:'gender stereotypes',                                  hint:'Assumptions based on gender' },
+    { term:'la crianza',                 definition:'upbringing / child-rearing',                         hint:'How children are raised' },
+  ],
+
+  'El mundo laboral': [
+    { term:'el desempleo',               definition:'unemployment',                                         hint:'Not having a job' },
+    { term:'el sindicato',               definition:'trade union',                                          hint:'Organisation protecting workers\' rights' },
+    { term:'la huelga',                  definition:'strike',                                               hint:'Workers refusing to work' },
+    { term:'el salario mínimo',          definition:'minimum wage',                                         hint:'Lowest legal hourly pay' },
+    { term:'las condiciones laborales',  definition:'working conditions',                                  hint:'The environment and terms of employment' },
+    { term:'el teletrabajo',             definition:'remote working / working from home',                  hint:'Working outside the office' },
+    { term:'la formación profesional',   definition:'vocational training',                                 hint:'Practical training for a career' },
+    { term:'el aprendizaje',             definition:'apprenticeship / learning',                           hint:'Learning a trade on the job' },
+    { term:'la brecha salarial',         definition:'wage inequality / pay gap',                           hint:'Unequal pay between groups' },
+    { term:'la automatización',          definition:'automation',                                           hint:'Machines replacing human labour' },
+    { term:'la jubilación',              definition:'retirement / pension',                                hint:'Stopping work — income after working life' },
+    { term:'el despido',                 definition:'dismissal / redundancy',                              hint:'Losing your job' },
+    { term:'la economía sumergida',      definition:'the black market / informal economy',                hint:'Unregulated economic activity' },
+    { term:'la empresa',                 definition:'the company / business',                              hint:'An organisation providing goods or services' },
+    { term:'el emprendimiento',          definition:'entrepreneurship',                                    hint:'Starting and running a business' },
+  ],
+
+  'Política e historia': [
+    { term:'el gobierno',                definition:'the government',                                       hint:'Those who rule a country' },
+    { term:'el Congreso de los Diputados', definition:'the Congress of Deputies — lower house of Spanish parliament', hint:'Spain\'s lower house of parliament' },
+    { term:'el Senado',                  definition:'the Senate — upper house of Spanish parliament',      hint:'Spain\'s upper house of parliament' },
+    { term:'la democracia',              definition:'democracy',                                            hint:'Government by the people' },
+    { term:'la dictadura',               definition:'dictatorship',                                         hint:'Rule by one person with absolute power' },
+    { term:'el franquismo',              definition:'Francoism — Franco\'s dictatorship (1939–1975)',      hint:'Spain\'s period under Franco\'s rule' },
+    { term:'la Transición',              definition:'the Transition — Spain\'s return to democracy after 1975', hint:'Spain\'s peaceful move to democracy after Franco' },
+    { term:'la Constitución',            definition:'the Constitution',                                    hint:'Fundamental law of a country' },
+    { term:'la libertad de prensa',      definition:'freedom of the press',                                hint:'Right to publish without censorship' },
+    { term:'los medios de comunicación', definition:'the media',                                           hint:'TV, radio, newspapers, internet' },
+    { term:'las redes sociales',         definition:'social media / social networks',                      hint:'Online platforms for sharing content' },
+    { term:'el terrorismo',              definition:'terrorism',                                            hint:'Violence for political ends' },
+    { term:'el independentismo',         definition:'independence movement',                               hint:'Push for regional independence — e.g. Catalonia' },
+    { term:'la corrupción',              definition:'corruption',                                           hint:'Dishonest abuse of power' },
+    { term:'la memoria histórica',       definition:'historical memory — coming to terms with the Civil War and Franco era', hint:'Spain\'s debate about its 20th-century history' },
+  ],
+
+  'El medio ambiente': [
+    { term:'el cambio climático',        definition:'climate change',                                       hint:'Long-term shift in global temperatures' },
+    { term:'el calentamiento global',    definition:'global warming',                                       hint:'Rising average Earth temperatures' },
+    { term:'las energías renovables',    definition:'renewable energies',                                  hint:'Solar, wind, hydro etc.' },
+    { term:'la energía solar',           definition:'solar energy',                                         hint:'Power from the sun' },
+    { term:'la energía eólica',          definition:'wind energy',                                          hint:'Power from wind turbines' },
+    { term:'la huella de carbono',       definition:'the carbon footprint',                                 hint:'Total carbon emissions of a person or activity' },
+    { term:'el desarrollo sostenible',   definition:'sustainable development',                              hint:'Meeting needs without harming future generations' },
+    { term:'la biodiversidad',           definition:'biodiversity',                                         hint:'Variety of life on Earth' },
+    { term:'la deforestación',           definition:'deforestation',                                        hint:'Cutting down forests' },
+    { term:'la contaminación del aire',  definition:'air pollution',                                       hint:'Contamination of the atmosphere' },
+    { term:'el reciclaje',               definition:'recycling',                                            hint:'Processing waste to reuse materials' },
+    { term:'los pesticidas',             definition:'pesticides',                                           hint:'Chemicals used to kill pests in farming' },
+    { term:'la superpoblación',          definition:'overpopulation',                                       hint:'Too many people for available resources' },
+    { term:'la agricultura ecológica',   definition:'organic farming',                                     hint:'Farming without artificial chemicals' },
+    { term:'el consumo responsable',     definition:'responsible / ethical consumption',                   hint:'Buying in an environmentally aware way' },
+  ],
+
+  'Cultura e identidad hispánicas': [
+    { term:'el patrimonio cultural',     definition:'cultural heritage',                                   hint:'Traditions and monuments passed down' },
+    { term:'la literatura',              definition:'literature',                                          hint:'Written works of artistic value' },
+    { term:'el arte',                    definition:'art',                                                 hint:'Creative visual work' },
+    { term:'la arquitectura',            definition:'architecture',                                        hint:'Design of buildings' },
+    { term:'el cine hispano',            definition:'Hispanic cinema',                                     hint:'Film from Spain and Latin America' },
+    { term:'el flamenco',                definition:'flamenco — traditional Andalusian dance and music',   hint:'Traditional song and dance from southern Spain' },
+    { term:'la identidad hispana',       definition:'Hispanic identity',                                   hint:'Cultural identity of Spanish-speaking peoples' },
+    { term:'Hispanoamérica',             definition:'Hispanic America — Spanish-speaking Latin America',   hint:'Latin American countries where Spanish is spoken' },
+    { term:'la lengua',                  definition:'language',                                            hint:'System of communication' },
+    { term:'el dialecto',                definition:'dialect',                                             hint:'Regional variety of a language' },
+    { term:'la tradición',               definition:'tradition',                                           hint:'Customs passed down through generations' },
+    { term:'la fiesta',                  definition:'festival / celebration',                              hint:'Public celebration — also Spanish word for party' },
+    { term:'la influencia',              definition:'the influence',                                       hint:'Effect of one thing on another' },
+    { term:'la juventud',                definition:'youth',                                               hint:'Young people as a social group' },
+    { term:'la religión',                definition:'religion',                                            hint:'Beliefs and practices relating to the divine' },
+  ],
+};
+
+VOCAB['spanish']['edexcel-alevel'] = VOCAB['spanish']['aqa-alevel'];
+VOCAB['spanish']['ocr-alevel']     = VOCAB['spanish']['aqa-alevel'];
+
+// ────────────────────────────────────────────────────────────
+// RELIGIOUS EDUCATION — AQA GCSE (8062)
+// Topics: Christianity, Islam, Themes in Ethics and Philosophy
+// ────────────────────────────────────────────────────────────
+VOCAB['religious education'] = VOCAB['religious education'] || {};
+VOCAB['religious education']['aqa-gcse'] = {
+
+  'Christian Beliefs': [
+    { term:'The Trinity',                definition:'The Christian belief that God exists as three persons in one: Father, Son and Holy Spirit.',               hint:'Three in one — Father, Son, Spirit' },
+    { term:'Incarnation',                definition:'The Christian belief that the Son of God became human in the person of Jesus Christ.',                    hint:'God becoming human — Jesus' },
+    { term:'Resurrection',               definition:'The rising of Jesus from the dead on the third day after his crucifixion.',                               hint:'Jesus rising from death' },
+    { term:'Atonement',                  definition:'The belief that Jesus\'s death on the cross restored the broken relationship between humanity and God.',   hint:'Jesus\'s death restores relationship with God' },
+    { term:'Salvation',                  definition:'The deliverance from sin and its consequences, made possible through faith in Jesus Christ.',              hint:'Being saved from sin' },
+    { term:'Omnipotent',                 definition:'All-powerful — one of the key attributes of God in Christian theology.',                                  hint:'All-powerful' },
+    { term:'Omniscient',                 definition:'All-knowing — one of the key attributes of God in Christian theology.',                                   hint:'All-knowing' },
+    { term:'Omnibenevolent',             definition:'All-loving and good — one of the key attributes of God in Christian theology.',                           hint:'All-loving' },
+    { term:'The Apostles\' Creed',       definition:'A statement of core Christian beliefs including the Trinity, Incarnation and Resurrection.',              hint:'Summary of Christian belief' },
+    { term:'Original sin',               definition:'The Christian belief that all humans are born with a tendency towards sin, inherited from Adam and Eve.',  hint:'Inherited tendency to sin from Adam and Eve' },
+    { term:'Grace',                      definition:'God\'s freely given, undeserved love and favour towards humanity.',                                       hint:'God\'s undeserved love' },
+    { term:'Heaven',                     definition:'In Christianity, the state of eternal life and union with God after death.',                               hint:'Eternal life with God' },
+    { term:'Hell',                       definition:'In Christianity, eternal separation from God, associated with punishment after death.',                    hint:'Eternal separation from God' },
+    { term:'Purgatory',                  definition:'In Catholic teaching, a state of purification after death before entering heaven.',                       hint:'Catholic — purification after death' },
+    { term:'The Last Judgement',         definition:'The belief that at the end of time God will judge all people and determine their eternal destiny.',        hint:'God\'s final judgement of all people' },
+    { term:'Eschatology',                definition:'The branch of theology concerned with death, judgement, and the final destiny of the soul.',               hint:'Study of end times and afterlife' },
+    { term:'The Holy Spirit',            definition:'The third person of the Trinity — God\'s active presence in the world and in believers.',                 hint:'Third person of the Trinity' },
+    { term:'Baptism',                    definition:'A sacrament using water as a sign of purification and admission into the Christian community.',            hint:'Water ritual — entry into Christianity' },
+    { term:'Eucharist',                  definition:'A Christian sacrament commemorating the Last Supper, involving bread and wine.',                          hint:'Bread and wine — Last Supper memorial' },
+    { term:'Prayer',                     definition:'Communicating with God through words, thoughts or actions.',                                               hint:'Communicating with God' },
+  ],
+
+  'Christian Practices': [
+    { term:'Worship',                    definition:'Acts of devotion and reverence directed towards God.',                                                     hint:'Acts of devotion to God' },
+    { term:'Liturgical worship',         definition:'Structured worship following a set order of service — used in Catholic and Anglican churches.',            hint:'Structured formal worship — set order' },
+    { term:'Non-liturgical worship',     definition:'Informal worship without a fixed order — typical of Nonconformist churches.',                             hint:'Informal worship — no fixed order' },
+    { term:'Charismatic worship',        definition:'Worship emphasising direct experience of the Holy Spirit, including speaking in tongues and healing.',     hint:'Spontaneous Spirit-filled worship' },
+    { term:'The Sacraments',             definition:'Sacred rituals believed to convey God\'s grace — Catholics recognise seven; Protestants usually two.',    hint:'Sacred rituals conveying God\'s grace' },
+    { term:'Pilgrimage',                 definition:'A journey to a sacred place for religious reasons.',                                                       hint:'Journey to a holy place' },
+    { term:'Lent',                       definition:'A 40-day period of fasting and reflection before Easter, commemorating Jesus\'s time in the desert.',     hint:'40 days before Easter — fasting and reflection' },
+    { term:'Easter',                     definition:'The most important Christian festival, celebrating the resurrection of Jesus.',                            hint:'Most important festival — Jesus\'s resurrection' },
+    { term:'Christmas',                  definition:'The festival celebrating the birth of Jesus Christ.',                                                     hint:'Celebrating Jesus\'s birth' },
+    { term:'Evangelism',                 definition:'Spreading the Christian faith by proclaiming it to others.',                                               hint:'Spreading the Christian message' },
+    { term:'Reconciliation',             definition:'The restoration of friendly relations — in Christianity, being brought back into a right relationship with God.', hint:'Restoring relationship — with God or others' },
+    { term:'The Church',                 definition:'The worldwide community of Christians; also the building where Christians worship.',                       hint:'Christian community or building' },
+    { term:'The denomination',           definition:'A distinct branch of the Christian Church with its own organisation and beliefs.',                        hint:'Branch of Christianity — e.g. Catholic, Baptist' },
+    { term:'Mission',                    definition:'The work of spreading the Christian faith and serving communities in the name of Jesus.',                  hint:'Spreading faith and serving others' },
+    { term:'Social justice',             definition:'The pursuit of fair treatment and equal opportunities for all people in society.',                         hint:'Fair treatment for everyone in society' },
+  ],
+
+  'Islamic Beliefs': [
+    { term:'Tawhid',                     definition:'The absolute oneness of God — the central belief of Islam.',                                              hint:'Oneness of God — central Islamic belief' },
+    { term:'Allah',                      definition:'The Arabic word for God — used by Muslims to refer to the one God.',                                      hint:'Arabic word for God' },
+    { term:'The Six Articles of Faith',  definition:'The core beliefs of Sunni Islam: God, angels, holy books, prophets, Day of Judgement, and predestination.', hint:'Six core Sunni Muslim beliefs' },
+    { term:'Angels (Mala\'ikah)',        definition:'Spiritual beings created by God from light who carry out God\'s will — including Jibril (Gabriel).',     hint:'Spiritual beings — Jibril brought revelation' },
+    { term:'Holy Books (Kutub)',         definition:'The books revealed by God to the prophets — including the Qur\'an, Tawrat, Zabur and Injil.',            hint:'Books revealed by God to prophets' },
+    { term:'Prophets (Nabi/Rasul)',      definition:'Messengers chosen by God to guide humanity — including Ibrahim, Musa, Isa and Muhammad.',                hint:'Messengers of God — ends with Muhammad' },
+    { term:'The Day of Judgement (Yawm al-Din)', definition:'The day when God will judge all people on the basis of their deeds and faith.',                  hint:'God\'s final judgement of humanity' },
+    { term:'Predestination (Al-Qadr)',   definition:'The belief that God has foreknowledge of all events and that human destiny is known to God.',            hint:'God\'s foreknowledge and control of events' },
+    { term:'Sunni Islam',                definition:'The largest branch of Islam, following the Sunnah (example) of the Prophet.',                             hint:'Largest branch of Islam' },
+    { term:'Shi\'a Islam',               definition:'The second largest branch of Islam, believing leadership should pass through Ali, the Prophet\'s cousin.', hint:'Second largest branch — follows Ali\'s line' },
+    { term:'Risalah (Prophethood)',       definition:'The concept that God communicates with humans through prophets.',                                         hint:'God communicating through prophets' },
+    { term:'Akhirah (Afterlife)',         definition:'The Islamic belief in life after death, including resurrection, judgement, paradise and hell.',           hint:'Islamic belief in life after death' },
+    { term:'Jannah (Paradise)',          definition:'In Islam, the garden of paradise — the reward for the righteous after death.',                            hint:'Islamic paradise — reward for the righteous' },
+    { term:'Jahannam (Hell)',            definition:'In Islam, the place of punishment for those who reject God.',                                             hint:'Islamic place of punishment' },
+    { term:'The Qur\'an',               definition:'The holy book of Islam, believed to be the direct word of God as revealed to Muhammad.',                  hint:'Islam\'s holy book — word of God to Muhammad' },
+  ],
+
+  'Islamic Practices': [
+    { term:'The Five Pillars',           definition:'The five core acts of worship in Sunni Islam: Shahadah, Salah, Zakah, Sawm and Hajj.',                  hint:'Five core acts of Sunni Muslim worship' },
+    { term:'Shahadah',                   definition:'The declaration of faith: "There is no God but Allah, and Muhammad is his messenger."',                  hint:'Declaration of faith — first pillar' },
+    { term:'Salah',                      definition:'The ritual prayer performed five times a day — the second pillar of Islam.',                              hint:'Five daily prayers — second pillar' },
+    { term:'Zakah',                      definition:'Obligatory almsgiving — donating 2.5% of savings to the poor — the third pillar of Islam.',             hint:'2.5% of savings to the poor — third pillar' },
+    { term:'Sawm',                       definition:'Fasting during the month of Ramadan — the fourth pillar of Islam.',                                      hint:'Ramadan fasting — fourth pillar' },
+    { term:'Hajj',                       definition:'The pilgrimage to Makkah, obligatory once in a lifetime for those able — the fifth pillar of Islam.',   hint:'Pilgrimage to Makkah — fifth pillar' },
+    { term:'Ramadan',                    definition:'The ninth month of the Islamic calendar, during which Muslims fast from dawn to sunset.',                hint:'Month of fasting — ninth Islamic month' },
+    { term:'Id ul-Fitr',                 definition:'The festival celebrating the end of Ramadan, marked by communal prayer and celebration.',                hint:'Festival ending Ramadan' },
+    { term:'Id ul-Adha',                 definition:'The festival of sacrifice, commemorating Ibrahim\'s willingness to sacrifice his son.',                  hint:'Festival of sacrifice — commemorates Ibrahim' },
+    { term:'The mosque',                 definition:'The Muslim place of worship and community centre.',                                                       hint:'Muslim place of worship' },
+    { term:'Wudu',                       definition:'The ritual washing performed before Salah as an act of purification.',                                    hint:'Ritual washing before prayer' },
+    { term:'Ummah',                      definition:'The worldwide community of Muslim believers.',                                                            hint:'Global Muslim community' },
+    { term:'Jihad',                      definition:'Striving in the way of God — the greater jihad is the inner spiritual struggle; the lesser is physical defence of the faith.', hint:'Striving for God — inner and outer struggle' },
+    { term:'Shari\'ah',                  definition:'Islamic law derived from the Qur\'an and Hadith, covering all aspects of life.',                        hint:'Islamic law from Qur\'an and Hadith' },
+    { term:'Ibadah',                     definition:'Worship and devotion to God — all acts performed with the intention of pleasing God.',                   hint:'All acts of devotion to God' },
+  ],
+
+  'Themes in Ethics: Relationships and Families': [
+    { term:'Contraception',              definition:'Methods used to prevent pregnancy.',                                                                      hint:'Preventing pregnancy' },
+    { term:'Cohabitation',               definition:'Living together as a couple without being married.',                                                      hint:'Unmarried couple living together' },
+    { term:'Adultery',                   definition:'Voluntary sexual intercourse between a married person and someone other than their spouse.',              hint:'Infidelity within marriage' },
+    { term:'Divorce',                    definition:'The legal ending of a marriage.',                                                                         hint:'Legal end of marriage' },
+    { term:'Remarriage',                 definition:'Marrying again after divorce or the death of a spouse.',                                                  hint:'Marrying again after divorce or death' },
+    { term:'Same-sex marriage',          definition:'A legally recognised marriage between two people of the same gender.',                                    hint:'Marriage between same-gender people' },
+    { term:'Gender equality',            definition:'The state of equal ease, access and opportunity for people of different genders.',                        hint:'Equal rights and opportunities regardless of gender' },
+    { term:'Nuclear family',             definition:'A family consisting of two parents and their children.',                                                  hint:'Two parents and children' },
+    { term:'Sanctity of marriage',       definition:'The belief that marriage is a holy and sacred union blessed by God.',                                     hint:'Marriage as sacred and holy' },
+    { term:'Vocation',                   definition:'A calling from God to a particular way of life or work.',                                                 hint:'God\'s calling to a specific life or work' },
+  ],
+
+  'Themes in Ethics: Religion and Life': [
+    { term:'Sanctity of life',           definition:'The belief that life is holy and belongs to God, so only God has the right to take it away.',             hint:'Life is holy — belongs to God' },
+    { term:'Abortion',                   definition:'The deliberate termination of a pregnancy.',                                                              hint:'Termination of pregnancy' },
+    { term:'Euthanasia',                 definition:'The deliberate ending of a life to relieve suffering — also called "mercy killing".',                    hint:'Mercy killing — ending suffering' },
+    { term:'Quality of life',            definition:'A measure of how fulfilling and enjoyable life is for a person.',                                         hint:'How fulfilling and enjoyable life is' },
+    { term:'The environment',            definition:'The natural world of land, sea and air that supports all life.',                                          hint:'The natural world' },
+    { term:'Stewardship',                definition:'The responsibility to care for and manage God\'s creation on God\'s behalf.',                             hint:'Caring for God\'s creation' },
+    { term:'Dominion',                   definition:'The authority given to humans in the Bible to rule over and manage the natural world.',                   hint:'Human authority over creation — Genesis' },
+    { term:'Animal rights',              definition:'The belief that animals have rights and should not be mistreated.',                                        hint:'Rights and welfare of animals' },
+    { term:'Vegetarianism',              definition:'The practice of not eating meat.',                                                                        hint:'Not eating meat' },
+    { term:'Hospice',                    definition:'A specialist care facility providing palliative care for the terminally ill.',                            hint:'Care for the terminally ill' },
+  ],
+
+  'Themes in Philosophy: Crime and Punishment': [
+    { term:'Justice',                    definition:'The quality of being fair and reasonable — giving people what they deserve.',                             hint:'Fairness — giving what is deserved' },
+    { term:'Punishment',                 definition:'A penalty imposed on an offender as a consequence of a crime.',                                           hint:'Penalty for wrongdoing' },
+    { term:'Retribution',                definition:'Punishment that aims to make the offender pay for their crime — an eye for an eye.',                     hint:'Making offender pay — eye for eye' },
+    { term:'Deterrence',                 definition:'Using punishment to discourage others from committing crimes.',                                           hint:'Putting others off committing crimes' },
+    { term:'Reformation',                definition:'Rehabilitating an offender so they can become a constructive member of society.',                        hint:'Changing offenders to reintegrate into society' },
+    { term:'Forgiveness',                definition:'The act of pardoning someone for a wrong they have done.',                                                hint:'Pardoning wrongdoing' },
+    { term:'Capital punishment',         definition:'The death penalty — execution as a punishment for the most serious crimes.',                             hint:'Death penalty' },
+    { term:'Restorative justice',        definition:'A system that brings offenders, victims and community together to repair harm caused.',                  hint:'Repairing harm — offender meets victim' },
+    { term:'Prison',                     definition:'A place of confinement where convicted criminals are detained.',                                          hint:'Place of confinement for criminals' },
+    { term:'Conscience',                 definition:'An inner sense of right and wrong that guides moral decision-making.',                                    hint:'Inner moral sense — right and wrong' },
+  ],
+
+  'Themes in Philosophy: Peace and Conflict': [
+    { term:'Peace',                      definition:'Freedom from war and violence; harmony between individuals or nations.',                                  hint:'Absence of war and violence' },
+    { term:'Just War',                   definition:'A war that meets specific moral criteria — including just cause, last resort and proportionality.',      hint:'War meeting moral criteria' },
+    { term:'Pacifism',                   definition:'The belief that violence and war are never justified and conflicts should be resolved peacefully.',       hint:'Violence is never justified' },
+    { term:'Holy War',                   definition:'A war fought for religious reasons or in defence of religion.',                                           hint:'War fought for religion' },
+    { term:'Terrorism',                  definition:'The use of violence and intimidation to achieve political or ideological aims.',                          hint:'Violence for political aims' },
+    { term:'Reconciliation',             definition:'The restoring of friendly relations after conflict.',                                                     hint:'Restoring relations after conflict' },
+    { term:'Forgiveness',                definition:'The act of pardoning someone who has wronged you.',                                                       hint:'Pardoning wrongdoing' },
+    { term:'Weapons of mass destruction', definition:'Weapons capable of mass casualties — nuclear, biological and chemical weapons.',                        hint:'Weapons causing mass casualties — nuclear etc.' },
+    { term:'Conscientious objection',    definition:'Refusing to fight in a war for reasons of conscience or religious belief.',                              hint:'Refusing to fight on moral/religious grounds' },
+    { term:'Humanitarian aid',           definition:'Emergency assistance given to people affected by crisis, regardless of their background.',               hint:'Emergency help for people in crisis' },
+  ],
+};
+
+// Edexcel and OCR GCSE RE share the same core vocabulary
+VOCAB['religious education']['edexcel-gcse'] = VOCAB['religious education']['aqa-gcse'];
+VOCAB['religious education']['ocr-gcse']     = VOCAB['religious education']['aqa-gcse'];
+VOCAB['religious education']['ccea-gcse']    = VOCAB['religious education']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// RELIGIOUS EDUCATION — AQA A-Level (7062 / RS)
+// Philosophy of Religion, Ethics, Study of Religion
+// ────────────────────────────────────────────────────────────
+VOCAB['religious education']['aqa-alevel'] = {
+
+  'Philosophy of Religion — Arguments for God\'s Existence': [
+    { term:'The Cosmological Argument', definition:'An argument for God\'s existence based on the need for a first cause or explanation for the universe\'s existence.', hint:'First cause argument — universe needs an explanation' },
+    { term:'The Teleological Argument', definition:'An argument for God\'s existence from design — the order and complexity of the universe suggests a designer.', hint:'Design argument — order implies designer' },
+    { term:'The Ontological Argument',  definition:'An a priori argument for God\'s existence — God is defined as the greatest possible being, and existence is a perfection.', hint:'God\'s existence follows from definition of perfection' },
+    { term:'The Moral Argument',        definition:'An argument that the existence of objective moral values implies a moral lawgiver — God.',                 hint:'Objective morality implies a moral lawgiver' },
+    { term:'A priori',                  definition:'Knowledge or argument based on reason alone, independent of experience.',                                  hint:'Known through reason — independent of experience' },
+    { term:'A posteriori',              definition:'Knowledge or argument based on observation and experience.',                                               hint:'Known through experience and observation' },
+    { term:'Kalam Cosmological Argument', definition:'Everything that begins to exist has a cause; the universe began to exist; therefore the universe has a cause (God).', hint:'Kalam: universe began so must have a cause' },
+    { term:'Aquinas\'s Five Ways',      definition:'Thomas Aquinas\'s five arguments for God\'s existence: motion, causation, contingency, perfection, and design.', hint:'Aquinas: five proofs — motion, cause, contingency etc.' },
+    { term:'Paley\'s Watch',            definition:'William Paley\'s teleological analogy: just as a watch implies a watchmaker, the universe implies a divine designer.', hint:'Paley: watch implies watchmaker — universe implies God' },
+    { term:'Anselm\'s Ontological Argument', definition:'God is "that than which nothing greater can be conceived" — such a being must exist in reality as well as the mind.', hint:'Anselm: greatest conceivable being must exist' },
+    { term:'The Problem of Evil',       definition:'The argument that the existence of evil and suffering is incompatible with an all-powerful, all-knowing, all-loving God.', hint:'Evil and suffering challenge belief in a good God' },
+    { term:'The Free Will Defence',     definition:'The argument that God allows evil because giving humans free will requires the possibility of choosing evil.', hint:'God allows evil to preserve human free will' },
+    { term:'Natural evil',              definition:'Evil and suffering caused by natural events — earthquakes, disease, famine.',                              hint:'Evil from natural events — not human choice' },
+    { term:'Moral evil',                definition:'Evil and suffering caused by the free choices of human beings.',                                           hint:'Evil resulting from human choices' },
+    { term:'Theodicy',                  definition:'An attempt to defend God\'s goodness and omnipotence in light of the existence of evil and suffering.',   hint:'Defending God in light of evil' },
+  ],
+
+  'Philosophy of Religion — Religious Experience and Language': [
+    { term:'Religious experience',      definition:'A direct experience of God or the divine — can be mystical, numinous, conversion or corporate.',         hint:'Direct experience of God' },
+    { term:'Numinous experience',       definition:'Rudolf Otto\'s term for the awe-inspiring, mysterious experience of the holy — mysterium tremendum.',    hint:'Otto\'s overwhelming awe of the holy' },
+    { term:'Mystical experience',       definition:'An experience of direct union with God or ultimate reality, often involving altered consciousness.',       hint:'Union with God — beyond ordinary experience' },
+    { term:'William James\'s criteria', definition:'James identified four marks of religious experience: ineffability, noetic quality, transiency, passivity.', hint:'James: ineffable, noetic, transient, passive' },
+    { term:'Scepticism',                definition:'Doubt or disbelief about the truth of a claim — applied to religious experience: reasons to doubt its validity.', hint:'Doubt about the truth of a claim' },
+    { term:'Verification principle',    definition:'A.J. Ayer\'s principle: a statement is meaningful only if it can be empirically verified.',               hint:'Ayer: meaningful only if verifiable by evidence' },
+    { term:'Falsification principle',   definition:'Popper/Flew: a statement is meaningful only if it can in principle be proved false.',                     hint:'Flew: meaningful only if falsifiable' },
+    { term:'Via negativa (Apophatic theology)', definition:'Knowing God by describing what God is not rather than what God is.',                              hint:'Describing God only by negation — what God is not' },
+    { term:'Analogy',                   definition:'Aquinas\'s view that language about God is neither univocal nor equivocal but analogical — partly similar.', hint:'Aquinas: God-language is analogical — partly similar' },
+    { term:'Miracle',                   definition:'An event that appears to violate natural laws and is attributed to divine intervention.',                  hint:'Extraordinary event attributed to God' },
+    { term:'Hume\'s critique of miracles', definition:'Hume argued it is always more probable that witnesses are mistaken or lying than that a natural law was violated.', hint:'Hume: testimony for miracles always less probable than error' },
+    { term:'Soul-making theodicy',      definition:'John Hick\'s theodicy: evil exists to enable spiritual growth and the development of moral character.',    hint:'Hick: evil enables spiritual development' },
+    { term:'Irenaean theodicy',         definition:'Based on Irenaeus: humans are made in God\'s image but must develop into God\'s likeness through challenge.', hint:'Irenaeus: humans develop toward God through adversity' },
+    { term:'Augustinian theodicy',      definition:'Augustine\'s view: evil is the absence of good (privatio boni); it entered the world through the Fall.',  hint:'Augustine: evil as privatio boni — entered via the Fall' },
+    { term:'Language game',             definition:'Wittgenstein\'s idea that religious language has its own internal grammar and rules — valid within its community.', hint:'Wittgenstein: religious language valid within its community' },
+  ],
+
+  'Ethics — Normative Ethical Theories': [
+    { term:'Utilitarianism',            definition:'The ethical theory that the right action is the one that produces the greatest happiness for the greatest number.', hint:'Greatest happiness for the greatest number' },
+    { term:'Act utilitarianism',        definition:'The view that each individual action should be judged by whether it maximises happiness in that situation.', hint:'Judge each act by its own consequences' },
+    { term:'Rule utilitarianism',       definition:'The view that we should follow rules that, if generally followed, would produce the greatest happiness.',  hint:'Follow rules that maximise happiness overall' },
+    { term:'Kantian ethics',            definition:'Deontological ethics based on duty and universal moral law — acting only on maxims you could universalise.', hint:'Kant: duty and universal law — categorical imperative' },
+    { term:'The Categorical Imperative', definition:'Kant\'s supreme moral principle: act only according to maxims you could will to become universal laws.', hint:'Act only on universalisable maxims — Kant' },
+    { term:'Natural Law',               definition:'The ethical theory, associated with Aquinas, that moral norms are derived from human nature and God\'s purposes.', hint:'Aquinas: morality from human nature and God\'s purpose' },
+    { term:'Divine Command Theory',     definition:'The view that an action is morally right because God commands it.',                                        hint:'Right because God commands it' },
+    { term:'Virtue ethics',             definition:'The ethical theory focusing on developing good character traits (virtues) rather than following rules.',   hint:'Focus on character — being virtuous' },
+    { term:'Eudaimonia',                definition:'Aristotle\'s term for flourishing or wellbeing — the goal of human life and ethical behaviour.',           hint:'Aristotle: human flourishing and wellbeing' },
+    { term:'Situation ethics',          definition:'Joseph Fletcher\'s view that the most loving action in each situation is always the right one.',           hint:'Fletcher: love is the only absolute rule' },
+    { term:'Agape',                     definition:'Unconditional, selfless love — the principle at the centre of situation ethics.',                         hint:'Unconditional selfless love — Fletcher\'s principle' },
+    { term:'Deontology',                definition:'An ethical approach that judges actions as right or wrong based on rules and duties, not consequences.',   hint:'Duty-based ethics — rules not consequences' },
+    { term:'Consequentialism',          definition:'An ethical approach that judges actions solely by their outcomes — right action produces the best consequences.', hint:'Outcomes determine right action' },
+    { term:'The principle of double effect', definition:'An action with both good and bad consequences may be permissible if the good effect is intended and the bad is foreseen but not intended.', hint:'Good intended, bad foreseen but not intended' },
+    { term:'Moral absolutism',          definition:'The view that certain actions are intrinsically right or wrong regardless of consequences or context.',   hint:'Some actions always right or wrong — no exceptions' },
+  ],
+
+  'Ethics — Applied Ethics': [
+    { term:'Medical ethics',            definition:'The application of ethical principles to decisions in medicine and healthcare.',                           hint:'Ethics applied to medical decisions' },
+    { term:'Euthanasia',                definition:'The deliberate ending of a life to relieve suffering.',                                                    hint:'Mercy killing — ending suffering' },
+    { term:'Voluntary euthanasia',      definition:'Euthanasia carried out at the explicit request of the person who dies.',                                  hint:'Person requests their own death' },
+    { term:'Non-voluntary euthanasia',  definition:'Euthanasia carried out when the person is unable to give or withhold consent.',                          hint:'Person unable to consent to their death' },
+    { term:'Assisted dying',            definition:'Providing the means for a terminally ill person to end their own life.',                                  hint:'Providing means for a person to end their own life' },
+    { term:'Abortion',                  definition:'The deliberate termination of a human pregnancy.',                                                        hint:'Termination of pregnancy' },
+    { term:'Personhood',                definition:'The qualities or attributes that define what it means to be a person with moral status.',                 hint:'What makes someone a moral person' },
+    { term:'Environmental ethics',      definition:'The ethical study of the relationship between humans and the natural world.',                              hint:'Ethics of human relationship with nature' },
+    { term:'Animal rights',             definition:'The view that animals have moral rights and deserve moral consideration.',                                  hint:'Animals have moral rights' },
+    { term:'Speciesism',                definition:'Peter Singer\'s term for discrimination against non-human animals on the basis of species alone.',        hint:'Singer: discrimination against animals — like racism' },
+    { term:'War and pacifism',          definition:'The ethical debate about whether violence in war can ever be justified, or whether pacifism is required.', hint:'Can war ever be justified?' },
+    { term:'Business ethics',           definition:'The application of ethical principles to commercial activity and organisations.',                          hint:'Ethics applied to business and commerce' },
+    { term:'Genetic engineering',       definition:'The deliberate modification of an organism\'s genes — raises ethical questions about playing God.',       hint:'Modifying genes — raises ethical concerns' },
+    { term:'Cloning',                   definition:'Creating a genetically identical copy of an organism — raises ethical and religious concerns.',           hint:'Creating genetic copy — ethical concerns' },
+    { term:'Capital punishment',        definition:'The death penalty as judicial punishment.',                                                                hint:'Death penalty' },
+  ],
+
+  'Study of Religion — Christianity': [
+    { term:'The Bible',                 definition:'The sacred scripture of Christianity, consisting of the Old Testament and the New Testament.',            hint:'Christian holy text — Old and New Testaments' },
+    { term:'The Old Testament',         definition:'The first part of the Christian Bible, containing the Hebrew scriptures shared with Judaism.',            hint:'Hebrew scriptures — shared with Judaism' },
+    { term:'The New Testament',         definition:'The second part of the Christian Bible, containing the Gospels, Acts, Epistles and Revelation.',          hint:'Gospels, Acts, Epistles, Revelation' },
+    { term:'The Gospel',                definition:'The "good news" of Jesus Christ; also refers to the four accounts of Jesus\'s life — Matthew, Mark, Luke, John.', hint:'Good news of Jesus — four accounts' },
+    { term:'Hermeneutics',              definition:'The theory and practice of interpreting sacred texts.',                                                    hint:'Interpreting sacred texts' },
+    { term:'Biblical literalism',       definition:'The belief that the Bible should be interpreted literally as the direct word of God.',                    hint:'Bible taken as literal truth — word for word' },
+    { term:'Liberation theology',       definition:'A theological movement emphasising God\'s concern for the poor and the need for social justice.',         hint:'God\'s concern for the poor — social action' },
+    { term:'Ecumenism',                 definition:'The movement promoting unity and cooperation among different Christian denominations.',                    hint:'Unity among Christian denominations' },
+    { term:'Secularisation',            definition:'The decline of religious belief and practice in modern society.',                                          hint:'Decline of religion in modern society' },
+    { term:'Fundamentalism',            definition:'Strict adherence to traditional religious beliefs in reaction to modern liberal values.',                 hint:'Strict adherence to traditional religion' },
+  ],
+
+  'Study of Religion — Islam': [
+    { term:'The Hadith',                definition:'The collected sayings and actions of the Prophet Muhammad, used alongside the Qur\'an to guide Muslim life.', hint:'Muhammad\'s sayings and actions — alongside Qur\'an' },
+    { term:'The Sunnah',                definition:'The way of life and practice of the Prophet Muhammad, based on the Hadith.',                              hint:'Muhammad\'s way of life — model for Muslims' },
+    { term:'Ijtihad',                   definition:'Independent reasoning and interpretation of Islamic law by a qualified scholar.',                          hint:'Independent scholarly interpretation of Islamic law' },
+    { term:'Ijma',                      definition:'The consensus of Muslim scholars on a point of Islamic law.',                                              hint:'Scholarly consensus on Islamic law' },
+    { term:'Qiyas',                     definition:'Analogical reasoning used by Islamic scholars to apply legal principles to new situations.',              hint:'Analogical reasoning in Islamic law' },
+    { term:'Imam',                      definition:'In Sunni Islam, the leader of prayer; in Shi\'a Islam, a divinely guided religious authority.',           hint:'Prayer leader (Sunni) or religious authority (Shi\'a)' },
+    { term:'Caliphate',                 definition:'The political and religious leadership of the Muslim community, headed by a Caliph (successor to Muhammad).', hint:'Muslim political-religious leadership after Muhammad' },
+    { term:'Islamic reform movements',  definition:'Movements within Islam seeking to reinterpret or reform Islamic law in light of modern circumstances.',   hint:'Modernising or reinterpreting Islamic practice' },
+    { term:'Sufism',                    definition:'The mystical dimension of Islam, emphasising direct personal experience of God through spiritual practice.', hint:'Islamic mysticism — direct experience of God' },
+    { term:'Islamic Golden Age',        definition:'The period c.700–1400 CE when Islamic civilisation led the world in science, philosophy and the arts.',  hint:'Muslim civilisation\'s peak — science and philosophy' },
+  ],
+};
+
+// Edexcel and OCR A-Level RE share same core vocabulary
+VOCAB['religious education']['edexcel-alevel'] = VOCAB['religious education']['aqa-alevel'];
+VOCAB['religious education']['ocr-alevel']     = VOCAB['religious education']['aqa-alevel'];
+
+// ────────────────────────────────────────────────────────────
+// Add 'Religious Education' to the SUBJECTS array
+// (add manually to the SUBJECTS constant in vocab-data.js)
+// SUBJECTS.push('Religious Education');
+// ────────────────────────────────────────────────────────────
+// ============================================================
+// MartinEdu Vocabulary Data — Gap Fill 2
+// PE A-Level, French/German/Spanish IGCSE,
+// Astronomy (Edexcel/OCR/Cambridge IGCSE),
+// Computing IB SL/HL, RE Cambridge/Edexcel IGCSE
+// Append to end of vocab-data.js
+// ============================================================
+
+// ────────────────────────────────────────────────────────────
+// PE — AQA A-Level (7582)
+// Topics: Applied anatomy, exercise physiology, biomechanics,
+// sport psychology, sport and society, technology in sport
+// ────────────────────────────────────────────────────────────
+VOCAB['pe'] = VOCAB['pe'] || {};
+VOCAB['pe']['aqa-alevel'] = {
+
+  'Applied Anatomy and Physiology': [
+    { term:'Cardiac cycle',            definition:'The sequence of events in one complete heartbeat — diastole (relaxation) and systole (contraction).', hint:'One complete heartbeat — relax then contract' },
+    { term:'Stroke volume',            definition:'The volume of blood ejected from the left ventricle per beat.',                                       hint:'Blood per heartbeat — left ventricle' },
+    { term:'Cardiac output',           definition:'The total volume of blood pumped by the heart per minute: stroke volume × heart rate.',              hint:'Stroke volume × heart rate' },
+    { term:'Starling\'s Law',          definition:'The greater the venous return (blood returning to the heart), the greater the force of contraction and stroke volume.', hint:'More blood in → more blood out' },
+    { term:'Venous return',            definition:'The volume of blood returning to the right atrium of the heart via the veins.',                      hint:'Blood returning to the heart' },
+    { term:'Arteriovenous oxygen difference', definition:'The difference in oxygen content between arterial and venous blood — indicates how much oxygen the muscles are extracting.', hint:'O₂ difference between arterial and venous blood' },
+    { term:'Redistribution of blood flow', definition:'During exercise, blood is redirected from inactive organs to working muscles via vasodilation and vasoconstriction.', hint:'Blood redirected to muscles during exercise' },
+    { term:'Vasodilation',             definition:'The widening of blood vessels to increase blood flow to an area.',                                   hint:'Blood vessels widening — more blood flow' },
+    { term:'Vasoconstriction',         definition:'The narrowing of blood vessels to reduce blood flow to an area.',                                   hint:'Blood vessels narrowing — less blood flow' },
+    { term:'Vascular shunting',        definition:'The redirection of blood from non-essential organs to working muscles during exercise.',            hint:'Redirecting blood to working muscles' },
+    { term:'VO₂ max',                  definition:'The maximum rate at which the body can take in and use oxygen during intense exercise.',            hint:'Maximum oxygen uptake — measure of aerobic capacity' },
+    { term:'Oxygen dissociation curve', definition:'A graph showing the relationship between partial pressure of oxygen and haemoglobin saturation.',  hint:'Shows how haemoglobin loads and unloads oxygen' },
+    { term:'Bohr effect',              definition:'The shift of the oxygen dissociation curve to the right in the presence of more CO₂ or lower pH — haemoglobin releases O₂ more readily.', hint:'CO₂/low pH shifts curve right — more O₂ released' },
+    { term:'Lung volumes',             definition:'Measures of air capacity — tidal volume, inspiratory reserve, expiratory reserve and residual volume.', hint:'Tidal, inspiratory reserve, expiratory reserve, residual' },
+    { term:'Fick\'s principle',        definition:'Cardiac output = VO₂ / arteriovenous oxygen difference — links oxygen delivery to consumption.',  hint:'Cardiac output links delivery to consumption' },
+  ],
+
+  'Exercise Physiology': [
+    { term:'ATP (adenosine triphosphate)', definition:'The immediate source of energy for all muscular contraction — must be continuously resynthesised.',hint:'Immediate energy currency of the body' },
+    { term:'Phosphocreatine system',   definition:'An anaerobic energy system using creatine phosphate to rapidly resynthesize ATP — lasts approximately 10 seconds.', hint:'Rapid ATP resynthesis — ~10 seconds duration' },
+    { term:'Glycolytic system',        definition:'An anaerobic energy system that breaks down glucose to pyruvate to resynthesize ATP — lasts approximately 1–3 minutes.', hint:'Glucose → pyruvate → ATP — ~1–3 minutes' },
+    { term:'Aerobic system',           definition:'An energy system using oxygen to break down carbohydrates, fats and proteins — produces ATP for sustained exercise.', hint:'Uses oxygen — sustained exercise' },
+    { term:'EPOC',                     definition:'Excess Post-exercise Oxygen Consumption — elevated oxygen uptake after exercise to restore the body to its pre-exercise state.', hint:'Elevated O₂ after exercise — repaying oxygen debt' },
+    { term:'Lactate threshold',        definition:'The exercise intensity at which lactate production exceeds the body\'s ability to remove it — marking the shift to anaerobic metabolism.', hint:'Point where lactate builds up faster than removed' },
+    { term:'Glycogen',                 definition:'The storage form of glucose in the liver and muscles — the primary fuel for moderate-to-high intensity exercise.', hint:'Stored glucose — primary exercise fuel' },
+    { term:'Fatty acid oxidation',     definition:'The aerobic breakdown of fatty acids (fats) to produce ATP — predominates during low-intensity, prolonged exercise.', hint:'Fats broken down aerobically — low intensity exercise' },
+    { term:'Muscle fibre types',       definition:'Slow twitch (Type I) — aerobic, fatigue-resistant; Fast twitch (Type IIa and IIx) — anaerobic, powerful but fatiguable.', hint:'Type I slow — Type II fast' },
+    { term:'Hypertrophy',              definition:'An increase in muscle size due to increased protein synthesis in response to resistance training.',  hint:'Muscle growth from resistance training' },
+    { term:'Enzyme activity',          definition:'The rate at which enzymes catalyse metabolic reactions — increased by training, temperature and substrate concentration.', hint:'Rate of enzyme-catalysed reactions' },
+    { term:'Creatine supplementation', definition:'A dietary supplement that increases phosphocreatine stores, improving performance in high-intensity, short-duration activities.', hint:'Supplement increasing phosphocreatine stores' },
+    { term:'Dehydration',              definition:'A reduction in body water that impairs thermoregulation, cardiovascular function and performance.', hint:'Water loss impairing performance' },
+    { term:'Thermoregulation',         definition:'The body\'s mechanisms for maintaining core temperature — sweating, vasodilation (cooling) and shivering, vasoconstriction (warming).', hint:'Maintaining core body temperature' },
+    { term:'Periodisation',            definition:'The systematic planning of training into phases (macrocycle, mesocycle, microcycle) to peak performance at the right time.', hint:'Planned training phases to peak at competition' },
+  ],
+
+  'Biomechanics': [
+    { term:'Newton\'s First Law',      definition:'A body remains at rest or in uniform motion unless acted upon by an external force.',                hint:'No force → no change in motion' },
+    { term:'Newton\'s Second Law',     definition:'Force = mass × acceleration — the rate of change of momentum is proportional to the applied force.', hint:'F = ma' },
+    { term:'Newton\'s Third Law',      definition:'For every action there is an equal and opposite reaction.',                                          hint:'Equal and opposite reaction' },
+    { term:'Linear momentum',          definition:'The product of mass and velocity — momentum = mass × velocity.',                                    hint:'Mass × velocity' },
+    { term:'Impulse',                  definition:'The change in momentum of a body — equal to force × time.',                                        hint:'Force × time = change in momentum' },
+    { term:'Projectile motion',        definition:'The curved flight path of a body affected only by gravity and air resistance after projection.',   hint:'Curved flight under gravity' },
+    { term:'Centre of mass',           definition:'The point through which the weight of a body acts — balancing point of the body.',                hint:'Point through which weight acts' },
+    { term:'Stability',                definition:'The resistance of a body to being overbalanced — increased by a lower centre of mass and wider base of support.', hint:'Low CoM + wide base = more stable' },
+    { term:'Lever systems',            definition:'The musculoskeletal arrangements of bones, joints and muscles — first, second and third class levers in the body.', hint:'1st, 2nd, 3rd class levers in the body' },
+    { term:'Mechanical advantage',     definition:'The ratio of the load arm to the effort arm in a lever — indicates how efficiently force is applied.', hint:'Load arm ÷ effort arm' },
+    { term:'Angular momentum',         definition:'The product of moment of inertia and angular velocity — conserved in the absence of external torques.', hint:'Moment of inertia × angular velocity' },
+    { term:'Moment of inertia',        definition:'The resistance of a body to changes in its rotation — depends on mass and its distribution from the axis.', hint:'Resistance to rotational change — depends on mass distribution' },
+    { term:'Angular velocity',         definition:'The rate of rotation of a body — how quickly it spins.',                                          hint:'Rate of rotation' },
+    { term:'Drag force',               definition:'The air resistance acting on a body opposing its motion through a fluid.',                        hint:'Air resistance opposing motion' },
+    { term:'Bernoulli principle',      definition:'Faster-moving air creates lower pressure — explains lift in aerofoils and swerve in spinning balls.', hint:'Fast air = low pressure — explains lift and swerve' },
+  ],
+
+  'Sport Psychology': [
+    { term:'Personality',              definition:'The unique set of characteristics that influence how an individual thinks, feels and behaves.',     hint:'Unique characteristics influencing behaviour' },
+    { term:'Trait theory',             definition:'The view that personality is innate and consistent across situations — we are born with fixed traits.', hint:'Personality is innate and fixed — born with traits' },
+    { term:'Social learning theory',   definition:'Bandura\'s theory that behaviour is learned by observing and imitating role models.',             hint:'Bandura: learn by watching role models' },
+    { term:'Self-efficacy',            definition:'Bandura\'s concept of a person\'s belief in their ability to succeed in a specific situation.',  hint:'Bandura: belief in your own ability in a situation' },
+    { term:'Arousal',                  definition:'A state of physiological and psychological activation — ranges from deep sleep to extreme excitement.', hint:'Level of physiological and psychological activation' },
+    { term:'Inverted-U theory',        definition:'The theory that performance improves as arousal increases up to an optimal point, then declines.', hint:'Performance peaks at optimal arousal — then falls' },
+    { term:'Drive theory',             definition:'Hull\'s theory that performance = habit × drive — higher arousal always increases dominant response.', hint:'Hull: higher arousal → stronger dominant response' },
+    { term:'Catastrophe theory',       definition:'The theory that beyond the optimal arousal point, performance drops dramatically if cognitive anxiety is also high.', hint:'Dramatic drop in performance with high anxiety' },
+    { term:'Cognitive anxiety',        definition:'The mental component of anxiety — negative thoughts, worry and apprehension.',                   hint:'Mental worry and negative thoughts' },
+    { term:'Somatic anxiety',          definition:'The physical component of anxiety — increased heart rate, sweating and muscle tension.',         hint:'Physical symptoms of anxiety' },
+    { term:'Attention control',        definition:'The ability to focus on relevant cues and block out distractions during performance.',           hint:'Focusing on relevant cues — blocking distractions' },
+    { term:'Attribution theory',       definition:'Weiner\'s model explaining how people attribute success or failure to factors — locus of control and stability.', hint:'Weiner: explaining success/failure — internal/external' },
+    { term:'Learned helplessness',     definition:'A state where repeated failure leads an athlete to believe they cannot succeed regardless of effort.', hint:'Repeated failure → belief effort is pointless' },
+    { term:'Goal setting (SMART)',     definition:'Setting Specific, Measurable, Achievable, Realistic and Time-bound goals to improve performance.', hint:'Specific, Measurable, Achievable, Realistic, Time-bound' },
+    { term:'Cohesion',                 definition:'The tendency of a group to stick together and remain united in pursuit of goals.',               hint:'Group sticking together — unity' },
+  ],
+
+  'Sport and Society': [
+    { term:'Amateurism',               definition:'The ethos that sport should be participated in for its own sake without payment.',               hint:'Sport for love — no payment' },
+    { term:'Professionalism',          definition:'The engagement in sport as a paid occupation.',                                                   hint:'Paid to play sport' },
+    { term:'Commercialisation',        definition:'The process of making sport into a business — involving sponsorship, media deals and merchandise.', hint:'Sport becoming a business' },
+    { term:'The golden triangle',      definition:'The mutually beneficial relationship between sport, media and sponsorship.',                     hint:'Sport + media + sponsorship' },
+    { term:'Deviance in sport',        definition:'Behaviour that violates the norms and rules of sport — from cheating to doping.',               hint:'Behaviour that breaks sport\'s rules and norms' },
+    { term:'Doping',                   definition:'The use of prohibited substances or methods to enhance athletic performance.',                   hint:'Banned substances to improve performance' },
+    { term:'Violence in sport',        definition:'Physical aggression beyond the rules of the sport — can be player-on-player or spectator violence.', hint:'Aggression beyond the rules of play' },
+    { term:'Discrimination in sport',  definition:'Unfair treatment in sport based on race, gender, disability, age or sexuality.',               hint:'Unfair treatment based on characteristics' },
+    { term:'Equality and inclusion',   definition:'Ensuring all people have equal access to sport regardless of background or characteristic.',    hint:'Equal access to sport for all' },
+    { term:'Sports ethics',            definition:'The moral principles governing sporting behaviour — fair play, respect and integrity.',          hint:'Moral principles — fair play and respect' },
+    { term:'Olympic ideal',            definition:'The values promoted by the Olympic movement — excellence, friendship and respect.',             hint:'Excellence, friendship and respect — Olympic values' },
+    { term:'Gamesmanship',             definition:'Using every possible means to win, including psychological tactics that bend but do not break the rules.', hint:'Bending rules psychologically to gain advantage' },
+    { term:'Sportsmanship',            definition:'Fair and generous behaviour in sport — respect for opponents, officials and the spirit of the game.', hint:'Fair and generous behaviour — respect for opponents' },
+    { term:'Social stratification',    definition:'The hierarchical arrangement of society into layers based on wealth, status or power.',        hint:'Society arranged in layers by wealth and status' },
+    { term:'Funding in sport',         definition:'The financial support for sport from government, lottery, sponsorship and media rights.',       hint:'Government, lottery, sponsorship, media rights' },
+  ],
+
+  'Technology in Sport': [
+    { term:'Video analysis',           definition:'The use of recorded footage to analyse technique, tactics and performance.',                     hint:'Using video to analyse technique and tactics' },
+    { term:'Wearable technology',      definition:'Devices worn by athletes to monitor physiological data — heart rate monitors, GPS trackers, accelerometers.', hint:'Worn devices monitoring physiology and movement' },
+    { term:'Biomechanical analysis',   definition:'The application of mechanical principles to study human movement and sport technique.',         hint:'Using mechanics to study sport movement' },
+    { term:'Altitude training',        definition:'Training at high altitude where lower oxygen pressure stimulates production of more red blood cells, improving aerobic capacity.', hint:'High altitude → more red blood cells → better aerobic fitness' },
+    { term:'Blood doping',             definition:'A banned practice of increasing red blood cell count — through transfusion or EPO — to improve oxygen delivery.', hint:'Banned: boosting red blood cells for more O₂ delivery' },
+    { term:'Hypoxic tent',             definition:'A tent simulating high-altitude conditions by reducing oxygen concentration — used to gain altitude training benefits at sea level.', hint:'Simulates altitude at sea level' },
+    { term:'Hawk-Eye',                 definition:'A computer vision technology used in cricket, tennis and football to track ball trajectory and make officiating decisions.', hint:'Computer tracking ball trajectory — aids officiating' },
+    { term:'Goal-line technology',     definition:'A system using cameras and sensors to determine definitively whether the ball has crossed the goal line.', hint:'Cameras confirm whether ball crossed goal line' },
+    { term:'VAR (Video Assistant Referee)', definition:'A video review system in football used to correct clear and obvious errors in key match decisions.', hint:'Video review for clear errors in football' },
+    { term:'Sports nutrition',         definition:'The application of nutritional science to optimise athletic performance and recovery.',          hint:'Nutrition science applied to sport performance' },
+  ],
+};
+
+VOCAB['pe']['edexcel-alevel'] = VOCAB['pe']['aqa-alevel'];
+VOCAB['pe']['ocr-alevel']     = VOCAB['pe']['aqa-alevel'];
+
+// ────────────────────────────────────────────────────────────
+// FRENCH — Cambridge IGCSE and Edexcel IGCSE
+// Same core vocabulary as GCSE — shared reference
+// ────────────────────────────────────────────────────────────
+VOCAB['french']['cambridge-igcse'] = VOCAB['french']['aqa-gcse'];
+VOCAB['french']['edexcel-igcse']   = VOCAB['french']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// GERMAN — Cambridge IGCSE and Edexcel IGCSE
+// ────────────────────────────────────────────────────────────
+VOCAB['german']['cambridge-igcse'] = VOCAB['german']['aqa-gcse'];
+VOCAB['german']['edexcel-igcse']   = VOCAB['german']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// SPANISH — Cambridge IGCSE and Edexcel IGCSE
+// ────────────────────────────────────────────────────────────
+VOCAB['spanish']['cambridge-igcse'] = VOCAB['spanish']['aqa-gcse'];
+VOCAB['spanish']['edexcel-igcse']   = VOCAB['spanish']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// ASTRONOMY — Edexcel GCSE, OCR GCSE, Cambridge IGCSE
+// Same core content as AQA — shared reference
+// ────────────────────────────────────────────────────────────
+VOCAB['astronomy']['edexcel-gcse']     = VOCAB['astronomy']['aqa-gcse'];
+VOCAB['astronomy']['ocr-gcse']         = VOCAB['astronomy']['aqa-gcse'];
+VOCAB['astronomy']['cambridge-igcse']  = VOCAB['astronomy']['aqa-gcse'];
+VOCAB['astronomy']['edexcel-igcse']    = VOCAB['astronomy']['aqa-gcse'];
+VOCAB['astronomy']['ccea-gcse']        = VOCAB['astronomy']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// COMPUTING — IB Diploma SL and HL (IB CS)
+// Topics aligned to IB Computer Science specification
+// ────────────────────────────────────────────────────────────
+VOCAB['computing'] = VOCAB['computing'] || {};
+VOCAB['computing']['ib-sl'] = {
+
+  'System Fundamentals': [
+    { term:'System',                   definition:'A set of components that interact to achieve a purpose — inputs are processed to produce outputs.', hint:'Components interacting to achieve a purpose' },
+    { term:'Hardware',                 definition:'The physical components of a computer system.',                                                    hint:'Physical components of a computer' },
+    { term:'Software',                 definition:'Programs and data that instruct hardware how to operate.',                                         hint:'Programs instructing hardware' },
+    { term:'Operating system',         definition:'System software that manages hardware resources and provides services for application software.',  hint:'Manages hardware — platform for applications' },
+    { term:'Input device',             definition:'Hardware used to enter data into a computer system — e.g. keyboard, mouse, scanner.',             hint:'Devices entering data — keyboard, mouse' },
+    { term:'Output device',            definition:'Hardware that presents processed data to the user — e.g. monitor, printer, speaker.',             hint:'Devices presenting results — monitor, printer' },
+    { term:'Primary storage',          definition:'Fast memory directly accessible by the CPU — RAM and ROM.',                                      hint:'RAM and ROM — directly accessed by CPU' },
+    { term:'Secondary storage',        definition:'Persistent storage for data and programs not currently in use — HDD, SSD, optical disc.',        hint:'HDD, SSD — persistent long-term storage' },
+    { term:'RAM (Random Access Memory)', definition:'Volatile primary storage that holds data and programs currently in use — lost when power is removed.', hint:'Volatile — loses data when powered off' },
+    { term:'ROM (Read Only Memory)',   definition:'Non-volatile primary storage containing firmware — cannot be changed by normal programs.',       hint:'Non-volatile — stores firmware permanently' },
+    { term:'CPU (Central Processing Unit)', definition:'The processor that executes instructions — comprises the ALU, CU and registers.',          hint:'Executes instructions — ALU, CU, registers' },
+    { term:'Cache memory',             definition:'Very fast memory between the CPU and RAM that stores frequently accessed data.',                  hint:'Fast memory storing frequently used data' },
+    { term:'Fetch-decode-execute cycle', definition:'The process by which the CPU retrieves an instruction, interprets it and carries it out.',    hint:'CPU process: fetch, decode, execute' },
+    { term:'Bus',                      definition:'A set of parallel wires connecting components of a computer — data, address and control buses.', hint:'Wires connecting CPU to memory and I/O' },
+    { term:'Clock speed',              definition:'The number of instruction cycles a CPU can perform per second — measured in GHz.',              hint:'Instructions per second — GHz' },
+  ],
+
+  'Computer Organisation': [
+    { term:'Binary',                   definition:'A base-2 number system using only digits 0 and 1 — the fundamental language of computers.',     hint:'Base-2: only 0s and 1s' },
+    { term:'Bit',                      definition:'The smallest unit of data in computing — a single binary digit: 0 or 1.',                      hint:'Smallest unit — 0 or 1' },
+    { term:'Byte',                     definition:'A group of 8 bits — can represent 256 different values.',                                       hint:'8 bits = 1 byte' },
+    { term:'Denary (decimal)',         definition:'The base-10 number system used in everyday life — digits 0–9.',                                 hint:'Base-10 — everyday number system' },
+    { term:'Hexadecimal',              definition:'A base-16 number system using digits 0–9 and letters A–F — used to represent binary data compactly.', hint:'Base-16 — 0–9 and A–F' },
+    { term:'ASCII',                    definition:'A character encoding system assigning a number to each letter, digit and symbol.',             hint:'Numbers representing text characters' },
+    { term:'Unicode',                  definition:'A universal character encoding standard supporting characters from all world languages.',      hint:'Universal encoding — all world languages' },
+    { term:'Logic gate',               definition:'An electronic circuit implementing a Boolean operation — AND, OR, NOT, NAND, NOR, XOR.',       hint:'Electronic Boolean operation — AND, OR, NOT' },
+    { term:'Truth table',              definition:'A table showing all possible inputs and corresponding outputs of a logic circuit.',            hint:'All input/output combinations for logic circuit' },
+    { term:'Boolean algebra',          definition:'A branch of algebra in which variables are either true or false — the basis of digital logic.',hint:'Algebra of true/false — basis of logic circuits' },
+    { term:'Two\'s complement',        definition:'A method of representing negative binary numbers — the most significant bit has a negative place value.', hint:'Representing negative numbers in binary' },
+    { term:'Floating point',           definition:'A method of representing very large or small numbers in binary using a mantissa and exponent.', hint:'Binary representation of very large/small numbers' },
+    { term:'Compression',              definition:'Reducing the size of a file — lossless (no data lost) or lossy (some data discarded).',        hint:'Reducing file size — lossless or lossy' },
+    { term:'Encryption',               definition:'Converting data into a coded form to prevent unauthorised access.',                            hint:'Encoding data to prevent unauthorised access' },
+    { term:'Checksum',                 definition:'A value calculated from data used to detect errors in transmission or storage.',               hint:'Error-detection value calculated from data' },
+  ],
+
+  'Networks': [
+    { term:'Network',                  definition:'Two or more connected devices that can communicate and share resources.',                       hint:'Connected devices sharing resources' },
+    { term:'LAN (Local Area Network)', definition:'A network covering a small geographic area — e.g. a school or office.',                        hint:'Network in one building or campus' },
+    { term:'WAN (Wide Area Network)',  definition:'A network covering a large geographic area — e.g. the internet.',                              hint:'Network spanning large distances — e.g. internet' },
+    { term:'Protocol',                 definition:'A set of rules governing communication between devices on a network.',                         hint:'Rules for network communication' },
+    { term:'IP address',               definition:'A unique numerical label assigned to each device on a network.',                               hint:'Unique address identifying a device on a network' },
+    { term:'DNS (Domain Name System)', definition:'A system that translates domain names (e.g. google.com) into IP addresses.',                  hint:'Translates web addresses to IP addresses' },
+    { term:'HTTP / HTTPS',             definition:'Protocols for transferring web pages — HTTPS adds encryption via SSL/TLS.',                   hint:'Web transfer protocol — HTTPS adds encryption' },
+    { term:'Packet switching',         definition:'A method of data transmission in which data is broken into packets that travel independently across a network.', hint:'Data split into packets — travel independently' },
+    { term:'Router',                   definition:'A device that forwards packets between networks, determining the best path.',                  hint:'Directs packets between networks' },
+    { term:'Firewall',                 definition:'Hardware or software that monitors and controls incoming and outgoing network traffic based on security rules.', hint:'Security barrier — controls network traffic' },
+    { term:'Bandwidth',                definition:'The maximum rate of data transfer across a network — measured in bits per second.',            hint:'Maximum data transfer rate — bits per second' },
+    { term:'Latency',                  definition:'The time delay in data transmission across a network.',                                        hint:'Delay in data transmission' },
+    { term:'Client-server model',      definition:'A network architecture where clients request services and servers provide them.',              hint:'Clients request — servers provide' },
+    { term:'Peer-to-peer network',     definition:'A network where all devices have equal status and share resources directly without a central server.', hint:'Equal devices — no central server' },
+    { term:'Cybersecurity',            definition:'The practice of protecting systems, networks and data from digital attacks.',                  hint:'Protecting systems from digital attacks' },
+  ],
+
+  'Computational Thinking and Problem Solving': [
+    { term:'Algorithm',                definition:'A precise, step-by-step set of instructions for solving a problem or completing a task.',      hint:'Step-by-step instructions to solve a problem' },
+    { term:'Pseudocode',               definition:'An informal, high-level description of an algorithm using plain English and programming-like structures.', hint:'Plain English description of an algorithm' },
+    { term:'Flowchart',                definition:'A diagram using standard symbols to represent the steps and decisions in an algorithm.',       hint:'Diagram representing algorithm steps' },
+    { term:'Decomposition',            definition:'Breaking a complex problem into smaller, more manageable sub-problems.',                       hint:'Breaking problem into smaller parts' },
+    { term:'Abstraction',              definition:'Removing unnecessary detail to focus on the essential features of a problem.',                 hint:'Removing detail — focus on essentials' },
+    { term:'Pattern recognition',      definition:'Identifying similarities or common features in problems that help solve them more efficiently.', hint:'Finding similarities between problems' },
+    { term:'Sorting algorithms',       definition:'Algorithms that arrange data in a defined order — e.g. bubble sort, merge sort, insertion sort.', hint:'Arranging data — bubble, merge, insertion sort' },
+    { term:'Searching algorithms',     definition:'Algorithms that locate a specific value in a data set — e.g. linear search, binary search.',  hint:'Finding a value — linear or binary search' },
+    { term:'Time complexity',          definition:'A measure of how the time to run an algorithm grows with the size of the input — expressed in Big O notation.', hint:'How runtime grows with input size — Big O' },
+    { term:'Recursion',                definition:'A technique where a function calls itself to solve a problem by breaking it into smaller instances of the same problem.', hint:'Function calling itself — self-referential' },
+    { term:'Stack',                    definition:'A last-in, first-out (LIFO) data structure — items are added and removed from the top.',      hint:'LIFO — last in, first out' },
+    { term:'Queue',                    definition:'A first-in, first-out (FIFO) data structure — items are added at the back and removed from the front.', hint:'FIFO — first in, first out' },
+    { term:'Array',                    definition:'A data structure storing multiple values of the same type in contiguous memory locations.',   hint:'Multiple values of same type — indexed' },
+    { term:'Tree data structure',      definition:'A hierarchical data structure with a root node and child nodes connected by edges.',          hint:'Hierarchical — root with branching children' },
+    { term:'Hash table',               definition:'A data structure using a hash function to map keys to values for fast lookup.',              hint:'Key-value pairs — fast lookup via hash function' },
+  ],
+
+  'Abstract Data Structures and Programming': [
+    { term:'Variable',                 definition:'A named memory location that stores a value which can change during program execution.',       hint:'Named storage location — value can change' },
+    { term:'Constant',                 definition:'A named value that does not change during program execution.',                                 hint:'Named value that never changes' },
+    { term:'Data type',                definition:'The classification of data — integer, real, Boolean, character, string.',                     hint:'Integer, real, Boolean, char, string' },
+    { term:'Selection',                definition:'A programming construct that executes different code based on a condition — if/else.',         hint:'If/else — executing different code paths' },
+    { term:'Iteration',                definition:'A programming construct for repeating a block of code — while loop or for loop.',             hint:'Loops — repeating code' },
+    { term:'Subroutine',               definition:'A named block of code that can be called from elsewhere in a program — procedures and functions.', hint:'Named reusable block of code' },
+    { term:'Parameter',                definition:'A variable passed into a subroutine to provide it with data to work with.',                   hint:'Data passed into a subroutine' },
+    { term:'Local variable',           definition:'A variable that exists only within the subroutine in which it is declared.',                  hint:'Variable only existing inside its subroutine' },
+    { term:'Global variable',          definition:'A variable accessible from anywhere in a program.',                                           hint:'Variable accessible throughout the program' },
+    { term:'Object-oriented programming', definition:'A programming paradigm organising code into objects with attributes and methods.',        hint:'Objects with attributes and methods' },
+    { term:'Class',                    definition:'A blueprint or template for creating objects in OOP.',                                        hint:'Blueprint for creating objects — OOP' },
+    { term:'Inheritance',              definition:'A mechanism in OOP where a subclass inherits attributes and methods from a parent class.',   hint:'Subclass inherits from parent class — OOP' },
+    { term:'Encapsulation',            definition:'The bundling of data and methods within an object, hiding internal implementation details.',  hint:'Bundling data and methods — hiding internals' },
+    { term:'Polymorphism',             definition:'The ability of different objects to respond to the same method call in different ways.',      hint:'Same method — different behaviours' },
+    { term:'IDE (Integrated Development Environment)', definition:'Software providing tools for writing, testing and debugging code in one application.', hint:'Tools for coding, testing and debugging in one app' },
+  ],
+};
+
+// IB HL adds advanced topics beyond SL
+VOCAB['computing']['ib-hl'] = {
+  ...VOCAB['computing']['ib-sl'],
+
+  'Abstract Data Structures (HL)': [
+    { term:'Linked list',              definition:'A data structure where each node holds data and a pointer to the next node.',                  hint:'Nodes with data and pointer to next node' },
+    { term:'Doubly linked list',       definition:'A linked list where each node has pointers to both the next and previous nodes.',             hint:'Nodes pointing both forward and backward' },
+    { term:'Binary tree',              definition:'A tree data structure where each node has at most two children.',                             hint:'Tree — each node has at most 2 children' },
+    { term:'Binary search tree',       definition:'A binary tree where left children are smaller than the parent and right children are larger.', hint:'Left smaller, right larger — efficient searching' },
+    { term:'Graph',                    definition:'A data structure of nodes (vertices) connected by edges — directed or undirected.',           hint:'Nodes connected by edges — directed or undirected' },
+    { term:'Adjacency matrix',         definition:'A 2D array representation of a graph showing which nodes are connected.',                    hint:'2D array showing graph connections' },
+    { term:'Adjacency list',           definition:'A list representation of a graph showing each node and its neighbours.',                     hint:'List of each node\'s neighbours' },
+    { term:'Depth-first search',       definition:'A graph traversal algorithm that explores as far as possible along each branch before backtracking.', hint:'Explores deepest path first — then backtracks' },
+    { term:'Breadth-first search',     definition:'A graph traversal algorithm that explores all neighbours at the current depth before moving deeper.', hint:'Explores all neighbours first — level by level' },
+    { term:'Dijkstra\'s algorithm',    definition:'An algorithm finding the shortest path between nodes in a weighted graph.',                  hint:'Shortest path in weighted graph' },
+  ],
+
+  'Resource Management (HL)': [
+    { term:'Process',                  definition:'A program in execution — managed by the operating system scheduler.',                         hint:'A running program — managed by OS' },
+    { term:'Scheduling',               definition:'The OS technique of deciding which process runs at any given time.',                          hint:'OS deciding which process runs' },
+    { term:'Deadlock',                 definition:'A situation where two or more processes are each waiting for the other to release a resource.', hint:'Two processes each waiting for the other' },
+    { term:'Virtual memory',           definition:'A memory management technique that uses secondary storage to extend the apparent size of RAM.', hint:'Using disk as extended RAM' },
+    { term:'Paging',                   definition:'Dividing memory into fixed-size pages to manage virtual memory and reduce fragmentation.',    hint:'Fixed-size memory pages — virtual memory management' },
+    { term:'Interrupt',                definition:'A signal to the CPU that a process requires immediate attention, causing the current process to pause.', hint:'Signal pausing CPU for urgent task' },
+    { term:'Kernel',                   definition:'The core of an operating system — manages hardware resources and mediates between hardware and software.', hint:'OS core — manages hardware resources' },
+    { term:'Multitasking',             definition:'The ability of an OS to run multiple processes apparently simultaneously by rapidly switching between them.', hint:'OS rapidly switching between multiple processes' },
+    { term:'Concurrency',              definition:'Multiple processes making progress simultaneously — through parallelism or rapid context switching.', hint:'Multiple processes progressing at the same time' },
+    { term:'Mutual exclusion',         definition:'Ensuring that only one process can access a shared resource at a time.',                      hint:'Only one process accessing resource at a time' },
+  ],
+
+  'Control and Systems (HL)': [
+    { term:'Embedded system',          definition:'A computer system built into a larger device for a specific control function — e.g. in a washing machine or car engine.', hint:'Computer built into a device for specific control' },
+    { term:'Microcontroller',          definition:'A compact integrated circuit containing a CPU, memory and I/O peripherals — used in embedded systems.', hint:'Compact CPU+memory+I/O — used in embedded systems' },
+    { term:'Sensor',                   definition:'A device that detects a physical property and converts it to an electrical signal.',         hint:'Detects physical property — produces electrical signal' },
+    { term:'Actuator',                 definition:'A device that converts electrical signals into physical action — e.g. motor, valve, LED.',   hint:'Electrical signal → physical action' },
+    { term:'Feedback loop',            definition:'A system where output is fed back as input to control the system — used in control and automated systems.', hint:'Output fed back to control the system' },
+    { term:'Real-time system',         definition:'A system that must respond to inputs within strict time constraints.',                        hint:'Must respond within strict time limits' },
+  ],
+};
+
+// ────────────────────────────────────────────────────────────
+// RELIGIOUS EDUCATION — Cambridge IGCSE and Edexcel IGCSE
+// Shared with AQA GCSE core vocabulary
+// ────────────────────────────────────────────────────────────
+VOCAB['religious education']['cambridge-igcse'] = VOCAB['religious education']['aqa-gcse'];
+VOCAB['religious education']['edexcel-igcse']   = VOCAB['religious education']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// PE — Cambridge IGCSE and Edexcel IGCSE
+// Shared with AQA GCSE core vocabulary
+// ────────────────────────────────────────────────────────────
+VOCAB['pe']['cambridge-igcse'] = VOCAB['pe']['aqa-gcse'];
+VOCAB['pe']['edexcel-igcse']   = VOCAB['pe']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// ASTRONOMY — also add KS3 generic entry (same content)
+// ────────────────────────────────────────────────────────────
+VOCAB['astronomy']['ks3'] = VOCAB['astronomy']['aqa-gcse'];
+// ============================================================
+// MartinEdu Vocabulary Data — Gap Fill 3
+// Quick-win shared references + Art/Music/Drama IGCSE & A-Level
+// + Astronomy A-Level
+// Append to end of vocab-data.js
+// ============================================================
+
+// ────────────────────────────────────────────────────────────
+// QUICK WINS — shared references
+// ────────────────────────────────────────────────────────────
+
+// French / German / Spanish — IB SL, IB HL, KS3
+VOCAB['french']['ib-sl']  = VOCAB['french']['aqa-gcse'];
+VOCAB['french']['ib-hl']  = VOCAB['french']['aqa-alevel'];
+VOCAB['french']['ks3']    = VOCAB['french']['aqa-gcse'];
+
+VOCAB['german']['ib-sl']  = VOCAB['german']['aqa-gcse'];
+VOCAB['german']['ib-hl']  = VOCAB['german']['aqa-alevel'];
+VOCAB['german']['ks3']    = VOCAB['german']['aqa-gcse'];
+
+VOCAB['spanish']['ib-sl'] = VOCAB['spanish']['aqa-gcse'];
+VOCAB['spanish']['ib-hl'] = VOCAB['spanish']['aqa-alevel'];
+VOCAB['spanish']['ks3']   = VOCAB['spanish']['aqa-gcse'];
+
+// Religious Education — IB SL, IB HL
+VOCAB['religious education']['ib-sl'] = VOCAB['religious education']['aqa-gcse'];
+VOCAB['religious education']['ib-hl'] = VOCAB['religious education']['aqa-alevel'];
+
+// PE — IB SL, IB HL, KS3
+VOCAB['pe']['ib-sl'] = VOCAB['pe']['aqa-gcse'];
+VOCAB['pe']['ib-hl'] = VOCAB['pe']['aqa-alevel'];
+VOCAB['pe']['ks3']   = VOCAB['pe']['aqa-gcse'];
+
+// Computing — KS3
+VOCAB['computing']['ks3'] = VOCAB['computing']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// ART — Cambridge IGCSE, Edexcel IGCSE, A-Level (all boards)
+// Vocabulary covers formal elements, art history, materials,
+// critical analysis and contextual studies
+// ────────────────────────────────────────────────────────────
+VOCAB['art'] = VOCAB['art'] || {};
+VOCAB['art']['aqa-alevel'] = {
+
+  'Formal Elements': [
+    { term:'Line',                     definition:'A mark made by a moving point — can be straight, curved, thick, thin, implied or gestural.',   hint:'Mark made by a moving point' },
+    { term:'Tone',                     definition:'The lightness or darkness of a colour or surface — creates the illusion of form and depth.',    hint:'Lightness or darkness — suggests depth' },
+    { term:'Colour',                   definition:'The visual property of an object determined by the wavelength of light it reflects.',           hint:'Wavelength of reflected light' },
+    { term:'Texture',                  definition:'The surface quality of a work — actual (physical) or visual (implied).',                        hint:'Surface quality — actual or implied' },
+    { term:'Shape',                    definition:'A two-dimensional, enclosed area defined by outline or contrast — geometric or organic.',       hint:'2D enclosed area — geometric or organic' },
+    { term:'Form',                     definition:'A three-dimensional shape with height, width and depth — or the illusion of it on a 2D surface.', hint:'3D shape — or its 2D illusion' },
+    { term:'Space',                    definition:'The area within, around or between subjects — positive (occupied) and negative (empty) space.', hint:'Area within and around subjects' },
+    { term:'Pattern',                  definition:'The repetition of shapes, lines or colours to create a decorative or structural effect.',       hint:'Repetition creating decorative effect' },
+    { term:'Composition',              definition:'The arrangement of visual elements within a work to create balance, harmony or tension.',        hint:'Arrangement of elements in a work' },
+    { term:'Scale',                    definition:'The size relationship between objects in a work or between the work and the viewer.',           hint:'Size relationships within a work' },
+  ],
+
+  'Art Movements and Context': [
+    { term:'Impressionism',            definition:'A late 19th-century French movement capturing the fleeting effects of light through loose brushwork — Monet, Renoir.', hint:'Light and atmosphere — Monet, Renoir' },
+    { term:'Post-Impressionism',       definition:'A movement building on Impressionism with more personal and symbolic approaches — Van Gogh, Cézanne, Gauguin.', hint:'Personal and symbolic — Van Gogh, Cézanne' },
+    { term:'Expressionism',            definition:'An early 20th-century movement distorting reality to express emotional experience — Munch, Kirchner.', hint:'Distorted reality for emotional effect — Munch' },
+    { term:'Cubism',                   definition:'A revolutionary early 20th-century movement fragmenting subjects into geometric planes — Picasso, Braque.', hint:'Fragmented geometric planes — Picasso, Braque' },
+    { term:'Surrealism',               definition:'A 20th-century movement exploring the unconscious mind through dreamlike, irrational imagery — Dalí, Magritte.', hint:'Dreamlike unconscious imagery — Dalí, Magritte' },
+    { term:'Abstract Expressionism',   definition:'A post-WWII American movement emphasising spontaneous, gestural painting to express emotion — Pollock, Rothko.', hint:'Spontaneous gestural painting — Pollock, Rothko' },
+    { term:'Pop Art',                  definition:'A 1950s–60s movement using imagery from popular culture and consumerism — Warhol, Lichtenstein.', hint:'Popular culture imagery — Warhol, Lichtenstein' },
+    { term:'Minimalism',               definition:'A 1960s movement using simple geometric forms and industrial materials to eliminate personal expression.', hint:'Simple forms — eliminating personal expression' },
+    { term:'Contemporary art',         definition:'Art produced from the 1970s to the present, encompassing diverse media, concepts and global perspectives.', hint:'Art from 1970s to present — diverse media' },
+    { term:'Postmodernism',            definition:'An art approach questioning grand narratives, mixing styles and challenging the boundary between high and popular culture.', hint:'Questioning rules — mixing styles and cultures' },
+    { term:'Renaissance',              definition:'A 14th–17th century European cultural movement reviving classical learning — perspective, humanism, Raphael, da Vinci.', hint:'Revival of classical learning — da Vinci, Raphael' },
+    { term:'Baroque',                  definition:'A 17th-century European style characterised by dramatic use of light, movement and emotion — Caravaggio, Rembrandt.', hint:'Drama, light and emotion — Caravaggio, Rembrandt' },
+  ],
+
+  'Materials, Techniques and Processes': [
+    { term:'Acrylic paint',            definition:'A fast-drying, water-soluble synthetic paint that can mimic oil or watercolour effects.',       hint:'Fast-drying synthetic paint' },
+    { term:'Oil paint',                definition:'A slow-drying paint with rich colour made of pigment suspended in oil — allows detailed blending.', hint:'Slow-drying — rich blending — traditional' },
+    { term:'Watercolour',              definition:'A transparent, water-soluble paint that produces luminous washes — paper shows through.',      hint:'Transparent washes — paper visible' },
+    { term:'Printmaking',              definition:'Producing art by transferring an image from a matrix (plate, screen, block) onto paper or fabric.', hint:'Image transferred from plate to paper' },
+    { term:'Etching',                  definition:'A printmaking process where acid bites into a metal plate to create lines that hold ink.',     hint:'Acid bites metal plate — holds ink' },
+    { term:'Screen printing',          definition:'A printmaking process forcing ink through a mesh screen onto a surface using a stencil.',      hint:'Ink forced through mesh stencil' },
+    { term:'Collage',                  definition:'An artwork created by assembling different materials — paper, fabric, photographs — onto a surface.', hint:'Assembled materials stuck onto surface' },
+    { term:'Mixed media',              definition:'Artwork combining more than one material or technique in a single piece.',                      hint:'Combining multiple materials or techniques' },
+    { term:'Photography',              definition:'The art of capturing images using light — analogue (film) or digital.',                        hint:'Capturing images with light' },
+    { term:'Digital art',              definition:'Art created using digital technology — software, tablets, cameras and computers.',             hint:'Art made using digital technology' },
+    { term:'Impasto',                  definition:'A technique applying thick paint to create texture and raised surfaces.',                      hint:'Thick paint creating raised texture' },
+    { term:'Chiaroscuro',              definition:'The use of strong contrasts between light and dark to model form — used by Caravaggio and Rembrandt.', hint:'Strong light/dark contrast — Caravaggio' },
+    { term:'Perspective',              definition:'The technique of representing three-dimensional space on a two-dimensional surface.',          hint:'Representing 3D space on 2D surface' },
+    { term:'Foreshortening',           definition:'The technique of depicting a subject at an angle to create the illusion of depth.',           hint:'Angle creating illusion of depth' },
+  ],
+
+  'Critical and Contextual Studies': [
+    { term:'Formalist analysis',       definition:'Evaluating art based purely on its visual elements and composition, without reference to context.', hint:'Judging art only on visual elements — no context' },
+    { term:'Contextual analysis',      definition:'Interpreting art by considering the historical, social, cultural and biographical context of its creation.', hint:'Interpreting art through its historical context' },
+    { term:'Iconography',              definition:'The study and interpretation of the symbols and imagery used in works of art.',               hint:'Study of symbols in art' },
+    { term:'Patronage',                definition:'Financial support given to artists by wealthy individuals or institutions.',                   hint:'Wealthy support for artists' },
+    { term:'Artist\'s statement',      definition:'A written explanation by an artist of their intentions, process and the meaning behind their work.', hint:'Artist explaining their own work' },
+    { term:'Visual literacy',          definition:'The ability to interpret, analyse and evaluate visual images and art works.',                  hint:'Ability to read and analyse visual art' },
+    { term:'Primary source',           definition:'A first-hand source — the original artwork, a sketch, or the artist\'s own writing.',         hint:'First-hand — the actual artwork or artist\'s words' },
+    { term:'Secondary source',         definition:'A source commenting on or interpreting primary sources — criticism, catalogue essays, textbooks.', hint:'Commentary on primary sources — criticism' },
+    { term:'Aesthetics',               definition:'The philosophical study of beauty and taste — what makes something art.',                     hint:'Philosophy of beauty — what is art?' },
+    { term:'Semiotics',                definition:'The study of signs and symbols and how they create meaning in art and culture.',              hint:'Study of signs and meaning' },
+  ],
+};
+
+VOCAB['art']['edexcel-alevel']    = VOCAB['art']['aqa-alevel'];
+VOCAB['art']['ocr-alevel']        = VOCAB['art']['aqa-alevel'];
+VOCAB['art']['cambridge-igcse']   = VOCAB['art']['aqa-gcse'];
+VOCAB['art']['edexcel-igcse']     = VOCAB['art']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// MUSIC — Cambridge IGCSE, Edexcel IGCSE, A-Level (all boards)
+// ────────────────────────────────────────────────────────────
+VOCAB['music'] = VOCAB['music'] || {};
+VOCAB['music']['aqa-alevel'] = {
+
+  'Musical Elements': [
+    { term:'Melody',                   definition:'A sequence of single notes forming a recognisable musical line.',                              hint:'Sequence of notes forming a tune' },
+    { term:'Harmony',                  definition:'The combination of simultaneously sounded notes to produce chords and chord progressions.',   hint:'Notes sounding together — chords' },
+    { term:'Rhythm',                   definition:'The pattern of long and short sounds and silences in music.',                                  hint:'Pattern of sound durations' },
+    { term:'Metre',                    definition:'The organisation of beats into regular groups — duple (2), triple (3) or quadruple (4) metre.', hint:'Regular grouping of beats' },
+    { term:'Tempo',                    definition:'The speed of the music — measured in beats per minute (bpm).',                                hint:'Speed of music — bpm' },
+    { term:'Dynamics',                 definition:'The variation in loudness and softness in music — from pianissimo (pp) to fortissimo (ff).',  hint:'Loudness and softness — pp to ff' },
+    { term:'Texture',                  definition:'The way layers of sound are combined — monophonic, homophonic or polyphonic.',                 hint:'Layers of sound — mono, homo or polyphonic' },
+    { term:'Timbre',                   definition:'The characteristic tone colour of an instrument or voice.',                                   hint:'Characteristic tone colour of an instrument' },
+    { term:'Tonality',                 definition:'The organisation of music around a central pitch (tonic) — major, minor or modal.',           hint:'Music organised around a key centre' },
+    { term:'Structure / Form',         definition:'The overall plan of a piece — binary (AB), ternary (ABA), rondo (ABACA), sonata form.',      hint:'Overall plan — binary, ternary, sonata etc.' },
+  ],
+
+  'Music Theory': [
+    { term:'Interval',                 definition:'The distance in pitch between two notes — counted in semitones or scale degrees.',           hint:'Distance between two pitches' },
+    { term:'Chord',                    definition:'Three or more notes sounded simultaneously.',                                                  hint:'Three or more notes at once' },
+    { term:'Triad',                    definition:'A three-note chord built from a root, a third and a fifth.',                                  hint:'Root, third, fifth — three notes' },
+    { term:'Cadence',                  definition:'A harmonic progression marking the end of a phrase — perfect, imperfect, plagal or interrupted.', hint:'Chord progression ending a phrase' },
+    { term:'Perfect cadence',          definition:'A cadence moving from chord V to chord I — gives a sense of completion.',                    hint:'V to I — sounds finished' },
+    { term:'Imperfect cadence',        definition:'A cadence ending on chord V — gives a sense of incompleteness.',                             hint:'Ends on V — sounds unfinished' },
+    { term:'Modulation',               definition:'A change of key within a piece of music.',                                                    hint:'Changing key within a piece' },
+    { term:'Counterpoint',             definition:'The technique of combining two or more independent melodic lines simultaneously.',            hint:'Two or more independent melodies at once' },
+    { term:'Sequence',                 definition:'The immediate repetition of a melodic or harmonic pattern at a different pitch level.',      hint:'Pattern repeated at a different pitch' },
+    { term:'Ornamentation',            definition:'The decoration of a melody with additional notes — trills, mordents, turns and grace notes.', hint:'Decorating melody — trills, grace notes' },
+    { term:'Syncopation',              definition:'Placing accents on normally weak beats or between beats.',                                    hint:'Accents on weak beats' },
+    { term:'Ostinato',                 definition:'A persistently repeated rhythmic or melodic figure.',                                         hint:'Persistently repeated figure' },
+    { term:'Pedal point',              definition:'A sustained or repeated note, usually in the bass, while harmonies change above it.',        hint:'Held bass note — harmonies change above' },
+    { term:'Diatonic',                 definition:'Using only the notes of the prevailing major or minor scale.',                               hint:'Only notes from the home scale' },
+    { term:'Chromatic',                definition:'Using notes outside the prevailing scale — all twelve semitones.',                           hint:'Notes outside the home scale' },
+  ],
+
+  'Musical Periods and Genres': [
+    { term:'Baroque period',           definition:'c.1600–1750 — characterised by ornamentation, counterpoint, basso continuo — Bach, Handel, Vivaldi.', hint:'1600–1750 — Bach, Handel, Vivaldi' },
+    { term:'Classical period',         definition:'c.1750–1820 — characterised by clarity, balance and formal structures — Haydn, Mozart, early Beethoven.', hint:'1750–1820 — Mozart, Haydn' },
+    { term:'Romantic period',          definition:'c.1820–1900 — emphasising emotion, nationalism and programme music — Brahms, Liszt, Tchaikovsky.', hint:'1820–1900 — emotion and nationalism — Brahms, Liszt' },
+    { term:'20th-century music',       definition:'Diverse period encompassing Impressionism, Serialism, Minimalism, Jazz and popular styles.',   hint:'Impressionism, serialism, jazz, minimalism' },
+    { term:'Sonata form',              definition:'A three-section structure: Exposition (themes presented), Development (themes varied), Recapitulation (themes restated).', hint:'Exposition, Development, Recapitulation' },
+    { term:'Symphony',                 definition:'A large-scale work for orchestra, typically in four movements.',                              hint:'Large orchestral work — four movements' },
+    { term:'Concerto',                 definition:'A work for solo instrument and orchestra, typically in three movements.',                     hint:'Solo instrument and orchestra — three movements' },
+    { term:'Opera',                    definition:'A dramatic work combining music, singing, staging and often dance.',                          hint:'Drama combining music and singing' },
+    { term:'Jazz',                     definition:'A genre originating in early 20th-century America, featuring improvisation, syncopation and blue notes.', hint:'Improvisation, syncopation — American origin' },
+    { term:'Serialism',                definition:'A 20th-century technique using a fixed series (row) of twelve pitches as the basis of a composition — Schoenberg.', hint:'Twelve-tone row — Schoenberg' },
+    { term:'Minimalism',               definition:'A 20th-century style using simple repeated patterns and gradual change — Steve Reich, Philip Glass.', hint:'Repeated patterns, gradual change — Steve Reich' },
+    { term:'Basso continuo',           definition:'The Baroque practice of a continuous bass line improvised by keyboard and bass instruments.',  hint:'Continuous bass improvisation — Baroque' },
+  ],
+
+  'Performing and Composing': [
+    { term:'Notation',                 definition:'The system of writing music down using symbols — staves, clefs, note values, rests, dynamics.',hint:'Writing music using symbols' },
+    { term:'Stave (staff)',            definition:'The five horizontal lines on which music is written.',                                         hint:'Five lines for writing music' },
+    { term:'Treble clef',              definition:'A clef fixing the G above middle C on the second line of the stave — used for higher-pitched instruments.', hint:'Fixes G above middle C — higher instruments' },
+    { term:'Bass clef',                definition:'A clef fixing the F below middle C on the fourth line of the stave — used for lower-pitched instruments.', hint:'Fixes F below middle C — lower instruments' },
+    { term:'Time signature',           definition:'Numbers at the start of a piece indicating the number and type of beats in each bar.',        hint:'Beats per bar — shown at the start' },
+    { term:'Transposing instrument',   definition:'An instrument that sounds at a different pitch from the written note — e.g. clarinet in Bb.', hint:'Sounds different from written pitch — e.g. Bb clarinet' },
+    { term:'Improvisation',            definition:'Creating music spontaneously in performance without pre-written notation.',                    hint:'Spontaneous unwritten music creation' },
+    { term:'Arrangement',              definition:'An adaptation of an existing piece for a different ensemble or medium.',                       hint:'Adapting existing music for different forces' },
+    { term:'Leitmotif',                definition:'A recurring musical theme associated with a character, place or idea — used by Wagner.',      hint:'Recurring theme linked to character — Wagner' },
+    { term:'Word painting',            definition:'A compositional technique where the music reflects the meaning of the text.',                  hint:'Music reflecting meaning of words' },
+  ],
+};
+
+VOCAB['music']['edexcel-alevel']   = VOCAB['music']['aqa-alevel'];
+VOCAB['music']['ocr-alevel']       = VOCAB['music']['aqa-alevel'];
+VOCAB['music']['cambridge-igcse']  = VOCAB['music']['aqa-gcse'];
+VOCAB['music']['edexcel-igcse']    = VOCAB['music']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// DRAMA — Cambridge IGCSE, Edexcel IGCSE, A-Level (all boards)
+// ────────────────────────────────────────────────────────────
+VOCAB['drama'] = VOCAB['drama'] || {};
+VOCAB['drama']['aqa-alevel'] = {
+
+  'Theatrical Vocabulary': [
+    { term:'Staging',                  definition:'The arrangement of performers and set on stage — including the type of stage and use of space.', hint:'Arrangement of performers and set' },
+    { term:'Proxemics',                definition:'The use of physical distance between performers to communicate relationships and power.',      hint:'Distance between performers — relationships' },
+    { term:'Blocking',                 definition:'The planned movement and positioning of actors on stage.',                                     hint:'Planned movement and positioning of actors' },
+    { term:'Thrust stage',             definition:'A stage that extends into the audience, with audience on three sides.',                        hint:'Stage extending into audience — three sides' },
+    { term:'Proscenium arch stage',    definition:'A stage framed by an arch with the audience facing it from one side — the most traditional format.', hint:'Framed stage — audience on one side' },
+    { term:'Traverse stage',           definition:'A stage with audience on two opposite sides, performers moving along a central acting area.',  hint:'Audience on two sides — central acting area' },
+    { term:'Theatre in the round',     definition:'A stage with audience surrounding it on all sides.',                                          hint:'Audience surrounding stage on all sides' },
+    { term:'Breaking the fourth wall', definition:'When performers acknowledge or address the audience directly, breaking the fictional illusion.', hint:'Performers addressing the audience directly' },
+    { term:'Dramatic tension',         definition:'The sense of uncertainty and anticipation created in an audience.',                           hint:'Uncertainty keeping audience engaged' },
+    { term:'Dramatic irony',           definition:'When the audience knows something that the characters on stage do not.',                      hint:'Audience knows more than the characters' },
+  ],
+
+  'Acting Techniques': [
+    { term:'Stanislavski\'s method',   definition:'A system of actor training based on psychological realism — finding inner truth, emotion memory and given circumstances.', hint:'Psychological realism — inner truth and emotion memory' },
+    { term:'Brecht\'s Epic Theatre',   definition:'A style of theatre deliberately breaking the illusion of reality to make audiences think critically — using the V-Effekt.', hint:'Breaking illusion — critical thinking — Brecht' },
+    { term:'Verfremdungseffekt (V-Effekt)', definition:'Brecht\'s alienation effect — techniques to prevent audiences becoming emotionally absorbed and instead think critically.', hint:'Brecht\'s alienation effect — stop emotional absorption' },
+    { term:'Physical theatre',         definition:'A style emphasising the body as the primary tool of expression — often non-verbal, with movement, mime and gesture.', hint:'Body as primary expressive tool — movement and mime' },
+    { term:'Naturalism',               definition:'A style of theatre aiming to represent everyday life with realistic detail — influenced by Stanislavski.',hint:'Realistic everyday life on stage' },
+    { term:'Stylisation',              definition:'Deliberately non-realistic performance using exaggerated, symbolic or abstract conventions.',   hint:'Deliberately non-realistic — symbolic or abstract' },
+    { term:'Characterisation',         definition:'The way a performer creates and communicates a role through voice, movement and thought.',     hint:'How a performer builds a role' },
+    { term:'Status',                   definition:'The social rank or power of a character, expressed through movement, voice and positioning.',  hint:'Power of a character — expressed physically' },
+    { term:'Vocal skills',             definition:'The use of voice — pitch, pace, pause, tone, volume, accent and projection — to communicate character.', hint:'Pitch, pace, tone, volume, accent, projection' },
+    { term:'Physical skills',          definition:'The use of the body — gesture, posture, movement, facial expression — to communicate character and emotion.', hint:'Gesture, posture, movement, facial expression' },
+    { term:'Subtext',                  definition:'The underlying meaning beneath the spoken words — what a character truly thinks or feels.',    hint:'Meaning beneath the words' },
+    { term:'Hot seating',              definition:'A drama technique where a performer stays in character and answers questions from others.',    hint:'In-character question and answer technique' },
+  ],
+
+  'Practitioners and Contexts': [
+    { term:'Antonin Artaud',           definition:'A theorist proposing the Theatre of Cruelty — assaulting audiences\' senses to produce a visceral, transformative experience.', hint:'Theatre of Cruelty — sensory assault — transformation' },
+    { term:'Konstantin Stanislavski',  definition:'The Russian director who developed the Method — psychological realism, emotion memory, given circumstances.',hint:'Method acting — psychological realism' },
+    { term:'Bertolt Brecht',           definition:'German playwright and director who developed Epic Theatre and the Verfremdungseffekt to provoke critical thinking.', hint:'Epic Theatre — alienation — critical thinking' },
+    { term:'Peter Brook',              definition:'British director known for innovative, minimal and intercultural theatre — "The Empty Space" (1968).', hint:'"The Empty Space" — minimal intercultural theatre' },
+    { term:'Vsevolod Meyerhold',       definition:'Russian director developing Biomechanics — a system of physical actor training based on precise, mechanistic movement.', hint:'Biomechanics — precise physical actor training' },
+    { term:'Greek theatre',            definition:'The origin of Western drama — featuring chorus, masks, outdoor amphitheatres and three-part tragedy.', hint:'Chorus, masks, amphitheatre — origin of drama' },
+    { term:'Tragedy',                  definition:'A dramatic form in which a protagonist is brought down by a fatal flaw or external forces.',  hint:'Protagonist falls due to flaw or fate' },
+    { term:'Comedy',                   definition:'A dramatic form intended to amuse — often involving misunderstandings, reversals and happy endings.', hint:'Amusing drama — misunderstandings and happy endings' },
+    { term:'Absurdist theatre',        definition:'A post-WWII movement representing the meaninglessness of existence through illogical, repetitive drama — Beckett, Ionesco.', hint:'Meaninglessness — illogical drama — Beckett' },
+    { term:'Verbatim theatre',         definition:'Theatre created from real people\'s words — interviews and documents — presented on stage.',  hint:'Real people\'s words performed on stage' },
+  ],
+
+  'Design Elements': [
+    { term:'Set design',               definition:'The creation of the physical environment in which the drama takes place.',                     hint:'Physical environment of the drama' },
+    { term:'Lighting design',          definition:'The use of light to establish mood, focus attention and indicate time and place.',            hint:'Light creating mood and focus' },
+    { term:'Sound design',             definition:'The use of music, sound effects and ambient sound to support the dramatic world.',            hint:'Music and sound effects supporting drama' },
+    { term:'Costume design',           definition:'The design of clothing and accessories to communicate character, period and status.',         hint:'Clothing communicating character and period' },
+    { term:'Semiotics in theatre',     definition:'The study of signs and symbols in performance — how meaning is communicated to audiences.',  hint:'Signs and symbols creating meaning in performance' },
+    { term:'Symbolism',                definition:'The use of objects, colours or actions to represent abstract ideas or themes.',              hint:'Objects representing abstract ideas' },
+    { term:'Levels',                   definition:'The use of different heights on stage — rostra, stairs, chairs — to create visual variety and suggest hierarchy.', hint:'Different heights — hierarchy and visual variety' },
+    { term:'Transition',               definition:'The movement between scenes or locations on stage — can be seamless or deliberately visible.', hint:'Moving between scenes on stage' },
+  ],
+};
+
+VOCAB['drama']['edexcel-alevel']   = VOCAB['drama']['aqa-alevel'];
+VOCAB['drama']['ocr-alevel']       = VOCAB['drama']['aqa-alevel'];
+VOCAB['drama']['cambridge-igcse']  = VOCAB['drama']['aqa-gcse'];
+VOCAB['drama']['edexcel-igcse']    = VOCAB['drama']['aqa-gcse'];
+
+// ────────────────────────────────────────────────────────────
+// ASTRONOMY — AQA A-Level (7407 option)
+// Topics aligned to A-Level astronomy content within physics
+// ────────────────────────────────────────────────────────────
+VOCAB['astronomy'] = VOCAB['astronomy'] || {};
+VOCAB['astronomy']['aqa-alevel'] = {
+
+  'Stellar Physics': [
+    { term:'Hertzsprung-Russell diagram', definition:'A graph plotting stellar luminosity against surface temperature — revealing patterns of stellar evolution.', hint:'Luminosity vs temperature — stellar evolution' },
+    { term:'Main sequence',            definition:'The band of stars on the H-R diagram where hydrogen fusion in the core is the energy source.',hint:'H-R band — hydrogen fusing stars' },
+    { term:'Luminosity',               definition:'The total energy output of a star per second — measured in watts or solar luminosities.',     hint:'Total energy output per second' },
+    { term:'Absolute magnitude',       definition:'The apparent magnitude a star would have if placed at 10 parsecs from Earth.',               hint:'Brightness at standard 10 parsec distance' },
+    { term:'Apparent magnitude',       definition:'The brightness of a star as observed from Earth — depends on distance and luminosity.',      hint:'Observed brightness from Earth' },
+    { term:'Parsec',                   definition:'A unit of distance equal to 3.26 light years — the distance at which 1 AU subtends 1 arcsecond.', hint:'3.26 light years — parallax-based unit' },
+    { term:'Stefan-Boltzmann law',     definition:'The luminosity of a star is proportional to the fourth power of its surface temperature and its surface area: L = 4πr²σT⁴.', hint:'L ∝ r²T⁴ — luminosity from size and temperature' },
+    { term:'Wien\'s displacement law', definition:'The peak wavelength of a star\'s emission is inversely proportional to its surface temperature — hotter stars appear bluer.', hint:'Hotter star = shorter peak wavelength = bluer' },
+    { term:'Spectral class',           definition:'A classification of stars by surface temperature: O B A F G K M (hottest to coolest).',       hint:'O B A F G K M — hottest to coolest' },
+    { term:'Chandrasekhar limit',      definition:'The maximum mass of a white dwarf — approximately 1.4 solar masses — above which it will collapse further.', hint:'1.4 solar masses — white dwarf maximum mass' },
+    { term:'Schwarzschild radius',     definition:'The radius of the event horizon of a black hole — the distance from the singularity within which escape velocity exceeds c.', hint:'Event horizon radius of a black hole' },
+    { term:'Neutron star',             definition:'The extremely dense remnant of a massive star after a supernova — composed almost entirely of neutrons.', hint:'Dense supernova remnant — mostly neutrons' },
+    { term:'Pulsar',                   definition:'A rapidly rotating neutron star emitting beams of electromagnetic radiation detected as regular pulses.', hint:'Rotating neutron star — regular EM pulses' },
+    { term:'Variable star',            definition:'A star whose brightness changes over time — including Cepheid variables used as standard candles.', hint:'Star with changing brightness' },
+    { term:'Cepheid variable',         definition:'A pulsating star with a period-luminosity relationship — used to measure cosmic distances.',  hint:'Period linked to luminosity — distance indicator' },
+  ],
+
+  'Cosmology': [
+    { term:'Hubble\'s law',            definition:'The recessional velocity of a galaxy is proportional to its distance: v = H₀d.',             hint:'v = H₀d — galaxies recede proportionally to distance' },
+    { term:'Hubble constant (H₀)',     definition:'The rate of expansion of the universe — approximately 70 km s⁻¹ Mpc⁻¹.',                    hint:'Rate of universe\'s expansion — ~70 km/s/Mpc' },
+    { term:'Red shift',                definition:'The increase in wavelength of light from objects moving away from the observer — evidence for the expanding universe.', hint:'Wavelength increase — object moving away' },
+    { term:'Cosmological red shift',   definition:'The stretching of light wavelengths as they travel through an expanding universe.',           hint:'Wavelength stretched by expanding space' },
+    { term:'Big Bang theory',          definition:'The prevailing cosmological model — the universe originated from an extremely hot, dense singularity ~13.8 billion years ago.', hint:'Universe from hot dense singularity ~13.8 Ga' },
+    { term:'Cosmic microwave background', definition:'Thermal radiation pervading the universe — relic from 380,000 years after the Big Bang when the universe cooled enough for atoms to form.', hint:'Relic radiation — 380,000 years after Big Bang' },
+    { term:'Critical density',         definition:'The density of the universe required for it to be geometrically flat — determines its ultimate fate.', hint:'Density for flat universe — determines fate' },
+    { term:'Dark matter',              definition:'Invisible matter that does not interact with electromagnetic radiation but has gravitational effects — inferred from galaxy rotation curves.', hint:'Invisible matter — gravitational effects only' },
+    { term:'Dark energy',              definition:'A hypothetical energy causing the accelerating expansion of the universe — constitutes ~68% of the total energy content.', hint:'Causes accelerating expansion — ~68% of universe' },
+    { term:'Olbers\' paradox',         definition:'The question of why the night sky is dark if the universe is infinite and static — resolved by the finite age and expansion of the universe.', hint:'Why is the night sky dark? — finite universe' },
+    { term:'Age of the universe',      definition:'Approximately 13.8 billion years — estimated from the Hubble constant and models of cosmic expansion.', hint:'~13.8 billion years old' },
+    { term:'Nucleosynthesis',          definition:'The formation of atomic nuclei in the early universe (Big Bang nucleosynthesis) and in stars (stellar nucleosynthesis).', hint:'Formation of nuclei — Big Bang and stars' },
+  ],
+
+  'Observational Astronomy': [
+    { term:'Parallax angle',           definition:'Half the angle subtended by a nearby star against distant background stars over six months — used to calculate stellar distance.', hint:'Half angle subtended over 6 months — distance measure' },
+    { term:'Standard candle',          definition:'An astronomical object of known luminosity used to determine distance — e.g. Cepheid variables and Type Ia supernovae.', hint:'Known luminosity object — measures distance' },
+    { term:'Type Ia supernova',        definition:'A supernova of consistent peak luminosity — used as a standard candle to measure cosmological distances.',hint:'Consistent peak luminosity — cosmological distance measure' },
+    { term:'Electromagnetic spectrum', definition:'The range of all electromagnetic radiation from radio waves (longest) to gamma rays (shortest).',hint:'All EM radiation — radio to gamma' },
+    { term:'Radio telescope',          definition:'A telescope detecting radio waves from space — can operate in daytime and through clouds.',   hint:'Detects radio waves — works in daylight' },
+    { term:'X-ray astronomy',          definition:'Observation of X-ray radiation from space — requires space-based telescopes as Earth\'s atmosphere absorbs X-rays.', hint:'Space-based — atmosphere blocks X-rays' },
+    { term:'Gravitational waves',      definition:'Ripples in spacetime caused by the acceleration of massive objects — detected by LIGO in 2015.', hint:'Spacetime ripples — detected by LIGO 2015' },
+    { term:'Event horizon',            definition:'The boundary around a black hole beyond which nothing can escape — including light.',         hint:'Point of no return around a black hole' },
+    { term:'Accretion disc',           definition:'A disc of gas and dust spiralling into a massive compact object such as a black hole, emitting intense radiation.', hint:'Disc of gas spiralling into black hole — emits radiation' },
+    { term:'Quasar',                   definition:'An extremely luminous active galactic nucleus powered by a supermassive black hole — visible at vast cosmological distances.', hint:'Extremely luminous distant galactic nucleus' },
+  ],
+
+  'Exoplanets and Astrobiology': [
+    { term:'Exoplanet',                definition:'A planet orbiting a star other than the Sun.',                                                 hint:'Planet around another star' },
+    { term:'Transit method',           definition:'A technique detecting exoplanets by measuring the dip in a star\'s brightness as a planet passes in front of it.', hint:'Planet crossing star causes brightness dip' },
+    { term:'Radial velocity method',   definition:'A technique detecting exoplanets by measuring the Doppler shift in a star\'s light caused by a planet\'s gravitational pull.', hint:'Doppler shift caused by orbiting planet' },
+    { term:'Habitable zone',           definition:'The range of distances from a star where liquid water could exist on a planet\'s surface.',  hint:'Distance range allowing liquid water' },
+    { term:'Biosignature',             definition:'A chemical or physical feature that provides evidence of life — e.g. oxygen, methane or ozone in a planetary atmosphere.', hint:'Chemical evidence of life in atmosphere' },
+    { term:'Fermi paradox',            definition:'The contradiction between high estimates of extraterrestrial civilisations and the lack of evidence for them.', hint:'If aliens exist — where are they?' },
+    { term:'Drake equation',           definition:'An equation estimating the number of communicating extraterrestrial civilisations in the galaxy.', hint:'Equation estimating number of alien civilisations' },
+  ],
+};
+
+VOCAB['astronomy']['edexcel-alevel'] = VOCAB['astronomy']['aqa-alevel'];
+VOCAB['astronomy']['ocr-alevel']     = VOCAB['astronomy']['aqa-alevel'];
+
+// ── Final shared references ──
+
+// Art / Music / Drama — IB SL, IB HL, KS3
+VOCAB['art']['ib-sl']    = VOCAB['art']['aqa-gcse'];
+VOCAB['art']['ib-hl']    = VOCAB['art']['aqa-alevel'];
+VOCAB['art']['ks3']      = VOCAB['art']['aqa-gcse'];
+
+VOCAB['music']['ib-sl']  = VOCAB['music']['aqa-gcse'];
+VOCAB['music']['ib-hl']  = VOCAB['music']['aqa-alevel'];
+VOCAB['music']['ks3']    = VOCAB['music']['aqa-gcse'];
+
+VOCAB['drama']['ib-sl']  = VOCAB['drama']['aqa-gcse'];
+VOCAB['drama']['ib-hl']  = VOCAB['drama']['aqa-alevel'];
+VOCAB['drama']['ks3']    = VOCAB['drama']['aqa-gcse'];
+
+// Astronomy — IB SL, IB HL
+VOCAB['astronomy']['ib-sl'] = VOCAB['astronomy']['aqa-gcse'];
+VOCAB['astronomy']['ib-hl'] = VOCAB['astronomy']['aqa-alevel'];
+
+// Psychology / Economics / RE — KS3
+VOCAB['psychology']['ks3']          = VOCAB['psychology']['aqa-gcse'];
+VOCAB['economics']['ks3']           = VOCAB['economics']['aqa-gcse'];
+VOCAB['religious education']['ks3'] = VOCAB['religious education']['aqa-gcse'];
