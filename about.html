@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — MartinEdu</title>
+  <meta name="description" content="MartinEdu is built by James Martin, a Physics graduate and Oxford-trained teacher. Free GCSE and A-Level revision resources for every student." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-hero {
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .about-hero .label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .about-hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      max-width: 20ch;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    .about-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      padding: 4rem 0;
+    }
+    @media (min-width: 768px) {
+      .about-grid { grid-template-columns: 2fr 1fr; gap: 6rem; }
+    }
+    .about-body h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 1rem;
+    }
+    .about-body p {
+      color: var(--ink-mid);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      max-width: 60ch;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* Credentials card */
+    .cred-card {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 12px;
+      padding: 2rem;
+      align-self: start;
+      position: sticky;
+      top: 5rem;
+    }
+    .cred-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 0.25rem;
+    }
+    .cred-title {
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .cred-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cred-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      line-height: 1.4;
+    }
+    .cred-list li::before {
+      content: "&#10003;";
+      color: var(--accent);
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .cred-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 1.5rem 0;
+    }
+    .cred-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      margin-bottom: 0.5rem;
+    }
+    .cred-stat strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Site overview section */
+    .site-overview {
+      padding: 4rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 600px) { .overview-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .overview-grid { grid-template-columns: repeat(3, 1fr); } }
+    .overview-card {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .overview-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .overview-card p {
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+    }
+    .overview-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Martin<span>Edu</span></a>
+      <div class="nav-overlay" id="nav-overlay"></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="simulations.html">Simulations</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="jokes.html">Jokes</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="vocab-hub/vocab-hub.html">Terminology Tester</a></li>
+        <li><a href="homeroom.html">Homeroom</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<main>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <p class="label">About</p>
+      <h1>Built by a teacher.<br><em>Free for everyone.</em></h1>
+    </div>
+  </section>
+
+  <!-- Main content + credentials -->
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-body">
+
+        <h2>Why I built this</h2>
+        <p>
+          MartinEdu started from a simple frustration: the best revision resources
+          were either behind paywalls, buried in poorly designed websites, or just
+          not very good. Students deserve better than that.
+        </p>
+        <p>
+          So I built what I wanted to exist &mdash; 160 interactive revision games,
+          a vocabulary tester covering over 3,500 terms across 12 exam boards,
+          classroom simulations, and a growing library of subject jokes to make the
+          whole thing slightly less grim.
+        </p>
+        <p>
+          Everything on this site is free. No subscription, no login, no ads.
+          Open a game and start revising.
+        </p>
+
+        <h2 style="margin-top: 2.5rem;">Who I am</h2>
+        <p>
+          I&rsquo;m James Martin &mdash; a Physics graduate from the University of
+          Bristol and a qualified teacher with a PGCE from the University of Oxford.
+          I&rsquo;ve taught in secondary schools and universities across the UK and
+          internationally, covering everything from KS3 Science to undergraduate
+          business ethics.
+        </p>
+        <p>
+          I also write GCSE revision guides published on Amazon under the name
+          James R. Martin, and I&rsquo;ve spent the last several years developing
+          teaching materials that actually work &mdash; activity-based, visually
+          clear, and built around how memory and learning really function.
+        </p>
+
+        <h2 style="margin-top: 2.5rem;">What&rsquo;s on the site</h2>
+        <p>
+          The site is growing. Right now you&rsquo;ll find revision games for nine
+          subjects at GCSE and A-Level, a full vocabulary testing hub with six
+          different game modes, interactive classroom simulations, and subject-specific
+          jokes that are marginally better than the ones in Christmas crackers.
+        </p>
+        <p>
+          New resources are added regularly. If there&rsquo;s a subject or topic
+          you&rsquo;d like to see covered, get in touch.
+        </p>
+
+        <div style="margin-top: 2.5rem;">
+          <a href="games.html" class="btn btn-accent" style="margin-right: 1rem;">Explore the Games</a>
+          <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+
+      </div>
+
+      <!-- Credentials card -->
+      <div>
+        <div class="cred-card">
+          <div class="cred-name">James Martin</div>
+          <div class="cred-title">Teacher &amp; Resource Developer</div>
+          <ul class="cred-list">
+            <li>MSci Physics &mdash; University of Bristol</li>
+            <li>PGCE &mdash; University of Oxford</li>
+            <li>Secondary &amp; university teaching experience</li>
+            <li>Published author on Amazon (James R. Martin)</li>
+            <li>KS3, GCSE and A-Level specialist</li>
+          </ul>
+          <hr class="cred-divider" />
+          <div class="cred-stat"><span>Revision games</span><strong>160</strong></div>
+          <div class="cred-stat"><span>Vocabulary terms</span><strong>3,500+</strong></div>
+          <div class="cred-stat"><span>Subjects covered</span><strong>9</strong></div>
+          <div class="cred-stat"><span>Exam boards</span><strong>12</strong></div>
+          <div class="cred-stat"><span>Cost to students</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Site overview -->
+  <section class="site-overview">
+    <div class="container">
+      <p class="section-label">What&rsquo;s available</p>
+      <h2>Everything on the site</h2>
+      <div class="overview-grid">
+
+        <div class="overview-card">
+          <span class="overview-num">160</span>
+          <h3>Revision Games</h3>
+          <p>Memory Match, Sort It, Quiz, Timeline and Label the Diagram across 9 subjects. Free, instant, no login.</p>
+          <a href="games.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Browse games &rarr;</a>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-num">3,500+</span>
+          <h3>Terminology Tester</h3>
+          <p>Vocabulary flashcards, quizzes and games covering 18 subjects and 12 exam boards including AQA, Edexcel, OCR and IB.</p>
+          <a href="vocab-hub/vocab-hub.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Start testing &rarr;</a>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-num">&#x1F680;</span>
+          <h3>Simulations</h3>
+          <p>Interactive classroom activities including Mars Colony Survival &mdash; a science-based group simulation for GCSE students.</p>
+          <a href="simulations.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">See simulations &rarr;</a>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-num">&#x1F4DA;</span>
+          <h3>Books</h3>
+          <p>GCSE revision guides written by James R. Martin, available on Amazon. Currently covering Biology, Chemistry, Physics and Maths.</p>
+          <a href="books.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">View books &rarr;</a>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-num">&#x1F602;</span>
+          <h3>Subject Jokes</h3>
+          <p>Curriculum-linked jokes across every subject. The best kind of revision break.</p>
+          <a href="jokes.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Have a laugh &rarr;</a>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-num">&#x1F4E7;</span>
+          <h3>Get in Touch</h3>
+          <p>Questions, feedback, or suggestions for new resources &mdash; always happy to hear from students and teachers alike.</p>
+          <a href="contact.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Contact &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> MartinEdu &nbsp;&middot;&nbsp; martinedu.co.uk &nbsp;&middot;&nbsp; Created by <a href="about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">James Martin</a></p>
+    </div>
+  </footer>
+
+<script>
+  const toggle  = document.getElementById("nav-toggle");
+  const links   = document.getElementById("nav-links");
+  const overlay = document.getElementById("nav-overlay");
+  function openMenu()  { toggle.classList.add("open");    links.classList.add("open");    overlay.classList.add("open");    document.body.style.overflow="hidden"; }
+  function closeMenu() { toggle.classList.remove("open"); links.classList.remove("open"); overlay.classList.remove("open"); document.body.style.overflow=""; }
+  toggle.addEventListener("click", () => toggle.classList.contains("open") ? closeMenu() : openMenu());
+  overlay.addEventListener("click", closeMenu);
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
