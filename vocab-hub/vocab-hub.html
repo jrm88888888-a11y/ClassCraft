@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vocabulary Games Hub | Free Revision Flashcards & Quizzes | ma...</title>
-    <meta name="description" content="Choose from 6 vocabulary games across every subject — anagram, crossword, hangman, memory match, quiz and TermGuess. Free, no login required.">
+  <meta name="description" content="Choose from 8 vocabulary games across every subject — anagram, crossword, hangman, memory match, quiz, TermGuess, Space Invaders and Pac-Man. Free, no login required.">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <script src="vocab-data.js"></script>
   <style>
@@ -77,8 +77,8 @@
     .pick-badge.ks3{background:rgba(74,122,181,0.15);color:#6090d0;}
 
     /* ── Game type cards ── */
-    .game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:2rem;}
-    @media(max-width:600px){.game-grid{grid-template-columns:repeat(2,1fr);}}
+    .game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:2rem;}
+    @media(max-width:700px){.game-grid{grid-template-columns:repeat(2,1fr);}}
 
     .game-card{
       background:var(--surface);
@@ -188,12 +188,14 @@ let sel = { subject: null, board: null, topic: null };
 
 // ── GAME TYPES ──
 const GAMES = [
-  { id:'pairs',     icon:'🃏', name:'Memory Match',    desc:'Flip cards to match terms with definitions.',        file:'game-pairs.html',      ready:true  },
-  { id:'quiz',      icon:'❓', name:'Multiple Choice',  desc:'Answer questions about key terms.',                  file:'game-quiz.html',       ready:true  },
-  { id:'hangman',   icon:'🪢', name:'Hangman',          desc:'Guess the term letter by letter.',                   file:'game-hangman.html',    ready:true  },
-  { id:'termguess',    icon:'🟩', name:'TermGuess',           desc:'Guess the vocabulary word in 6 attempts.',           file:'game-termguess.html',     ready:true  },
-  { id:'anagram',   icon:'🔀', name:'Anagram',          desc:'Unscramble the letters to reveal the term.',         file:'game-anagram.html',    ready:true  },
-  { id:'crossword', icon:'✏️', name:'Crossword',        desc:'Fill in the crossword using definitions as clues.',  file:'game-crossword.html',  ready:true  },
+  { id:'pairs',         icon:'🃏', name:'Memory Match',    desc:'Flip cards to match terms with definitions.',        file:'game-pairs.html',          ready:true  },
+  { id:'quiz',          icon:'❓', name:'Multiple Choice',  desc:'Answer questions about key terms.',                  file:'game-quiz.html',           ready:true  },
+  { id:'hangman',       icon:'🪢', name:'Hangman',          desc:'Guess the term letter by letter.',                   file:'game-hangman.html',        ready:true  },
+  { id:'termguess',     icon:'🟩', name:'TermGuess',        desc:'Guess the vocabulary word in 6 attempts.',           file:'game-termguess.html',      ready:true  },
+  { id:'anagram',       icon:'🔀', name:'Anagram',          desc:'Unscramble the letters to reveal the term.',         file:'game-anagram.html',        ready:true  },
+  { id:'crossword',     icon:'✏️', name:'Crossword',        desc:'Fill in the crossword using definitions as clues.',  file:'game-crossword.html',      ready:true  },
+  { id:'spaceinvaders', icon:'👾', name:'Space Invaders',   desc:'Shoot vocab enemies for bonus points and questions.',file:'game-spaceinvaders.html',  ready:true  },
+  { id:'pacman',        icon:'🟡', name:'Pac-Man',           desc:'Eat red dots to trigger vocabulary questions.',      file:'game-pacman.html',         ready:true  },
 ];
 
 // ── INIT ──
