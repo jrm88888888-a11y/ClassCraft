@@ -262,8 +262,9 @@ if (META.topic) {
 document.getElementById('btn-quit').addEventListener('click', () => window.location.href = 'vocab-hub.html');
 
 // ── Constants ──
-const GAME_DURATION  = 180; // seconds
-const VOCAB_INTERVAL = 10;  // seconds between vocab enemy spawns
+const GAME_DURATION      = 180; // seconds
+const VOCAB_INTERVAL     = 10;  // seconds between vocab enemy spawns
+const REINFORCE_INTERVAL = 30;  // seconds between reinforcement waves
 const MAX_VOCAB      = 20;
 const LIVES_MAX      = 3;
 const COLS           = 10;
@@ -309,7 +310,8 @@ let player, bullets, enemyBullets, enemies;
 let score, lives, wave;
 let timerSecs, timerInterval;
 let vocabQueue, vocabShownCount, vocabCorrect, vocabAnswered;
-let nextVocabTime; // game-seconds at which next vocab enemy spawns
+let nextVocabTime;       // game-seconds at which next vocab enemy spawns
+let nextReinforceTime;   // game-seconds at which next reinforcement row drops
 let currentVocabEnemy = null;
 let questionOpen = false;
 let enemyDir = 1; // 1=right, -1=left
@@ -374,6 +376,7 @@ function startGame() {
     spawnWave();
   });
   initStars();
+  score         = 0;
   lives         = LIVES_MAX;
   wave          = 1;
   timerSecs     = GAME_DURATION;
@@ -384,7 +387,8 @@ function startGame() {
   gameOver      = false;
   gamePaused    = false;
   questionOpen  = false;
-  nextVocabTime = GAME_DURATION - VOCAB_INTERVAL; // first vocab at 10s elapsed
+  nextVocabTime     = GAME_DURATION - VOCAB_INTERVAL;
+  nextReinforceTime = GAME_DURATION - REINFORCE_INTERVAL;
   particles     = [];
   floatingTexts = [];
   bullets       = [];
@@ -439,7 +443,35 @@ function spawnWave() {
   lastEnemyShot = performance.now();
 }
 
-// ── Enemy speed curve ──
+// ── Spawn reinforcement row ──
+// Drops surviving enemies down one row, adds a fresh row at the top
+function spawnReinforcements() {
+  wave++;
+  spawnFloat(canvas.width / 2, 60, `WAVE ${wave}!`, COL.playerGlow);
+
+  const totalW = COLS * ENEMY_W + (COLS - 1) * ENEMY_GAP_X;
+  const startX = (canvas.width - totalW) / 2;
+  const dropY  = ENEMY_H + ENEMY_GAP_Y;
+
+  // Push all surviving enemies down one row
+  enemies.forEach(e => { if (e.alive) e.y += dropY; });
+
+  // Add a new row at the top
+  for (let c = 0; c < COLS; c++) {
+    enemies.push({
+      x:       startX + c * (ENEMY_W + ENEMY_GAP_X),
+      y:       PADDING_TOP,
+      w:       ENEMY_W,
+      h:       ENEMY_H,
+      row:     0,
+      col:     c,
+      alive:   true,
+      isVocab: false,
+      vocabItem: null,
+      frame:   0,
+    });
+  }
+}
 function enemyMoveInterval() {
   const aliveCount = enemies.filter(e => e.alive).length;
   const total      = COLS * ROWS;
@@ -469,6 +501,12 @@ function tickTimer() {
   if (timerSecs <= nextVocabTime && vocabShownCount < Math.min(MAX_VOCAB, vocabQueue.length)) {
     injectVocabEnemy();
     nextVocabTime -= VOCAB_INTERVAL;
+  }
+
+  // Check reinforcement wave
+  if (timerSecs <= nextReinforceTime) {
+    spawnReinforcements();
+    nextReinforceTime -= REINFORCE_INTERVAL;
   }
 
   updateTimerDisplay();
@@ -659,9 +697,12 @@ function hitPlayer() {
 
 function checkWaveCleared() {
   if (enemies.every(e => !e.alive)) {
+    // Bonus for clearing the board
+    score += 100;
+    spawnFloat(canvas.width/2, canvas.height/2, 'CLEAR! +100', COL.playerGlow);
+    updateHUD();
     wave++;
     spawnWave();
-    spawnFloat(canvas.width/2, canvas.height/2, `WAVE ${wave}!`, COL.playerGlow);
   }
 }
 
