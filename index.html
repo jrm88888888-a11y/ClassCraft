@@ -163,13 +163,36 @@
               <div class="mock-dot" style="background:#e0a030"></div>
               <div class="mock-dot" style="background:#4ade9a"></div>
             </div>
-            <div class="mock-body">
-              <div class="game-card-mock"><span class="game-badge-mock" style="background:#7b6fff22;color:#7b6fff;border:1px solid #7b6fff44">Memory</span><span class="game-title-mock">Genetics</span></div>
-              <div class="game-card-mock"><span class="game-badge-mock" style="background:#4ade9a22;color:#4ade9a;border:1px solid #4ade9a44">Sort It</span><span class="game-title-mock">Types of Chemical Reaction</span></div>
-              <div class="game-card-mock"><span class="game-badge-mock" style="background:#f0a03022;color:#f0a030;border:1px solid #f0a03044">Quiz</span><span class="game-title-mock">GCSE Physics</span></div>
-              <div class="game-card-mock"><span class="game-badge-mock" style="background:#e0508022;color:#e05080;border:1px solid #e0508044">Timeline</span><span class="game-title-mock">World War Two</span></div>
-              <div class="game-card-mock"><span class="game-badge-mock" style="background:#40b0e022;color:#40b0e0;border:1px solid #40b0e044">Diagram</span><span class="game-title-mock">The Heart</span></div>
-              <div class="game-card-mock"><span class="game-badge-mock" style="background:#7b6fff22;color:#7b6fff;border:1px solid #7b6fff44">Memory</span><span class="game-title-mock">Macroeconomics</span></div>
+            <div class="mock-body" style="gap:0.4rem">
+              <!-- Score bar -->
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.2rem;">
+                <span style="font-size:0.6rem;color:#8080a0;letter-spacing:0.08em;text-transform:uppercase">Memory Match — Genetics</span>
+                <span style="font-size:0.6rem;color:#4ade9a;font-weight:600">4 matched</span>
+              </div>
+              <!-- Memory grid 4x4 -->
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.35rem;flex:1">
+                <!-- matched pair -->
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Allele</div>
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Alt. form of a gene</div>
+                <!-- face down -->
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <!-- flipped -->
+                <div style="background:#3a3a6a;border:1px solid #7b6fff88;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#c0b8ff;line-height:1.2">Dominant</div>
+                <!-- matched pair -->
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Meiosis</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Produces gametes</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <!-- flipped -->
+                <div style="background:#3a3a6a;border:1px solid #7b6fff88;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#c0b8ff;line-height:1.2">Expressed when 2 copies present</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <!-- matched pair -->
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Genotype</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Genetic makeup</div>
+              </div>
             </div>
           </div>
         </div>
@@ -204,19 +227,55 @@
               <div class="mock-dot" style="background:#e0a030"></div>
               <div class="mock-dot" style="background:#4ade9a"></div>
             </div>
-            <div class="mock-body">
-              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x1F9EC; Biology &mdash; AQA GCSE</span><span class="vocab-count">186 terms</span></div>
-              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x2697;&#xFE0F; Chemistry &mdash; Edexcel A-Level</span><span class="vocab-count">143 terms</span></div>
-              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x1F3DB;&#xFE0F; History &mdash; IB HL</span><span class="vocab-count">92 terms</span></div>
-              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x1F9E0; Psychology &mdash; AQA A-Level</span><span class="vocab-count">118 terms</span></div>
-              <div class="vocab-game-pills">
-                <span class="vocab-pill" style="background:#7b6fff22;color:#7b6fff">Pairs</span>
-                <span class="vocab-pill" style="background:#4ade9a22;color:#4ade9a">Hangman</span>
-                <span class="vocab-pill" style="background:#f0a03022;color:#f0a030">Quiz</span>
-                <span class="vocab-pill" style="background:#e0508022;color:#e05080">Anagram</span>
-                <span class="vocab-pill" style="background:#40b0e022;color:#40b0e0">Crossword</span>
-                <span class="vocab-pill" style="background:#c060e022;color:#c060e0">Term Guess</span>
+            <div class="mock-body" style="gap:0.5rem;align-items:center;justify-content:center">
+              <!-- Context clue -->
+              <div style="font-size:0.58rem;color:#8080a0;text-align:center;letter-spacing:0.06em;text-transform:uppercase">AQA Biology &mdash; Hangman</div>
+              <div style="font-size:0.6rem;color:#a0a0c0;text-align:center;font-style:italic;padding:0 0.5rem">"A change in the DNA base sequence"</div>
+
+              <!-- Gallows SVG -->
+              <svg viewBox="0 0 120 90" style="width:60%;max-width:140px;flex-shrink:0">
+                <!-- Gallows structure -->
+                <line x1="10" y1="85" x2="80" y2="85" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="30" y1="85" x2="30" y2="10" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="30" y1="10" x2="70" y2="10" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="70" y1="10" x2="70" y2="22" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Head -->
+                <circle cx="70" cy="28" r="6" fill="none" stroke="#e05050" stroke-width="2"/>
+                <!-- Body -->
+                <line x1="70" y1="34" x2="70" y2="55" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Left arm -->
+                <line x1="70" y1="38" x2="58" y2="48" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Right arm -->
+                <line x1="70" y1="38" x2="82" y2="48" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Left leg -->
+                <line x1="70" y1="55" x2="60" y2="68" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Right leg — missing, one guess left -->
+              </svg>
+
+              <!-- Word display: MUTATION — M_T_T__N -->
+              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">M</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">T</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">T</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">N</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
               </div>
+
+              <!-- Wrong guesses -->
+              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap;margin-top:0.1rem">
+                <span style="font-size:0.6rem;color:#8080a0">Wrong:</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">E</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">S</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">R</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">D</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">L</span>
+              </div>
+
+              <!-- Lives remaining -->
+              <div style="font-size:0.58rem;color:#f0a030;text-align:center">1 guess remaining</div>
             </div>
           </div>
         </div>
