@@ -83,7 +83,7 @@
     @keyframes slideUp{from{opacity:0;transform:translateY(28px) scale(0.95)}to{opacity:1;transform:none}}
     .q-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-d);font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--warn);background:rgba(255,107,107,0.12);border:1px solid rgba(255,107,107,0.3);border-radius:20px;padding:0.2rem 0.65rem;margin-bottom:0.75rem;}
     .q-term{font-family:var(--font-d);font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.35rem;color:var(--warn);}
-    .q-prompt{font-size:0.8rem;color:var(--text-mid);margin-bottom:1.1rem;}
+    .q-prompt{font-size:0.9rem;color:var(--text-mid);margin-bottom:1.1rem;}
     .q-options{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.25rem;}
     .q-option{background:var(--surface2);border:1.5px solid var(--border-hi);border-radius:var(--r);padding:0.7rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.65rem;transition:all var(--trans);user-select:none;}
     .q-option:hover{border-color:var(--accent2);background:rgba(123,111,255,0.1);}
@@ -93,7 +93,7 @@
     .q-key{font-family:var(--font-d);font-size:0.65rem;font-weight:800;min-width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border-hi);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text-dim);transition:all var(--trans);}
     .q-option.correct .q-key{background:var(--correct);border-color:var(--correct);color:#0f1117;}
     .q-option.wrong .q-key{background:var(--wrong);border-color:var(--wrong);color:#fff;}
-    .q-opt-text{font-family:var(--font-d);font-size:0.82rem;font-weight:600;color:var(--text);}
+    .q-opt-text{font-family:var(--font-d);font-size:0.95rem;font-weight:600;color:var(--text);}
     .q-points{font-family:var(--font-d);font-size:0.75rem;font-weight:700;text-align:center;}
     .q-points.gain{color:var(--correct);}
     .q-points.miss{color:var(--text-mid);}
@@ -356,7 +356,7 @@ function initPlayer() {
     y:   PLAYER_START.row + 0.5,
     dir: DIR.NONE,
     nextDir: DIR.NONE,
-    speed: 0.08,
+    speed: 0.04,
     mouthAngle: 0.25,
     mouthDir: 1,
     dead: false,
@@ -371,7 +371,7 @@ function initGhosts() {
     x:   pos.col + 0.5,
     y:   pos.row + 0.5,
     dir: i === 0 ? DIR.LEFT : DIR.RIGHT,
-    speed: 0.06,
+    speed: 0.03,
     color: GHOST_COLORS[i],
     mode: 'house',
     houseTimer: i * 60,
