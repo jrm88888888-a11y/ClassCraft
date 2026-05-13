@@ -3,41 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free GCSE & A-Level Revision Games | No Login | martinedu.co.uk</title>
-  <meta name="description" content="200+ free interactive revision games for GCSE and A-Level — memory match, quizzes, timelines, sorting and label the diagram. No login required.">
+  <title>MartinEdu — Free GCSE &amp; A-Level Revision Resources</title>
+  <meta name="description" content="160 revision games, 3,500+ vocabulary terms, interactive simulations and more — free for every student. GCSE and A-Level across 9 subjects." />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Book covers — show full image without cropping */
-    .card-thumb img { object-fit: contain !important; background: var(--parchment-deep); padding: 0.5rem; }
 
-    /* Hero layout */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
+    /* Hero */
+    .hero { padding: 5rem 0 4rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,94,60,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-label { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--rule); padding: 0.35rem 1rem; border-radius: 20px; margin-bottom: 1.75rem; }
+    .hero h1 { font-size: clamp(2.6rem, 8vw, 5.5rem); max-width: 16ch; margin: 0 auto 1.5rem; line-height: 1.08; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub { font-size: 1.1rem; color: var(--ink-mid); max-width: 52ch; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .btn-lg { padding: 0.85rem 2rem; font-size: 0.9rem; }
 
+    /* Stats */
+    .stats-bar { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; max-width: 700px; margin: 0 auto; }
+    .stat { flex: 1; min-width: 140px; padding: 1.25rem 1rem; text-align: center; border-right: 1px solid var(--rule); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
+
+    /* Features */
+    .feature { padding: 5rem 0; }
+    .feature-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
     @media (min-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+      .feature-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
+      .feature-grid.flip .feature-text { order: 1; }
+      .feature-grid.flip .feature-visual { order: 0; }
     }
+    .feature-eyebrow { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .feature h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem; line-height: 1.1; }
+    .feature p { color: var(--ink-mid); margin-bottom: 1.5rem; font-size: 1rem; }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+    .tag { font-size: 0.68rem; font-weight: 500; padding: 0.3rem 0.75rem; border-radius: 20px; border: 1px solid var(--rule); color: var(--ink-mid); letter-spacing: 0.05em; }
 
-    .hero-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      order: -1;
-    }
+    /* Mock panels */
+    .mock-panel { background: #1a1a2e; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(28,23,18,0.18); aspect-ratio: 4/3; display: flex; flex-direction: column; }
+    .mock-bar { background: #13131f; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mock-body { flex: 1; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; overflow: hidden; }
+    .game-card-mock { background: #252540; border-radius: 8px; padding: 0.65rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
+    .game-badge-mock { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+    .game-title-mock { font-size: 0.72rem; color: #d0c8ff; font-family: var(--font-display); font-weight: 600; }
+    .vocab-subject-mock { background: #252540; border-radius: 8px; padding: 0.5rem 0.75rem; display: flex; align-items: center; justify-content: space-between; }
+    .vocab-subject-name { font-size: 0.65rem; color: #c0b8ff; font-weight: 600; }
+    .vocab-count { font-size: 0.55rem; color: #8080a0; }
+    .vocab-game-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+    .vocab-pill { font-size: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .joke-bubble { background: #252540; border-radius: 10px; padding: 0.75rem 1rem; }
+    .joke-q { font-size: 0.65rem; color: #c0b8ff; margin-bottom: 0.4rem; line-height: 1.4; }
+    .joke-a { font-size: 0.62rem; color: #4ade9a; font-style: italic; }
+    .joke-subject { font-size: 0.5rem; color: #6060a0; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
 
-    @media (min-width: 768px) {
-      .hero-img { order: 1; }
-    }
+    /* Subjects strip */
+    .subjects-strip { background: var(--parchment-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 2rem 0; }
+    .subjects-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-align: center; margin-bottom: 1.25rem; }
+    .subjects-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+    .subject-chip { font-size: 0.78rem; font-weight: 500; padding: 0.4rem 1rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
+    .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* AI section */
+    .ai-section { padding: 5rem 0; background: var(--parchment-mid); border-top: 1px solid var(--rule); }
+    .ai-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 768px) { .ai-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .ai-card { padding: 1.5rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 10px; }
+    .ai-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .ai-card p { font-size: 0.88rem; color: var(--ink-mid); }
+
+    /* Sim */
+    .sim-feature { display: grid; grid-template-columns: 1fr; gap: 2rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 12px; overflow: hidden; padding: 2rem; align-items: center; }
+    @media (min-width: 768px) { .sim-feature { grid-template-columns: 1fr 1fr; } }
+    .sim-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; display: block; }
+
   </style>
 </head>
 <body>
 
-  <!-- ── Nav ───────────────────────────── -->
   <nav>
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Martin<span>Edu</span></a>
@@ -46,7 +89,6 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="simulations.html">Simulations</a></li>
         <li><a href="books.html">Books</a></li>
@@ -55,210 +97,281 @@
         <li><a href="vocab-hub/vocab-hub.html">Terminology Tester</a></li>
         <li><a href="homeroom.html">Homeroom</a></li>
         <li><a href="contact.html">Contact</a></li>
-      
       </ul>
     </div>
   </nav>
 
-  <!-- ── Hero ──────────────────────────── -->
-  <section style="padding: 4rem 0 3.5rem;">
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
-      <div class="hero-grid">
-
-        <div>
-          <p class="section-label fade-up fade-up-1">Teaching &amp; Learning Resources</p>
-          <h1 class="fade-up fade-up-2" style="max-width: 14ch; margin-bottom: 1.5rem;">
-            Better resources.<br>Better outcomes.
-          </h1>
-          <p class="fade-up fade-up-3" style="font-size: 1rem; color: var(--ink-mid); margin-bottom: 2rem; max-width: 48ch;">
-            Built for how people actually learn. MartinEdu produces innovative
-            educational materials — interactive simulations, textbooks, and
-            structured resources — designed for the demands of modern teaching.
-          </p>
-          <div class="fade-up fade-up-4" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="simulations.html" class="btn btn-accent">Explore Simulations</a>
-            <a href="books.html" class="btn">Browse Books</a>
-          </div>
-        </div>
-
-        <img
-          class="hero-img fade-up fade-up-2"
-          src="hero-students.jpg"
-          alt="Students collaborating and learning together"
-          loading="eager"
-        />
-
+      <span class="hero-label">Free &middot; No Login &middot; No Ads</span>
+      <h1 class="fade-up fade-up-1">Revision that<br><em>actually works.</em></h1>
+      <p class="hero-sub fade-up fade-up-2">160 games, 3,500+ vocabulary terms, interactive simulations and more &mdash; all free, for every student. GCSE and A-Level across 9 subjects.</p>
+      <div class="hero-btns fade-up fade-up-3">
+        <a href="games.html" class="btn btn-accent btn-lg">Explore the Games &rarr;</a>
+        <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
+      </div>
+      <div class="stats-bar fade-up fade-up-4">
+        <div class="stat"><span class="stat-num">160</span><span class="stat-label">Revision Games</span></div>
+        <div class="stat"><span class="stat-num">3,500+</span><span class="stat-label">Vocab Terms</span></div>
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">Subjects</span></div>
+        <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="rule" style="margin: 0;" /></div>
-
-  <!-- ── About strip ───────────────────── -->
-  <section class="section-sm">
+  <!-- SUBJECTS STRIP -->
+  <div class="subjects-strip">
     <div class="container">
-      <div class="two-col">
-
-        <div>
-          <p class="section-label">What We Do</p>
-          <h2 class="section-title">Designed for the AI age</h2>
-          <p style="color: var(--ink-mid); margin-bottom: 1.25rem;">
-            The way people learn is changing. We create materials that embrace
-            that change — combining rigorous academic structure with interactive
-            design, so that students engage more deeply and retain more effectively.
-          </p>
-          <p style="color: var(--ink-mid);">
-            Our work spans higher education, secondary school, and professional
-            development. Every resource is built with a clear learning outcome
-            in mind, and tested in real classrooms.
-          </p>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <div style="border-left: 2px solid var(--accent); padding-left: 1.25rem;">
-            <h3 style="margin-bottom: 0.35rem;">Simulations</h3>
-            <p style="font-size: 0.9rem; color: var(--ink-mid);">Interactive tools that let students explore concepts at their own pace, with immediate feedback and visual reinforcement.</p>
-          </div>
-          <div style="border-left: 2px solid var(--parchment-deep); padding-left: 1.25rem;">
-            <h3 style="margin-bottom: 0.35rem;">Books &amp; Guides</h3>
-            <p style="font-size: 0.9rem; color: var(--ink-mid);">Structured texts built around how memory and comprehension actually work — not just how content is traditionally delivered.</p>
-          </div>
-          <div style="border-left: 2px solid var(--parchment-deep); padding-left: 1.25rem;">
-            <h3 style="margin-bottom: 0.35rem;">Workshops &amp; Training</h3>
-            <p style="font-size: 0.9rem; color: var(--ink-mid);">Bespoke sessions for educators and institutions. Coming soon.</p>
-          </div>
-        </div>
-
+      <p class="subjects-label">Subjects covered</p>
+      <div class="subjects-list">
+        <a href="games.html#biology"    class="subject-chip">&#x1F9EC; Biology</a>
+        <a href="games.html#chemistry"  class="subject-chip">&#x2697;&#xFE0F; Chemistry</a>
+        <a href="games.html#physics"    class="subject-chip">&#x269B;&#xFE0F; Physics</a>
+        <a href="games.html#maths"      class="subject-chip">&#x1F4D0; Maths</a>
+        <a href="games.html#english"    class="subject-chip">&#x1F4D6; English</a>
+        <a href="games.html#history"    class="subject-chip">&#x1F3DB;&#xFE0F; History</a>
+        <a href="games.html#geography"  class="subject-chip">&#x1F30D; Geography</a>
+        <a href="games.html#psychology" class="subject-chip">&#x1F9E0; Psychology</a>
+        <a href="games.html#economics"  class="subject-chip">&#x1F4CA; Economics</a>
       </div>
-    </div>
-  </section>
-
-  <div class="container"><hr class="rule" style="margin: 0;" /></div>
-
-  <!-- ── Featured Simulation ───────────── -->
-  <section class="section">
-    <div class="container">
-
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <p class="section-label">Featured</p>
-          <h2 style="margin: 0;">Simulations</h2>
-        </div>
-        <a href="simulations.html" class="btn">View All</a>
-      </div>
-
-      <div class="two-col" style="background: var(--parchment-mid); border: 1px solid var(--parchment-deep); padding: 1.5rem; align-items: center;">
-
-        <img
-          src="simulations/thumbnails/science_gcse.jpg"
-          alt="Mars Colony Survival"
-          style="width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;"
-        />
-
-        <div>
-          <p class="card-label">Science · GCSE · Interactive Simulation</p>
-          <h2 style="font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: 1rem;">Mars Colony Survival</h2>
-          <p style="color: var(--ink-mid); margin-bottom: 1.5rem; font-size: 0.95rem;">
-            Teams manage a colony on Mars, applying scientific reasoning to life support,
-            resource management, and survival decisions as the colony faces mounting crises.
-            7 rounds, live leaderboard, structured debrief — open in any browser, no setup needed.
-          </p>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="simulations/Mars_Colony_Survival_GCSE.html" target="_blank" class="btn btn-accent">Launch Simulation</a>
-            <a href="simulations.html" class="btn">View All Simulations</a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <div class="container"><hr class="rule" style="margin: 0;" /></div>
-
-  <!-- ── Books preview ─────────────────── -->
-  <section class="section">
-    <div class="container">
-
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <p class="section-label">Publications</p>
-          <h2 style="margin: 0;">Books</h2>
-        </div>
-        <a href="books.html" class="btn">View All</a>
-      </div>
-
-      <div class="grid-4">
-
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio: 3/4; padding: 0; margin-bottom: var(--space-sm);">
-            <img src="cover-biology.png" alt="GCSE Biology" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" />
-          </div>
-          <p class="card-label">GCSE · Biology</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size: 0.68rem; padding: 0.6rem 1rem;">Learn More</a>
-        </div>
-
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio: 3/4; padding: 0; margin-bottom: var(--space-sm);">
-            <img src="cover-chemistry.png" alt="GCSE Chemistry" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" />
-          </div>
-          <p class="card-label">GCSE · Chemistry</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size: 0.68rem; padding: 0.6rem 1rem;">Learn More</a>
-        </div>
-
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio: 3/4; padding: 0; margin-bottom: var(--space-sm);">
-            <img src="cover-mathematics.png" alt="GCSE Mathematics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" />
-          </div>
-          <p class="card-label">GCSE · Mathematics</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size: 0.68rem; padding: 0.6rem 1rem;">Learn More</a>
-        </div>
-
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio: 3/4; padding: 0; margin-bottom: var(--space-sm);">
-            <img src="cover-physics.png" alt="GCSE Physics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" />
-          </div>
-          <p class="card-label">GCSE · Physics</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size: 0.68rem; padding: 0.6rem 1rem;">Learn More</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CTA strip ──────────────────────── -->
-  <div class="cta-strip">
-    <div class="container" style="text-align: center;">
-      <p style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1rem;">Get in Touch</p>
-      <h2 style="color: var(--parchment); margin-bottom: 1rem;">Interested in working with us?</h2>
-      <p style="color: rgba(245,239,230,0.6); margin: 0 auto 2rem; max-width: 50ch; font-size: 0.95rem;">
-        Whether you're an institution, an educator, or a publisher — we'd like to hear from you.
-      </p>
-      <a href="contact.html" class="btn" style="border-color: var(--parchment); color: var(--parchment);">Contact Us</a>
     </div>
   </div>
 
-  <!-- ── Footer ─────────────────────────── -->
+  <!-- FEATURE: GAMES -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-text">
+          <p class="feature-eyebrow">160 Games &middot; 9 Subjects</p>
+          <h2>Revision games that<br>don&rsquo;t feel like revision.</h2>
+          <p>Memory Match, Sort It, Quiz, Timeline and Label the Diagram &mdash; five game formats covering Biology through to Economics. Open in any browser, no login, no download.</p>
+          <div class="feature-tags">
+            <span class="tag">Memory Match</span>
+            <span class="tag">Sort It</span>
+            <span class="tag">Quiz</span>
+            <span class="tag">Timeline</span>
+            <span class="tag">Label the Diagram</span>
+          </div>
+          <a href="games.html" class="btn btn-accent">Browse All 160 Games &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body">
+              <div class="game-card-mock"><span class="game-badge-mock" style="background:#7b6fff22;color:#7b6fff;border:1px solid #7b6fff44">Memory</span><span class="game-title-mock">Genetics</span></div>
+              <div class="game-card-mock"><span class="game-badge-mock" style="background:#4ade9a22;color:#4ade9a;border:1px solid #4ade9a44">Sort It</span><span class="game-title-mock">Types of Chemical Reaction</span></div>
+              <div class="game-card-mock"><span class="game-badge-mock" style="background:#f0a03022;color:#f0a030;border:1px solid #f0a03044">Quiz</span><span class="game-title-mock">GCSE Physics</span></div>
+              <div class="game-card-mock"><span class="game-badge-mock" style="background:#e0508022;color:#e05080;border:1px solid #e0508044">Timeline</span><span class="game-title-mock">World War Two</span></div>
+              <div class="game-card-mock"><span class="game-badge-mock" style="background:#40b0e022;color:#40b0e0;border:1px solid #40b0e044">Diagram</span><span class="game-title-mock">The Heart</span></div>
+              <div class="game-card-mock"><span class="game-badge-mock" style="background:#7b6fff22;color:#7b6fff;border:1px solid #7b6fff44">Memory</span><span class="game-title-mock">Macroeconomics</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: TERMINOLOGY TESTER -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid flip">
+        <div class="feature-text">
+          <p class="feature-eyebrow">3,500+ Terms &middot; 12 Exam Boards</p>
+          <h2>Every term you need.<br>Six ways to learn it.</h2>
+          <p>Pick your subject, exam board and topic &mdash; then test yourself with Flashcard Pairs, Quiz, Hangman, Term Guess, Anagram or Crossword. AQA, Edexcel, OCR, Cambridge IGCSE, IB and more.</p>
+          <div class="feature-tags">
+            <span class="tag">Flashcard Pairs</span>
+            <span class="tag">Hangman</span>
+            <span class="tag">Anagram</span>
+            <span class="tag">Crossword</span>
+            <span class="tag">Term Guess</span>
+            <span class="tag">Quiz</span>
+          </div>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Go to Terminology Tester &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body">
+              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x1F9EC; Biology &mdash; AQA GCSE</span><span class="vocab-count">186 terms</span></div>
+              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x2697;&#xFE0F; Chemistry &mdash; Edexcel A-Level</span><span class="vocab-count">143 terms</span></div>
+              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x1F3DB;&#xFE0F; History &mdash; IB HL</span><span class="vocab-count">92 terms</span></div>
+              <div class="vocab-subject-mock"><span class="vocab-subject-name">&#x1F9E0; Psychology &mdash; AQA A-Level</span><span class="vocab-count">118 terms</span></div>
+              <div class="vocab-game-pills">
+                <span class="vocab-pill" style="background:#7b6fff22;color:#7b6fff">Pairs</span>
+                <span class="vocab-pill" style="background:#4ade9a22;color:#4ade9a">Hangman</span>
+                <span class="vocab-pill" style="background:#f0a03022;color:#f0a030">Quiz</span>
+                <span class="vocab-pill" style="background:#e0508022;color:#e05080">Anagram</span>
+                <span class="vocab-pill" style="background:#40b0e022;color:#40b0e0">Crossword</span>
+                <span class="vocab-pill" style="background:#c060e022;color:#c060e0">Term Guess</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: JOKES -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-text">
+          <p class="feature-eyebrow">Because learning should be fun</p>
+          <h2>Subject jokes your<br>teacher might groan at.</h2>
+          <p>A growing collection of curriculum-linked jokes across every subject &mdash; perfect for starting a lesson, breaking the ice, or just a much-needed laugh mid-revision.</p>
+          <a href="jokes.html" class="btn btn-accent">See the Jokes &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.8rem">
+              <div class="joke-bubble">
+                <div class="joke-q">Why did the cell go to therapy?</div>
+                <div class="joke-a">It had too many unresolved issues with its nucleus.</div>
+                <div class="joke-subject">&#x2697;&#xFE0F; Biology</div>
+              </div>
+              <div class="joke-bubble">
+                <div class="joke-q">Why was the History exam so long?</div>
+                <div class="joke-a">Because it kept going back in time.</div>
+                <div class="joke-subject">&#x1F3DB;&#xFE0F; History</div>
+              </div>
+              <div class="joke-bubble">
+                <div class="joke-q">What did the economist say at dinner?</div>
+                <div class="joke-a">There&rsquo;s no such thing as a free lunch &mdash; but I&rsquo;ll take the positive externalities.</div>
+                <div class="joke-subject">&#x1F4CA; Economics</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- SIMULATION -->
+  <section class="feature" style="padding-bottom:5rem">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div><p class="section-label">Featured</p><h2 style="margin:0">Simulation</h2></div>
+        <a href="simulations.html" class="btn">View All</a>
+      </div>
+      <div class="sim-feature">
+        <img src="simulations/thumbnails/science_gcse.jpg" alt="Mars Colony Survival simulation" class="sim-img" />
+        <div>
+          <p class="card-label">Science &middot; GCSE &middot; Interactive Simulation</p>
+          <h2 style="font-size:clamp(1.4rem,4vw,2rem);margin-bottom:1rem;">Mars Colony Survival</h2>
+          <p style="color:var(--ink-mid);margin-bottom:1.5rem;font-size:0.95rem;">Teams manage a colony on Mars, applying scientific reasoning to life support, resource management, and survival decisions as the colony faces mounting crises. 7 rounds, live leaderboard &mdash; open in any browser, no setup needed.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="simulations/Mars_Colony_Survival_GCSE.html" target="_blank" class="btn btn-accent">Launch Simulation</a>
+            <a href="simulations.html" class="btn">All Simulations</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- BOOKS -->
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div><p class="section-label">Publications</p><h2 style="margin:0">Books</h2></div>
+        <a href="books.html" class="btn">View All</a>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-biology.png" alt="GCSE Biology" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Biology</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-chemistry.png" alt="GCSE Chemistry" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Chemistry</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-mathematics.png" alt="GCSE Mathematics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Mathematics</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-physics.png" alt="GCSE Physics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Physics</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- AI SECTION -->
+  <section class="ai-section">
+    <div class="container">
+      <div style="max-width:52ch;margin-bottom:3rem;">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Designed for the AI age</h2>
+        <p style="color:var(--ink-mid);">The way people learn is changing. Every resource here is built with a clear learning outcome in mind &mdash; combining academic rigour with interactive design, and tested in real classrooms.</p>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-card"><h3>Built by a teacher</h3><p>MSci Physics, Oxford PGCE &mdash; every resource reflects real classroom experience, not guesswork.</p></div>
+        <div class="ai-card"><h3>No login required</h3><p>Everything works instantly in any browser. No accounts, no tracking, no ads. Just learning.</p></div>
+        <div class="ai-card"><h3>Always growing</h3><p>New games, subjects and features added regularly. The Terminology Tester alone covers 12 exam boards.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="container" style="text-align:center;">
+      <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;">Get in Touch</p>
+      <h2 style="color:var(--parchment);margin-bottom:1rem;">Interested in working with us?</h2>
+      <p style="color:rgba(245,239,230,0.6);margin:0 auto 2rem;max-width:50ch;font-size:0.95rem;">Whether you&rsquo;re an institution, an educator, or a publisher &mdash; we&rsquo;d like to hear from you.</p>
+      <a href="contact.html" class="btn" style="border-color:var(--parchment);color:var(--parchment);">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> MartinEdu &nbsp;·&nbsp; martinedu.co.uk</p>
+      <p>&copy; <span id="year"></span> MartinEdu &nbsp;&middot;&nbsp; martinedu.co.uk</p>
     </div>
   </footer>
 
   <script>
-    const toggle = document.getElementById('nav-toggle');
-    const links  = document.getElementById('nav-links');
-    const overlay = document.getElementById('nav-overlay');
-    function openMenu() { toggle.classList.add('open'); links.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
-    function closeMenu() { toggle.classList.remove('open'); links.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
-    toggle.addEventListener('click', () => toggle.classList.contains('open') ? closeMenu() : openMenu());
-    overlay.addEventListener('click', closeMenu);
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle  = document.getElementById("nav-toggle");
+    const links   = document.getElementById("nav-links");
+    const overlay = document.getElementById("nav-overlay");
+    function openMenu()  { toggle.classList.add("open");    links.classList.add("open");    overlay.classList.add("open");    document.body.style.overflow="hidden"; }
+    function closeMenu() { toggle.classList.remove("open"); links.classList.remove("open"); overlay.classList.remove("open"); document.body.style.overflow=""; }
+    toggle.addEventListener("click", () => toggle.classList.contains("open") ? closeMenu() : openMenu());
+    overlay.addEventListener("click", closeMenu);
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
 </body>
