@@ -1,0 +1,301 @@
+# Missing Nature Photos Report
+# 228 of 280 files are no longer available on Wikimedia Commons
+# 52 files were successfully downloaded
+# Generated from download_nature_photos.py
+
+# FORMAT: local_path | original_wikimedia_filename
+
+
+## northern-ireland
+MISSING: nature/northern-ireland/red-squirrel.jpg | Red_Squirrel_in_St_James's_Park,_London_-_Nov_2006_edit.jpg
+OK:      nature/northern-ireland/barn-owl.jpg
+MISSING: nature/northern-ireland/irish-hare.jpg | Mountain_Hare_(Lepus_timidus)_in_summer_coat.jpg
+MISSING: nature/northern-ireland/common-seal.jpg | Phoca_vitulina_Edit.jpg
+MISSING: nature/northern-ireland/swift.jpg | Common_Swift_at_Basildon.jpg
+OK:      nature/northern-ireland/curlew.jpg
+OK:      nature/northern-ireland/peregrine.jpg
+MISSING: nature/northern-ireland/brent-goose.jpg | Branta_bernicla_hrota.jpg
+MISSING: nature/northern-ireland/red-kite.jpg | Red_Kite_-_Milvus_milvus.jpg
+MISSING: nature/northern-ireland/common-lizard.jpg | Zootoca_vivipara_bosc.jpg
+MISSING: nature/northern-ireland/pipistrelle.jpg | Pipistrellus_pipistrellus_crop.jpg
+MISSING: nature/northern-ireland/grey-heron.jpg | Grey_Heron_(Ardea_cinerea)_in_flight_-_Hamina_-_Finland.jpg
+MISSING: nature/northern-ireland/hedgehog.jpg | Erinaceus_europaeus_LC0124.jpg
+MISSING: nature/northern-ireland/arctic-tern.jpg | Arctic_Tern_in_flight.jpg
+MISSING: nature/northern-ireland/water-vole.jpg | Water_vole.jpg
+MISSING: nature/northern-ireland/bog-cotton.jpg | Eriophorum_angustifolium_a1.jpg
+MISSING: nature/northern-ireland/heather.jpg | Calluna_vulgaris_-_harilik_kanarbik.jpg
+MISSING: nature/northern-ireland/yellow-iris.jpg | Iris_pseudacorus_-_20060527.jpg
+MISSING: nature/northern-ireland/wood-anemone.jpg | Anemone_nemorosa_LC0303.jpg
+MISSING: nature/northern-ireland/thrift.jpg | Armeria_maritima_Westkueste_Schottland.jpg
+MISSING: nature/northern-ireland/lesser-celandine.jpg | Ficaria_verna_LC0193.jpg
+MISSING: nature/northern-ireland/meadowsweet.jpg | Filipendula_ulmaria_LC0049.jpg
+MISSING: nature/northern-ireland/cuckoo-flower.jpg | Cardamine_pratensis_LC0020.jpg
+MISSING: nature/northern-ireland/devils-bit-scabious.jpg | Succisa_pratensis_LC0064.jpg
+MISSING: nature/northern-ireland/sea-holly.jpg | Eryngium_maritimum_kz.jpg
+MISSING: nature/northern-ireland/bilberry.jpg | Blueberry_3148.jpg
+MISSING: nature/northern-ireland/marsh-marigold.jpg | Caltha_palustris_LC0074.jpg
+MISSING: nature/northern-ireland/purple-moor-grass.jpg | Molinia_caerulea_subsp._caerulea_kz02.jpg
+MISSING: nature/northern-ireland/water-mint.jpg | Mentha_aquatica_LC0292.jpg
+MISSING: nature/northern-ireland/cross-leaved-heath.jpg | Erica_tetralix_a2.jpg
+OK:      nature/northern-ireland/fly-agaric.jpg
+MISSING: nature/northern-ireland/giant-puffball.jpg | Calvatia.gigantea.jpg
+MISSING: nature/northern-ireland/oyster-mushroom.jpg | Oyster_mushroom_(Pleurotus_ostreatus).jpg
+MISSING: nature/northern-ireland/waxcap.jpg | Cuphophyllus_pratensis_(Fr.)_Bon_(1989)_(36093671285).jpg
+MISSING: nature/northern-ireland/blackening-waxcap.jpg | Hygrocybe_conica_2009_G1.jpg
+MISSING: nature/northern-ireland/honey-fungus.jpg | Armillaria_mellea_2012_G2.jpg
+OK:      nature/northern-ireland/velvet-shank.jpg
+MISSING: nature/northern-ireland/turkey-tail.jpg | Trametes_versicolor_-_Turkey_Tail.jpg
+MISSING: nature/northern-ireland/earthball.jpg | Scleroderma_citrinum_2009_G2.jpg
+MISSING: nature/northern-ireland/jelly-ear.jpg | Auricularia_auricula-judae_2012_G4.jpg
+
+## scotland
+MISSING: nature/scotland/red-deer.jpg | 2006_RedDeer_Petrozavodsk.jpg
+MISSING: nature/scotland/golden-eagle.jpg | Golden_eagle_in_flight_-_5.jpg
+MISSING: nature/scotland/osprey.jpg | Osprey_in_flight_(Andrew_Reding).jpg
+MISSING: nature/scotland/pine-marten.jpg | Martes_martes-0107.jpg
+MISSING: nature/scotland/puffin.jpg | Atlantic_puffin_42.jpg
+MISSING: nature/scotland/capercaillie.jpg | Tetrao_urogallus_-_01.jpg
+MISSING: nature/scotland/red-grouse.jpg | RedGrouse.jpg
+MISSING: nature/scotland/scottish-wildcat.jpg | Scottish_Wildcat_Scottish_Wildlife_Park.jpg
+MISSING: nature/scotland/red-squirrel.jpg | Red_Squirrel_in_St_James's_Park,_London_-_Nov_2006_edit.jpg
+OK:      nature/scotland/minke-whale.jpg
+OK:      nature/scotland/bottlenose-dolphin.jpg
+MISSING: nature/scotland/mountain-hare.jpg | Mountain_Hare_(Lepus_timidus)_in_summer_coat.jpg
+MISSING: nature/scotland/common-lizard.jpg | Zootoca_vivipara_bosc.jpg
+MISSING: nature/scotland/ptarmigan.jpg | Ptarmigan_(Lagopus_muta)_in_summer_plumage_-_cropped.jpg
+MISSING: nature/scotland/atlantic-salmon.jpg | Atlantic_salmon_(Salmo_salar).jpg
+MISSING: nature/scotland/scots-pine.jpg | Scots_Pine_Pinus_sylvestris_Loch_Broom_Highlands.jpg
+MISSING: nature/scotland/bluebell.jpg | Bluebell_-_geograph.org.uk_-_1412360.jpg
+MISSING: nature/scotland/sundew.jpg | Drosera_rotundifolia_Scawen_1.jpg
+MISSING: nature/scotland/rowan.jpg | Rowan_Sorbus_aucuparia_Beeren.jpg
+MISSING: nature/scotland/bog-myrtle.jpg | Myrica_gale_-_bog_myrtle.jpg
+MISSING: nature/scotland/mountain-avens.jpg | Dryas_octopetala_a1.jpg
+MISSING: nature/scotland/common-reed.jpg | Phragmites_australis_Biebrza.jpg
+MISSING: nature/scotland/purple-loosestrife.jpg | Lythrum_salicaria_LC0233.jpg
+MISSING: nature/scotland/tormentil.jpg | Potentilla_erecta_LC0064.jpg
+MISSING: nature/scotland/crowberry.jpg | Empetrum_nigrum1.jpg
+MISSING: nature/scotland/cross-leaved-heath.jpg | Erica_tetralix_a2.jpg
+MISSING: nature/scotland/alpine-lady-fern.jpg | Athyrium_distentifolium_a.jpg
+MISSING: nature/scotland/wood-sorrel.jpg | Oxalis_acetosella_LC0101.jpg
+MISSING: nature/scotland/lesser-twayblade.jpg | Neottia_cordata_060704.jpg
+MISSING: nature/scotland/goldenrod.jpg | Solidago_virgaurea_LC0278.jpg
+OK:      nature/scotland/chanterelle.jpg
+MISSING: nature/scotland/birch-polypore.jpg | Birch_Polypore_edit.jpg
+MISSING: nature/scotland/amethyst-deceiver.jpg | 2009-10-11_Laccaria_amethystina_(Huds.)_Cooke_58993.jpg
+MISSING: nature/scotland/birch-bolete.jpg | Leccinum_scabrum_-_Rough-stemmed_Bolete.jpg
+MISSING: nature/scotland/parrot-waxcap.jpg | Gliophorus_psittacinus_2.jpg
+MISSING: nature/scotland/sulphur-tuft.jpg | Hypholoma_fasciculare_2009_G6.jpg
+MISSING: nature/scotland/hedgehog-mushroom.jpg | Hydnum_repandum_2012_G3.jpg
+OK:      nature/scotland/velvet-bolete.jpg
+MISSING: nature/scotland/woolly-milkcap.jpg | Lactarius_torminosus_2009_G1.jpg
+MISSING: nature/scotland/pine-spike.jpg | Gomphidius_rutilus_(Chroogomphus_rutilus)_2009_G1.jpg
+
+## republic-ireland
+MISSING: nature/republic-ireland/white-tailed-eagle.jpg | Haliaeetus_albicilla_-_01.jpg
+MISSING: nature/republic-ireland/atlantic-salmon.jpg | Atlantic_salmon_(Salmo_salar).jpg
+OK:      nature/republic-ireland/otter.jpg
+MISSING: nature/republic-ireland/corncrake.jpg | Corncrake_Crex_crex.jpg
+MISSING: nature/republic-ireland/grey-seal.jpg | Grey_seal_(Halichoerus_grypus)_2014.jpg
+OK:      nature/republic-ireland/red-fox.jpg
+OK:      nature/republic-ireland/badger.jpg
+OK:      nature/republic-ireland/painted-lady.jpg
+MISSING: nature/republic-ireland/harbour-porpoise.jpg | Harbour_porpoise.jpg
+MISSING: nature/republic-ireland/red-kite.jpg | Red_Kite_-_Milvus_milvus.jpg
+OK:      nature/republic-ireland/common-frog.jpg
+MISSING: nature/republic-ireland/swallow.jpg | Hirundo_rustica_-Flickr_-_Lip_Kee.jpg
+MISSING: nature/republic-ireland/pine-marten.jpg | Martes_martes-0107.jpg
+MISSING: nature/republic-ireland/whooper-swan.jpg | Whooper_Swans_-_geograph.org.uk_-_1008059.jpg
+OK:      nature/republic-ireland/basking-shark.jpg
+OK:      nature/republic-ireland/fuchsia.jpg
+MISSING: nature/republic-ireland/montbretia.jpg | Crocosmia_x_crocosmiiflora.jpg
+MISSING: nature/republic-ireland/early-purple-orchid.jpg | Orchis_mascula_LC0366.jpg
+MISSING: nature/republic-ireland/spring-gentian.jpg | Gentiana_verna_Oisís_2.jpg
+MISSING: nature/republic-ireland/thrift.jpg | Armeria_maritima_Westkueste_Schottland.jpg
+MISSING: nature/republic-ireland/bog-asphodel.jpg | Narthecium_ossifragum_LC0256.jpg
+MISSING: nature/republic-ireland/tormentil.jpg | Potentilla_erecta_LC0064.jpg
+MISSING: nature/republic-ireland/ragged-robin.jpg | Silene_flos-cuculi_LC0044.jpg
+MISSING: nature/republic-ireland/ivy.jpg | Hedera_helix_070103.jpg
+OK:      nature/republic-ireland/gorse.jpg
+MISSING: nature/republic-ireland/hawthorn.jpg | Hawthorn_-_geograph.org.uk_-_1365015.jpg
+MISSING: nature/republic-ireland/sea-campion.jpg | Silene_uniflora_Worthing.jpg
+MISSING: nature/republic-ireland/primrose.jpg | Primula_vulgaris_LC0073.jpg
+MISSING: nature/republic-ireland/yellow-iris.jpg | Iris_pseudacorus_-_20060527.jpg
+OK:      nature/republic-ireland/maidenhair-fern.jpg
+OK:      nature/republic-ireland/death-cap.jpg
+OK:      nature/republic-ireland/penny-bun.jpg
+MISSING: nature/republic-ireland/earthstar.jpg | Geastrum_triplex_1.jpg
+OK:      nature/republic-ireland/velvet-shank.jpg
+OK:      nature/republic-ireland/scarlet-elf-cup.jpg
+MISSING: nature/republic-ireland/turkey-tail.jpg | Trametes_versicolor_-_Turkey_Tail.jpg
+MISSING: nature/republic-ireland/honey-fungus.jpg | Armillaria_mellea_2012_G2.jpg
+MISSING: nature/republic-ireland/jelly-ear.jpg | Auricularia_auricula-judae_2012_G4.jpg
+MISSING: nature/republic-ireland/shaggy-inkcap.jpg | Coprinus_comatus_2011_G2.jpg
+MISSING: nature/republic-ireland/stinkhorn.jpg | Phallus_impudicus_2011_G1.jpg
+
+## wales
+MISSING: nature/wales/red-kite.jpg | Red_Kite_-_Milvus_milvus.jpg
+MISSING: nature/wales/polecat.jpg | Mustela_putorius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam.jpg
+MISSING: nature/wales/sea-trout.jpg | Salmo_trutta_Sturm.jpg
+MISSING: nature/wales/chough.jpg | Pyrrhocorax_pyrrhocorax_-Pembrokeshire,_Wales-8.jpg
+MISSING: nature/wales/horseshoe-bat.jpg | Horseshoe_bat.jpg
+MISSING: nature/wales/gwyniad.jpg | Gwyniad_fish.jpg
+OK:      nature/wales/bottlenose-dolphin.jpg
+MISSING: nature/wales/merlin.jpg | Falco_columbarius_-_01.jpg
+MISSING: nature/wales/grey-seal.jpg | Grey_seal_(Halichoerus_grypus)_2014.jpg
+MISSING: nature/wales/common-sandpiper.jpg | CommonSandpiper.jpg
+OK:      nature/wales/slow-worm.jpg
+MISSING: nature/wales/harbour-porpoise.jpg | Harbour_porpoise.jpg
+OK:      nature/wales/curlew.jpg
+OK:      nature/wales/otter.jpg
+MISSING: nature/wales/puffin.jpg | Atlantic_puffin_42.jpg
+MISSING: nature/wales/snowdon-lily.jpg | Lloydia_serotina_flower.jpg
+OK:      nature/wales/welsh-poppy.jpg
+MISSING: nature/wales/grass-of-parnassus.jpg | Parnassia_palustris_LC0083.jpg
+MISSING: nature/wales/purple-saxifrage.jpg | Saxifraga_oppositifolia_a1.jpg
+MISSING: nature/wales/bluebell.jpg | Bluebell_-_geograph.org.uk_-_1412360.jpg
+MISSING: nature/wales/sea-campion.jpg | Silene_uniflora_Worthing.jpg
+MISSING: nature/wales/early-marsh-orchid.jpg | Dactylorhiza_incarnata_(LC0292).jpg
+MISSING: nature/wales/cottongrass.jpg | Eriophorum_vaginatum_Torf.jpg
+MISSING: nature/wales/wood-anemone.jpg | Anemone_nemorosa_LC0303.jpg
+MISSING: nature/wales/primrose.jpg | Primula_vulgaris_LC0073.jpg
+MISSING: nature/wales/whorled-caraway.jpg | Carum_verticillatum_Oisterwijk.jpg
+MISSING: nature/wales/heather.jpg | Calluna_vulgaris_-_harilik_kanarbik.jpg
+OK:      nature/wales/gorse.jpg
+MISSING: nature/wales/green-spleenwort.jpg | Asplenium_viride_LC0069.jpg
+MISSING: nature/wales/butterfly-orchid.jpg | Platanthera_chlorantha_LC0066.jpg
+MISSING: nature/wales/chicken-of-woods.jpg | Laetiporus_sulphureus_2015_G1.jpg
+MISSING: nature/wales/beefsteak-fungus.jpg | Fistulina_hepatica_2010_G5.jpg
+MISSING: nature/wales/dryads-saddle.jpg | Polyporus_squamosus_2012_G2.jpg
+MISSING: nature/wales/earth-tongue.jpg | Geoglossum_cookeianum_2009_G1.jpg
+MISSING: nature/wales/giant-funnel.jpg | Leucopaxillus_giganteus_2009_G2.jpg
+MISSING: nature/wales/purple-jellydisc.jpg | Ascocoryne_sarcoides_2009_G1.jpg
+MISSING: nature/wales/oak-polypore.jpg | Piptoporus_quercinus.jpg
+MISSING: nature/wales/meadow-waxcap.jpg | Cuphophyllus_pratensis_(Fr.)_Bon_(1989)_(36093671285).jpg
+MISSING: nature/wales/stinkhorn.jpg | Phallus_impudicus_2011_G1.jpg
+MISSING: nature/wales/scarlet-caterpillarclub.jpg | Cordyceps_militaris_2009_G3.jpg
+
+## north-england
+MISSING: nature/north-england/red-squirrel.jpg | Red_Squirrel_in_St_James's_Park,_London_-_Nov_2006_edit.jpg
+MISSING: nature/north-england/golden-plover.jpg | Pluvialis_apricaria_-_01.jpg
+OK:      nature/north-england/curlew.jpg
+MISSING: nature/north-england/short-eared-owl.jpg | Short-eared_Owl_(Asio_flammeus)_(14278511723).jpg
+MISSING: nature/north-england/water-vole.jpg | Water_vole.jpg
+OK:      nature/north-england/lapwing.jpg
+OK:      nature/north-england/brown-hare.jpg
+MISSING: nature/north-england/whooper-swan.jpg | Whooper_Swans_-_geograph.org.uk_-_1008059.jpg
+MISSING: nature/north-england/adder.jpg | Vipera_berus_LC0124.jpg
+MISSING: nature/north-england/pied-flycatcher.jpg | Ficedula_hypoleuca_-_01.jpg
+MISSING: nature/north-england/hen-harrier.jpg | Hen_harrier_Circus_cyaneus.jpg
+OK:      nature/north-england/roe-deer.jpg
+MISSING: nature/north-england/swift.jpg | Common_Swift_at_Basildon.jpg
+OK:      nature/north-england/peregrine.jpg
+OK:      nature/north-england/natterjack-toad.jpg
+MISSING: nature/north-england/bird-cherry.jpg | Prunus_padus_subsp._padus_Sturm53.jpg
+MISSING: nature/north-england/melancholy-thistle.jpg | Cirsium_heterophyllum_a2.jpg
+MISSING: nature/north-england/mountain-pansy.jpg | Viola_lutea_LC0067.jpg
+MISSING: nature/north-england/globeflower.jpg | Trollius_europaeus_LC0088.jpg
+MISSING: nature/north-england/spring-sandwort.jpg | Minuartia_verna_a.jpg
+MISSING: nature/north-england/birds-eye-primrose.jpg | Primula_farinosa_LC0168.jpg
+MISSING: nature/north-england/grass-of-parnassus.jpg | Parnassia_palustris_LC0083.jpg
+MISSING: nature/north-england/purple-saxifrage.jpg | Saxifraga_oppositifolia_a1.jpg
+MISSING: nature/north-england/sea-lavender.jpg | Limonium_vulgare_Biebrza_2.jpg
+MISSING: nature/north-england/rowan.jpg | Rowan_Sorbus_aucuparia_Beeren.jpg
+MISSING: nature/north-england/heather.jpg | Calluna_vulgaris_-_harilik_kanarbik.jpg
+MISSING: nature/north-england/great-burnet.jpg | Sanguisorba_officinalis_LC0174.jpg
+MISSING: nature/north-england/wood-cranesbill.jpg | Geranium_sylvaticum_LC0237.jpg
+MISSING: nature/north-england/thrift.jpg | Armeria_maritima_Westkueste_Schottland.jpg
+OK:      nature/north-england/cloudberry.jpg
+OK:      nature/north-england/velvet-shank.jpg
+MISSING: nature/north-england/golden-scalycap.jpg | Pholiota_squarrosa_2009_G3.jpg
+MISSING: nature/north-england/giant-puffball.jpg | Calvatia.gigantea.jpg
+MISSING: nature/north-england/crimson-waxcap.jpg | Hygrocybe_punicea.jpg
+OK:      nature/north-england/fly-agaric.jpg
+MISSING: nature/north-england/jelly-ear.jpg | Auricularia_auricula-judae_2012_G4.jpg
+MISSING: nature/north-england/birch-polypore.jpg | Birch_Polypore_edit.jpg
+OK:      nature/north-england/chanterelle.jpg
+MISSING: nature/north-england/sulphur-tuft.jpg | Hypholoma_fasciculare_2009_G6.jpg
+MISSING: nature/north-england/amethyst-deceiver.jpg | 2009-10-11_Laccaria_amethystina_(Huds.)_Cooke_58993.jpg
+
+## midlands-east
+MISSING: nature/midlands-east/bittern.jpg | Eurasian_bittern_(Botaurus_stellaris).jpg
+MISSING: nature/midlands-east/marsh-harrier.jpg | Circus_aeruginosus_-_01.jpg
+MISSING: nature/midlands-east/crane.jpg | Grus_grus_3_(Martin_Mecnarowski).jpg
+OK:      nature/midlands-east/barn-owl.jpg
+OK:      nature/midlands-east/fen-raft-spider.jpg
+MISSING: nature/midlands-east/red-kite.jpg | Red_Kite_-_Milvus_milvus.jpg
+MISSING: nature/midlands-east/white-admiral.jpg | White_admiral_butterfly_(Limenitis_camilla).jpg
+MISSING: nature/midlands-east/water-vole.jpg | Water_vole.jpg
+MISSING: nature/midlands-east/brown-long-eared-bat.jpg | Plecotus_auritus_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam.jpg
+MISSING: nature/midlands-east/common-tern.jpg | Common_tern_(Sterna_hirundo)_in_flight.jpg
+MISSING: nature/midlands-east/great-crested-newt.jpg | Triturus_cristatus_male_Vlasac.jpg
+OK:      nature/midlands-east/brown-hare.jpg
+MISSING: nature/midlands-east/stag-beetle.jpg | Lucanus_cervus_qtl5.jpg
+MISSING: nature/midlands-east/osprey.jpg | Osprey_in_flight_(Andrew_Reding).jpg
+MISSING: nature/midlands-east/avocet.jpg | Recurvirostra_avosetta_-_01.jpg
+MISSING: nature/midlands-east/pasque-flower.jpg | Pulsatilla_vulgaris_LC0019.jpg
+MISSING: nature/midlands-east/fen-orchid.jpg | Liparis_loeselii.jpg
+MISSING: nature/midlands-east/yellow-water-lily.jpg | Nuphar_lutea_LC0235.jpg
+MISSING: nature/midlands-east/greater-spearwort.jpg | Ranunculus_lingua_LC0093.jpg
+MISSING: nature/midlands-east/bluebell.jpg | Bluebell_-_geograph.org.uk_-_1412360.jpg
+MISSING: nature/midlands-east/oxlip.jpg | Primula_elatior_LC0183.jpg
+MISSING: nature/midlands-east/marsh-pea.jpg | Lathyrus_palustris_LC0290.jpg
+MISSING: nature/midlands-east/cowslip.jpg | Primula_veris_LC0057.jpg
+MISSING: nature/midlands-east/purple-loosestrife.jpg | Lythrum_salicaria_LC0233.jpg
+MISSING: nature/midlands-east/bee-orchid.jpg | Ophrys_apifera_-_Malmsbury.jpg
+MISSING: nature/midlands-east/water-soldier.jpg | Stratiotes_aloides_LC0299.jpg
+MISSING: nature/midlands-east/common-spotted-orchid.jpg | Dactylorhiza_fuchsii_LC0049.jpg
+MISSING: nature/midlands-east/ragged-robin.jpg | Silene_flos-cuculi_LC0044.jpg
+MISSING: nature/midlands-east/great-burnet.jpg | Sanguisorba_officinalis_LC0174.jpg
+MISSING: nature/midlands-east/tussock-sedge.jpg | Carex_paniculata_kz2.jpg
+MISSING: nature/midlands-east/oak-milkcap.jpg | Lactarius_quietus_2009_G2.jpg
+MISSING: nature/midlands-east/beech-knight.jpg | Tricholoma_scalpturatum_2012_G5.jpg
+OK:      nature/midlands-east/penny-bun.jpg
+MISSING: nature/midlands-east/parrot-waxcap.jpg | Gliophorus_psittacinus_2.jpg
+MISSING: nature/midlands-east/earthstar.jpg | Geastrum_triplex_1.jpg
+OK:      nature/midlands-east/scarlet-elf-cup.jpg
+MISSING: nature/midlands-east/porcelain-fungus.jpg | Porcelain_Fungus_(Oudemansiella_mucida)_(1).jpg
+MISSING: nature/midlands-east/chicken-of-woods.jpg | Laetiporus_sulphureus_2015_G1.jpg
+MISSING: nature/midlands-east/shaggy-inkcap.jpg | Coprinus_comatus_2011_G2.jpg
+MISSING: nature/midlands-east/hares-ear.jpg | Otidea_onotica_2009_G2.jpg
+
+## south-england
+OK:      nature/south-england/nightingale.jpg
+OK:      nature/south-england/dormouse.jpg
+MISSING: nature/south-england/adonis-blue.jpg | Polyommatus_bellargus_male_-_Dorset.jpg
+MISSING: nature/south-england/sand-lizard.jpg | Lacerta_agilis_male.jpg
+OK:      nature/south-england/smooth-snake.jpg
+MISSING: nature/south-england/turtle-dove.jpg | Streptopelia_turtur_-_01.jpg
+MISSING: nature/south-england/smooth-newt.jpg | Lissotriton_vulgaris_01.jpg
+MISSING: nature/south-england/grey-heron.jpg | Grey_Heron_(Ardea_cinerea)_in_flight_-_Hamina_-_Finland.jpg
+MISSING: nature/south-england/silver-spotted-skipper.jpg | Hesperia_comma_male_-_Dorset.jpg
+OK:      nature/south-england/roe-deer.jpg
+MISSING: nature/south-england/dartford-warbler.jpg | Dartford_Warbler_(Sylvia_undata).jpg
+OK:      nature/south-england/white-clawed-crayfish.jpg
+MISSING: nature/south-england/hobby.jpg | Falco_subbuteo_-_01.jpg
+OK:      nature/south-england/bechsteins-bat.jpg
+MISSING: nature/south-england/spoonbill.jpg | Platalea_leucorodia_Spoonbill_1.jpg
+MISSING: nature/south-england/early-spider-orchid.jpg | Ophrys_sphegodes_-_Branscombe.jpg
+OK:      nature/south-england/wild-gladiolus.jpg
+MISSING: nature/south-england/field-cow-wheat.jpg | Melampyrum_arvense.jpg
+MISSING: nature/south-england/childing-pink.jpg | Petrorhagia_nanteuilii.jpg
+MISSING: nature/south-england/round-headed-rampion.jpg | Phyteuma_orbiculare_LC0063.jpg
+MISSING: nature/south-england/man-orchid.jpg | Orchis_anthropophora_LC0126.jpg
+MISSING: nature/south-england/chalk-milkwort.jpg | Polygala_calcarea_LC0024.jpg
+MISSING: nature/south-england/sea-kale.jpg | Crambe_maritima_LC0018.jpg
+MISSING: nature/south-england/yellow-horned-poppy.jpg | Glaucium_flavum_LC0083.jpg
+MISSING: nature/south-england/pyramidal-orchid.jpg | Anacamptis_pyramidalis_LC0095.jpg
+MISSING: nature/south-england/sea-holly.jpg | Eryngium_maritimum_kz.jpg
+MISSING: nature/south-england/bee-orchid.jpg | Ophrys_apifera_-_Malmsbury.jpg
+MISSING: nature/south-england/lords-and-ladies.jpg | Arum_maculatum_LC0113.jpg
+MISSING: nature/south-england/common-rock-rose.jpg | Helianthemum_nummularium_LC0078.jpg
+MISSING: nature/south-england/devils-bit-scabious.jpg | Succisa_pratensis_LC0064.jpg
+MISSING: nature/south-england/amethyst-deceiver.jpg | 2009-10-11_Laccaria_amethystina_(Huds.)_Cooke_58993.jpg
+OK:      nature/south-england/death-cap.jpg
+MISSING: nature/south-england/lurid-bolete.jpg | Suillellus_luridus_2009_G5.jpg
+MISSING: nature/south-england/snowy-waxcap.jpg | Cuphophyllus_virgineus_2009_G2.jpg
+MISSING: nature/south-england/honey-fungus.jpg | Armillaria_mellea_2012_G2.jpg
+OK:      nature/south-england/penny-bun.jpg
+MISSING: nature/south-england/porcelain-fungus.jpg | Porcelain_Fungus_(Oudemansiella_mucida)_(1).jpg
+MISSING: nature/south-england/chicken-of-woods.jpg | Laetiporus_sulphureus_2015_G1.jpg
+MISSING: nature/south-england/yellow-stagshorn.jpg | Calocera_viscosa_2009_G2.jpg
+MISSING: nature/south-england/beefsteak-fungus.jpg | Fistulina_hepatica_2010_G5.jpg
