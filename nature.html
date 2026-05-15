@@ -15,10 +15,15 @@
 
     /* ── Layout ──────────────────────────────── */
     .nature-layout{display:grid;grid-template-columns:1fr;gap:2rem;padding:2.5rem 0 5rem}
+    @media(min-width:700px){.nature-layout{grid-template-columns:240px 1fr;gap:2rem;align-items:start}}
     @media(min-width:900px){.nature-layout{grid-template-columns:300px 1fr;gap:2.5rem;align-items:start}}
 
     /* ── Map panel ───────────────────────────── */
     .map-panel{background:var(--parchment-mid);border:1px solid var(--parchment-deep);border-radius:14px;padding:1.25rem;position:sticky;top:5rem}
+    @media(max-width:699px){
+      .map-wrap{max-height:250px;overflow:hidden}
+      .map-panel{position:static}
+    }
     .map-panel-title{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.85rem}
     .map-wrap{background:#1a2a3a;border-radius:10px;overflow:hidden;margin-bottom:1rem}
     .map-wrap svg{display:block;width:100%;height:auto}
@@ -28,7 +33,8 @@
 
     /* ── Region buttons ──────────────────────── */
     .region-list{display:flex;flex-direction:column;gap:.3rem}
-    .region-btn{display:flex;align-items:center;gap:.55rem;padding:.45rem .75rem;border:1px solid var(--parchment-deep);border-radius:7px;background:var(--parchment);cursor:pointer;font-size:.8rem;color:var(--ink-mid);transition:all .2s;text-align:left;width:100%;font-family:var(--font-body)}
+    .region-btn{display:flex;align-items:center;gap:.55rem;padding:.55rem .75rem;border:1px solid var(--parchment-deep);border-radius:7px;background:var(--parchment);cursor:pointer;font-size:.8rem;color:var(--ink-mid);transition:all .2s;text-align:left;width:100%;font-family:var(--font-body);min-height:44px}
+    @media(max-width:699px){.region-btn{font-size:.85rem}}
     .region-btn:hover{border-color:var(--accent);color:var(--ink)}
     .region-btn.active{border-color:var(--accent);background:var(--parchment-deep);color:var(--ink);font-weight:500}
     .region-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
@@ -48,8 +54,10 @@
 
     /* ── Species grid ────────────────────────── */
     .species-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
-    @media(min-width:600px){.species-grid{grid-template-columns:1fr 1fr}}
+    @media(min-width:500px){.species-grid{grid-template-columns:1fr 1fr}}
     @media(min-width:1100px){.species-grid{grid-template-columns:1fr 1fr 1fr}}
+    /* On mobile with sidebar layout, stay 1-col until wider */
+    @media(min-width:700px) and (max-width:899px){.species-grid{grid-template-columns:1fr}}
 
     /* ── Species card ────────────────────────── */
     .species-card{background:var(--parchment);border:1px solid var(--parchment-deep);border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s}
@@ -276,8 +284,9 @@ function renderContent() {
     const cards = species.map(s => {
       // Show photo if local file exists, fall back to placeholder
       const imgHtml = `<div class="species-img">
+        <div class="species-placeholder" style="display:none">${CAT_ICONS[activeCat]}</div>
         <img src="${s.img}" alt="${s.common}"
-          onerror="this.outerHTML='<div class=species-placeholder>${CAT_ICONS[activeCat]}</div>'" />
+          onerror="this.style.display='none';this.previousElementSibling.style.display='flex'" />
         <span class="species-cat-badge">${s.category}</span>
       </div>`;
 
@@ -314,7 +323,7 @@ function renderContent() {
   });
 
   // Scroll content into view on mobile
-  if (window.innerWidth < 900) {
+  if (window.innerWidth < 700) {
     panel.scrollIntoView({behavior:"smooth", block:"start"});
   }
 }
