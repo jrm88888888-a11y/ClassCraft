@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Books — MartinEdu</title>
-  <meta name="description" content="GCSE, A-Level and IB revision guides by James R. Martin — 100 AI Prompts for Smarter Revision and Exam Prep. Available on Amazon." />
+  <meta name="description" content="Free GCSE, A-Level and IB revision guides by James R. Martin — 100 AI Prompts for Smarter Revision and Exam Prep. Download every book as a free PDF." />
   <link rel="stylesheet" href="style.css" />
   <style>
     .books-hero { padding: 5rem 0 4rem; border-bottom: 1px solid var(--rule); }
@@ -22,22 +22,12 @@
     .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1.5rem; }
     @media (min-width: 768px) { .books-grid { grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); } }
 
-    .book-card { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+    .book-card { display: flex; flex-direction: column; gap: 0.4rem; }
     .book-thumb { aspect-ratio: 2/3; background: var(--parchment-mid); border-radius: 8px; overflow: hidden; margin-bottom: 0.5rem; box-shadow: 0 4px 16px rgba(28,23,18,0.12); transition: transform 0.2s, box-shadow 0.2s; }
-    .book-card:not(.book-card-soon):hover .book-thumb { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(28,23,18,0.18); }
+    .book-card:hover .book-thumb { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(28,23,18,0.18); }
     .book-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .book-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--parchment-deep); padding: 1rem; text-align: center; }
-    .book-placeholder span { font-family: var(--font-display); font-size: 0.85rem; color: var(--ink-light); line-height: 1.4; }
-    .book-level { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0; }
     .book-title { font-family: var(--font-display); font-size: 0.88rem; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.2; }
-    .book-sub { font-size: 0.7rem; color: var(--ink-light); margin: 0 0 0.5rem; line-height: 1.3; }
     .book-btn { font-size: 0.68rem; padding: 0.5rem 0.9rem; margin-top: auto; text-align: center; }
-    .coming-soon-btn { font-size: 0.68rem; padding: 0.5rem 0.9rem; border: 1px solid var(--rule); border-radius: 6px; color: var(--ink-light); text-align: center; display: block; margin-top: auto; cursor: default; }
-    .book-card-soon { opacity: 0.65; }
-    .soon-badge { position: absolute; top: 0.6rem; right: 0.6rem; font-size: 0.52rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--parchment-deep); color: var(--ink-light); padding: 0.2rem 0.5rem; border-radius: 20px; z-index: 1; }
-
-    .series-note { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 2rem; display: flex; gap: 0.75rem; align-items: flex-start; }
-    .series-note strong { color: var(--ink); }
   </style>
 </head>
 <body>
@@ -69,8 +59,8 @@
   <section class="books-hero">
     <div class="container">
       <p class="section-label">Publications</p>
-      <h1>Revision guides<br><em>that actually help.</em></h1>
-      <p>100 carefully crafted AI prompts for active recall, exam technique and mark-scheme thinking &mdash; for every major subject at GCSE, A-Level and IB. GCSE titles available now on Amazon. A-Level and IB series coming soon.</p>
+      <h1>Revision guides<br><em>free to download.</em></h1>
+      <p>100 carefully crafted AI prompts for active recall, exam technique and mark-scheme thinking &mdash; for every major subject at GCSE, A-Level and IB. Every book is available as a free PDF.</p>
     </div>
   </section>
 
@@ -80,120 +70,88 @@
       <div class="section-header">
         <span class="section-badge">GCSE</span>
         <h2>GCSE Series</h2>
-        <p>12 subjects &mdash; available now on Amazon as paperback and Kindle</p>
-      </div>
-      <div class="series-note">
-        <span>&#x1F4DA;</span>
-        <span>All GCSE titles are <strong>available now</strong> on Amazon UK and Amazon US.</span>
+        <p>16 subjects &mdash; free PDF download</p>
       </div>
       <div class="books-grid">
         <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-biology.png" alt="GCSE Biology — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
+          <div class="book-thumb"><img src="Books/GCSE Biology/cover.png" alt="GCSE Biology cover" /></div>
           <h3 class="book-title">Biology</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+biology" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
+          <a href="Books/GCSE Biology/GCSE Biology - 100 AI Prompts for More Effective Revision and Exam Prep.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
         <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-chemistry.png" alt="GCSE Chemistry — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">Chemistry</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+chemistry" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-physics.png" alt="GCSE Physics — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">Physics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+physics" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-mathematics.png" alt="GCSE Mathematics — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">Mathematics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+mathematics" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-computer-science.png" alt="GCSE Computer Science — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">Computer Science</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+computer+science" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-english.png" alt="GCSE English — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">English</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+english" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-french.png" alt="GCSE French — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">French</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+french" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-german.png" alt="GCSE German — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">German</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+german" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-spanish.png" alt="GCSE Spanish — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">Spanish</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+spanish" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-geography.png" alt="GCSE Geography — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">Geography</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+geography" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-history.png" alt="GCSE History — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
-          <h3 class="book-title">History</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+history" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
-        </div>
-        <div class="book-card">
-          <div class="book-thumb">
-            <img src="cover-business.png" alt="GCSE Business Studies — 100 AI Prompts" />
-          </div>
-          <p class="book-level">GCSE</p>
+          <div class="book-thumb"><img src="Books/GCSE Business Studies/cover.png" alt="GCSE Business Studies cover" /></div>
           <h3 class="book-title">Business Studies</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <a href="https://www.amazon.co.uk/s?k=james+r+martin+gcse+business+studies" target="_blank" class="btn btn-accent book-btn">Buy on Amazon &rarr;</a>
+          <a href="Books/GCSE Business Studies/GCSE Business Studies.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Chemistry/cover.png" alt="GCSE Chemistry cover" /></div>
+          <h3 class="book-title">Chemistry</h3>
+          <a href="Books/GCSE Chemistry/GCSE Chemistry.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Computer Science/cover.png" alt="GCSE Computer Science cover" /></div>
+          <h3 class="book-title">Computer Science</h3>
+          <a href="Books/GCSE Computer Science/GCSE Computer Science.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Economics/cover.png" alt="GCSE Economics cover" /></div>
+          <h3 class="book-title">Economics</h3>
+          <a href="Books/GCSE Economics/GCSE Economics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE English Language/cover.png" alt="GCSE English Language cover" /></div>
+          <h3 class="book-title">English Language</h3>
+          <a href="Books/GCSE English Language/GCSE English Language.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE English Literature/cover.png" alt="GCSE English Literature cover" /></div>
+          <h3 class="book-title">English Literature</h3>
+          <a href="Books/GCSE English Literature/GCSE English Literature.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE French/cover.png" alt="GCSE French cover" /></div>
+          <h3 class="book-title">French</h3>
+          <a href="Books/GCSE French/GCSE French.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Geography/cover.png" alt="GCSE Geography cover" /></div>
+          <h3 class="book-title">Geography</h3>
+          <a href="Books/GCSE Geography/GCSE Geography.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE German/cover.png" alt="GCSE German cover" /></div>
+          <h3 class="book-title">German</h3>
+          <a href="Books/GCSE German/GCSE German.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE History/cover.png" alt="GCSE History cover" /></div>
+          <h3 class="book-title">History</h3>
+          <a href="Books/GCSE History/GCSE History.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Mathematics/cover.png" alt="GCSE Mathematics cover" /></div>
+          <h3 class="book-title">Mathematics</h3>
+          <a href="Books/GCSE Mathematics/GCSE Mathematics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Physics/cover.png" alt="GCSE Physics cover" /></div>
+          <h3 class="book-title">Physics</h3>
+          <a href="Books/GCSE Physics/GCSE Physics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Psychology/cover.png" alt="GCSE Psychology cover" /></div>
+          <h3 class="book-title">Psychology</h3>
+          <a href="Books/GCSE Psychology/GCSE Psychology.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Religious Studies/cover.png" alt="GCSE Religious Studies cover" /></div>
+          <h3 class="book-title">Religious Studies</h3>
+          <a href="Books/GCSE Religious Studies/GCSE Religious Studies.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/GCSE Spanish/cover.png" alt="GCSE Spanish cover" /></div>
+          <h3 class="book-title">Spanish</h3>
+          <a href="Books/GCSE Spanish/GCSE Spanish.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
       </div>
     </div>
@@ -205,267 +163,190 @@
       <div class="section-header">
         <span class="section-badge">A-Level</span>
         <h2>A-Level Series</h2>
-        <p>16 subjects &mdash; publishing throughout 2025&ndash;26</p>
-      </div>
-      <div class="series-note">
-        <span>&#x1F680;</span>
-        <span>The A-Level series is <strong>currently in production</strong> and will be published on Amazon throughout 2025&ndash;26. Check back soon.</span>
+        <p>16 subjects &mdash; free PDF download</p>
       </div>
       <div class="books-grid">
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Biology</span></div></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Biology/cover.png" alt="A-Level Biology cover" /></div>
           <h3 class="book-title">Biology</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Biology/A-Level Biology.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-business-studies.png" alt="A-Level Business Studies — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Business Studies/cover.png" alt="A-Level Business Studies cover" /></div>
           <h3 class="book-title">Business Studies</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Business Studies/A-Level Business Studies.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Chemistry</span></div></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Chemistry/cover.png" alt="A-Level Chemistry cover" /></div>
           <h3 class="book-title">Chemistry</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Chemistry/A-Level Chemistry.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-computer-science.png" alt="A-Level Computer Science — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Computer Science/cover.png" alt="A-Level Computer Science cover" /></div>
           <h3 class="book-title">Computer Science</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Computer Science/A-Level Computer Science.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-economics.png" alt="A-Level Economics — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Economics/cover.png" alt="A-Level Economics cover" /></div>
           <h3 class="book-title">Economics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Economics/A-Level Economics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-english-language.png" alt="A-Level English Language — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level English Language/cover.png" alt="A-Level English Language cover" /></div>
           <h3 class="book-title">English Language</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level English Language/A-Level English Language.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>English Literature</span></div></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level English Literature/cover.png" alt="A-Level English Literature cover" /></div>
           <h3 class="book-title">English Literature</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level English Literature/A-Level English Literature.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-french.png" alt="A-Level French — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level French/cover.png" alt="A-Level French cover" /></div>
           <h3 class="book-title">French</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level French/A-Level French.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Geography</span></div></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Geography/cover.png" alt="A-Level Geography cover" /></div>
           <h3 class="book-title">Geography</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Geography/A-Level Geography.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-german.png" alt="A-Level German — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level German/cover.png" alt="A-Level German cover" /></div>
           <h3 class="book-title">German</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level German/A-Level German.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-history.png" alt="A-Level History — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level History/cover.png" alt="A-Level History cover" /></div>
           <h3 class="book-title">History</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level History/A-Level History.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-mathematics.png" alt="A-Level Mathematics — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Mathematics/cover.png" alt="A-Level Mathematics cover" /></div>
           <h3 class="book-title">Mathematics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Mathematics/A-Level Mathematics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-physics.png" alt="A-Level Physics — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Physics/cover.png" alt="A-Level Physics cover" /></div>
           <h3 class="book-title">Physics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Physics/A-Level Physics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Psychology</span></div></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Psychology/cover.png" alt="A-Level Psychology cover" /></div>
           <h3 class="book-title">Psychology</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Psychology/A-Level Psychology.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-religious-studies.png" alt="A-Level Religious Studies — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Religious Studies/cover.png" alt="A-Level Religious Studies cover" /></div>
           <h3 class="book-title">Religious Studies</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Religious Studies/A-Level Religious Studies.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><img src="cover-alevel-spanish.png" alt="A-Level Spanish — 100 AI Prompts" /></div>
-          <p class="book-level">A-Level</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/A-Level Spanish/cover.png" alt="A-Level Spanish cover" /></div>
           <h3 class="book-title">Spanish</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/A-Level Spanish/A-Level Spanish.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- IB Diploma -->
+  <!-- IBDP -->
   <section class="books-section">
     <div class="container">
       <div class="section-header">
         <span class="section-badge">IB Diploma</span>
         <h2>IB Diploma Series</h2>
-        <p>Coming after the A-Level series &mdash; covering SL and HL</p>
-      </div>
-      <div class="series-note">
-        <span>&#x1F310;</span>
-        <span>The IB Diploma series is <strong>planned for 2026&ndash;27</strong>. Titles will cover both Standard Level and Higher Level across all major subjects.</span>
+        <p>17 subjects &mdash; free PDF download</p>
       </div>
       <div class="books-grid">
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Biology</span></div></div>
-          <p class="book-level">IB Diploma</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Biology/cover.png" alt="IBDP Biology cover" /></div>
           <h3 class="book-title">Biology</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/IBDP Biology/IBDP Biology.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Chemistry</span></div></div>
-          <p class="book-level">IB Diploma</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Business Management/cover.png" alt="IBDP Business Management cover" /></div>
+          <h3 class="book-title">Business Management</h3>
+          <a href="Books/IBDP Business Management/IBDP Business Management.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Chemistry/cover.png" alt="IBDP Chemistry cover" /></div>
           <h3 class="book-title">Chemistry</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/IBDP Chemistry/IBDP Chemistry.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Physics</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">Physics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Computer Science/cover.png" alt="IBDP Computer Science cover" /></div>
+          <h3 class="book-title">Computer Science</h3>
+          <a href="Books/IBDP Computer Science/IBDP Computer Science.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Mathematics</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">Mathematics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
-        </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Economics</span></div></div>
-          <p class="book-level">IB Diploma</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Economics/cover.png" alt="IBDP Economics cover" /></div>
           <h3 class="book-title">Economics</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/IBDP Economics/IBDP Economics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>History</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">History</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP English Language and Literature/cover.png" alt="IBDP English Language and Literature cover" /></div>
+          <h3 class="book-title">English Language and Literature</h3>
+          <a href="Books/IBDP English Language and Literature/IBDP English Language and Literature.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Geography</span></div></div>
-          <p class="book-level">IB Diploma</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP English Literature/cover.png" alt="IBDP English Literature cover" /></div>
+          <h3 class="book-title">English Literature</h3>
+          <a href="Books/IBDP English Literature/IBDP English Literature.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP French/cover.png" alt="IBDP French cover" /></div>
+          <h3 class="book-title">French</h3>
+          <a href="Books/IBDP French/IBDP French.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Geography/cover.png" alt="IBDP Geography cover" /></div>
           <h3 class="book-title">Geography</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/IBDP Geography/IBDP Geography.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Psychology</span></div></div>
-          <p class="book-level">IB Diploma</p>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP German/cover.png" alt="IBDP German cover" /></div>
+          <h3 class="book-title">German</h3>
+          <a href="Books/IBDP German/IBDP German.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP History/cover.png" alt="IBDP History cover" /></div>
+          <h3 class="book-title">History</h3>
+          <a href="Books/IBDP History/IBDP History.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Mathematics/cover.png" alt="IBDP Mathematics cover" /></div>
+          <h3 class="book-title">Mathematics</h3>
+          <a href="Books/IBDP Mathematics/IBDP Mathematics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Physics/cover.png" alt="IBDP Physics cover" /></div>
+          <h3 class="book-title">Physics</h3>
+          <a href="Books/IBDP Physics/IBDP Physics.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
+        </div>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Psychology/cover.png" alt="IBDP Psychology cover" /></div>
           <h3 class="book-title">Psychology</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+          <a href="Books/IBDP Psychology/IBDP Psychology.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>English A</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">English A</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Spanish/cover.png" alt="IBDP Spanish cover" /></div>
+          <h3 class="book-title">Spanish</h3>
+          <a href="Books/IBDP Spanish/IBDP Spanish.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>French B</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">French B</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP Theory of Knowledge/cover.png" alt="IBDP Theory of Knowledge cover" /></div>
+          <h3 class="book-title">Theory of Knowledge</h3>
+          <a href="Books/IBDP Theory of Knowledge/IBDP Theory of Knowledge.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>Spanish B</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">Spanish B</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
-        </div>
-        <div class="book-card book-card-soon">
-          <span class="soon-badge">Coming Soon</span>
-          <div class="book-thumb"><div class="book-placeholder"><span>German B</span></div></div>
-          <p class="book-level">IB Diploma</p>
-          <h3 class="book-title">German B</h3>
-          <p class="book-sub">100 AI Prompts for Smarter Revision</p>
-          <span class="coming-soon-btn">Coming Soon</span>
+        <div class="book-card">
+          <div class="book-thumb"><img src="Books/IBDP World Religions/cover.png" alt="IBDP World Religions cover" /></div>
+          <h3 class="book-title">World Religions</h3>
+          <a href="Books/IBDP World Religions/IBDP World Religions.pdf" target="_blank" class="btn btn-accent book-btn">Download PDF</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- CTA -->
-  <div class="cta-strip">
-    <div class="container" style="text-align:center">
-      <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem">On Amazon</p>
-      <h2 style="color:var(--parchment);margin-bottom:1rem">Find all GCSE titles on Amazon</h2>
-      <p style="color:rgba(245,239,230,0.6);margin:0 auto 2rem;max-width:50ch;font-size:0.95rem">All current titles are available as paperback and Kindle on Amazon UK and Amazon US.</p>
-      <a href="https://www.amazon.co.uk/s?k=james+r+martin+100+ai+prompts" target="_blank" class="btn" style="border-color:var(--parchment);color:var(--parchment)">View on Amazon &rarr;</a>
-    </div>
-  </div>
 
 </main>
 
