@@ -119,6 +119,7 @@ nav {
   height: 28px;
   background: none;
   border: none;
+  margin-left: auto;
   cursor: pointer;
   padding: 0;
   z-index: 201;
