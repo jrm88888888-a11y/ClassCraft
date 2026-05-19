@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — ClassCraft</title>
-  <meta name="description" content="ClassCraft experiments with new ways to make GCSE and A-Level revision fun and effective. Free resources for every student — no login needed." />
+  <title>Contributors — ClassCraft</title>
+  <meta name="description" content="Meet the people behind ClassCraft — experimenting with new ways to make GCSE and A-Level revision fun and effective." />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .about-hero {
+    .contrib-hero {
       padding: 5rem 0 4rem;
       border-bottom: 1px solid var(--rule);
     }
-    .about-hero .label {
+    .contrib-hero .label {
       font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.15em;
@@ -19,98 +19,87 @@
       color: var(--accent);
       margin-bottom: 0.75rem;
     }
-    .about-hero h1 {
+    .contrib-hero h1 {
       font-size: clamp(2rem, 6vw, 3.5rem);
-      max-width: 20ch;
+      max-width: 24ch;
       margin-bottom: 1.5rem;
       line-height: 1.1;
     }
-    .about-hero h1 em {
+    .contrib-hero h1 em {
       font-style: italic;
       color: var(--accent);
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 4rem;
+    .contrib-hero p {
+      color: var(--ink-mid);
+      max-width: 54ch;
+      font-size: 1rem;
+    }
+
+    /* Contributor card — repeatable */
+    .contributor-list {
       padding: 4rem 0;
     }
-    @media (min-width: 768px) {
-      .about-grid { grid-template-columns: 2fr 1fr; gap: 6rem; }
+    .contributor-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
     }
-    .about-body h2 {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      margin-bottom: 1rem;
-    }
-    .about-body p {
-      color: var(--ink-mid);
-      margin-bottom: 1.25rem;
-      font-size: 1rem;
-      max-width: 60ch;
-    }
-    .about-body p:last-child { margin-bottom: 0; }
+    .contributor-card:first-child { padding-top: 0; }
+    .contributor-card:last-child  { border-bottom: none; }
 
-    /* Credentials card */
-    .cred-card {
-      background: var(--parchment-mid);
-      border: 1px solid var(--parchment-deep);
-      border-radius: 12px;
-      padding: 2rem;
-      align-self: start;
-      position: sticky;
-      top: 5rem;
+    @media (min-width: 768px) {
+      .contributor-card {
+        grid-template-columns: 260px 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
     }
-    .cred-name {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 300;
+
+    .contributor-photo img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 8px 30px rgba(28,23,18,0.12);
+    }
+
+    .contributor-info h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
       margin-bottom: 0.25rem;
     }
-    .cred-title {
+    .contributor-role {
       font-size: 0.75rem;
       color: var(--accent);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-    .cred-list {
+    .contributor-info p {
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      max-width: 56ch;
+    }
+    .contributor-info p:last-of-type { margin-bottom: 1.5rem; }
+
+    .contributor-creds {
       list-style: none;
       padding: 0;
-      margin: 0 0 1.75rem;
+      margin: 0;
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    .cred-list li {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-      font-size: 0.85rem;
+    .contributor-creds li {
+      font-size: 0.78rem;
       color: var(--ink-mid);
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
       line-height: 1.4;
-    }
-    .cred-list li::before {
-      content: "✓";
-      color: var(--accent);
-      font-weight: 600;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
-    .cred-divider {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 1.5rem 0;
-    }
-    .cred-stat {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      color: var(--ink-mid);
-      margin-bottom: 0.5rem;
-    }
-    .cred-stat strong {
-      color: var(--ink);
-      font-weight: 500;
     }
 
     /* Site overview section */
@@ -171,7 +160,7 @@
         <li><a href="vocab-hub/vocab-hub.html">Terms</a></li>
         <li><a href="homeroom.html">Homeroom</a></li>
         <li><a href="nature.html">Nature</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="about.html" class="active">Contributors</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -180,68 +169,42 @@
 <main>
 
   <!-- Hero -->
-  <section class="about-hero">
+  <section class="contrib-hero">
     <div class="container">
-      <p class="label">About</p>
-      <h1>Experimenting with learning.<br><em>Free for everyone.</em></h1>
+      <p class="label">Contributors</p>
+      <h1>The people behind <em>ClassCraft.</em></h1>
+      <p>ClassCraft is a free collection of revision resources where we experiment with new ways to make studying for GCSE and A-Level fun, varied, and effective. No login, no subscription.</p>
     </div>
   </section>
 
-  <!-- Main content + credentials -->
+  <!-- Contributors -->
   <div class="container">
-    <div class="about-grid">
+    <div class="contributor-list">
 
-      <div class="about-body">
-
-        <h2>About the site</h2>
-        <p>
-          ClassCraft is a free collection of revision resources &mdash; games,
-          vocabulary tools and simulations &mdash; where we experiment with new ways
-          to make studying for GCSE and A-Level fun and effective. No login, no subscription.
-        </p>
-
-        <h2 style="margin-top: 2.5rem;">About me</h2>
-        <p>
-          James Martin. Physics (Bristol), PGCE (Oxford). I&rsquo;ve taught in
-          secondary schools and universities across the UK and internationally.
-          I also publish revision guides on Amazon as James R. Martin.
-        </p>
-
-        <h2 style="margin-top: 2.5rem;">What&rsquo;s here</h2>
-        <p>
-          160+ revision games, 4,600+ vocabulary terms across 12 exam boards,
-          600 interactive roleplay stories, 24 classroom simulations, a pixel
-          diagram sketcher, daily homeroom dashboards, nature guides, subject
-          jokes, and published revision books. Covering 25 subjects from KS3
-          to A-Level &mdash; and always growing.
-        </p>
-
-        <div style="margin-top: 2.5rem;">
-          <a href="games.html" class="btn btn-accent" style="margin-right: 1rem;">Explore the Games</a>
-          <a href="contact.html" class="btn">Get in Touch</a>
+      <!-- ─── Contributor: James Martin ─── -->
+      <!-- To add a new contributor, copy this entire block and update the details -->
+      <div class="contributor-card">
+        <div class="contributor-photo">
+          <img src="james-martin.png" alt="James Martin — teacher and founder of ClassCraft" />
         </div>
-
-      </div>
-
-      <!-- Credentials card -->
-      <div>
-        <img
-          src="james-martin.png"
-          alt="James Martin — teacher and founder of ClassCraft"
-          style="width:100%;border-radius:12px;display:block;margin-bottom:1.5rem;box-shadow:0 8px 30px rgba(28,23,18,0.12);"
-        />
-        <div class="cred-card">
-          <div class="cred-name">James Martin</div>
-          <div class="cred-title">Teacher &amp; Resource Developer</div>
-          <ul class="cred-list">
-            <li>MSci Physics &mdash; University of Bristol</li>
-            <li>PGCE &mdash; University of Oxford</li>
-            <li>Secondary &amp; university teaching experience</li>
-            <li>Published author on Amazon (James R. Martin)</li>
-            <li>KS3, GCSE and A-Level specialist</li>
+        <div class="contributor-info">
+          <h2>James Martin</h2>
+          <div class="contributor-role">Founder &amp; Lead Developer</div>
+          <p>
+            I started ClassCraft because I believe revision doesn&rsquo;t have to be boring. My goal is to make learning fun, varied, and effective &mdash; through games, stories, simulations, and tools that students actually want to use.
+          </p>
+          <p>
+            I&rsquo;ve taught in secondary schools and universities across the UK and internationally, and I publish revision guides on Amazon as James R. Martin. Everything on ClassCraft is free and always will be.
+          </p>
+          <ul class="contributor-creds">
+            <li>MSci Physics &mdash; Bristol</li>
+            <li>PGCE &mdash; Oxford</li>
+            <li>Published Author</li>
+            <li>KS3, GCSE &amp; A-Level</li>
           </ul>
-</div>
+        </div>
       </div>
+      <!-- ─── End Contributor ─── -->
 
     </div>
   </div>
