@@ -348,8 +348,8 @@ function drawConnectors() {
     const sy = o.slot[1]  / 100 * 580;
     line.setAttribute('x1', dx); line.setAttribute('y1', dy);
     line.setAttribute('x2', sx); line.setAttribute('y2', sy);
-    line.setAttribute('stroke', 'rgba(255,255,255,0.1)');
-    line.setAttribute('stroke-width', '0.7');
+    line.setAttribute('stroke', 'rgba(255,255,255,0.35)');
+    line.setAttribute('stroke-width', '1.2');
     line.setAttribute('stroke-dasharray', '3,4');
     line.id = 'line-' + o.id;
     svg.appendChild(line);
@@ -465,7 +465,7 @@ function submitAnswers() {
     const line = document.getElementById('line-' + o.id);
     slot?.classList.remove('filled'); slot?.classList.add(ok ? 'correct' : 'wrong');
     dot?.classList.add(ok ? 'correct' : 'wrong');
-    if (line) line.setAttribute('stroke', ok ? 'rgba(74,222,154,0.35)' : 'rgba(255,107,107,0.35)');
+    if (line) line.setAttribute('stroke', ok ? 'rgba(74,222,154,0.6)' : 'rgba(255,107,107,0.6)');
     breakdown.push({ name: o.name, placed: placed || '—', ok });
   });
   document.getElementById('hd-score').textContent = `${score} / ${ORGANS.length}`;
