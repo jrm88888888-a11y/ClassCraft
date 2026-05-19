@@ -432,12 +432,12 @@ function checkMatch() {
       if (matched.size === selectedPairs) setTimeout(endGame, 500);
     }, 300);
   } else {
-    setTimeout(() => { a.classList.add('wrong'); b.classList.add('wrong'); }, 150);
+    setTimeout(() => { a.classList.add('wrong'); b.classList.add('wrong'); }, 800);
     setTimeout(() => {
       a.classList.remove('flipped','wrong');
       b.classList.remove('flipped','wrong');
       flipped = []; locked = false;
-    }, 950);
+    }, 1900);
   }
 }
 
