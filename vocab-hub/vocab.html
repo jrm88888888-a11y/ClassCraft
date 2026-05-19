@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocab — ClassCraft</title>
+  <meta name="description" content="Learn and test vocabulary for French, German and Spanish at KS3, GCSE and A-Level." />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* ── Page hero ─────────────────────────── */
+    .vocab-hero {
+      padding: 5rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+    .vocab-hero .label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .vocab-hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .vocab-hero h1 em { font-style: italic; color: var(--accent); }
+    .vocab-hero p {
+      color: var(--ink-mid);
+      max-width: 48ch;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* ── Breadcrumb ─────────────────────────── */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .breadcrumb span { color: var(--accent); }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: none;
+      border: 1px solid var(--parchment-deep);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-right: 0.5rem;
+    }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Main content area ─────────────────── */
+    .vocab-body {
+      padding: 2.5rem 0 4rem;
+      min-height: 60vh;
+    }
+
+    /* ── Step heading ───────────────────────── */
+    .step-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .step-heading h2 {
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
+    .step-heading p {
+      color: var(--ink-mid);
+      margin: 0 auto;
+    }
+
+    /* ── Selection cards ───────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .card-grid--2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      max-width: 620px;
+    }
+    .sel-card {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      user-select: none;
+    }
+    .sel-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .sel-card .card-icon {
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    .sel-card .card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .sel-card .card-sub {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Topic grid ────────────────────────── */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .topic-btn {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-body);
+    }
+    .topic-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .topic-btn .t-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .topic-btn .t-count {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Progress bar ──────────────────────── */
+    .progress-wrap {
+      width: 100%;
+      height: 6px;
+      background: var(--parchment-deep);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    /* ── Streak ─────────────────────────────── */
+    .streak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+    }
+    .streak-badge.on-fire { border-color: #e8a838; color: #b87a1a; background: #fdf3e0; }
+
+    /* ── Info bar (progress + streak) ───────── */
+    .info-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Study cards ────────────────────────── */
+    .study-list {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+    .study-card {
+      background: var(--parchment-mid);
+      border: 1px solid var(--parchment-deep);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .study-card .sw {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 0;
+      flex-shrink: 0;
+    }
+    .study-card .sd {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+    }
+
+    /* ── MCQ question ──────────────────────── */
+    .question-area {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .q-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 400;
+      margin-bottom: 1.25rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .q-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      background: var(--parchment-mid);
+      border: 2px solid var(--parchment-deep);
+      border-radius: 8px;
+      padding: 0.9rem 1.25rem;
+      margin-bottom: 0.65rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+    .option-btn:hover:not(.disabled) {
+      border-color: var(--accent);
+      background: #f9f3ea;
+    }
+    .option-btn.correct {
+      background: #eef6e8;
+      border-color: #7aad4a;
+      color: #3a5a20;
+    }
+    .option-btn.wrong {
+      background: #fbefef;
+      border-color: #c97a7a;
+      color: #7a3030;
+    }
+    .option-btn.disabled {
+      cursor: default;
+      opacity: 0.7;
+    }
+    .option-btn.disabled.correct { opacity: 1; }
+
+    /* ── CTA button ─────────────────────────── */
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.85rem 2.2rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-top: 1rem;
+    }
+    .cta-btn:hover { background: var(--ink); }
+    .cta-center { text-align: center; }
+
+    /* ── Results ────────────────────────────── */
+    .results-box {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .results-box h2 { margin-bottom: 0.75rem; }
+    .results-box .big-score {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 10vw, 5rem);
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .results-box .score-label {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      margin-bottom: 1.5rem;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-item .sv {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--ink);
+    }
+    .stat-item .sl {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Wrong-answers review table ─────────── */
+    .wrong-list {
+      text-align: left;
+      max-width: 600px;
+      margin: 1.5rem auto 0;
+    }
+    .wrong-list h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--ink-mid);
+    }
+    .wrong-item {
+      background: #fbefef;
+      border: 1px solid #e4c5c5;
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+    .wrong-item .wi-term {
+      font-weight: 500;
+      color: #7a3030;
+      flex-shrink: 0;
+    }
+    .wrong-item .wi-def {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+    }
+
+    /* ── Round review (learn mode) ──────────── */
+    .round-item {
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+    .round-item.ri-correct {
+      background: #eef6e8;
+      border: 1px solid #c4ddb0;
+    }
+    .round-item.ri-wrong {
+      background: #fbefef;
+      border: 1px solid #e4c5c5;
+    }
+    .round-item .ri-icon { flex-shrink: 0; }
+    .round-item .ri-term { font-weight: 500; flex-shrink: 0; }
+    .round-item .ri-def { font-size: 0.88rem; color: var(--ink-mid); }
+
+    /* ── Fade transition ───────────────────── */
+    .fade-enter {
+      animation: fadeIn 0.35s ease both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Class<span>Craft</span></a>
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../simulations.html">Simulations</a></li>
+      <li><a href="../books.html">Books</a></li>
+      <li><a href="../jokes.html">Jokes</a></li>
+      <li><a href="../games.html">Games</a></li>
+      <li><a href="../draw-it.html">Draw It</a></li>
+      <li><a href="../roleplay.html">Roleplay</a></li>
+      <li><a href="vocab-hub.html">Terms</a></li>
+      <li><a href="vocab.html" class="active">Vocab</a></li>
+      <li><a href="../homeroom.html">Homeroom</a></li>
+      <li><a href="../nature.html">Nature</a></li>
+      <li><a href="../about.html">Contributors</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<header class="vocab-hero">
+  <div class="container">
+    <p class="label">Languages</p>
+    <h1>Vocabulary <em>Trainer</em></h1>
+    <p>Learn and test vocabulary for French, German and Spanish across KS3, GCSE and A-Level.</p>
+  </div>
+</header>
+
+<!-- ════════ BODY ════════ -->
+<section class="vocab-body">
+  <div class="container" id="app"></div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer><div class="container"><p>&copy; <span id="year"></span> ClassCraft &middot; classcraft.co.uk</p></div></footer>
+
+<!-- ════════ DATA ════════ -->
+<script src="vocab-data.js"></script>
+
+<!-- ════════ APP ════════ -->
+<script>
+(function() {
+  "use strict";
+
+  /* ── Helpers ──────────────────────────── */
+  const $ = (s, p) => (p || document).querySelector(s);
+  const app = document.getElementById("app");
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function esc(s) {
+    const d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  /* ── State ────────────────────────────── */
+  const state = {
+    language: null,
+    level: null,
+    levelLabel: null,
+    boardKey: null,
+    topic: null,
+    mode: null,
+    streak: 0,
+    bestStreak: 0
+  };
+
+  const LANGUAGES = [
+    { key: "french",  label: "French",  flag: "🇫🇷" },
+    { key: "german",  label: "German",  flag: "🇩🇪" },
+    { key: "spanish", label: "Spanish", flag: "🇪🇸" }
+  ];
+
+  const LEVELS = [
+    { key: "ks3",       boardKey: "ks3",       label: "KS3",     sub: "Years 7–9 — Foundation" },
+    { key: "gcse",      boardKey: "aqa-gcse",  label: "GCSE",    sub: "Years 10–11 — AQA specification" },
+    { key: "a-level",   boardKey: "aqa-alevel",label: "A-Level", sub: "Years 12–13 — AQA specification" }
+  ];
+
+  /* ── Breadcrumb builder ──────────────── */
+  function breadcrumb(showBack) {
+    const parts = [];
+    if (state.language) parts.push(LANGUAGES.find(l => l.key === state.language).label);
+    if (state.levelLabel) parts.push(state.levelLabel);
+    if (state.topic) parts.push(state.topic);
+    if (state.mode) parts.push(state.mode === "learn" ? "Learn" : "Test");
+
+    let html = "";
+    if (showBack) {
+      html += '<button class="back-btn" id="back-btn">← Back</button>';
+    }
+    html += '<span>' + parts.join('</span> › <span>') + '</span>';
+    return '<div class="breadcrumb">' + html + '</div>';
+  }
+
+  /* ── Render wrapper with fade ─────────── */
+  function render(html) {
+    app.innerHTML = html;
+    app.querySelector(".fade-enter") || (app.firstElementChild && app.firstElementChild.classList.add("fade-enter"));
+  }
+
+  /* ── Back handler ────────────────────── */
+  function attachBack(goTo) {
+    const btn = document.getElementById("back-btn");
+    if (btn) btn.addEventListener("click", goTo);
+  }
+
+  /* ════════════════════════════════════════
+     STEP 1 — Select Language
+     ════════════════════════════════════════ */
+  function showLanguages() {
+    state.language = state.level = state.levelLabel = state.boardKey = state.topic = state.mode = null;
+
+    let html = '<div class="fade-enter">';
+    html += '<div class="step-heading"><h2>Choose a Language</h2><p>Select the language you want to practise.</p></div>';
+    html += '<div class="card-grid">';
+    LANGUAGES.forEach(l => {
+      html += '<div class="sel-card" data-lang="' + l.key + '">';
+      html += '<div class="card-icon">' + l.flag + '</div>';
+      html += '<div class="card-title">' + l.label + '</div>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+    render(html);
+
+    app.querySelectorAll(".sel-card").forEach(c => {
+      c.addEventListener("click", () => {
+        state.language = c.dataset.lang;
+        showLevels();
+      });
+    });
+  }
+
+  /* ════════════════════════════════════════
+     STEP 2 — Select Level
+     ════════════════════════════════════════ */
+  function showLevels() {
+    state.level = state.levelLabel = state.boardKey = state.topic = state.mode = null;
+
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(true);
+    html += '<div class="step-heading"><h2>Choose a Level</h2><p>Pick the level that matches your studies.</p></div>';
+    html += '<div class="card-grid">';
+    LEVELS.forEach(lv => {
+      const board = VOCAB[state.language] && VOCAB[state.language][lv.boardKey];
+      if (!board) return;
+      html += '<div class="sel-card" data-lvl="' + lv.key + '">';
+      html += '<div class="card-title">' + lv.label + '</div>';
+      html += '<div class="card-sub">' + esc(lv.sub) + '</div>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+    render(html);
+
+    attachBack(showLanguages);
+
+    app.querySelectorAll(".sel-card").forEach(c => {
+      c.addEventListener("click", () => {
+        const lv = LEVELS.find(l => l.key === c.dataset.lvl);
+        state.level = lv.key;
+        state.levelLabel = lv.label;
+        state.boardKey = lv.boardKey;
+        showTopics();
+      });
+    });
+  }
+
+  /* ════════════════════════════════════════
+     STEP 3 — Select Topic
+     ════════════════════════════════════════ */
+  function showTopics() {
+    state.topic = state.mode = null;
+    const board = VOCAB[state.language][state.boardKey];
+    const topics = Object.keys(board);
+
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(true);
+    html += '<div class="step-heading"><h2>Choose a Topic</h2><p>Select a topic to learn or test.</p></div>';
+    html += '<div class="topic-grid">';
+    topics.forEach(t => {
+      const count = board[t].length;
+      html += '<div class="topic-btn" data-topic="' + esc(t) + '">';
+      html += '<div class="t-name">' + esc(t) + '</div>';
+      html += '<div class="t-count">' + count + ' term' + (count !== 1 ? 's' : '') + '</div>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+    render(html);
+
+    attachBack(showLevels);
+
+    app.querySelectorAll(".topic-btn").forEach(c => {
+      c.addEventListener("click", () => {
+        state.topic = c.dataset.topic;
+        showModeSelect();
+      });
+    });
+  }
+
+  /* ════════════════════════════════════════
+     STEP 4 — Select Mode
+     ════════════════════════════════════════ */
+  function showModeSelect() {
+    state.mode = null;
+
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(true);
+    html += '<div class="step-heading"><h2>Learn or Test?</h2><p>Study new words step by step, or quiz yourself.</p></div>';
+    html += '<div class="card-grid card-grid--2">';
+
+    html += '<div class="sel-card" data-mode="learn">';
+    html += '<div class="card-icon">📖</div>';
+    html += '<div class="card-title">Learn</div>';
+    html += '<div class="card-sub">Study new words step by step</div>';
+    html += '</div>';
+
+    html += '<div class="sel-card" data-mode="test">';
+    html += '<div class="card-icon">✏️</div>';
+    html += '<div class="card-title">Test</div>';
+    html += '<div class="card-sub">Quiz yourself on the topic</div>';
+    html += '</div>';
+
+    html += '</div></div>';
+    render(html);
+
+    attachBack(showTopics);
+
+    app.querySelectorAll(".sel-card").forEach(c => {
+      c.addEventListener("click", () => {
+        state.mode = c.dataset.mode;
+        state.streak = 0;
+        state.bestStreak = 0;
+        if (state.mode === "learn") startLearn();
+        else startTest();
+      });
+    });
+  }
+
+  /* ── MCQ helpers ──────────────────────── */
+  function getAllTermsForLevel() {
+    const board = VOCAB[state.language][state.boardKey];
+    const all = [];
+    for (const t in board) {
+      board[t].forEach(w => all.push(w));
+    }
+    return all;
+  }
+
+  function pickDistractors(correct, pool, field, count) {
+    const used = new Set();
+    used.add(correct[field]);
+    const distractors = [];
+    const shuffled = shuffle(pool);
+    for (let i = 0; i < shuffled.length && distractors.length < count; i++) {
+      const val = shuffled[i][field];
+      if (!used.has(val)) {
+        used.add(val);
+        distractors.push(val);
+      }
+    }
+    return distractors;
+  }
+
+  function buildQuestion(word, allPool) {
+    /* Randomly decide direction: term->def or def->term */
+    const termToDef = Math.random() < 0.5;
+
+    let prompt, answer, optionField;
+    if (termToDef) {
+      prompt = word.term;
+      answer = word.definition;
+      optionField = "definition";
+    } else {
+      prompt = word.definition;
+      answer = word.term;
+      optionField = "term";
+    }
+
+    const distractors = pickDistractors(word, allPool, optionField, 3);
+    const options = shuffle([answer, ...distractors]);
+
+    return {
+      prompt: prompt,
+      answer: answer,
+      options: options,
+      direction: termToDef ? "term-to-def" : "def-to-term",
+      word: word
+    };
+  }
+
+  function streakHtml() {
+    const cls = state.streak >= 3 ? "streak-badge on-fire" : "streak-badge";
+    const fire = state.streak >= 3 ? "🔥 " : "";
+    return '<span class="' + cls + '">' + fire + 'Streak: ' + state.streak + '</span>';
+  }
+
+  /* ════════════════════════════════════════
+     LEARN MODE
+     ════════════════════════════════════════ */
+  function startLearn() {
+    const topicWords = VOCAB[state.language][state.boardKey][state.topic].slice();
+    const allPool = getAllTermsForLevel();
+    const BATCH = 7;
+
+    let remaining = shuffle(topicWords);
+    let wrongCarry = [];     /* words answered wrong, to mix into later rounds */
+    let totalCorrect = 0;
+    let totalAsked = 0;
+    let roundNum = 0;
+
+    function nextRound() {
+      roundNum++;
+      /* Build this round's words: up to BATCH new + any wrong carry-overs */
+      const batchNew = remaining.splice(0, BATCH);
+      const batchWrong = wrongCarry.splice(0, Math.max(0, BATCH - batchNew.length));
+      const batch = shuffle([...batchNew, ...batchWrong]);
+
+      if (batch.length === 0) {
+        showLearnComplete(totalCorrect, totalAsked, topicWords.length);
+        return;
+      }
+
+      showStudyPhase(batch, allPool, function onRoundDone(correct, wrong) {
+        totalCorrect += correct.length;
+        totalAsked += correct.length + wrong.length;
+        wrong.forEach(w => wrongCarry.push(w));
+        showRoundReview(correct, wrong, roundNum, remaining.length + wrongCarry.length, function() {
+          nextRound();
+        });
+      });
+    }
+
+    nextRound();
+  }
+
+  /* ── Study phase ─────────────────────── */
+  function showStudyPhase(batch, allPool, onReady) {
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(true);
+    html += '<div class="step-heading"><h2>Study These Words</h2><p>Read through the words below, then press the button when you are ready to be quizzed.</p></div>';
+    html += '<div class="study-list">';
+    batch.forEach(w => {
+      html += '<div class="study-card"><span class="sw">' + esc(w.term) + '</span><span class="sd">' + esc(w.definition) + '</span></div>';
+    });
+    html += '</div>';
+    html += '<div class="cta-center"><button class="cta-btn" id="ready-btn">I\'m Ready</button></div>';
+    html += '</div>';
+    render(html);
+
+    attachBack(showModeSelect);
+
+    document.getElementById("ready-btn").addEventListener("click", function() {
+      runLearnQuiz(batch, allPool, onReady);
+    });
+  }
+
+  /* ── Quiz phase (learn mode) ─────────── */
+  function runLearnQuiz(batch, allPool, onDone) {
+    const questions = shuffle(batch.map(w => buildQuestion(w, allPool)));
+    let idx = 0;
+    const correct = [];
+    const wrong = [];
+
+    function showQ() {
+      const q = questions[idx];
+      const dirLabel = q.direction === "term-to-def" ? "What does this mean?" : "Which word matches this definition?";
+
+      let html = '<div class="fade-enter">';
+      html += breadcrumb(false);
+      html += '<div class="info-bar"><span>Word ' + (idx + 1) + ' of ' + questions.length + '</span>' + streakHtml() + '</div>';
+      html += '<div class="progress-wrap"><div class="progress-bar" style="width:' + ((idx / questions.length) * 100) + '%"></div></div>';
+      html += '<div class="question-area">';
+      html += '<p class="q-label">' + esc(dirLabel) + '</p>';
+      html += '<p class="q-text">' + esc(q.prompt) + '</p>';
+
+      q.options.forEach((opt, i) => {
+        html += '<button class="option-btn" data-idx="' + i + '">' + esc(opt) + '</button>';
+      });
+
+      html += '</div></div>';
+      render(html);
+
+      const btns = app.querySelectorAll(".option-btn");
+      btns.forEach(btn => {
+        btn.addEventListener("click", function handler() {
+          if (btn.classList.contains("disabled")) return;
+          btns.forEach(b => b.classList.add("disabled"));
+
+          const chosen = q.options[parseInt(btn.dataset.idx)];
+          const isCorrect = chosen === q.answer;
+
+          if (isCorrect) {
+            btn.classList.add("correct");
+            state.streak++;
+            if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+            correct.push(q.word);
+          } else {
+            btn.classList.add("wrong");
+            state.streak = 0;
+            wrong.push(q.word);
+            /* Highlight correct */
+            btns.forEach(b => {
+              if (b.textContent === q.answer) b.classList.add("correct");
+            });
+          }
+
+          setTimeout(function() {
+            idx++;
+            if (idx < questions.length) showQ();
+            else onDone(correct, wrong);
+          }, 900);
+        });
+      });
+    }
+
+    showQ();
+  }
+
+  /* ── Round review ────────────────────── */
+  function showRoundReview(correct, wrong, roundNum, wordsLeft, onContinue) {
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(false);
+    html += '<div class="results-box">';
+    html += '<h2>Round ' + roundNum + ' Complete</h2>';
+    html += '<div class="big-score">' + correct.length + '/' + (correct.length + wrong.length) + '</div>';
+    html += '<p class="score-label">correct this round</p>';
+
+    if (wrong.length > 0 || correct.length > 0) {
+      html += '<div class="wrong-list" style="text-align:left">';
+      correct.forEach(w => {
+        html += '<div class="round-item ri-correct"><span class="ri-icon">✓</span><span class="ri-term">' + esc(w.term) + '</span><span class="ri-def">' + esc(w.definition) + '</span></div>';
+      });
+      wrong.forEach(w => {
+        html += '<div class="round-item ri-wrong"><span class="ri-icon">✗</span><span class="ri-term">' + esc(w.term) + '</span><span class="ri-def">' + esc(w.definition) + '</span></div>';
+      });
+      html += '</div>';
+    }
+
+    if (wrong.length > 0) {
+      html += '<p style="margin-top:1rem;font-size:0.88rem;color:var(--ink-light);">Words you got wrong will reappear in a later round.</p>';
+    }
+
+    if (wordsLeft > 0) {
+      html += '<p style="margin-top:0.5rem;font-size:0.88rem;color:var(--ink-light);">' + wordsLeft + ' word' + (wordsLeft !== 1 ? 's' : '') + ' still to go.</p>';
+    }
+
+    html += '<div class="cta-center"><button class="cta-btn" id="cont-btn">' + (wordsLeft > 0 ? 'Continue' : 'See Results') + '</button></div>';
+    html += '</div></div>';
+    render(html);
+
+    document.getElementById("cont-btn").addEventListener("click", onContinue);
+  }
+
+  /* ── Learn complete ──────────────────── */
+  function showLearnComplete(totalCorrect, totalAsked, totalWords) {
+    const pct = totalAsked > 0 ? Math.round((totalCorrect / totalAsked) * 100) : 0;
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(false);
+    html += '<div class="results-box">';
+    html += '<h2>Topic Complete!</h2>';
+    html += '<div class="big-score">' + pct + '%</div>';
+    html += '<p class="score-label">' + totalCorrect + ' of ' + totalAsked + ' questions answered correctly</p>';
+    html += '<div class="stat-row">';
+    html += '<div class="stat-item"><div class="sv">' + totalWords + '</div><div class="sl">Words Covered</div></div>';
+    html += '<div class="stat-item"><div class="sv">' + state.bestStreak + '</div><div class="sl">Best Streak</div></div>';
+    html += '</div>';
+    html += '<div class="cta-center"><button class="cta-btn" id="restart-btn">Back to Topics</button></div>';
+    html += '</div></div>';
+    render(html);
+
+    document.getElementById("restart-btn").addEventListener("click", showTopics);
+  }
+
+  /* ════════════════════════════════════════
+     TEST MODE
+     ════════════════════════════════════════ */
+  function startTest() {
+    const topicWords = VOCAB[state.language][state.boardKey][state.topic].slice();
+    const allPool = getAllTermsForLevel();
+    const NUM_Q = Math.min(20, topicWords.length);
+    const selected = shuffle(topicWords).slice(0, NUM_Q);
+    const questions = shuffle(selected.map(w => buildQuestion(w, allPool)));
+
+    let idx = 0;
+    let score = 0;
+    const wrongAnswers = [];
+    const startTime = Date.now();
+    state.streak = 0;
+    state.bestStreak = 0;
+
+    function showQ() {
+      const q = questions[idx];
+      const dirLabel = q.direction === "term-to-def" ? "What does this mean?" : "Which word matches this definition?";
+
+      let html = '<div class="fade-enter">';
+      html += breadcrumb(false);
+      html += '<div class="info-bar"><span>Question ' + (idx + 1) + ' of ' + questions.length + '</span>' + streakHtml() + '</div>';
+      html += '<div class="progress-wrap"><div class="progress-bar" style="width:' + ((idx / questions.length) * 100) + '%"></div></div>';
+      html += '<div class="question-area">';
+      html += '<p class="q-label">' + esc(dirLabel) + '</p>';
+      html += '<p class="q-text">' + esc(q.prompt) + '</p>';
+
+      q.options.forEach((opt, i) => {
+        html += '<button class="option-btn" data-idx="' + i + '">' + esc(opt) + '</button>';
+      });
+
+      html += '</div></div>';
+      render(html);
+
+      const btns = app.querySelectorAll(".option-btn");
+      btns.forEach(btn => {
+        btn.addEventListener("click", function() {
+          if (btn.classList.contains("disabled")) return;
+          btns.forEach(b => b.classList.add("disabled"));
+
+          const chosen = q.options[parseInt(btn.dataset.idx)];
+          const isCorrect = chosen === q.answer;
+
+          if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            state.streak++;
+            if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+          } else {
+            btn.classList.add("wrong");
+            state.streak = 0;
+            wrongAnswers.push(q.word);
+            btns.forEach(b => {
+              if (b.textContent === q.answer) b.classList.add("correct");
+            });
+          }
+
+          setTimeout(function() {
+            idx++;
+            if (idx < questions.length) showQ();
+            else showTestResults(score, questions.length, wrongAnswers, Date.now() - startTime);
+          }, 900);
+        });
+      });
+    }
+
+    showQ();
+  }
+
+  /* ── Test results ────────────────────── */
+  function showTestResults(score, total, wrongAnswers, elapsed) {
+    const pct = Math.round((score / total) * 100);
+    const mins = Math.floor(elapsed / 60000);
+    const secs = Math.floor((elapsed % 60000) / 1000);
+    const timeStr = mins > 0 ? mins + 'm ' + secs + 's' : secs + 's';
+
+    let html = '<div class="fade-enter">';
+    html += breadcrumb(false);
+    html += '<div class="results-box">';
+    html += '<h2>Test Complete!</h2>';
+    html += '<div class="big-score">' + pct + '%</div>';
+    html += '<p class="score-label">' + score + ' of ' + total + ' correct</p>';
+    html += '<div class="stat-row">';
+    html += '<div class="stat-item"><div class="sv">' + timeStr + '</div><div class="sl">Time Taken</div></div>';
+    html += '<div class="stat-item"><div class="sv">' + state.bestStreak + '</div><div class="sl">Best Streak</div></div>';
+    html += '</div>';
+
+    if (wrongAnswers.length > 0) {
+      html += '<div class="wrong-list">';
+      html += '<h3>Words to Practise</h3>';
+      wrongAnswers.forEach(w => {
+        html += '<div class="wrong-item"><span class="wi-term">' + esc(w.term) + '</span><span class="wi-def">' + esc(w.definition) + '</span></div>';
+      });
+      html += '</div>';
+    }
+
+    html += '<div class="cta-center" style="margin-top:1.5rem">';
+    html += '<button class="cta-btn" id="retest-btn">Try Again</button> ';
+    html += '<button class="cta-btn" id="topics-btn" style="background:var(--parchment-deep);color:var(--ink);margin-left:0.5rem">Back to Topics</button>';
+    html += '</div>';
+    html += '</div></div>';
+    render(html);
+
+    document.getElementById("retest-btn").addEventListener("click", startTest);
+    document.getElementById("topics-btn").addEventListener("click", showTopics);
+  }
+
+  /* ── Boot ─────────────────────────────── */
+  showLanguages();
+
+  /* ── Mobile menu ─────────────────────── */
+  const toggle = document.getElementById("nav-toggle");
+  const links = document.getElementById("nav-links");
+  const overlay = document.getElementById("nav-overlay");
+  function openMenu() { toggle.classList.add("open"); links.classList.add("open"); overlay.classList.add("open"); document.body.style.overflow="hidden"; }
+  function closeMenu() { toggle.classList.remove("open"); links.classList.remove("open"); overlay.classList.remove("open"); document.body.style.overflow=""; }
+  toggle.addEventListener("click", () => toggle.classList.contains("open") ? closeMenu() : openMenu());
+  overlay.addEventListener("click", closeMenu);
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>
