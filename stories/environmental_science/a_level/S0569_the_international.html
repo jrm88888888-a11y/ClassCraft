@@ -627,7 +627,8 @@
       if (node.workedBox) {
         h += `<div class="worked">
           <span class="worked-label">✏️ ${esc(node.workedBox.label)}</span>
-          <div class="worked-steps">${node.workedBox.steps}</div>
+          <button class="hint-toggle" onclick="var s=this.nextElementSibling;if(s.style.display==='none'){s.style.display='block';this.textContent='Hide working ↑'}else{s.style.display='none';this.textContent='Show working ↓'}">Show working ↓</button>
+          <div class="worked-steps" style="display:none">${node.workedBox.steps}</div>
         </div>`;
       }
 
