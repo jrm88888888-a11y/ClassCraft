@@ -26,6 +26,20 @@
     .hero-game-cta { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); background: rgba(74,222,154,0.9); color: #0f1117; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; pointer-events: none; animation: ctaPulse 2s ease-in-out infinite; white-space: nowrap; }
     @keyframes ctaPulse { 0%,100%{opacity:1;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(-3px)} }
 
+    /* Mobile D-pad — hidden by default, shown via JS adding .active on touch devices */
+    .hero-dpad {
+      display: none; position: absolute; bottom: 0.6rem; right: 0.6rem; z-index: 10;
+      width: 96px; height: 96px;
+      grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px;
+    }
+    .hero-dpad.active { display: grid; }
+    .dp { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; color: rgba(255,255,255,0.75); font-size: 0.72rem; display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; touch-action: manipulation; padding: 0; }
+    .dp:active { background: rgba(123,111,255,0.4); border-color: rgba(123,111,255,0.7); color: #fff; }
+    .dp[data-dir="3"] { grid-column: 2; grid-row: 1; }
+    .dp[data-dir="2"] { grid-column: 1; grid-row: 2; }
+    .dp[data-dir="0"] { grid-column: 3; grid-row: 2; }
+    .dp[data-dir="1"] { grid-column: 2; grid-row: 3; }
+
     /* Quiz overlay inside game */
     .quiz-overlay { position: absolute; inset: 0; background: rgba(15,17,23,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .quiz-overlay.active { opacity: 1; pointer-events: auto; }
@@ -210,6 +224,13 @@
         <div class="hero-game" id="hero-game" tabindex="0" style="outline:none">
           <canvas id="hero-pacman"></canvas>
           <div class="hero-game-cta" id="hero-cta">Click to play &middot; Arrow keys to move</div>
+          <!-- Mobile D-pad -->
+          <div class="hero-dpad" id="hero-dpad">
+            <button class="dp" data-dir="3" aria-label="Up">&#x25B2;</button>
+            <button class="dp" data-dir="2" aria-label="Left">&#x25C0;</button>
+            <button class="dp" data-dir="0" aria-label="Right">&#x25B6;</button>
+            <button class="dp" data-dir="1" aria-label="Down">&#x25BC;</button>
+          </div>
           <div class="quiz-overlay" id="quiz-overlay">
             <div id="quiz-content"></div>
           </div>
@@ -936,8 +957,10 @@
       const quizContent = document.getElementById('quiz-content');
 
       /* Detect touch device and update CTA */
-      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-        ctaEl.textContent = 'Tap to play · Swipe to move';
+      const dpadEl = document.getElementById('hero-dpad');
+      const isTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+      if (isTouch) {
+        ctaEl.textContent = 'Tap to play';
       }
 
       /* ── Maze: 0=wall, 1=dot, 2=empty, 3=red dot ── */
@@ -1400,12 +1423,31 @@
         }
       }, {passive: true});
 
+      /* ── D-pad buttons (touch devices) ── */
+      dpadEl.querySelectorAll('.dp').forEach(function(btn) {
+        /* Use touchstart for instant response — no 300ms delay */
+        btn.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!started || paused || gameFinished) return;
+          pac.nextDir = parseInt(this.getAttribute('data-dir'));
+        });
+        /* Also support click for hybrid devices */
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (!started || paused || gameFinished) return;
+          pac.nextDir = parseInt(this.getAttribute('data-dir'));
+        });
+      });
+
       /* ── Start on click ── */
       gameEl.addEventListener('click', function(e) {
         if (gameFinished && e.target.closest('.quiz-result-btn')) return;
+        if (e.target.closest('.dp')) return; /* Don't restart on D-pad tap */
         if (started) return;
         started = true;
         ctaEl.style.display = 'none';
+        if (isTouch) dpadEl.classList.add('active');
         gameEl.focus();
         lastTime = performance.now();
         requestAnimationFrame(gameLoop);
