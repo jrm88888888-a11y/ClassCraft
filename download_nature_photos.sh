@@ -1,5 +1,5 @@
 #!/bin/bash
-# MartinEdu — Nature page photo downloader (v3)
+# ClassCraft — Nature page photo downloader (v3)
 # Verifies each file is a real image before saving
 # Run from repo root: bash download_nature_photos.sh
 

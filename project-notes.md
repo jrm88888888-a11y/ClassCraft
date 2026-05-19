@@ -1,12 +1,12 @@
-# MartinEdu Website — Project Notes
+# ClassCraft Website — Project Notes
 
 ## Overview
-**URL:** https://martinedu.co.uk  
+**URL:** https://classcraft.co.uk  
 **Stack:** Static HTML/CSS/JS hosted on GitHub Pages  
-**Repo:** https://github.com/jrm88888888-a11y/martinedu.co.uk  
+**Repo:** https://github.com/jrm88888888-a11y/classcraft.co.uk  
 **Domain registrar:** Namecheap  
 **Contact form:** Formspree (endpoint: https://formspree.io/f/xqenwavy)  
-**Local folder:** ~/Desktop/martinedu-website  
+**Local folder:** ~/Desktop/classcraft-website  
 
 ---
 
@@ -65,7 +65,7 @@ Tiles: Spelling Challenge, Latin Phrase, Geography Fact, Maths Problem, Guess th
 
 ## File Structure
 ```
-martinedu-website/
+classcraft-website/
   index.html
   simulations.html
   books.html
@@ -102,7 +102,7 @@ martinedu-website/
 
 ## Git Workflow
 ```bash
-cd ~/Desktop/martinedu-website
+cd ~/Desktop/classcraft-website
 git add .
 git commit -m "description of changes"
 git push

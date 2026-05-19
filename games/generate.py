@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MartinEdu Game Generator
+ClassCraft Game Generator
 ========================
 Reads JSON game definitions and stamps out complete HTML files by
 injecting data into the appropriate engine template.
@@ -165,7 +165,7 @@ def inject(html, engine, data, title):
     label = engine_labels[engine]
     html = re.sub(
         r'<title>[^<]+</title>',
-        f'<title>{title} — {label} — MartinEdu</title>',
+        f'<title>{title} — {label} — ClassCraft</title>',
         html, count=1
     )
 

@@ -1,5 +1,5 @@
 // ============================================================
-// MartinEdu Vocabulary Data
+// ClassCraft Vocabulary Data
 // Structure: VOCAB[subject][board][topic] = [{term, definition, hint}]
 //
 // board keys:
@@ -5381,7 +5381,7 @@ VOCAB['geography']['ib-hl'] = {
   ],
 };
 // ============================================================
-// MartinEdu Vocabulary Data — Additions
+// ClassCraft Vocabulary Data — Additions
 // French A-Level, German A-Level, Spanish A-Level,
 // Religious Education GCSE + A-Level
 // Append this block to the end of vocab-data.js
@@ -6022,7 +6022,7 @@ VOCAB['religious education']['ocr-alevel']     = VOCAB['religious education']['a
 // SUBJECTS.push('Religious Education');
 // ────────────────────────────────────────────────────────────
 // ============================================================
-// MartinEdu Vocabulary Data — Gap Fill 2
+// ClassCraft Vocabulary Data — Gap Fill 2
 // PE A-Level, French/German/Spanish IGCSE,
 // Astronomy (Edexcel/OCR/Cambridge IGCSE),
 // Computing IB SL/HL, RE Cambridge/Edexcel IGCSE
@@ -6330,7 +6330,7 @@ VOCAB['pe']['edexcel-igcse']   = VOCAB['pe']['aqa-gcse'];
 // ────────────────────────────────────────────────────────────
 VOCAB['astronomy']['ks3'] = VOCAB['astronomy']['aqa-gcse'];
 // ============================================================
-// MartinEdu Vocabulary Data — Gap Fill 3
+// ClassCraft Vocabulary Data — Gap Fill 3
 // Quick-win shared references + Art/Music/Drama IGCSE & A-Level
 // + Astronomy A-Level
 // Append to end of vocab-data.js

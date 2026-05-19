@@ -1,6 +1,6 @@
 import os, json, urllib.request, time, sys, re
 
-UA = 'MartinEduBot/1.0 (educational website; jrm88888888@gmail.com)'
+UA = 'ClassCraftBot/1.0 (educational website; jrm88888888@gmail.com)'
 
 with open('/tmp/broken.json') as f:
     broken = json.load(f)

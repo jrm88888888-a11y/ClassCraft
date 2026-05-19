@@ -6,7 +6,7 @@
 <title>Hedge Fund Challenge | A-Level Economics Simulation | Free | m...</title>
     <meta name="description" content="Play Hedge Fund Challenge — a free interactive A-Level economics simulation. No login required. Build decision-making skills with this classroom-ready game.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 :root {
   --navy:#164E63;--mid:#0891B2;--gold:#22D3EE;--gold2:#06B6D4;
   --white:#FFFFFF;--offwh:#F5F7FA;--grey:#8892A4;--dgrey:#2D3748;
@@ -16,14 +16,14 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{font-size:16px;}
-body{font-family:'DM Sans',sans-serif;background:var(--offwh);color:var(--dgrey);min-height:100vh;display:flex;overflow:hidden;}
+body{font-family:'Nunito',sans-serif;background:var(--offwh);color:var(--dgrey);min-height:100vh;display:flex;overflow:hidden;}
 
 .sidebar{width:260px;min-width:260px;background:var(--navy);color:var(--white);display:flex;flex-direction:column;height:100vh;position:relative;z-index:50;}
 .sidebar-logo{padding:1.5rem 1.2rem 0.8rem;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);}
 .sidebar-logo h1{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);letter-spacing:2px;}
 .sidebar-logo p{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:2px;}
 .sidebar-nav{flex:1;overflow-y:auto;padding:0.5rem 0;}
-.sidebar-nav button{display:flex;align-items:center;width:100%;padding:0.8rem 1.2rem;background:none;border:none;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;font-size:0.95rem;cursor:pointer;transition:all 0.2s;text-align:left;gap:0.6rem;}
+.sidebar-nav button{display:flex;align-items:center;width:100%;padding:0.8rem 1.2rem;background:none;border:none;color:rgba(255,255,255,0.6);font-family:'Nunito',sans-serif;font-size:0.95rem;cursor:pointer;transition:all 0.2s;text-align:left;gap:0.6rem;}
 .sidebar-nav button:hover{background:rgba(255,255,255,0.08);color:var(--white);}
 .sidebar-nav button.active{background:rgba(255,255,255,0.15);color:var(--gold);border-left:3px solid var(--gold);}
 .sidebar-nav button .check{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;}
@@ -35,18 +35,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--offwh);color:var(--dgrey)
 .sidebar-timer{padding:1rem 1.2rem;border-top:1px solid rgba(255,255,255,0.1);}
 .timer-display{font-family:'DM Mono',monospace;font-size:2.2rem;color:var(--gold);text-align:center;margin-bottom:0.5rem;}
 .timer-btns{display:flex;gap:0.5rem;}
-.timer-btns button{flex:1;padding:0.4rem;border:1px solid rgba(255,255,255,0.2);background:none;color:var(--white);border-radius:6px;cursor:pointer;font-size:0.8rem;font-family:'DM Sans',sans-serif;}
+.timer-btns button{flex:1;padding:0.4rem;border:1px solid rgba(255,255,255,0.2);background:none;color:var(--white);border-radius:6px;cursor:pointer;font-size:0.8rem;font-family:'Nunito',sans-serif;}
 .timer-btns button:hover{background:rgba(255,255,255,0.1);}
 
 .main{flex:1;height:100vh;overflow-y:auto;display:flex;flex-direction:column;}
 .topbar{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;flex-shrink:0;box-shadow:0 2px 16px rgba(0,0,0,0.15);}
 .topbar-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40%;}
 .topbar-phase{display:flex;gap:0.5rem;align-items:center;}
-.phase-step{padding:0.3rem 1rem;border-radius:20px;font-size:0.8rem;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.phase-step{padding:0.3rem 1rem;border-radius:20px;font-size:0.8rem;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);cursor:pointer;border:none;font-family:'Nunito',sans-serif;transition:all 0.2s;}
 .phase-step.active{background:var(--gold);color:var(--navy);font-weight:600;}
 .phase-step.completed{background:rgba(30,132,73,0.3);color:#6FCF97;}
 .topbar-right{display:flex;align-items:center;gap:1rem;}
-.topbar-right button{padding:0.3rem 1rem;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:none;color:var(--white);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;}
+.topbar-right button{padding:0.3rem 1rem;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:none;color:var(--white);cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.85rem;}
 .topbar-right button:hover{background:rgba(255,255,255,0.1);}
 .topbar-right button.primary{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:600;}
 .topbar-right button.primary:hover{opacity:0.9;}
@@ -68,7 +68,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--offwh);color:var(--dgrey)
 .team-input{display:flex;align-items:center;gap:0.8rem;background:var(--white);border:2px solid var(--border);border-radius:var(--r);padding:0.8rem 1rem;transition:border-color 0.2s;}
 .team-input:focus-within{border-color:var(--gold);}
 .team-input .num{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--navy);width:30px;}
-.team-input input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--dgrey);}
+.team-input input{flex:1;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:1rem;color:var(--dgrey);}
 .team-count-btns{display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.5rem;}
 .team-count-btns button{width:48px;height:48px;border-radius:50%;border:2px solid var(--border);background:var(--white);font-family:'DM Mono',monospace;font-size:1.2rem;cursor:pointer;transition:all 0.2s;color:var(--dgrey);}
 .team-count-btns button.active{background:var(--navy);color:var(--gold);border-color:var(--navy);}
@@ -129,7 +129,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--offwh);color:var(--dgrey)
 .results-table th:first-child{text-align:left;border-radius:var(--r) 0 0 0;}
 .results-table th:last-child{border-radius:0 var(--r) 0 0;}
 .results-table td{padding:0.5rem;text-align:center;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.9rem;}
-.results-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;}
+.results-table td:first-child{text-align:left;font-family:'Nunito',sans-serif;font-weight:600;}
 
 .lb-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;background:var(--white);border-radius:var(--r);margin-bottom:0.8rem;box-shadow:var(--shadow);}
 .lb-row:first-child{border:2px solid var(--gold);background:linear-gradient(135deg,#FFFDE7,#FFF8E1);}
@@ -440,7 +440,7 @@ function renderSetup(c) {
     h += '<div class="team-input"><span class="num">'+(i+1)+'</span><input type="text" placeholder="Team '+(i+1)+' name" value="'+val+'" onchange="setTeamName('+i+',this.value)" /></div>';
   }
   h += '</div></div><button class="start-btn" onclick="startGame()">START GAME</button>';
-  h += '<div style="text-align:center;margin-top:1rem;"><button onclick="showHelp()" style="background:none;border:none;color:var(--mid);text-decoration:underline;cursor:pointer;font-family:\'DM Sans\',sans-serif;">How to Play</button></div></div>';
+  h += '<div style="text-align:center;margin-top:1rem;"><button onclick="showHelp()" style="background:none;border:none;color:var(--mid);text-decoration:underline;cursor:pointer;font-family:\'Nunito\',sans-serif;">How to Play</button></div></div>';
   c.innerHTML = h;
 }
 

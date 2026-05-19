@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <title>Space Invaders Vocab | Free Revision Game | martinedu.co.uk</title>
+  <title>Space Invaders Vocab | Free Revision Game | classcraft.co.uk</title>
   <meta name="description" content="Play Space Invaders Vocab — a free revision game for all subjects. Shoot vocab enemies for bonus points. No login required.">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg:#0f1117; --surface:#1a1d27; --surface2:#22253a;
@@ -13,7 +13,7 @@
       --accent:#4ade9a; --accent2:#7b6fff; --warn:#ff6b6b;
       --text:#e8eaf0; --text-mid:#8b90a8; --text-dim:#4a4f68;
       --correct:#4ade9a; --wrong:#ff6b6b;
-      --font-d:'Syne',sans-serif; --font-b:'DM Sans',sans-serif;
+      --font-d:'Nunito',sans-serif; --font-b:'Nunito',sans-serif;
       --r:10px; --trans:0.18s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -169,7 +169,7 @@
 
 <header class="hd">
   <div class="hd-left">
-    <a href="vocab-hub.html" class="hd-logo">Martin<span>Edu</span></a>
+    <a href="vocab-hub.html" class="hd-logo">Class<span>Craft</span></a>
     <span class="hd-sep">·</span>
     <span class="hd-title" id="hd-title">Space Invaders</span>
   </div>
@@ -939,7 +939,7 @@ function drawVocabEnemy(e, frame) {
   // Label — show truncated term
   ctx.shadowBlur = 0;
   ctx.fillStyle = COL.vocabText;
-  ctx.font = `bold 7px 'DM Sans', sans-serif`;
+  ctx.font = `bold 7px 'Nunito', sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   const label = e.vocabItem.term.length > 9 ? e.vocabItem.term.slice(0,8)+'…' : e.vocabItem.term;
@@ -1019,7 +1019,7 @@ function drawFloatingTexts() {
   floatingTexts.forEach(ft => {
     ctx.globalAlpha = Math.min(1, ft.life / 400);
     ctx.fillStyle = ft.colour;
-    ctx.font = `bold 14px 'Syne', sans-serif`;
+    ctx.font = `bold 14px 'Nunito', sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.shadowColor = ft.colour;

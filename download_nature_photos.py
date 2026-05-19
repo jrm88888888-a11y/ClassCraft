@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MartinEdu — Nature page photo downloader
+ClassCraft — Nature page photo downloader
 Run from your repo root: python3 download_nature_photos.py
 Downloads 280 species photos into the nature/ folder structure.
 """
