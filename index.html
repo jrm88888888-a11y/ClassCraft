@@ -9,16 +9,47 @@
   <style>
 
     /* Hero */
-    .hero { padding: 5rem 0 4rem; text-align: center; position: relative; overflow: hidden; }
+    .hero { padding: 4rem 0 0; position: relative; overflow: hidden; }
     .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,94,60,0.08) 0%, transparent 70%); pointer-events: none; }
-    .hero-label { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--rule); padding: 0.35rem 1rem; border-radius: 20px; margin-bottom: 1.75rem; }
-    .hero h1 { font-size: clamp(2.6rem, 8vw, 5.5rem); max-width: 16ch; margin: 0 auto 1.5rem; line-height: 1.08; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    @media (min-width: 768px) { .hero-grid { grid-template-columns: 1fr 1fr; gap: 3.5rem; } }
+    .hero-text { text-align: left; }
+    .hero-label { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--rule); padding: 0.35rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); max-width: 16ch; margin: 0 0 1.25rem; line-height: 1.08; }
     .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero-sub { font-size: 1.1rem; color: var(--ink-mid); max-width: 52ch; margin: 0 auto 2.5rem; line-height: 1.7; }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .hero-sub { font-size: 1rem; color: var(--ink-mid); max-width: 48ch; margin: 0 0 2rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0; }
     .btn-lg { padding: 0.85rem 2rem; font-size: 0.9rem; }
 
-    /* Stats */
+    /* Pacman game embed */
+    .hero-game { position: relative; background: #0f1117; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(28,23,18,0.18); aspect-ratio: 1/1; max-width: 420px; margin: 0 auto; cursor: pointer; }
+    @media (min-width: 768px) { .hero-game { margin: 0 0 0 auto; } }
+    .hero-game canvas { display: block; width: 100%; height: 100%; }
+    .hero-game-cta { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); background: rgba(74,222,154,0.9); color: #0f1117; font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1.25rem; border-radius: 20px; pointer-events: none; animation: ctaPulse 2s ease-in-out infinite; white-space: nowrap; }
+    @keyframes ctaPulse { 0%,100%{opacity:1;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(-3px)} }
+
+    /* Quiz overlay inside game */
+    .quiz-overlay { position: absolute; inset: 0; background: rgba(15,17,23,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .quiz-overlay.active { opacity: 1; pointer-events: auto; }
+    .quiz-q { font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 600; color: #e8eaf0; text-align: center; margin-bottom: 1rem; line-height: 1.3; }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; max-width: 280px; }
+    .quiz-opt { background: #1a1d27; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.6rem 1rem; color: #e8eaf0; font-family: var(--font-body); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .quiz-opt:hover { border-color: #7b6fff; background: rgba(123,111,255,0.12); }
+    .quiz-result { text-align: center; }
+    .quiz-result-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+    .quiz-result-heading { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 600; color: #4ade9a; margin-bottom: 0.4rem; }
+    .quiz-result-sub { font-size: 0.82rem; color: #8b90a8; margin-bottom: 1rem; max-width: 260px; }
+    .quiz-result-btn { display: inline-block; background: #4ade9a; color: #0f1117; font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.6rem 1.5rem; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .quiz-result-btn:hover { background: #6ef0b0; color: #0f1117; }
+
+    /* Student quotes strip */
+    .hero-quotes { padding: 2.5rem 0; margin-top: 3rem; border-top: 1px solid var(--rule); }
+    .quotes-row { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start; }
+    .quote-card { flex: 1; min-width: 240px; max-width: 380px; position: relative; padding-left: 1.25rem; border-left: 2px solid var(--accent-light); }
+    .quote-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 0.5rem; }
+    .quote-name { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+
+    /* Stats bar (below quotes) */
     .stats-bar { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; max-width: 700px; margin: 0 auto; }
     .stat { flex: 1; min-width: 140px; padding: 1.25rem 1rem; text-align: center; border-right: 1px solid var(--rule); }
     .stat:last-child { border-right: none; }
@@ -108,14 +139,46 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <span class="hero-label">Free &middot; No login &middot; No account needed</span>
-      <h1 class="fade-up fade-up-1">Your revision,<br><em>sorted.</em></h1>
-      <p class="hero-sub fade-up fade-up-2">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser. We experiment with new ways to make GCSE and A-Level revision fun, effective, and worth your time.</p>
-      <div class="hero-btns fade-up fade-up-3">
-        <a href="games.html" class="btn btn-accent btn-lg">Start Playing &rarr;</a>
-        <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
+      <div class="hero-grid">
+
+        <!-- Left: text -->
+        <div class="hero-text">
+          <span class="hero-label fade-up fade-up-1">Free &middot; No login &middot; No account needed</span>
+          <h1 class="fade-up fade-up-2">Your revision,<br><em>sorted.</em></h1>
+          <p class="hero-sub fade-up fade-up-3">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser. We experiment with new ways to make GCSE and A-Level revision fun, effective, and worth your time.</p>
+          <div class="hero-btns fade-up fade-up-4">
+            <a href="games.html" class="btn btn-accent btn-lg">Start Playing &rarr;</a>
+            <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
+          </div>
+        </div>
+
+        <!-- Right: Pacman game -->
+        <div class="hero-game" id="hero-game">
+          <canvas id="hero-pacman"></canvas>
+          <div class="hero-game-cta" id="hero-cta">Click to play</div>
+          <div class="quiz-overlay" id="quiz-overlay">
+            <div id="quiz-content"></div>
+          </div>
+        </div>
+
       </div>
-      <div class="stats-bar fade-up fade-up-4">
+
+      <!-- Student quotes -->
+      <div class="hero-quotes fade-up fade-up-4">
+        <div class="quotes-row">
+          <div class="quote-card">
+            <div class="quote-text">&ldquo;This is a fun way to revise.&rdquo;</div>
+            <div class="quote-name">Billy &mdash; Student</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">&ldquo;This makes it easier to sit down and start studying.&rdquo;</div>
+            <div class="quote-name">Tina &mdash; Student</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar fade-up fade-up-4" style="margin-top: 2.5rem; margin-bottom: 0;">
         <div class="stat"><span class="stat-num">160+</span><span class="stat-label">Revision Games</span></div>
         <div class="stat"><span class="stat-num">4,600+</span><span class="stat-label">Vocab Terms</span></div>
         <div class="stat"><span class="stat-num">25</span><span class="stat-label">Subjects</span></div>
@@ -808,6 +871,203 @@
     overlay.addEventListener("click", closeMenu);
     links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ── Hero Pac-Man mini-game + quiz ── */
+    (function() {
+      const canvas = document.getElementById('hero-pacman');
+      const ctx = canvas.getContext('2d');
+      const gameEl = document.getElementById('hero-game');
+      const ctaEl = document.getElementById('hero-cta');
+      const quizOverlay = document.getElementById('quiz-overlay');
+      const quizContent = document.getElementById('quiz-content');
+
+      /* Maze: 0=wall, 1=dot, 2=empty */
+      const MAZE = [
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0],
+        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
+        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
+        [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+        [0,1,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0],
+        [0,1,1,1,1,0,1,1,1,1,2,1,1,1,1,0,1,1,1,1,0],
+        [0,0,0,0,1,0,0,0,2,0,2,0,2,0,0,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,0,0,0,2,0,0,0,2,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,0,2,2,2,2,2,0,2,0,1,0,0,0,0],
+        [1,1,1,1,1,1,1,0,2,2,2,2,2,0,1,1,1,1,1,1,1],
+        [0,0,0,0,1,0,2,0,2,2,2,2,2,0,2,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,0,0,0,0,0,0,0,2,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,0,2,2,2,2,2,0,2,0,1,0,0,0,0],
+        [0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0],
+        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
+        [0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0],
+        [0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0],
+        [0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0],
+        [0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0],
+        [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      ];
+      const ROWS = MAZE.length, COLS = MAZE[0].length;
+
+      /* Ghost positions */
+      const ghosts = [
+        {r:9, c:9, color:'#ff6b6b'},
+        {r:9, c:10, color:'#7b6fff'},
+        {r:9, c:11, color:'#ff9f43'}
+      ];
+
+      /* Red dot positions */
+      const redDots = [{r:4,c:5},{r:4,c:15},{r:14,c:5},{r:14,c:15},{r:10,c:10}];
+
+      /* Pacman */
+      const pac = {r:16, c:10};
+
+      function draw() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        const w = rect.width, h = rect.height;
+        const cellW = w / COLS, cellH = h / ROWS;
+
+        /* Background */
+        ctx.fillStyle = '#0f1117';
+        ctx.fillRect(0, 0, w, h);
+
+        /* Walls & dots */
+        for (let r = 0; r < ROWS; r++) {
+          for (let c = 0; c < COLS; c++) {
+            const x = c * cellW, y = r * cellH;
+            if (MAZE[r][c] === 0) {
+              ctx.fillStyle = '#1a1d37';
+              ctx.fillRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
+              /* Subtle border */
+              ctx.strokeStyle = '#252560';
+              ctx.lineWidth = 0.5;
+              ctx.strokeRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
+            } else if (MAZE[r][c] === 1) {
+              /* Check if red dot */
+              const isRed = redDots.some(d => d.r === r && d.c === c);
+              ctx.beginPath();
+              ctx.arc(x + cellW/2, y + cellH/2, isRed ? cellW * 0.2 : cellW * 0.1, 0, Math.PI * 2);
+              ctx.fillStyle = isRed ? '#ff6b6b' : 'rgba(255,255,255,0.5)';
+              ctx.fill();
+              if (isRed) {
+                ctx.beginPath();
+                ctx.arc(x + cellW/2, y + cellH/2, cellW * 0.28, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(255,107,107,0.3)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          }
+        }
+
+        /* Ghosts */
+        ghosts.forEach(g => {
+          const gx = g.c * cellW + cellW/2, gy = g.r * cellH + cellH/2;
+          const gr = cellW * 0.38;
+          ctx.beginPath();
+          ctx.arc(gx, gy - gr*0.15, gr, Math.PI, 0, false);
+          ctx.lineTo(gx + gr, gy + gr * 0.6);
+          /* Wavy bottom */
+          const segs = 3, segW = (gr*2)/segs;
+          for (let i = 0; i < segs; i++) {
+            ctx.quadraticCurveTo(
+              gx + gr - segW*i - segW*0.5, gy + gr * (i%2===0 ? 0.2 : 0.8),
+              gx + gr - segW*(i+1), gy + gr * 0.6
+            );
+          }
+          ctx.closePath();
+          ctx.fillStyle = g.color;
+          ctx.fill();
+          /* Eyes */
+          const eyeOff = gr * 0.28;
+          [gx - eyeOff, gx + eyeOff].forEach(ex => {
+            ctx.beginPath();
+            ctx.arc(ex, gy - gr*0.2, gr*0.2, 0, Math.PI*2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(ex + gr*0.06, gy - gr*0.2, gr*0.1, 0, Math.PI*2);
+            ctx.fillStyle = '#1a1d27';
+            ctx.fill();
+          });
+        });
+
+        /* Pac-Man */
+        const px = pac.c * cellW + cellW/2, py = pac.r * cellH + cellH/2;
+        const pr = cellW * 0.42;
+        ctx.beginPath();
+        ctx.arc(px, py, pr, 0.25 * Math.PI, 1.75 * Math.PI);
+        ctx.lineTo(px, py);
+        ctx.closePath();
+        ctx.fillStyle = '#FFD700';
+        ctx.fill();
+        /* Eye */
+        ctx.beginPath();
+        ctx.arc(px + pr*0.15, py - pr*0.35, pr*0.12, 0, Math.PI*2);
+        ctx.fillStyle = '#0f1117';
+        ctx.fill();
+      }
+
+      draw();
+      window.addEventListener('resize', draw);
+
+      /* ── Quiz flow ── */
+      const questions = [
+        {
+          q: 'Do you ever find revision boring?',
+          opts: ['Yes, always', 'Sometimes', 'Not really']
+        },
+        {
+          q: 'Do you procrastinate and delay your revision?',
+          opts: ['All the time', 'More than I should', 'Occasionally']
+        },
+        {
+          q: 'Would you revise more if it felt like playing a game?',
+          opts: ['Definitely', 'Probably', 'Worth a try']
+        }
+      ];
+      let qIndex = 0;
+      let started = false;
+
+      function showQuestion(i) {
+        if (i >= questions.length) { showResult(); return; }
+        const q = questions[i];
+        let html = '<div class="quiz-q">' + q.q + '</div><div class="quiz-options">';
+        q.opts.forEach(function(o) {
+          html += '<div class="quiz-opt" onclick="window._quizNext()">' + o + '</div>';
+        });
+        html += '</div>';
+        quizContent.innerHTML = html;
+      }
+
+      function showResult() {
+        quizContent.innerHTML =
+          '<div class="quiz-result">' +
+            '<span class="quiz-result-emoji">&#x1F3AE;</span>' +
+            '<div class="quiz-result-heading">This site is for you!</div>' +
+            '<p class="quiz-result-sub">160+ free revision games, quizzes and tools designed to make studying feel less like a chore.</p>' +
+            '<a href="games.html" class="quiz-result-btn">Start Playing &rarr;</a>' +
+          '</div>';
+      }
+
+      window._quizNext = function() {
+        qIndex++;
+        showQuestion(qIndex);
+      };
+
+      gameEl.addEventListener('click', function(e) {
+        if (started) return;
+        /* Don't intercept clicks on the result link */
+        if (e.target.closest('.quiz-result-btn')) return;
+        started = true;
+        ctaEl.style.display = 'none';
+        quizOverlay.classList.add('active');
+        showQuestion(0);
+      });
+    })();
   </script>
 
 </body>
