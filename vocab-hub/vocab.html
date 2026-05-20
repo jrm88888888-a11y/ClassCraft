@@ -689,7 +689,7 @@
     return distractors;
   }
 
-  function buildQuestion(word, allPool) {
+  function buildQuestion(word, topicPool, levelPool) {
     /* Randomly decide direction: term->def or def->term */
     const termToDef = Math.random() < 0.5;
 
@@ -704,7 +704,12 @@
       optionField = "term";
     }
 
-    const distractors = pickDistractors(word, allPool, optionField, 3);
+    /* Prefer distractors from the same topic; fall back to level pool if topic too small */
+    let distractors = pickDistractors(word, topicPool, optionField, 3);
+    if (distractors.length < 3) {
+      const extra = pickDistractors(word, levelPool, optionField, 3 - distractors.length);
+      distractors = distractors.concat(extra);
+    }
     const options = shuffle([answer, ...distractors]);
 
     return {
@@ -748,7 +753,7 @@
         return;
       }
 
-      showStudyPhase(batch, allPool, function onRoundDone(correct, wrong) {
+      showStudyPhase(batch, topicWords, allPool, function onRoundDone(correct, wrong) {
         totalCorrect += correct.length;
         totalAsked += correct.length + wrong.length;
         wrong.forEach(w => wrongCarry.push(w));
@@ -762,7 +767,7 @@
   }
 
   /* ── Study phase ─────────────────────── */
-  function showStudyPhase(batch, allPool, onReady) {
+  function showStudyPhase(batch, topicPool, allPool, onReady) {
     let html = '<div class="fade-enter">';
     html += breadcrumb(true);
     html += '<div class="step-heading"><h2>Study These Words</h2><p>Read through the words below, then press the button when you are ready to be quizzed.</p></div>';
@@ -778,13 +783,13 @@
     attachBack(showModeSelect);
 
     document.getElementById("ready-btn").addEventListener("click", function() {
-      runLearnQuiz(batch, allPool, onReady);
+      runLearnQuiz(batch, topicPool, allPool, onReady);
     });
   }
 
   /* ── Quiz phase (learn mode) ─────────── */
-  function runLearnQuiz(batch, allPool, onDone) {
-    const questions = shuffle(batch.map(w => buildQuestion(w, allPool)));
+  function runLearnQuiz(batch, topicPool, allPool, onDone) {
+    const questions = shuffle(batch.map(w => buildQuestion(w, topicPool, allPool)));
     let idx = 0;
     const correct = [];
     const wrong = [];
@@ -907,7 +912,7 @@
     const allPool = getAllTermsForLevel();
     const NUM_Q = Math.min(20, topicWords.length);
     const selected = shuffle(topicWords).slice(0, NUM_Q);
-    const questions = shuffle(selected.map(w => buildQuestion(w, allPool)));
+    const questions = shuffle(selected.map(w => buildQuestion(w, topicWords, allPool)));
 
     let idx = 0;
     let score = 0;
