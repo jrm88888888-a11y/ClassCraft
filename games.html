@@ -38,6 +38,13 @@
     .vocab-cta { background:var(--parchment-mid);border:1px solid var(--rule);border-radius:12px;padding:2.5rem;text-align:center;margin-bottom:4rem; }
     .vocab-cta h2 { margin-bottom:.75rem; }
     .vocab-cta p { color:var(--ink-mid);margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto; }
+
+    /* Search bar */
+    .games-search-wrap { margin-bottom:2rem; }
+    .games-search { width:100%;padding:0.75rem 1rem 0.75rem 2.6rem;font-family:var(--font-body);font-size:0.88rem;border:1px solid var(--rule);border-radius:8px;background:var(--parchment) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%238a7a6a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='5'/%3E%3Cline x1='12' y1='12' x2='16.5' y2='16.5'/%3E%3C/svg%3E") 0.8rem center no-repeat;color:var(--ink);outline:none;transition:border-color .2s; }
+    .games-search:focus { border-color:var(--accent); }
+    .games-search::placeholder { color:var(--ink-light); }
+    .games-no-results { display:none;text-align:center;padding:2rem;color:var(--ink-mid);font-size:0.95rem; }
   </style>
 </head>
 <body>
@@ -54,12 +61,18 @@
     <p>160 interactive games across 9 subjects — GCSE and A-Level. Memory Match, Sort It, Quiz, Timeline and Label the Diagram.</p>
   </div>
 
+  <!-- Search bar -->
+  <div class="games-search-wrap">
+    <input type="text" id="games-search" class="games-search" placeholder="Search games by name, subject or type…" autocomplete="off" />
+  </div>
+  <div class="games-no-results" id="no-results">No games match your search.</div>
+
   <!-- Subject jump nav -->
-  <nav class="subj-nav" aria-label="Jump to subject">
+  <nav class="subj-nav" aria-label="Jump to subject" id="subj-nav">
     <a href="#biology">🧬 Biology</a><a href="#chemistry">⚗️ Chemistry</a><a href="#physics">⚛️ Physics</a><a href="#maths">📐 Maths</a><a href="#english">📖 English</a><a href="#history">🏛️ History</a><a href="#geography">🌍 Geography</a><a href="#psychology">🧠 Psychology</a><a href="#economics">📊 Economics</a>
   </nav>
 
-  <section class="subj-section" id="biology">
+  <section class="subj-section reveal" id="biology">
     <div class="subj-heading">
       <h2>🧬 Biology</h2>
       <span class="subj-count">33 games</span>
@@ -233,7 +246,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="chemistry">
+  <section class="subj-section reveal" id="chemistry">
     <div class="subj-heading">
       <h2>⚗️ Chemistry</h2>
       <span class="subj-count">21 games</span>
@@ -347,7 +360,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="physics">
+  <section class="subj-section reveal" id="physics">
     <div class="subj-heading">
       <h2>⚛️ Physics</h2>
       <span class="subj-count">17 games</span>
@@ -441,7 +454,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="maths">
+  <section class="subj-section reveal" id="maths">
     <div class="subj-heading">
       <h2>📐 Maths</h2>
       <span class="subj-count">11 games</span>
@@ -505,7 +518,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="english">
+  <section class="subj-section reveal" id="english">
     <div class="subj-heading">
       <h2>📖 English</h2>
       <span class="subj-count">8 games</span>
@@ -554,7 +567,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="history">
+  <section class="subj-section reveal" id="history">
     <div class="subj-heading">
       <h2>🏛️ History</h2>
       <span class="subj-count">28 games</span>
@@ -703,7 +716,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="geography">
+  <section class="subj-section reveal" id="geography">
     <div class="subj-heading">
       <h2>🌍 Geography</h2>
       <span class="subj-count">19 games</span>
@@ -807,7 +820,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="psychology">
+  <section class="subj-section reveal" id="psychology">
     <div class="subj-heading">
       <h2>🧠 Psychology</h2>
       <span class="subj-count">12 games</span>
@@ -876,7 +889,7 @@
     </div>
   </section>
 
-  <section class="subj-section" id="economics">
+  <section class="subj-section reveal" id="economics">
     <div class="subj-heading">
       <h2>📊 Economics</h2>
       <span class="subj-count">11 games</span>
@@ -952,6 +965,56 @@
 <div id="footer-slot"></div>
 
 <script src="nav.js"></script>
+
+<script>
+/* ── Games search / filter ── */
+(function () {
+  'use strict';
+  var input = document.getElementById('games-search');
+  var sections = document.querySelectorAll('.subj-section');
+  var subjNav = document.getElementById('subj-nav');
+  var noResults = document.getElementById('no-results');
+  if (!input || !sections.length) return;
+
+  input.addEventListener('input', function () {
+    var q = input.value.toLowerCase().trim();
+    var anyVisible = false;
+
+    for (var i = 0; i < sections.length; i++) {
+      var section = sections[i];
+      var cards = section.querySelectorAll('.gc');
+      var heading = section.querySelector('.subj-heading h2');
+      var subjectName = heading ? heading.textContent.toLowerCase() : '';
+      var sectionVisible = false;
+
+      for (var j = 0; j < cards.length; j++) {
+        var title = cards[j].querySelector('.gc-title');
+        var badge = cards[j].querySelector('.gc-badge');
+        var text = (title ? title.textContent.toLowerCase() : '') + ' ' +
+                   (badge ? badge.textContent.toLowerCase() : '') + ' ' +
+                   subjectName;
+        if (!q || text.indexOf(q) !== -1) {
+          cards[j].style.display = '';
+          sectionVisible = true;
+        } else {
+          cards[j].style.display = 'none';
+        }
+      }
+
+      section.style.display = sectionVisible ? '' : 'none';
+      // Also hide/show the matching subject nav chip
+      if (subjNav) {
+        var chip = subjNav.querySelector('a[href="#' + section.id + '"]');
+        if (chip) chip.style.display = sectionVisible ? '' : 'none';
+      }
+      if (sectionVisible) anyVisible = true;
+    }
+
+    noResults.style.display = anyVisible ? 'none' : 'block';
+    if (subjNav) subjNav.style.display = anyVisible ? '' : 'none';
+  });
+})();
+</script>
 
 </body>
 </html>

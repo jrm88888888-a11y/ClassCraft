@@ -51,6 +51,7 @@
     '          <li><a href="' + link('vocab-hub/vocab.html') + '"' + isActive('vocab.html') + '>Vocab</a></li>\n' +
     '          <li><a href="' + link('draw-it.html') + '"' + isActive('draw-it.html') + '>Draw It</a></li>\n' +
     '          <li><a href="' + link('roleplay.html') + '"' + isActive('roleplay.html') + '>Roleplay</a></li>\n' +
+    '          <li><a href="' + link('books.html') + '"' + isActive('books.html') + '>Books</a></li>\n' +
     '        </ul>\n' +
     '      </li>\n' +
     '\n' +
@@ -60,7 +61,6 @@
     '          <li><a href="' + link('simulations.html') + '"' + isActive('simulations.html') + '>Simulations</a></li>\n' +
     '          <li><a href="' + link('homeroom.html') + '"' + isActive('homeroom.html') + '>Homeroom</a></li>\n' +
     '          <li><a href="' + link('nature.html') + '"' + isActive('nature.html') + '>Nature</a></li>\n' +
-    '          <li><a href="' + link('books.html') + '"' + isActive('books.html') + '>Books</a></li>\n' +
     '          <li><a href="' + link('jokes.html') + '"' + isActive('jokes.html') + '>Jokes</a></li>\n' +
     '        </ul>\n' +
     '      </li>\n' +
@@ -75,7 +75,7 @@
   var footerHTML = '' +
     '<footer>\n' +
     '  <div class="container">\n' +
-    '    <p>&copy; ' + new Date().getFullYear() + ' ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="' + link('about.html') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">James Martin</a></p>\n' +
+    '    <p>&copy; ' + new Date().getFullYear() + ' ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="' + link('about.html') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">James Martin</a> &nbsp;&middot;&nbsp; <a href="' + link('privacy.html') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Privacy</a></p>\n' +
     '  </div>\n' +
     '</footer>';
 
@@ -170,4 +170,25 @@
     }
   });
 
+})();
+
+/* ── Scroll-reveal via IntersectionObserver ── */
+(function () {
+  'use strict';
+  if (typeof IntersectionObserver === 'undefined') {
+    // Fallback: just show everything immediately
+    var els = document.querySelectorAll('.reveal');
+    for (var i = 0; i < els.length; i++) els[i].classList.add('visible');
+    return;
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        entries[i].target.classList.add('visible');
+        observer.unobserve(entries[i].target);
+      }
+    }
+  }, { threshold: 0.12 });
+  var targets = document.querySelectorAll('.reveal');
+  for (var j = 0; j < targets.length; j++) observer.observe(targets[j]);
 })();
