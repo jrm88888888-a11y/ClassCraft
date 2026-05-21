@@ -197,32 +197,7 @@
 <body>
 
   <!-- ── Nav ───────────────────────────── -->
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Class<span>Craft</span></a>
-      <div class="nav-overlay" id="nav-overlay"></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        
-        <li><a href="index.html">Home</a></li>
-        <li><a href="simulations.html">Simulations</a></li>
-        <li><a href="books.html">Books</a></li>
-        <li><a href="jokes.html" class="active">Jokes</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="draw-it.html">Draw It</a></li>
-        <li><a href="roleplay.html">Roleplay</a></li>
-        <li><a href="vocab-hub/vocab-hub.html">Terms</a></li>
-        <li><a href="vocab-hub/vocab.html">Vocab</a></li>
-        <li><a href="homeroom.html">Homeroom</a></li>
-        <li><a href="nature.html">Nature</a></li>
-        <li><a href="about.html">Contributors</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      
-      </ul>
-    </div>
-  </nav>
+  <div id="nav-slot"></div>
 
   <!-- ── Page header ───────────────────── -->
   <section style="padding: 3.5rem 0 2.5rem;">
@@ -286,11 +261,7 @@
   </div>
 
   <!-- ── Footer ─────────────────────────── -->
-  <footer>
-    <div class="container">
-      <p>&copy; <span id="year"></span> ClassCraft &nbsp;·&nbsp; classcraft.co.uk</p>
-    </div>
-  </footer>
+  <div id="footer-slot"></div>
 
   <script>
   // ── Joke data ───────────────────────────────────────────────────────
@@ -748,16 +719,6 @@
     spanish: "Spanish"
   };
 
-  // ── Nav ─────────────────────────────────────────────────────────────
-  const toggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  const navOverlay = document.getElementById('nav-overlay');
-  function openMenu() { toggle.classList.add('open'); navLinks.classList.add('open'); navOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeMenu() { toggle.classList.remove('open'); navLinks.classList.remove('open'); navOverlay.classList.remove('open'); document.body.style.overflow=''; }
-  toggle.addEventListener('click', () => toggle.classList.contains('open') ? closeMenu() : openMenu());
-  navOverlay.addEventListener('click', closeMenu);
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
   // ── Render jokes ─────────────────────────────────────────────────────
   let currentSubject = 'art';
   const container = document.getElementById('jokes-container');
@@ -818,12 +779,11 @@
   modalNext.addEventListener('click', showRandom);
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
 
-  // ── Year ──────────────────────────────────────────────────────────────
-  document.getElementById('year').textContent = new Date().getFullYear();
-
   // ── Init ──────────────────────────────────────────────────────────────
   renderSubject('art');
   </script>
+
+<script src="nav.js"></script>
 
 </body>
 </html>

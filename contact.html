@@ -71,32 +71,9 @@
 <body>
 
   <!-- ── Nav ───────────────────────────── -->
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Class<span>Craft</span></a>
-      <div class="nav-overlay" id="nav-overlay"></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        
-        <li><a href="index.html">Home</a></li>
-        <li><a href="simulations.html">Simulations</a></li>
-        <li><a href="books.html">Books</a></li>
-        <li><a href="jokes.html">Jokes</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="draw-it.html">Draw It</a></li>
-        <li><a href="roleplay.html">Roleplay</a></li>
-        <li><a href="vocab-hub/vocab-hub.html">Terms</a></li>
-        <li><a href="vocab-hub/vocab.html">Vocab</a></li>
-        <li><a href="homeroom.html">Homeroom</a></li>
-        <li><a href="nature.html">Nature</a></li>
-        <li><a href="about.html">Contributors</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      
-      </ul>
-    </div>
-  </nav>
+  <div id="nav-slot"></div>
+
+  <main>
 
   <!-- ── Page header ───────────────────── -->
   <section style="padding: 4rem 0 3rem;">
@@ -197,31 +174,21 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── Footer ─────────────────────────── -->
-  <footer>
-    <div class="container">
-      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">James Martin</a></p>
-    </div>
-  </footer>
+  <div id="footer-slot"></div>
+
+<script src="nav.js"></script>
 
   <script>
-    // Nav
-    const toggle = document.getElementById('nav-toggle');
-    const links  = document.getElementById('nav-links');
-    const overlay = document.getElementById('nav-overlay');
-    function openMenu() { toggle.classList.add('open'); links.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeMenu() { toggle.classList.remove('open'); links.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
-    toggle.addEventListener('click', () => toggle.classList.contains('open') ? closeMenu() : openMenu());
-    overlay.addEventListener('click', closeMenu);
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
     // Form
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('form-success');
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
+      var data = new FormData(form);
+      var response = await fetch(form.action, {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
@@ -235,6 +202,5 @@
     });
   </script>
 
-<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </body>
 </html>

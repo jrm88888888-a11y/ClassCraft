@@ -80,7 +80,7 @@ a:hover { color: var(--ink); }
 }
 
 /* ── Nav ─────────────────────────────────── */
-nav {
+.site-nav {
   position: sticky;
   top: 0;
   z-index: 200;
@@ -234,6 +234,122 @@ nav {
   }
 }
 
+/* ── Nav dropdowns ──────────────────────── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-drop-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 0;
+  transition: color var(--transition);
+}
+.nav-drop-btn svg {
+  transition: transform 0.2s ease;
+}
+.nav-drop-btn:hover,
+.nav-drop-btn.has-active {
+  color: var(--accent);
+}
+.drop-open > .nav-drop-btn svg {
+  transform: rotate(180deg);
+}
+
+/* Mobile: dropdown items slide in below */
+.nav-drop-menu {
+  list-style: none;
+  display: none;
+  padding: 0 0 0 1rem;
+}
+.drop-open > .nav-drop-menu {
+  display: block;
+}
+.nav-drop-menu a {
+  font-size: 0.8rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 0.7rem 0 !important;
+}
+
+/* Desktop: dropdown floats below */
+@media (min-width: 768px) {
+  .nav-drop-btn {
+    padding: 0 0 2px;
+    font-size: clamp(0.62rem, 1.1vw, 0.85rem);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+  }
+  .nav-drop-btn:hover,
+  .nav-drop-btn.has-active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+
+  .nav-drop-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    min-width: 160px;
+    box-shadow: 0 8px 24px rgba(28,23,18,0.1);
+    z-index: 210;
+  }
+  /* Invisible bridge covers the gap so hover doesn't break */
+  .nav-drop-menu::before {
+    content: '';
+    position: absolute;
+    top: -0.6rem;
+    left: 0;
+    right: 0;
+    height: 0.6rem;
+  }
+  .drop-open > .nav-drop-menu {
+    display: block;
+  }
+
+  .nav-drop-menu li { border: none; }
+  .nav-drop-menu a {
+    display: block;
+    padding: 0.5rem 1.15rem !important;
+    font-size: clamp(0.62rem, 1vw, 0.8rem) !important;
+    letter-spacing: 0.06em !important;
+    border-bottom: none !important;
+    white-space: nowrap;
+  }
+  .nav-drop-menu a:hover {
+    background: var(--parchment-mid);
+    color: var(--accent);
+  }
+  .nav-drop-menu a.active {
+    color: var(--accent);
+  }
+
+  /* Hover to open on desktop */
+  .nav-dropdown:hover > .nav-drop-menu {
+    display: block;
+  }
+  .nav-dropdown:hover > .nav-drop-btn svg {
+    transform: rotate(180deg);
+  }
+}
+
 /* ── Horizontal rule ─────────────────────── */
 .rule {
   border: none;
@@ -251,14 +367,16 @@ nav {
   text-transform: uppercase;
   padding: 0.85rem 1.75rem;
   border: 1px solid var(--ink);
+  border-radius: 6px;
   color: var(--ink);
   background: transparent;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), transform 0.15s ease;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.btn:hover { background: var(--ink); color: var(--parchment); }
+.btn:hover { background: var(--ink); color: var(--parchment); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
 
 .btn-accent {
   border-color: var(--accent);
@@ -266,12 +384,22 @@ nav {
 }
 .btn-accent:hover { background: var(--accent); color: var(--parchment); }
 
+/* Inline CTA link — replaces common inline style pattern */
+.link-cta {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.link-cta:hover { color: var(--ink); }
+
 /* ── Cards ───────────────────────────────── */
 .card {
   background: var(--parchment-mid);
   border: 1px solid var(--parchment-deep);
+  border-radius: 10px;
   padding: 1.25rem;
-  transition: border-color var(--transition), transform var(--transition);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 @media (min-width: 768px) {
@@ -281,6 +409,7 @@ nav {
 .card:hover {
   border-color: var(--accent-light);
   transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(28,23,18,0.08);
 }
 
 .card-thumb {
