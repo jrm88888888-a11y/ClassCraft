@@ -28,6 +28,7 @@
     .hd-logo span{color:var(--accent);}
     .hd-title{font-family:var(--font-d);font-size:0.8rem;font-weight:600;color:var(--text-mid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
     .hd-sep{color:var(--text-dim);flex-shrink:0;}
+    .hd-crumb{font-family:var(--font-d);font-size:0.72rem;font-weight:600;color:var(--accent);text-decoration:none;flex-shrink:0;letter-spacing:0.02em;}.hd-crumb:hover{text-decoration:underline;}
     .hd-right{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
     .timer-wrap{display:flex;align-items:center;gap:0.4rem;}
     .timer-label{font-size:0.65rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-mid);}
@@ -235,7 +236,7 @@
     /* Responsive */
     @media(max-width:400px){
       .hd{padding:0 0.85rem;}
-      .hd-sep,.hd-title{display:none;}
+      .hd-sep,.hd-crumb,.hd-title{display:none;}
       .compare-grid{grid-template-columns:1fr;}
     }
   </style>
@@ -245,6 +246,8 @@
 <header class="hd">
   <div class="hd-left">
     <a href="../index.html" class="hd-logo">Class<span>Craft</span></a>
+    <span class="hd-sep">·</span>
+    <a href="../games.html" class="hd-crumb">Games</a>
     <span class="hd-sep">·</span>
     <span class="hd-title" id="hd-title">World War Two — Pacific — Timeline</span>
   </div>

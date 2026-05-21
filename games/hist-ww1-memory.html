@@ -44,6 +44,7 @@
     .hd-logo{font-family:var(--font-d);font-size:1.05rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-0.02em;flex-shrink:0;}
     .hd-logo span{color:var(--accent);}
     .hd-sep{color:var(--text-dim);flex-shrink:0;}
+    .hd-crumb{font-family:var(--font-d);font-size:0.72rem;font-weight:600;color:var(--accent);text-decoration:none;flex-shrink:0;letter-spacing:0.02em;}.hd-crumb:hover{text-decoration:underline;}
     .hd-title{font-family:var(--font-d);font-size:0.8rem;font-weight:600;color:var(--text-mid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
     .hd-right{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
 
@@ -165,7 +166,7 @@
     @media(min-width:560px){.stat-pill.attempts-pill{display:block;}}
     @media(max-width:400px){
       .hd{padding:0 0.85rem;}
-      .hd-sep,.hd-title{display:none;}
+      .hd-sep,.hd-crumb,.hd-title{display:none;}
       .difficulty-grid{grid-template-columns:repeat(2,1fr);}
     }
   </style>
@@ -175,6 +176,8 @@
 <header class="hd">
   <div class="hd-left">
     <a href="../index.html" class="hd-logo">Class<span>Craft</span></a>
+    <span class="hd-sep">·</span>
+    <a href="../games.html" class="hd-crumb">Games</a>
     <span class="hd-sep">·</span>
     <span class="hd-title" id="hd-title">World War One — Memory Match</span>
   </div>

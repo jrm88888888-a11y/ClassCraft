@@ -37,6 +37,7 @@
     '  <div class="nav-inner">\n' +
     '    <a href="' + link('index.html') + '" class="nav-logo">Class<span>Craft</span></a>\n' +
     '    <div class="nav-overlay" id="nav-overlay"></div>\n' +
+    '    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>\n' +
     '    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">\n' +
     '      <span></span><span></span><span></span>\n' +
     '    </button>\n' +
@@ -191,4 +192,30 @@
   }, { threshold: 0.12 });
   var targets = document.querySelectorAll('.reveal');
   for (var j = 0; j < targets.length; j++) observer.observe(targets[j]);
+})();
+
+/* ── Dark mode toggle ── */
+(function () {
+  'use strict';
+  var STORAGE_KEY = 'classcraft-theme';
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    btn.textContent = theme === 'dark' ? '☀' : '☾';   // ☀ / ☾
+    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  // Load saved preference (or default to light)
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
+
+  btn.addEventListener('click', function () {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch (e) { /* ignore */ }
+  });
 })();

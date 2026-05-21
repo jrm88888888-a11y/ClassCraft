@@ -95,6 +95,12 @@
     .stat:nth-child(n+3) { border-bottom: none; }
     .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
     .stat-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
+    .progress-bar { max-width: 400px; margin: 0 auto; text-align: center; }
+    .progress-title { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem; }
+    .progress-stats { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+    .progress-stats .stat { border-bottom: none; }
+    .progress-stats .stat:first-child { border-right: 1px solid var(--rule); }
+    .progress-stats .stat:last-child { border-right: none; }
 
     /* ── Tablet (768px+) ── */
     @media (min-width: 768px) {
@@ -115,6 +121,9 @@
       .stat:nth-child(2n) { border-right: 1px solid var(--rule); }
       .stat:last-child { border-right: none; }
       .stat-num { font-size: 2.2rem; }
+      .progress-stats { display: flex; }
+      .progress-stats .stat { flex: 1; }
+      .progress-stats .stat:last-child { border-right: none; }
       .quiz-overlay { padding: 1.5rem; }
       .quiz-q { font-size: clamp(1rem, 2.5vw, 1.3rem); }
     }
@@ -264,6 +273,15 @@
         <div class="stat"><span class="stat-num">4,600+</span><span class="stat-label">Vocab Terms</span></div>
         <div class="stat"><span class="stat-num">25</span><span class="stat-label">Subjects</span></div>
         <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
+      </div>
+
+      <!-- Personal progress (hidden until user has activity) -->
+      <div class="progress-bar fade-up fade-up-4" id="progress-bar" style="display:none; margin-top: 1.5rem;">
+        <p class="progress-title">Your Progress</p>
+        <div class="progress-stats">
+          <div class="stat"><span class="stat-num" id="prog-games">0</span><span class="stat-label">Games Played</span></div>
+          <div class="stat"><span class="stat-num" id="prog-vocab">0</span><span class="stat-label">Vocab Sessions</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -924,10 +942,10 @@
   <!-- CTA STRIP -->
   <div class="cta-strip reveal">
     <div class="container" style="text-align:center;">
-      <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;">Get in Touch</p>
-      <h2 style="color:var(--parchment);margin-bottom:1rem;">Want to get in touch?</h2>
+      <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#c4956a;margin-bottom:1rem;">Get in Touch</p>
+      <h2 style="color:#f5efe6;margin-bottom:1rem;">Want to get in touch?</h2>
       <p style="color:rgba(245,239,230,0.6);margin:0 auto 2rem;max-width:50ch;font-size:0.95rem;">Questions, feedback, or just want to say the Economics joke made you laugh &mdash; feel free to get in touch.</p>
-      <a href="contact.html" class="btn" style="border-color:var(--parchment);color:var(--parchment);">Get in Touch</a>
+      <a href="contact.html" class="btn" style="border-color:#f5efe6;color:#f5efe6;">Get in Touch</a>
     </div>
   </div>
 
@@ -1448,6 +1466,23 @@
       /* Initial static draw */
       drawFrame(0);
     })();
+  </script>
+
+  <script>
+  /* ── Progress display (reads from localStorage) ── */
+  (function () {
+    var bar = document.getElementById('progress-bar');
+    if (!bar) return;
+    try {
+      var games = parseInt(localStorage.getItem('classcraft-games') || '0', 10);
+      var vocab = parseInt(localStorage.getItem('classcraft-vocab') || '0', 10);
+      if (games + vocab > 0) {
+        document.getElementById('prog-games').textContent = games;
+        document.getElementById('prog-vocab').textContent = vocab;
+        bar.style.display = '';
+      }
+    } catch (e) { /* localStorage unavailable */ }
+  })();
   </script>
 
 </body>

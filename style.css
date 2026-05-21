@@ -31,6 +31,24 @@
   --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* ── Dark mode ──────────────────────────── */
+[data-theme="dark"] {
+  --parchment:     #1a1714;
+  --parchment-mid: #242019;
+  --parchment-deep:#302a21;
+  --ink:           #e8e0d4;
+  --ink-mid:       #b8ad9e;
+  --ink-light:     #8a7e70;
+  --accent:        #c4956a;
+  --accent-light:  #d4a87a;
+  --rule:          rgba(196, 149, 106, 0.2);
+}
+
+/* Keep CTA strip dark in both themes */
+[data-theme="dark"] .cta-strip {
+  background: #1c1712;
+}
+
 /* ── Reset ───────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -348,6 +366,31 @@ a:hover { color: var(--ink); }
   .nav-dropdown:hover > .nav-drop-btn svg {
     transform: rotate(180deg);
   }
+}
+
+/* ── Dark-mode toggle ───────────────────── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  line-height: 1;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  transition: border-color var(--transition), color var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  margin-left: auto;
+  margin-right: 0.75rem;
+  z-index: 201;
+  position: relative;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+@media (min-width: 768px) {
+  .theme-toggle { margin-left: 0; margin-right: 0; }
 }
 
 /* ── Horizontal rule ─────────────────────── */

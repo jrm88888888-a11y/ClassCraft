@@ -47,6 +47,7 @@
     .hd-logo span { color: var(--accent); }
     .hd-title { font-family: var(--font-d); font-size: 0.95rem; font-weight: 600; color: var(--text-mid); }
     .hd-sep { color: var(--text-dim); }
+    .hd-crumb{font-family:var(--font-d);font-size:0.72rem;font-weight:600;color:var(--accent);text-decoration:none;flex-shrink:0;letter-spacing:0.02em;}.hd-crumb:hover{text-decoration:underline;}
     .hd-right { display: flex; align-items: center; gap: 0.75rem; }
 
     .timer-wrap { display: flex; align-items: center; gap: 0.5rem; }
@@ -148,6 +149,7 @@
     .breakdown-arrow { color: var(--text-dim); font-size: 0.72rem; }
     .btn-retry { font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--accent); color: #0f1117; border: none; padding: 0.85rem 2.5rem; border-radius: var(--r); cursor: pointer; transition: all var(--trans); width: 100%; }
     .btn-retry:hover { background: #6ef0b0; transform: translateY(-1px); }
+      @media(max-width:400px){.hd-sep,.hd-crumb,.hd-title{display:none;}}
   </style>
 </head>
 <body>
@@ -155,6 +157,8 @@
 <header class="hd">
   <div class="hd-left">
     <a href="../index.html" class="hd-logo">Class<span>Craft</span></a>
+    <span class="hd-sep">·</span>
+    <a href="../games.html" class="hd-crumb">Games</a>
     <span class="hd-sep">·</span>
     <span class="hd-title">The Neuron — Label the Diagram</span>
   </div>

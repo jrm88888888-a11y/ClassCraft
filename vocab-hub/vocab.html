@@ -863,6 +863,7 @@
         state.mode = c.dataset.mode;
         state.streak = 0;
         state.bestStreak = 0;
+        try { var n = parseInt(localStorage.getItem('classcraft-vocab') || '0', 10); localStorage.setItem('classcraft-vocab', n + 1); } catch (e) {}
         if (state.mode === "learn") startLearn();
         else startTest();
       });
@@ -1322,6 +1323,7 @@
         state.mode = c.dataset.mode;
         state.streak = 0;
         state.bestStreak = 0;
+        try { var n = parseInt(localStorage.getItem('classcraft-vocab') || '0', 10); localStorage.setItem('classcraft-vocab', n + 1); } catch (e) {}
         if (state.mode === "study") startEnglishStudy();
         else if (state.mode === "test") startEnglishTest();
         else if (state.mode === "stretch") startEnglishStretch();
