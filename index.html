@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClassCraft — Free GCSE &amp; A-Level Revision Resources</title>
-  <meta name="description" content="Free GCSE and A-Level revision resources — 160+ games, 4,600+ vocabulary flashcards, quizzes and more across 25 subjects. No login needed." />
+  <meta name="description" content="Free GCSE and A-Level revision resources — 160 games, 3,500+ vocabulary flashcards, quizzes and more across Biology, Chemistry, Physics, Maths, History, Geography, English, Psychology and Economics. No login needed." />
   <link rel="stylesheet" href="style.css" />
   <style>
 
-    /* ── Hero (from original) ───────────── */
+    /* Hero */
     .hero { padding: 2.5rem 0 0; position: relative; overflow: hidden; }
     .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,94,60,0.08) 0%, transparent 70%); pointer-events: none; }
     .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
@@ -26,7 +26,7 @@
     .hero-game-cta { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); background: rgba(74,222,154,0.9); color: #0f1117; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; pointer-events: none; animation: ctaPulse 2s ease-in-out infinite; white-space: nowrap; }
     @keyframes ctaPulse { 0%,100%{opacity:1;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(-3px)} }
 
-    /* Mobile D-pad */
+    /* Mobile D-pad — hidden by default, shown via JS adding .active on touch devices */
     .hero-dpad {
       display: none; position: absolute; bottom: 0.6rem; right: 0.6rem; z-index: 10;
       width: 96px; height: 96px;
@@ -61,7 +61,7 @@
     .quote-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 0.35rem; }
     .quote-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
 
-    /* Stats bar */
+    /* Stats bar (below quotes) */
     .stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; max-width: 700px; margin: 0 auto; }
     .stat { padding: 1rem 0.75rem; text-align: center; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
     .stat:nth-child(2n) { border-right: none; }
@@ -69,7 +69,7 @@
     .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
     .stat-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
 
-    /* Tablet (768px+) */
+    /* ── Tablet (768px+) ── */
     @media (min-width: 768px) {
       .hero { padding: 3.5rem 0 0; }
       .hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -92,7 +92,7 @@
       .quiz-q { font-size: clamp(1rem, 2.5vw, 1.3rem); }
     }
 
-    /* Large desktop (1024px+) */
+    /* ── Large desktop (1024px+) ── */
     @media (min-width: 1024px) {
       .hero { padding: 4rem 0 0; }
       .hero-grid { gap: 3.5rem; }
@@ -101,79 +101,7 @@
       .hero-quotes { margin-top: 3rem; }
     }
 
-    /* ── Subjects strip (from original) ──── */
-    .subjects-strip { background: var(--parchment-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1.5rem 0; }
-    .subjects-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-align: center; margin-bottom: 1rem; }
-    .subjects-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
-    .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
-    .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
-    @media (min-width: 768px) {
-      .subjects-strip { padding: 2rem 0; }
-      .subjects-list { gap: 0.6rem; }
-      .subject-chip { font-size: 0.78rem; padding: 0.4rem 1rem; }
-    }
-
-    /* ── Main Tab Bar ──────────────────── */
-    .tab-bar-wrap { background: var(--parchment); border-bottom: 1px solid var(--rule); z-index: 150; transition: box-shadow 0.3s ease; }
-    .tab-bar-wrap.sticky { position: sticky; top: 0; box-shadow: 0 2px 12px rgba(28,23,18,0.08); }
-    .tab-bar { display: flex; overflow-x: auto; white-space: nowrap; gap: 0; padding: 0; margin: 0; list-style: none; scrollbar-width: none; -ms-overflow-style: none; }
-    .tab-bar::-webkit-scrollbar { display: none; }
-    .tab-bar li { flex-shrink: 0; }
-    .tab-btn { display: inline-block; font-family: var(--font-body); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding: 0.9rem 1.1rem; border: none; background: none; cursor: pointer; position: relative; transition: color var(--transition); white-space: nowrap; }
-    .tab-btn:hover { color: var(--ink); }
-    .tab-btn.active { color: var(--accent); }
-    .tab-btn.active::after { content: ""; position: absolute; bottom: 0; left: 0.5rem; right: 0.5rem; height: 2px; background: var(--accent); border-radius: 2px; }
-
-    @media (min-width: 768px) {
-      .tab-bar { justify-content: center; }
-      .tab-btn { padding: 0.9rem 1.4rem; font-size: 0.75rem; }
-    }
-
-    /* ── Tab Panels ────────────────────── */
-    .tab-panel { display: none; padding: 3rem 0; }
-    .tab-panel.active { display: block; }
-
-    /* ── Sub-tab Bar ───────────────────── */
-    .sub-tab-bar { display: flex; overflow-x: auto; white-space: nowrap; gap: 0.35rem; padding: 0 0 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--rule); list-style: none; scrollbar-width: none; -ms-overflow-style: none; }
-    .sub-tab-bar::-webkit-scrollbar { display: none; }
-    .sub-tab-btn { display: inline-block; font-family: var(--font-body); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); padding: 0.5rem 0.85rem; border: 1px solid var(--parchment-deep); background: var(--parchment); border-radius: 20px; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
-    .sub-tab-btn:hover { border-color: var(--accent-light); color: var(--ink-mid); }
-    .sub-tab-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(139,94,60,0.06); }
-
-    .sub-panel { display: none; }
-    .sub-panel.active { display: block; }
-
-    /* ── Feature tags ──────────────────── */
-    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-    .tag { font-size: 0.65rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 20px; border: 1px solid var(--rule); color: var(--ink-mid); letter-spacing: 0.05em; }
-    @media (min-width: 768px) { .tag { font-size: 0.68rem; padding: 0.3rem 0.75rem; } }
-
-    /* ── Subject chips (tab panels) ────── */
-    .subject-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.5rem; }
-
-    /* ── About feature cards ───────────── */
-    .about-grid { grid-template-columns: 1fr; }
-    @media (min-width: 600px) { .about-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 900px) { .about-grid { grid-template-columns: repeat(3, 1fr); } }
-    .feature-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.5rem; }
-    .feature-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-    .feature-card p { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.75rem; }
-    .feature-card-num { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
-    .feature-card-link { font-size: 0.8rem; color: var(--accent); font-weight: 500; text-decoration: none; }
-    .feature-card-link:hover { text-decoration: underline; }
-
-    /* ── Panel content ─────────────────── */
-    .panel-title { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.5rem; }
-    .panel-desc { color: var(--ink-mid); font-size: 0.95rem; max-width: 60ch; margin-bottom: 1.25rem; line-height: 1.7; }
-
-    /* ── Language cards ─────────────────── */
-    .lang-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .lang-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.25rem; text-align: center; text-decoration: none; color: var(--ink); transition: border-color var(--transition), transform var(--transition); }
-    .lang-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
-    .lang-flag { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-    .lang-name { font-family: var(--font-display); font-size: 1.1rem; }
-
-    /* ── Features (from original) ──────── */
+    /* Features */
     .feature { padding: 3rem 0; }
     .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
     @media (min-width: 768px) {
@@ -190,8 +118,11 @@
     .feature h2 { font-size: clamp(1.6rem, 4vw, 2.8rem); margin-bottom: 0.75rem; line-height: 1.1; }
     .feature p { color: var(--ink-mid); margin-bottom: 1.25rem; font-size: 0.95rem; }
     @media (min-width: 768px) { .feature p { font-size: 1rem; } }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .tag { font-size: 0.65rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 20px; border: 1px solid var(--rule); color: var(--ink-mid); letter-spacing: 0.05em; }
+    @media (min-width: 768px) { .tag { font-size: 0.68rem; padding: 0.3rem 0.75rem; } }
 
-    /* Mock panels (from original) */
+    /* Mock panels */
     .mock-panel { background: #1a1a2e; border-radius: 10px; overflow: hidden; box-shadow: 0 12px 40px rgba(28,23,18,0.15); aspect-ratio: 4/3; display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; }
     @media (min-width: 768px) { .mock-panel { border-radius: 14px; box-shadow: 0 20px 60px rgba(28,23,18,0.18); max-width: none; margin: 0; } }
     .mock-bar { background: #13131f; padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0; }
@@ -212,7 +143,19 @@
     .joke-a { font-size: 0.62rem; color: #4ade9a; font-style: italic; }
     .joke-subject { font-size: 0.5rem; color: #6060a0; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
 
-    /* AI section (from original) */
+    /* Subjects strip */
+    .subjects-strip { background: var(--parchment-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1.5rem 0; }
+    .subjects-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-align: center; margin-bottom: 1rem; }
+    .subjects-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
+    .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
+    .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
+    @media (min-width: 768px) {
+      .subjects-strip { padding: 2rem 0; }
+      .subjects-list { gap: 0.6rem; }
+      .subject-chip { font-size: 0.78rem; padding: 0.4rem 1rem; }
+    }
+
+    /* AI section */
     .ai-section { padding: 3rem 0; background: var(--parchment-mid); border-top: 1px solid var(--rule); }
     .ai-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
     .ai-card { padding: 1.25rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 10px; }
@@ -226,91 +169,17 @@
       .ai-card p { font-size: 0.88rem; }
     }
 
-    /* Sim (from original) */
+    /* Sim */
     .sim-feature { display: grid; grid-template-columns: 1fr; gap: 1.5rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; overflow: hidden; padding: 1.25rem; align-items: center; }
     .sim-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; display: block; }
     @media (min-width: 768px) {
       .sim-feature { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; border-radius: 12px; }
     }
 
-    /* ── Simulation cards (from tabbed) ── */
-    .sim-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
-    @media (min-width: 600px) { .sim-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 900px) { .sim-grid { grid-template-columns: repeat(3, 1fr); } }
-    .sim-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.25rem; transition: border-color var(--transition), transform var(--transition); }
-    .sim-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
-    .sim-card-level { display: inline-block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 12px; margin-bottom: 0.5rem; }
-    .sim-card-level.ks3 { background: rgba(59,130,246,0.12); color: #3b82f6; }
-    .sim-card-level.gcse { background: rgba(139,94,60,0.12); color: var(--accent); }
-    .sim-card-level.a-level { background: rgba(16,185,129,0.12); color: #10b981; }
-    .sim-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
-    .sim-card-subject { font-size: 0.68rem; color: var(--ink-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .sim-card p { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.75rem; }
-    .sim-card-link { font-size: 0.75rem; font-weight: 500; color: var(--accent); }
-
-    /* ── Homeroom section ──────────────── */
-    .homeroom-block { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--rule); }
-    .homeroom-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
-    /* ── International cards ────────────── */
-    .intl-cards { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
-    @media (min-width: 600px) { .intl-cards { grid-template-columns: 1fr 1fr; } }
-    .intl-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.5rem; }
-    .intl-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-    .intl-card p { font-size: 0.88rem; color: var(--ink-mid); }
-
-    /* ── Contributor card ──────────────── */
-    .contributor-card { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-    @media (min-width: 768px) { .contributor-card { grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; } }
-    .contributor-photo img { width: 100%; max-width: 220px; border-radius: 12px; display: block; box-shadow: 0 8px 30px rgba(28,23,18,0.12); }
-    .contributor-info h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.5rem; }
-    .contributor-info p { color: var(--ink-mid); margin-bottom: 0.75rem; font-size: 0.95rem; max-width: 54ch; }
-    .contributor-creds { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .contributor-creds li { font-size: 0.78rem; color: var(--ink-mid); background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 6px; padding: 0.35rem 0.75rem; }
-
-    /* ── Overview grid ─────────────────── */
-    .overview-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 2.5rem; }
-    @media (min-width: 600px) { .overview-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 900px) { .overview-grid { grid-template-columns: repeat(3, 1fr); } }
-    .overview-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.5rem; }
-    .overview-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-    .overview-card p { font-size: 0.85rem; color: var(--ink-mid); }
-    .overview-num { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
-
-    /* ── Contact form ──────────────────── */
-    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
-    .form-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); }
-    .form-input, .form-select, .form-textarea {
-      background: var(--parchment-mid); border: 1px solid var(--parchment-deep); color: var(--ink);
-      font-family: var(--font-body); font-size: 1rem; font-weight: 300; padding: 0.85rem 1rem;
-      width: 100%; transition: border-color var(--transition); outline: none; -webkit-appearance: none; border-radius: 0;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
-    .form-textarea { min-height: 140px; resize: vertical; }
-    .form-select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; background-color: var(--parchment-mid);
-    }
-    .form-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-    @media (min-width: 560px) { .form-row { grid-template-columns: 1fr 1fr; } }
-    .form-success { display: none; text-align: center; padding: 3rem 2rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); }
-    .form-success h3 { margin-bottom: 0.75rem; }
-    .form-success p { color: var(--ink-mid); font-size: 0.95rem; }
-    .info-block { border-top: 1px solid var(--rule); padding-top: 1.5rem; }
-
-    .contact-layout { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
-    @media (min-width: 768px) { .contact-layout { grid-template-columns: 2fr 1fr; gap: 4rem; } }
-
-    /* ── Parents section ───────────────── */
-    .parents-content p { color: var(--ink-mid); font-size: 0.95rem; max-width: 60ch; margin-bottom: 1rem; line-height: 1.7; }
-
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
   <nav>
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Class<span>Craft</span></a>
@@ -319,23 +188,25 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#" class="active" data-nav="home">Home</a></li>
-        <li><a href="#about" data-nav="about">About</a></li>
-        <li><a href="#ks3" data-nav="ks3">KS3</a></li>
-        <li><a href="#gcse" data-nav="gcse">GCSE</a></li>
-        <li><a href="#a-level" data-nav="a-level">A-Level</a></li>
-        <li><a href="#ibdp" data-nav="ibdp">IBDP</a></li>
-        <li><a href="#international" data-nav="international">International</a></li>
-        <li><a href="#teachers" data-nav="teachers">Teachers</a></li>
-        <li><a href="#parents" data-nav="parents">Parents</a></li>
-        <li><a href="#contributors" data-nav="contributors">Contributors</a></li>
-        <li><a href="#contact" data-nav="contact">Contact</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="simulations.html">Simulations</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="jokes.html">Jokes</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="draw-it.html">Draw It</a></li>
+        <li><a href="roleplay.html">Roleplay</a></li>
+        <li><a href="vocab-hub/vocab-hub.html">Terms</a></li>
+        <li><a href="vocab-hub/vocab.html">Vocab</a></li>
+        <li><a href="homeroom.html">Homeroom</a></li>
+        <li><a href="nature.html">Nature</a></li>
+        <li><a href="about.html">Contributors</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO (from original) -->
-  <section class="hero" id="hero">
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
       <div class="hero-grid">
 
@@ -392,7 +263,7 @@
     </div>
   </section>
 
-  <!-- SUBJECTS STRIP (from original) -->
+  <!-- SUBJECTS STRIP -->
   <div class="subjects-strip">
     <div class="container">
       <p class="subjects-label">Subjects covered</p>
@@ -425,30 +296,6 @@
       </div>
     </div>
   </div>
-
-  <!-- TAB BAR -->
-  <div class="tab-bar-wrap" id="tab-bar-wrap">
-    <div class="container">
-      <ul class="tab-bar" id="tab-bar">
-        <li><button class="tab-btn active" data-tab="about">About</button></li>
-        <li><button class="tab-btn" data-tab="ks3">KS3</button></li>
-        <li><button class="tab-btn" data-tab="gcse">GCSE</button></li>
-        <li><button class="tab-btn" data-tab="a-level">A-Level</button></li>
-        <li><button class="tab-btn" data-tab="ibdp">IBDP</button></li>
-        <li><button class="tab-btn" data-tab="international">International</button></li>
-        <li><button class="tab-btn" data-tab="teachers">Teachers</button></li>
-        <li><button class="tab-btn" data-tab="parents">Parents</button></li>
-        <li><button class="tab-btn" data-tab="contributors">Contributors</button></li>
-        <li><button class="tab-btn" data-tab="contact">Contact</button></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- TAB PANELS -->
-  <div id="tab-panels">
-
-    <!-- ABOUT TAB (contains original feature showcase) -->
-    <div class="tab-panel active" id="panel-about">
 
   <!-- FEATURE: GAMES -->
   <section class="feature">
@@ -1075,1023 +922,27 @@
       <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;">Get in Touch</p>
       <h2 style="color:var(--parchment);margin-bottom:1rem;">Want to get in touch?</h2>
       <p style="color:rgba(245,239,230,0.6);margin:0 auto 2rem;max-width:50ch;font-size:0.95rem;">Questions, feedback, or just want to say the Economics joke made you laugh &mdash; feel free to get in touch.</p>
-      <a href="#contact" class="btn" style="border-color:var(--parchment);color:var(--parchment);" onclick="activateTab('contact'); return false;">Get in Touch</a>
+      <a href="contact.html" class="btn" style="border-color:var(--parchment);color:var(--parchment);">Get in Touch</a>
     </div>
   </div>
-
-    </div>
-    <!-- ════════════ KS3 ════════════ -->
-    <div class="tab-panel" id="panel-ks3">
-      <div class="container">
-        <ul class="sub-tab-bar" data-level="ks3">
-          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
-          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
-          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
-          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
-          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
-          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
-          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
-        </ul>
-
-        <div class="sub-panel active" data-level="ks3" data-sub="games">
-          <h2 class="panel-title">Revision Games</h2>
-          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
-          <div class="feature-tags">
-            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
-            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
-          </div>
-          <div class="subject-chips">
-            <span class="subject-chip">&#x1F9EC; Biology</span>
-            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
-            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
-            <span class="subject-chip">&#x1F4D0; Maths</span>
-            <span class="subject-chip">&#x1F4DD; English Language</span>
-            <span class="subject-chip">&#x1F4D6; English Literature</span>
-            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
-            <span class="subject-chip">&#x1F30D; Geography</span>
-            <span class="subject-chip">&#x1F9E0; Psychology</span>
-            <span class="subject-chip">&#x1F4CA; Economics</span>
-            <span class="subject-chip">&#x1F4BB; Computer Science</span>
-            <span class="subject-chip">&#x1F4BC; Business Studies</span>
-            <span class="subject-chip">&#x1F465; Sociology</span>
-            <span class="subject-chip">&#x1F54C; Religious Studies</span>
-            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
-            <span class="subject-chip">&#x1F3B5; Music</span>
-            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
-            <span class="subject-chip">&#x1F527; Design Technology</span>
-            <span class="subject-chip">&#x1F331; Environmental Science</span>
-            <span class="subject-chip">&#x1F52D; Astronomy</span>
-            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
-            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
-            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
-            <span class="subject-chip">&#x1F3AD; Drama</span>
-            <span class="subject-chip">&#x1F373; Food Technology</span>
-          </div>
-          <a href="games.html" class="btn btn-accent">Browse KS3 Games &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ks3" data-sub="terms">
-          <h2 class="panel-title">Terminology Tester</h2>
-          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
-          <div class="feature-tags">
-            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
-            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
-            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
-          </div>
-          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ks3" data-sub="vocab">
-          <h2 class="panel-title">Language Vocabulary Trainer</h2>
-          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
-          <div class="lang-cards">
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
-          </div>
-          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ks3" data-sub="stories">
-          <h2 class="panel-title">Roleplay Stories</h2>
-          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
-          <div class="feature-tags">
-            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
-          </div>
-          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ks3" data-sub="jokes">
-          <h2 class="panel-title">Subject Jokes</h2>
-          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
-          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ks3" data-sub="drawit">
-          <h2 class="panel-title">Draw It</h2>
-          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
-          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ks3" data-sub="nature">
-          <h2 class="panel-title">Nature Guide</h2>
-          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
-          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════════════ GCSE ════════════ -->
-    <div class="tab-panel" id="panel-gcse">
-      <div class="container">
-        <ul class="sub-tab-bar" data-level="gcse">
-          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
-          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
-          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
-          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
-          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
-          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
-          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
-          <li><button class="sub-tab-btn" data-sub="books">Books</button></li>
-        </ul>
-
-        <div class="sub-panel active" data-level="gcse" data-sub="games">
-          <h2 class="panel-title">Revision Games</h2>
-          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
-          <div class="feature-tags">
-            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
-            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
-          </div>
-          <div class="subject-chips">
-            <span class="subject-chip">&#x1F9EC; Biology</span>
-            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
-            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
-            <span class="subject-chip">&#x1F4D0; Maths</span>
-            <span class="subject-chip">&#x1F4DD; English Language</span>
-            <span class="subject-chip">&#x1F4D6; English Literature</span>
-            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
-            <span class="subject-chip">&#x1F30D; Geography</span>
-            <span class="subject-chip">&#x1F9E0; Psychology</span>
-            <span class="subject-chip">&#x1F4CA; Economics</span>
-            <span class="subject-chip">&#x1F4BB; Computer Science</span>
-            <span class="subject-chip">&#x1F4BC; Business Studies</span>
-            <span class="subject-chip">&#x1F465; Sociology</span>
-            <span class="subject-chip">&#x1F54C; Religious Studies</span>
-            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
-            <span class="subject-chip">&#x1F3B5; Music</span>
-            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
-            <span class="subject-chip">&#x1F527; Design Technology</span>
-            <span class="subject-chip">&#x1F331; Environmental Science</span>
-            <span class="subject-chip">&#x1F52D; Astronomy</span>
-            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
-            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
-            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
-            <span class="subject-chip">&#x1F3AD; Drama</span>
-            <span class="subject-chip">&#x1F373; Food Technology</span>
-          </div>
-          <a href="games.html" class="btn btn-accent">Browse GCSE Games &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="terms">
-          <h2 class="panel-title">Terminology Tester</h2>
-          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
-          <div class="feature-tags">
-            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
-            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
-            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
-          </div>
-          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="vocab">
-          <h2 class="panel-title">Language Vocabulary Trainer</h2>
-          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
-          <div class="lang-cards">
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
-          </div>
-          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="stories">
-          <h2 class="panel-title">Roleplay Stories</h2>
-          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
-          <div class="feature-tags">
-            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
-          </div>
-          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="jokes">
-          <h2 class="panel-title">Subject Jokes</h2>
-          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
-          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="drawit">
-          <h2 class="panel-title">Draw It</h2>
-          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
-          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="nature">
-          <h2 class="panel-title">Nature Guide</h2>
-          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
-          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="gcse" data-sub="books">
-          <h2 class="panel-title">Revision Books</h2>
-          <p class="panel-desc">GCSE, A-Level and IB revision guides by James R. Martin. Available on Amazon.</p>
-          <a href="books.html" class="btn btn-accent">View Books &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════════════ A-Level ════════════ -->
-    <div class="tab-panel" id="panel-a-level">
-      <div class="container">
-        <ul class="sub-tab-bar" data-level="a-level">
-          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
-          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
-          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
-          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
-          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
-          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
-          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
-          <li><button class="sub-tab-btn" data-sub="books">Books</button></li>
-        </ul>
-
-        <div class="sub-panel active" data-level="a-level" data-sub="games">
-          <h2 class="panel-title">Revision Games</h2>
-          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
-          <div class="feature-tags">
-            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
-            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
-          </div>
-          <div class="subject-chips">
-            <span class="subject-chip">&#x1F9EC; Biology</span>
-            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
-            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
-            <span class="subject-chip">&#x1F4D0; Maths</span>
-            <span class="subject-chip">&#x1F4DD; English Language</span>
-            <span class="subject-chip">&#x1F4D6; English Literature</span>
-            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
-            <span class="subject-chip">&#x1F30D; Geography</span>
-            <span class="subject-chip">&#x1F9E0; Psychology</span>
-            <span class="subject-chip">&#x1F4CA; Economics</span>
-            <span class="subject-chip">&#x1F4BB; Computer Science</span>
-            <span class="subject-chip">&#x1F4BC; Business Studies</span>
-            <span class="subject-chip">&#x1F465; Sociology</span>
-            <span class="subject-chip">&#x1F54C; Religious Studies</span>
-            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
-            <span class="subject-chip">&#x1F3B5; Music</span>
-            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
-            <span class="subject-chip">&#x1F527; Design Technology</span>
-            <span class="subject-chip">&#x1F331; Environmental Science</span>
-            <span class="subject-chip">&#x1F52D; Astronomy</span>
-            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
-            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
-            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
-            <span class="subject-chip">&#x1F3AD; Drama</span>
-            <span class="subject-chip">&#x1F373; Food Technology</span>
-          </div>
-          <a href="games.html" class="btn btn-accent">Browse A-Level Games &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="terms">
-          <h2 class="panel-title">Terminology Tester</h2>
-          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
-          <div class="feature-tags">
-            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
-            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
-            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
-          </div>
-          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="vocab">
-          <h2 class="panel-title">Language Vocabulary Trainer</h2>
-          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
-          <div class="lang-cards">
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
-          </div>
-          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="stories">
-          <h2 class="panel-title">Roleplay Stories</h2>
-          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
-          <div class="feature-tags">
-            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
-          </div>
-          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="jokes">
-          <h2 class="panel-title">Subject Jokes</h2>
-          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
-          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="drawit">
-          <h2 class="panel-title">Draw It</h2>
-          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
-          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="nature">
-          <h2 class="panel-title">Nature Guide</h2>
-          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
-          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="a-level" data-sub="books">
-          <h2 class="panel-title">Revision Books</h2>
-          <p class="panel-desc">GCSE, A-Level and IB revision guides by James R. Martin. Available on Amazon.</p>
-          <a href="books.html" class="btn btn-accent">View Books &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════════════ IBDP ════════════ -->
-    <div class="tab-panel" id="panel-ibdp">
-      <div class="container">
-        <ul class="sub-tab-bar" data-level="ibdp">
-          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
-          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
-          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
-          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
-          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
-          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
-          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
-          <li><button class="sub-tab-btn" data-sub="books">Books</button></li>
-        </ul>
-
-        <div class="sub-panel active" data-level="ibdp" data-sub="games">
-          <h2 class="panel-title">Revision Games</h2>
-          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
-          <div class="feature-tags">
-            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
-            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
-          </div>
-          <div class="subject-chips">
-            <span class="subject-chip">&#x1F9EC; Biology</span>
-            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
-            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
-            <span class="subject-chip">&#x1F4D0; Maths</span>
-            <span class="subject-chip">&#x1F4DD; English Language</span>
-            <span class="subject-chip">&#x1F4D6; English Literature</span>
-            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
-            <span class="subject-chip">&#x1F30D; Geography</span>
-            <span class="subject-chip">&#x1F9E0; Psychology</span>
-            <span class="subject-chip">&#x1F4CA; Economics</span>
-            <span class="subject-chip">&#x1F4BB; Computer Science</span>
-            <span class="subject-chip">&#x1F4BC; Business Studies</span>
-            <span class="subject-chip">&#x1F465; Sociology</span>
-            <span class="subject-chip">&#x1F54C; Religious Studies</span>
-            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
-            <span class="subject-chip">&#x1F3B5; Music</span>
-            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
-            <span class="subject-chip">&#x1F527; Design Technology</span>
-            <span class="subject-chip">&#x1F331; Environmental Science</span>
-            <span class="subject-chip">&#x1F52D; Astronomy</span>
-            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
-            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
-            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
-            <span class="subject-chip">&#x1F3AD; Drama</span>
-            <span class="subject-chip">&#x1F373; Food Technology</span>
-          </div>
-          <a href="games.html" class="btn btn-accent">Browse IBDP Games &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="terms">
-          <h2 class="panel-title">Terminology Tester</h2>
-          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
-          <div class="feature-tags">
-            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
-            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
-            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
-          </div>
-          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="vocab">
-          <h2 class="panel-title">Language Vocabulary Trainer</h2>
-          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
-          <div class="lang-cards">
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
-            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
-          </div>
-          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="stories">
-          <h2 class="panel-title">Roleplay Stories</h2>
-          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
-          <div class="feature-tags">
-            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
-          </div>
-          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="jokes">
-          <h2 class="panel-title">Subject Jokes</h2>
-          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
-          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="drawit">
-          <h2 class="panel-title">Draw It</h2>
-          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
-          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="nature">
-          <h2 class="panel-title">Nature Guide</h2>
-          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
-          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
-        </div>
-
-        <div class="sub-panel" data-level="ibdp" data-sub="books">
-          <h2 class="panel-title">Revision Books</h2>
-          <p class="panel-desc">GCSE, A-Level and IB revision guides by James R. Martin. Available on Amazon.</p>
-          <a href="books.html" class="btn btn-accent">View Books &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════════════ International ════════════ -->
-    <div class="tab-panel" id="panel-international">
-      <div class="container">
-        <h2 class="panel-title">International English</h2>
-        <p class="panel-desc">Prepare for IELTS, TOEFL, and GRE exams with our vocabulary trainer.</p>
-        <div class="intl-cards">
-          <div class="intl-card">
-            <h3>IELTS / TOEFL</h3>
-            <p>Academic English for university admissions &mdash; study, test, and stretch your vocabulary across high, medium, and low frequency word bands.</p>
-          </div>
-          <div class="intl-card">
-            <h3>GRE</h3>
-            <p>Graduate-level verbal reasoning vocabulary &mdash; 772 words across three frequency bands.</p>
-          </div>
-        </div>
-        <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
-      </div>
-    </div>
-
-    <!-- ════════════ Teachers ════════════ -->
-    <div class="tab-panel" id="panel-teachers">
-      <div class="container">
-        <h2 class="panel-title">For Teachers</h2>
-        <p class="panel-desc">24 interactive classroom simulations from Mars Colony Survival to Election Campaign &mdash; KS3, GCSE and A-Level. Open in any browser, no setup needed.</p>
-
-        <div class="sim-grid">
-
-          <!-- Business Studies -->
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Dragon's Den Startup</h3>
-            <p class="sim-card-subject">Business Studies</p>
-            <p>Pitch a startup idea to a panel of investors. Build a business plan, handle objections, and secure funding.</p>
-            <a href="simulations/Dragons_Den_Startup_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- Computer Science -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Robot Factory</h3>
-            <p class="sim-card-subject">Computer Science</p>
-            <p>Program robots on a factory floor. Debug logic errors and optimise production lines.</p>
-            <a href="simulations/Robot_Factory_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Startup CTO</h3>
-            <p class="sim-card-subject">Computer Science</p>
-            <p>Lead the tech team of a growing startup. Make architecture decisions under real-world constraints.</p>
-            <a href="simulations/Startup_CTO_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>AI Ethics Board</h3>
-            <p class="sim-card-subject">Computer Science</p>
-            <p>Chair an ethics board reviewing AI deployment proposals. Balance innovation with responsibility.</p>
-            <a href="simulations/AI_Ethics_Board_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- Economics -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Market Traders</h3>
-            <p class="sim-card-subject">Economics</p>
-            <p>Run a market stall. Set prices, manage stock, and respond to changing demand.</p>
-            <a href="simulations/Market_Traders_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Island Economy</h3>
-            <p class="sim-card-subject">Economics</p>
-            <p>Manage a small island economy. Control fiscal and monetary policy to maintain stability.</p>
-            <a href="simulations/Island_Economy_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Hedge Fund Challenge</h3>
-            <p class="sim-card-subject">Economics</p>
-            <p>Run a hedge fund through volatile markets. Analyse data, manage risk, and maximise returns.</p>
-            <a href="simulations/Hedge_Fund_Challenge_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- English -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Newsroom Deadline</h3>
-            <p class="sim-card-subject">English</p>
-            <p>Run a newsroom under deadline pressure. Write headlines, verify sources, and publish stories.</p>
-            <a href="simulations/Newsroom_Deadline_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Courtroom Drama</h3>
-            <p class="sim-card-subject">English</p>
-            <p>Take on the role of a barrister. Build arguments, cross-examine witnesses, and deliver a closing statement.</p>
-            <a href="simulations/Courtroom_Drama_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Publishing House</h3>
-            <p class="sim-card-subject">English</p>
-            <p>Run a publishing house. Commission authors, edit manuscripts, and decide what gets published.</p>
-            <a href="simulations/Publishing_House_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- Geography -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>River Valley Settlement</h3>
-            <p class="sim-card-subject">Geography</p>
-            <p>Choose where to build a settlement along a river valley. Balance resources, flood risk, and access.</p>
-            <a href="simulations/River_Valley_Settlement_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Megacity Mayor</h3>
-            <p class="sim-card-subject">Geography</p>
-            <p>Govern a rapidly growing megacity. Manage housing, transport, and environmental challenges.</p>
-            <a href="simulations/Megacity_Mayor_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Climate Summit Negotiator</h3>
-            <p class="sim-card-subject">Geography</p>
-            <p>Represent a nation at a global climate summit. Negotiate emissions targets and funding commitments.</p>
-            <a href="simulations/Climate_Summit_Negotiator_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- History -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Castle Under Siege</h3>
-            <p class="sim-card-subject">History</p>
-            <p>Defend a medieval castle under siege. Manage supplies, deploy defences, and negotiate with attackers.</p>
-            <a href="simulations/Castle_Under_Siege_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Weimar Republic Crisis</h3>
-            <p class="sim-card-subject">History</p>
-            <p>Navigate the political crises of the Weimar Republic. Make decisions that shape Germany's future.</p>
-            <a href="simulations/Weimar_Republic_Crisis_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Cold War Brinkmanship</h3>
-            <p class="sim-card-subject">History</p>
-            <p>Manage a Cold War crisis. Balance diplomacy, intelligence, and military readiness without triggering conflict.</p>
-            <a href="simulations/Cold_War_Brinkmanship_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- Science -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Ecosystem Architects</h3>
-            <p class="sim-card-subject">Science</p>
-            <p>Design and manage a balanced ecosystem. Introduce species, monitor populations, and maintain biodiversity.</p>
-            <a href="simulations/Ecosystem_Architects_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Rocket Launch Programme</h3>
-            <p class="sim-card-subject">Science</p>
-            <p>Lead a rocket launch programme. Calculate trajectories, manage fuel, and hit orbital targets.</p>
-            <a href="simulations/Rocket_Launch_Programme_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level gcse">GCSE</span>
-            <h3>Mars Colony Survival</h3>
-            <p class="sim-card-subject">Science</p>
-            <p>Establish and maintain a colony on Mars. Manage oxygen, water, food, and energy systems.</p>
-            <a href="simulations/Mars_Colony_Survival_GCSE.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Pandemic Response Lab</h3>
-            <p class="sim-card-subject">Science</p>
-            <p>Lead a public health response to a disease outbreak. Analyse data, allocate resources, and advise policy.</p>
-            <a href="simulations/Pandemic_Response_Lab_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- Politics / General -->
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Global Trade War</h3>
-            <p class="sim-card-subject">Economics / Politics</p>
-            <p>Navigate an escalating global trade war. Set tariffs, negotiate deals, and protect your economy.</p>
-            <a href="simulations/Global_Trade_War_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level a-level">A-Level</span>
-            <h3>Election Campaign</h3>
-            <p class="sim-card-subject">Politics</p>
-            <p>Run a full election campaign. Craft policy, manage media, and win over voters.</p>
-            <a href="simulations/Election_Campaign_A-level.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <!-- Additional KS3 simulations from folder -->
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Community Council</h3>
-            <p class="sim-card-subject">Citizenship</p>
-            <p>Sit on a community council and make decisions about local issues, budgets, and priorities.</p>
-            <a href="simulations/Community_Council_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-          <div class="sim-card">
-            <span class="sim-card-level ks3">KS3</span>
-            <h3>Theme Park Tycoon</h3>
-            <p class="sim-card-subject">Business Studies</p>
-            <p>Design and manage a theme park. Balance investment, visitor satisfaction, and profitability.</p>
-            <a href="simulations/Theme_Park_Tycoon_KS3.html" class="sim-card-link">Launch &rarr;</a>
-          </div>
-
-        </div>
-
-        <!-- Homeroom -->
-        <div class="homeroom-block">
-          <h2 class="panel-title">Homeroom</h2>
-          <p class="panel-desc">A full-screen morning dashboard for classrooms. Word of the Day, Maths Problem, Guess the Flag, On This Day and more &mdash; all rotating daily.</p>
-          <div class="homeroom-btns">
-            <a href="homeroom.html" class="btn btn-accent">Open Set A &rarr;</a>
-            <a href="homeroom2.html" class="btn">Open Set B &rarr;</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ════════════ Parents ════════════ -->
-    <div class="tab-panel" id="panel-parents">
-      <div class="container">
-        <h2 class="panel-title">For Parents</h2>
-        <div class="parents-content">
-          <p>ClassCraft is a free collection of revision resources designed to make studying for GCSE and A-Level engaging, varied, and effective. All resources are free, require no login, and work in any browser.</p>
-          <p>Your child can access 160+ revision games, 4,600+ vocabulary flashcards, 600 roleplay stories, and more across 25 subjects &mdash; from Biology to Economics.</p>
-          <p>If you have any questions about ClassCraft, would like to discuss tutoring options, or have any other queries, we'd love to hear from you.</p>
-        </div>
-        <a href="#contact" class="btn btn-accent" onclick="activateTab('contact'); return false;">Get in Touch &rarr;</a>
-      </div>
-    </div>
-
-    <!-- ════════════ Contributors ════════════ -->
-    <div class="tab-panel" id="panel-contributors">
-      <div class="container">
-        <h2 class="panel-title">The people behind ClassCraft.</h2>
-        <p class="panel-desc">ClassCraft is a free collection of revision resources where we experiment with new ways to make studying fun, varied, and effective.</p>
-
-        <div class="contributor-card" style="margin-top: 2rem;">
-          <div class="contributor-photo">
-            <img src="james-martin.png" alt="James Martin" />
-          </div>
-          <div class="contributor-info">
-            <h2>James Martin</h2>
-            <p>Physics teacher. Taught in secondary schools and universities in the UK and abroad. Publishes revision guides on Amazon as James R. Martin.</p>
-            <p>Built ClassCraft as a free set of revision tools &mdash; games, simulations, stories, and flashcards across 25 subjects. No login, no subscription.</p>
-            <ul class="contributor-creds">
-              <li>MSci Physics &mdash; Bristol</li>
-              <li>PGCE &mdash; Oxford</li>
-              <li>Published Author</li>
-              <li>KS3, GCSE &amp; A-Level</li>
-            </ul>
-          </div>
-        </div>
-
-        <hr class="rule" />
-
-        <p class="section-label">What&rsquo;s available</p>
-        <h3 style="margin-bottom: 0.5rem;">Everything on the site</h3>
-        <div class="overview-grid">
-          <div class="overview-card">
-            <span class="overview-num">160+</span>
-            <h3>Revision Games</h3>
-            <p>Memory Match, Sort It, Quiz, Timeline and Label the Diagram &mdash; seven formats across 25 subjects. Free, instant, no login.</p>
-            <a href="games.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Browse games &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">4,600+</span>
-            <h3>Terminology Tester</h3>
-            <p>Vocabulary flashcards, quizzes and games covering 25 subjects and 12 exam boards including AQA, Edexcel, OCR and IB.</p>
-            <a href="vocab-hub/vocab-hub.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Start testing &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">600</span>
-            <h3>Roleplay Stories</h3>
-            <p>Interactive narratives with exam-style questions woven into the story. 20 subjects, KS3 to A-Level.</p>
-            <a href="roleplay.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Explore stories &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">24</span>
-            <h3>Simulations</h3>
-            <p>Interactive classroom activities from Mars Colony Survival to Election Campaign &mdash; KS3, GCSE and A-Level.</p>
-            <a href="#teachers" style="font-size:0.8rem;color:var(--accent);font-weight:500;" onclick="activateTab('teachers'); return false;">See simulations &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">22</span>
-            <h3>Draw It</h3>
-            <p>Study a labelled diagram, then recreate it on a pixel grid from memory. 15 subjects from Biology to Music.</p>
-            <a href="draw-it.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Try Draw It &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">&#x2600;&#xFE0F;</span>
-            <h3>Homeroom</h3>
-            <p>Daily rotating dashboard for classrooms &mdash; Word of the Day, Maths Problem, Guess the Flag and more. Two sets available.</p>
-            <a href="homeroom.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Open Homeroom &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">&#x1F33F;</span>
-            <h3>Nature Guide</h3>
-            <p>Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
-            <a href="nature.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Explore nature &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">&#x1F4DA;</span>
-            <h3>Books</h3>
-            <p>GCSE, A-Level and IB revision guides by James R. Martin, available on Amazon.</p>
-            <a href="books.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">View books &rarr;</a>
-          </div>
-          <div class="overview-card">
-            <span class="overview-num">&#x1F602;</span>
-            <h3>Subject Jokes</h3>
-            <p>Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
-            <a href="jokes.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Have a laugh &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════════════ Contact ════════════ -->
-    <div class="tab-panel" id="panel-contact">
-      <div class="container">
-        <h2 class="panel-title">Contact</h2>
-        <p class="panel-desc">Whether you're an educator, institution, or publisher &mdash; we'd like to hear from you.</p>
-
-        <div class="contact-layout">
-          <!-- Form -->
-          <div>
-            <div class="form-success" id="form-success">
-              <h3>Message received</h3>
-              <p>Thank you for getting in touch. We'll respond within two working days.</p>
-            </div>
-
-            <form class="contact-form" id="contact-form"
-              action="https://formspree.io/f/xqenwavy"
-              method="POST">
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="name">Name</label>
-                  <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="email">Email</label>
-                  <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="organisation">Organisation (optional)</label>
-                <input class="form-input" type="text" id="organisation" name="organisation" placeholder="School, university, company..." />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="subject">Enquiry type</label>
-                <select class="form-select" id="subject" name="subject" required>
-                  <option value="" disabled selected>Select an option</option>
-                  <option value="simulations">Simulations</option>
-                  <option value="books">Books &amp; Publications</option>
-                  <option value="workshops">Workshops &amp; Training</option>
-                  <option value="tutoring">Tutoring</option>
-                  <option value="institutional">Institutional Partnership</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="message">Message</label>
-                <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your enquiry..." required></textarea>
-              </div>
-
-              <div>
-                <button type="submit" class="btn btn-accent" style="width: 100%;">Send Message</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Side info -->
-          <div style="display: flex; flex-direction: column; gap: 1.5rem; padding-top: 0.25rem;">
-            <div>
-              <p class="section-label" style="margin-bottom: 0.6rem;">Response time</p>
-              <p style="font-size: 0.9rem; color: var(--ink-mid);">We aim to respond to all enquiries within two working days.</p>
-            </div>
-            <div class="info-block">
-              <p class="section-label" style="margin-bottom: 0.6rem;">Simulations</p>
-              <p style="font-size: 0.9rem; color: var(--ink-mid);">Interested in a bespoke simulation? We develop custom interactive tools to order.</p>
-            </div>
-            <div class="info-block">
-              <p class="section-label" style="margin-bottom: 0.6rem;">Books</p>
-              <p style="font-size: 0.9rem; color: var(--ink-mid);">For bulk orders, inspection copies, or to register interest in forthcoming titles.</p>
-            </div>
-            <div class="info-block">
-              <p class="section-label" style="margin-bottom: 0.6rem;">Workshops</p>
-              <p style="font-size: 0.9rem; color: var(--ink-mid);">Professional development for educators and institutions. Details coming soon.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /tab-panels -->
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="#contributors" style="color:inherit;text-decoration:underline;text-underline-offset:3px;" onclick="activateTab('contributors'); return false;">James Martin</a></p>
+      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">James Martin</a></p>
     </div>
   </footer>
 
   <script>
-  (function() {
-    // ── Year ──
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ── Nav hamburger ──
-    const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
-    const overlay = document.getElementById('nav-overlay');
-
-    function openMenu() {
-      toggle.classList.add('open');
-      links.classList.add('open');
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMenu() {
-      toggle.classList.remove('open');
-      links.classList.remove('open');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    toggle.addEventListener('click', function() {
-      toggle.classList.contains('open') ? closeMenu() : openMenu();
-    });
-    overlay.addEventListener('click', closeMenu);
-
-    // ── Tab system ──
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
-    const tabBarWrap = document.getElementById('tab-bar-wrap');
-
-    function activateTab(tabId, pushState) {
-      // Main tabs
-      tabBtns.forEach(function(btn) {
-        btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
-      });
-      tabPanels.forEach(function(panel) {
-        panel.classList.toggle('active', panel.id === 'panel-' + tabId);
-      });
-
-      // Nav link highlighting
-      navLinks.forEach(function(link) {
-        link.classList.toggle('active', link.getAttribute('data-nav') === tabId);
-      });
-
-      // Update hash
-      if (pushState !== false) {
-        history.replaceState(null, '', '#' + tabId);
-      }
-
-      // Scroll tab button into view
-      var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabId + '"]');
-      if (activeBtn) {
-        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-
-      // Scroll to tab bar
-      if (pushState !== false) {
-        tabBarWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    // Make activateTab globally accessible for inline onclick handlers
-    window.activateTab = activateTab;
-
-    // Main tab clicks
-    tabBtns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        activateTab(btn.getAttribute('data-tab'));
-      });
-    });
-
-    // Nav link clicks
-    navLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var nav = link.getAttribute('data-nav');
-        closeMenu();
-        if (nav === 'home') {
-          history.replaceState(null, '', window.location.pathname);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          // Reset nav highlight
-          navLinks.forEach(function(l) { l.classList.remove('active'); });
-          link.classList.add('active');
-        } else {
-          activateTab(nav);
-        }
-      });
-    });
-
-    // ── Sub-tab system ──
-    document.querySelectorAll('.sub-tab-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var bar = btn.closest('.sub-tab-bar') || btn.closest('ul');
-        var level = bar.getAttribute('data-level');
-        var sub = btn.getAttribute('data-sub');
-
-        // Toggle sub-tab buttons within this bar
-        bar.querySelectorAll('.sub-tab-btn').forEach(function(b) {
-          b.classList.toggle('active', b === btn);
-        });
-
-        // Toggle sub-panels within this level's panel
-        var panel = document.getElementById('panel-' + level);
-        panel.querySelectorAll('.sub-panel').forEach(function(sp) {
-          sp.classList.toggle('active', sp.getAttribute('data-sub') === sub && sp.getAttribute('data-level') === level);
-        });
-      });
-    });
-
-    // ── Sticky tab bar ──
-    var heroSection = document.getElementById('hero');
-    function checkSticky() {
-      var heroBottom = heroSection.getBoundingClientRect().bottom;
-      tabBarWrap.classList.toggle('sticky', heroBottom <= 52);
-    }
-    window.addEventListener('scroll', checkSticky, { passive: true });
-    checkSticky();
-
-    // ── Hash on load ──
-    var hash = window.location.hash.replace('#', '');
-    if (hash && document.getElementById('panel-' + hash)) {
-      activateTab(hash, false);
-    }
-
-    // ── Hash change ──
-    window.addEventListener('hashchange', function() {
-      var h = window.location.hash.replace('#', '');
-      if (h && document.getElementById('panel-' + h)) {
-        activateTab(h);
-      }
-    });
-
-    // ── Contact form ──
-    var form = document.getElementById('contact-form');
-    var success = document.getElementById('form-success');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var data = new FormData(form);
-      var response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      } else {
-        alert('Something went wrong. Please try again.');
-      }
-    });
-
-  })();
+    const toggle  = document.getElementById("nav-toggle");
+    const links   = document.getElementById("nav-links");
+    const overlay = document.getElementById("nav-overlay");
+    function openMenu()  { toggle.classList.add("open");    links.classList.add("open");    overlay.classList.add("open");    document.body.style.overflow="hidden"; }
+    function closeMenu() { toggle.classList.remove("open"); links.classList.remove("open"); overlay.classList.remove("open"); document.body.style.overflow=""; }
+    toggle.addEventListener("click", () => toggle.classList.contains("open") ? closeMenu() : openMenu());
+    overlay.addEventListener("click", closeMenu);
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     /* ── Hero Pac-Man mini-game + quiz ── */
     (function() {
