@@ -76,6 +76,17 @@
     .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
     .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── About feature cards ───────────── */
+    .about-grid { grid-template-columns: 1fr; }
+    @media (min-width: 600px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .about-grid { grid-template-columns: repeat(3, 1fr); } }
+    .feature-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.5rem; }
+    .feature-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.75rem; }
+    .feature-card-num { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
+    .feature-card-link { font-size: 0.8rem; color: var(--accent); font-weight: 500; text-decoration: none; }
+    .feature-card-link:hover { text-decoration: underline; }
+
     /* ── Panel content ─────────────────── */
     .panel-title { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.5rem; }
     .panel-desc { color: var(--ink-mid); font-size: 0.95rem; max-width: 60ch; margin-bottom: 1.25rem; line-height: 1.7; }
@@ -174,6 +185,7 @@
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#" class="active" data-nav="home">Home</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
         <li><a href="#ks3" data-nav="ks3">KS3</a></li>
         <li><a href="#gcse" data-nav="gcse">GCSE</a></li>
         <li><a href="#a-level" data-nav="a-level">A-Level</a></li>
@@ -195,7 +207,7 @@
         <h1 class="fade-up fade-up-2">Your revision, <em>sorted.</em></h1>
         <p class="hero-sub fade-up fade-up-3">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser.</p>
         <div class="hero-btns fade-up fade-up-4">
-          <a href="#ks3" class="btn btn-accent btn-lg" id="explore-btn">Explore Resources &rarr;</a>
+          <a href="#about" class="btn btn-accent btn-lg" id="explore-btn">Explore Resources &rarr;</a>
           <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
         </div>
       </div>
@@ -213,7 +225,8 @@
   <div class="tab-bar-wrap" id="tab-bar-wrap">
     <div class="container">
       <ul class="tab-bar" id="tab-bar">
-        <li><button class="tab-btn active" data-tab="ks3">KS3</button></li>
+        <li><button class="tab-btn active" data-tab="about">About</button></li>
+        <li><button class="tab-btn" data-tab="ks3">KS3</button></li>
         <li><button class="tab-btn" data-tab="gcse">GCSE</button></li>
         <li><button class="tab-btn" data-tab="a-level">A-Level</button></li>
         <li><button class="tab-btn" data-tab="ibdp">IBDP</button></li>
@@ -229,8 +242,97 @@
   <!-- ── Tab Panels ────────────────────── -->
   <div id="tab-panels">
 
+    <!-- ════════════ ABOUT ════════════ -->
+    <div class="tab-panel active" id="panel-about">
+      <div class="container">
+
+        <h2 class="panel-title" style="margin-bottom: 0.75rem;">A place to experiment with learning</h2>
+        <p style="color: var(--ink-mid); max-width: 56ch; margin-bottom: 2.5rem; font-size: 1rem;">ClassCraft is a free collection of revision resources. We try out new ideas for study and teaching &mdash; games, tools, and formats designed to make revision fun, effective, and worth your time. No login, no subscription, no ads.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;" class="about-grid">
+
+          <div class="feature-card">
+            <span class="feature-card-num">160+</span>
+            <h3>Revision Games</h3>
+            <p>Memory Match, Sort It, Quiz, Timeline and Label the Diagram &mdash; seven formats across 25 subjects. Free, instant, no login.</p>
+            <a href="games.html" class="feature-card-link">Browse games &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">4,600+</span>
+            <h3>Terminology Tester</h3>
+            <p>Vocabulary flashcards, quizzes and games covering 25 subjects and 12 exam boards including AQA, Edexcel, OCR and IB.</p>
+            <a href="vocab-hub/vocab-hub.html" class="feature-card-link">Start testing &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">600</span>
+            <h3>Roleplay Stories</h3>
+            <p>Interactive narratives with exam-style questions woven into the story. 20 subjects, KS3 to A-Level.</p>
+            <a href="roleplay.html" class="feature-card-link">Explore stories &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">24</span>
+            <h3>Simulations</h3>
+            <p>Interactive classroom activities from Mars Colony Survival to Election Campaign &mdash; KS3, GCSE and A-Level.</p>
+            <a href="simulations.html" class="feature-card-link">See simulations &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">22</span>
+            <h3>Draw It</h3>
+            <p>Study a labelled diagram, then recreate it on a pixel grid from memory. 15 subjects from Biology to Music.</p>
+            <a href="draw-it.html" class="feature-card-link">Try Draw It &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">&#x2600;&#xFE0F;</span>
+            <h3>Homeroom</h3>
+            <p>Daily rotating dashboard for classrooms &mdash; Word of the Day, Maths Problem, Guess the Flag and more. Two sets available.</p>
+            <a href="homeroom.html" class="feature-card-link">Open Homeroom &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">&#x1F30D;</span>
+            <h3>Language Vocab</h3>
+            <p>Study, test, and stretch your French, German, Spanish, and English vocabulary with flashcards, quizzes, and fill-in-the-blank.</p>
+            <a href="vocab-hub/vocab.html" class="feature-card-link">Vocab trainer &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">&#x1F33F;</span>
+            <h3>Nature Guide</h3>
+            <p>Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
+            <a href="nature.html" class="feature-card-link">Explore nature &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">&#x1F4DA;</span>
+            <h3>Books</h3>
+            <p>GCSE, A-Level and IB revision guides by James R. Martin, available on Amazon. 50+ titles across multiple subjects.</p>
+            <a href="books.html" class="feature-card-link">View books &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card-num">&#x1F602;</span>
+            <h3>Subject Jokes</h3>
+            <p>Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
+            <a href="jokes.html" class="feature-card-link">Have a laugh &rarr;</a>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px;">
+          <h3 style="margin-bottom: 0.5rem;">Subjects covered</h3>
+          <p style="color: var(--ink-mid); font-size: 0.9rem; line-height: 1.8;">Biology, Chemistry, Physics, Maths, English Language, English Literature, History, Geography, Psychology, Economics, Computer Science, Business Studies, Sociology, Religious Studies, PE &amp; Sport Science, Music, Art &amp; Design, Design Technology, Environmental Science, Astronomy, French, German, Spanish, Drama, Food Technology</p>
+        </div>
+
+      </div>
+    </div>
+
     <!-- ════════════ KS3 ════════════ -->
-    <div class="tab-panel active" id="panel-ks3">
+    <div class="tab-panel" id="panel-ks3">
       <div class="container">
         <ul class="sub-tab-bar" data-level="ks3">
           <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
@@ -1181,7 +1283,7 @@
     // Explore Resources button
     document.getElementById('explore-btn').addEventListener('click', function(e) {
       e.preventDefault();
-      activateTab('ks3');
+      activateTab('about');
     });
 
     // ── Sub-tab system ──
