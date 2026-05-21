@@ -8,16 +8,58 @@
   <link rel="stylesheet" href="style.css" />
   <style>
 
-    /* ── Hero ───────────────────────────── */
-    .hero { padding: 3rem 0 0; position: relative; overflow: hidden; }
+    /* ── Hero (from original) ───────────── */
+    .hero { padding: 2.5rem 0 0; position: relative; overflow: hidden; }
     .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,94,60,0.08) 0%, transparent 70%); pointer-events: none; }
-    .hero-text { text-align: center; max-width: 640px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    .hero-text { text-align: center; }
     .hero-label { display: inline-block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--rule); padding: 0.3rem 0.85rem; border-radius: 20px; margin-bottom: 1.25rem; }
-    .hero h1 { font-size: clamp(2rem, 7vw, 4.2rem); margin: 0 auto 1rem; line-height: 1.08; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 4.2rem); max-width: 16ch; margin: 0 auto 1rem; line-height: 1.08; }
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-sub { font-size: 0.95rem; color: var(--ink-mid); max-width: 48ch; margin: 0 auto 1.75rem; line-height: 1.7; }
-    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0; }
     .btn-lg { padding: 0.75rem 1.5rem; font-size: 0.82rem; }
+
+    /* Pacman game embed */
+    .hero-game { position: relative; background: #0f1117; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(28,23,18,0.15); aspect-ratio: 21/22; width: 100%; max-width: 300px; margin: 0 auto; cursor: pointer; }
+    .hero-game canvas { display: block; width: 100%; height: 100%; }
+    .hero-game-cta { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); background: rgba(74,222,154,0.9); color: #0f1117; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; pointer-events: none; animation: ctaPulse 2s ease-in-out infinite; white-space: nowrap; }
+    @keyframes ctaPulse { 0%,100%{opacity:1;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(-3px)} }
+
+    /* Mobile D-pad */
+    .hero-dpad {
+      display: none; position: absolute; bottom: 0.6rem; right: 0.6rem; z-index: 10;
+      width: 96px; height: 96px;
+      grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px;
+    }
+    .hero-dpad.active { display: grid; }
+    .dp { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; color: rgba(255,255,255,0.75); font-size: 0.72rem; display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; touch-action: manipulation; padding: 0; }
+    .dp:active { background: rgba(123,111,255,0.4); border-color: rgba(123,111,255,0.7); color: #fff; }
+    .dp[data-dir="3"] { grid-column: 2; grid-row: 1; }
+    .dp[data-dir="2"] { grid-column: 1; grid-row: 2; }
+    .dp[data-dir="0"] { grid-column: 3; grid-row: 2; }
+    .dp[data-dir="1"] { grid-column: 2; grid-row: 3; }
+
+    /* Quiz overlay inside game */
+    .quiz-overlay { position: absolute; inset: 0; background: rgba(15,17,23,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .quiz-overlay.active { opacity: 1; pointer-events: auto; }
+    .quiz-q { font-family: var(--font-display); font-size: clamp(0.9rem, 3.5vw, 1.3rem); font-weight: 600; color: #e8eaf0; text-align: center; margin-bottom: 0.75rem; line-height: 1.3; }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
+    .quiz-opt { background: #1a1d27; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.5rem 0.85rem; color: #e8eaf0; font-family: var(--font-body); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .quiz-opt:hover { border-color: #7b6fff; background: rgba(123,111,255,0.12); }
+    .quiz-result { text-align: center; }
+    .quiz-result-emoji { font-size: 2rem; display: block; margin-bottom: 0.35rem; }
+    .quiz-result-heading { font-family: var(--font-display); font-size: clamp(1.1rem, 3.5vw, 1.6rem); font-weight: 600; color: #4ade9a; margin-bottom: 0.3rem; }
+    .quiz-result-sub { font-size: 0.78rem; color: #8b90a8; margin-bottom: 0.75rem; max-width: 260px; }
+    .quiz-result-btn { display: inline-block; background: #4ade9a; color: #0f1117; font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.25rem; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .quiz-result-btn:hover { background: #6ef0b0; color: #0f1117; }
+
+    /* Student quotes strip */
+    .hero-quotes { padding: 2rem 0; margin-top: 2rem; border-top: 1px solid var(--rule); }
+    .quotes-row { display: flex; flex-direction: column; gap: 1.25rem; align-items: stretch; }
+    .quote-card { position: relative; padding-left: 1.25rem; border-left: 2px solid var(--accent-light); }
+    .quote-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 0.35rem; }
+    .quote-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
 
     /* Stats bar */
     .stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; max-width: 700px; margin: 0 auto; }
@@ -27,14 +69,48 @@
     .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
     .stat-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
 
+    /* Tablet (768px+) */
     @media (min-width: 768px) {
-      .hero { padding: 4.5rem 0 0; }
+      .hero { padding: 3.5rem 0 0; }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .hero-text { text-align: left; }
+      .hero h1 { margin: 0 0 1.25rem; }
+      .hero-sub { margin: 0 0 2rem; }
+      .hero-btns { justify-content: flex-start; }
+      .hero-game { max-width: 360px; margin: 0 0 0 auto; border-radius: 14px; box-shadow: 0 20px 60px rgba(28,23,18,0.18); }
       .btn-lg { padding: 0.85rem 1.75rem; font-size: 0.88rem; }
+      .hero-quotes { margin-top: 2.5rem; padding: 2.5rem 0; }
+      .quotes-row { flex-direction: row; gap: 2rem; justify-content: center; align-items: flex-start; }
+      .quote-card { flex: 1; max-width: 380px; }
+      .quote-text { font-size: 1.15rem; }
       .stats-bar { display: flex; flex-wrap: nowrap; }
       .stat { flex: 1; padding: 1.25rem 1rem; border-bottom: none; border-right: 1px solid var(--rule); }
       .stat:nth-child(2n) { border-right: 1px solid var(--rule); }
       .stat:last-child { border-right: none; }
       .stat-num { font-size: 2.2rem; }
+      .quiz-overlay { padding: 1.5rem; }
+      .quiz-q { font-size: clamp(1rem, 2.5vw, 1.3rem); }
+    }
+
+    /* Large desktop (1024px+) */
+    @media (min-width: 1024px) {
+      .hero { padding: 4rem 0 0; }
+      .hero-grid { gap: 3.5rem; }
+      .hero-game { max-width: 420px; }
+      .btn-lg { padding: 0.85rem 2rem; font-size: 0.9rem; }
+      .hero-quotes { margin-top: 3rem; }
+    }
+
+    /* ── Subjects strip (from original) ──── */
+    .subjects-strip { background: var(--parchment-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1.5rem 0; }
+    .subjects-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-align: center; margin-bottom: 1rem; }
+    .subjects-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
+    .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
+    .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
+    @media (min-width: 768px) {
+      .subjects-strip { padding: 2rem 0; }
+      .subjects-list { gap: 0.6rem; }
+      .subject-chip { font-size: 0.78rem; padding: 0.4rem 1rem; }
     }
 
     /* ── Main Tab Bar ──────────────────── */
@@ -70,11 +146,10 @@
     /* ── Feature tags ──────────────────── */
     .feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
     .tag { font-size: 0.65rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 20px; border: 1px solid var(--rule); color: var(--ink-mid); letter-spacing: 0.05em; }
+    @media (min-width: 768px) { .tag { font-size: 0.68rem; padding: 0.3rem 0.75rem; } }
 
-    /* ── Subject chips ─────────────────── */
+    /* ── Subject chips (tab panels) ────── */
     .subject-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.5rem; }
-    .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
-    .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── About feature cards ───────────── */
     .about-grid { grid-template-columns: 1fr; }
@@ -98,7 +173,67 @@
     .lang-flag { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
     .lang-name { font-family: var(--font-display); font-size: 1.1rem; }
 
-    /* ── Simulation cards ──────────────── */
+    /* ── Features (from original) ──────── */
+    .feature { padding: 3rem 0; }
+    .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    @media (min-width: 768px) {
+      .feature { padding: 4rem 0; }
+      .feature-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+      .feature-grid.flip .feature-text { order: 1; }
+      .feature-grid.flip .feature-visual { order: 0; }
+    }
+    @media (min-width: 1024px) {
+      .feature { padding: 5rem 0; }
+      .feature-grid { gap: 5rem; }
+    }
+    .feature-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .feature h2 { font-size: clamp(1.6rem, 4vw, 2.8rem); margin-bottom: 0.75rem; line-height: 1.1; }
+    .feature p { color: var(--ink-mid); margin-bottom: 1.25rem; font-size: 0.95rem; }
+    @media (min-width: 768px) { .feature p { font-size: 1rem; } }
+
+    /* Mock panels (from original) */
+    .mock-panel { background: #1a1a2e; border-radius: 10px; overflow: hidden; box-shadow: 0 12px 40px rgba(28,23,18,0.15); aspect-ratio: 4/3; display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; }
+    @media (min-width: 768px) { .mock-panel { border-radius: 14px; box-shadow: 0 20px 60px rgba(28,23,18,0.18); max-width: none; margin: 0; } }
+    .mock-bar { background: #13131f; padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0; }
+    @media (min-width: 768px) { .mock-bar { padding: 0.6rem 1rem; gap: 0.4rem; } }
+    .mock-dot { width: 8px; height: 8px; border-radius: 50%; }
+    @media (min-width: 768px) { .mock-dot { width: 10px; height: 10px; } }
+    .mock-body { flex: 1; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; overflow: hidden; }
+    .game-card-mock { background: #252540; border-radius: 8px; padding: 0.65rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
+    .game-badge-mock { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+    .game-title-mock { font-size: 0.72rem; color: #d0c8ff; font-family: var(--font-display); font-weight: 600; }
+    .vocab-subject-mock { background: #252540; border-radius: 8px; padding: 0.5rem 0.75rem; display: flex; align-items: center; justify-content: space-between; }
+    .vocab-subject-name { font-size: 0.65rem; color: #c0b8ff; font-weight: 600; }
+    .vocab-count { font-size: 0.55rem; color: #8080a0; }
+    .vocab-game-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+    .vocab-pill { font-size: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .joke-bubble { background: #252540; border-radius: 10px; padding: 0.75rem 1rem; }
+    .joke-q { font-size: 0.65rem; color: #c0b8ff; margin-bottom: 0.4rem; line-height: 1.4; }
+    .joke-a { font-size: 0.62rem; color: #4ade9a; font-style: italic; }
+    .joke-subject { font-size: 0.5rem; color: #6060a0; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
+
+    /* AI section (from original) */
+    .ai-section { padding: 3rem 0; background: var(--parchment-mid); border-top: 1px solid var(--rule); }
+    .ai-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    .ai-card { padding: 1.25rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 10px; }
+    .ai-card h3 { margin-bottom: 0.4rem; font-size: 1rem; }
+    .ai-card p { font-size: 0.85rem; color: var(--ink-mid); }
+    @media (min-width: 768px) {
+      .ai-section { padding: 5rem 0; }
+      .ai-grid { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+      .ai-card { padding: 1.5rem; }
+      .ai-card h3 { font-size: 1.1rem; }
+      .ai-card p { font-size: 0.88rem; }
+    }
+
+    /* Sim (from original) */
+    .sim-feature { display: grid; grid-template-columns: 1fr; gap: 1.5rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; overflow: hidden; padding: 1.25rem; align-items: center; }
+    .sim-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; display: block; }
+    @media (min-width: 768px) {
+      .sim-feature { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; border-radius: 12px; }
+    }
+
+    /* ── Simulation cards (from tabbed) ── */
     .sim-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
     @media (min-width: 600px) { .sim-grid { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 900px) { .sim-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -175,7 +310,7 @@
 </head>
 <body>
 
-  <!-- ── Nav ───────────────────────────── -->
+  <!-- Nav -->
   <nav>
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Class<span>Craft</span></a>
@@ -199,19 +334,55 @@
     </div>
   </nav>
 
-  <!-- ── Hero ──────────────────────────── -->
+  <!-- HERO (from original) -->
   <section class="hero" id="hero">
     <div class="container">
-      <div class="hero-text">
-        <span class="hero-label fade-up fade-up-1">Free &middot; No login &middot; No account needed</span>
-        <h1 class="fade-up fade-up-2">Your revision, <em>sorted.</em></h1>
-        <p class="hero-sub fade-up fade-up-3">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser.</p>
-        <div class="hero-btns fade-up fade-up-4">
-          <a href="#about" class="btn btn-accent btn-lg" id="explore-btn">Explore Resources &rarr;</a>
-          <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
+      <div class="hero-grid">
+
+        <!-- Left: text -->
+        <div class="hero-text">
+          <span class="hero-label fade-up fade-up-1">Free &middot; No login &middot; No account needed</span>
+          <h1 class="fade-up fade-up-2">Your revision,<br><em>sorted.</em></h1>
+          <p class="hero-sub fade-up fade-up-3">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser. We experiment with new ways to make GCSE and A-Level revision fun, effective, and worth your time.</p>
+          <div class="hero-btns fade-up fade-up-4">
+            <a href="games.html" class="btn btn-accent btn-lg">Start Playing &rarr;</a>
+            <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
+          </div>
+        </div>
+
+        <!-- Right: Pacman game -->
+        <div class="hero-game" id="hero-game" tabindex="0" style="outline:none">
+          <canvas id="hero-pacman"></canvas>
+          <div class="hero-game-cta" id="hero-cta">Click to play &middot; Arrow keys to move</div>
+          <!-- Mobile D-pad -->
+          <div class="hero-dpad" id="hero-dpad">
+            <button class="dp" data-dir="3" aria-label="Up">&#x25B2;</button>
+            <button class="dp" data-dir="2" aria-label="Left">&#x25C0;</button>
+            <button class="dp" data-dir="0" aria-label="Right">&#x25B6;</button>
+            <button class="dp" data-dir="1" aria-label="Down">&#x25BC;</button>
+          </div>
+          <div class="quiz-overlay" id="quiz-overlay">
+            <div id="quiz-content"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Student quotes -->
+      <div class="hero-quotes fade-up fade-up-4">
+        <div class="quotes-row">
+          <div class="quote-card">
+            <div class="quote-text">&ldquo;This is a fun way to revise.&rdquo;</div>
+            <div class="quote-name">Billy &mdash; Student</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">&ldquo;This makes it easier to sit down and start studying.&rdquo;</div>
+            <div class="quote-name">Tina &mdash; Student</div>
+          </div>
         </div>
       </div>
 
+      <!-- Stats -->
       <div class="stats-bar fade-up fade-up-4" style="margin-top: 2.5rem; margin-bottom: 0;">
         <div class="stat"><span class="stat-num">160+</span><span class="stat-label">Revision Games</span></div>
         <div class="stat"><span class="stat-num">4,600+</span><span class="stat-label">Vocab Terms</span></div>
@@ -221,7 +392,41 @@
     </div>
   </section>
 
-  <!-- ── Main Tab Bar ──────────────────── -->
+  <!-- SUBJECTS STRIP (from original) -->
+  <div class="subjects-strip">
+    <div class="container">
+      <p class="subjects-label">Subjects covered</p>
+      <div class="subjects-list">
+        <a href="games.html#biology" class="subject-chip">&#x1F9EC; Biology</a>
+        <a href="games.html#chemistry" class="subject-chip">&#x2697;&#xFE0F; Chemistry</a>
+        <a href="games.html#physics" class="subject-chip">&#x269B;&#xFE0F; Physics</a>
+        <a href="games.html#maths" class="subject-chip">&#x1F4D0; Maths</a>
+        <a href="games.html#english-language" class="subject-chip">&#x1F4DD; English Language</a>
+        <a href="games.html#english-literature" class="subject-chip">&#x1F4D6; English Literature</a>
+        <a href="games.html#history" class="subject-chip">&#x1F3DB;&#xFE0F; History</a>
+        <a href="games.html#geography" class="subject-chip">&#x1F30D; Geography</a>
+        <a href="games.html#psychology" class="subject-chip">&#x1F9E0; Psychology</a>
+        <a href="games.html#economics" class="subject-chip">&#x1F4CA; Economics</a>
+        <a href="games.html#computer-science" class="subject-chip">&#x1F4BB; Computer Science</a>
+        <a href="games.html#business-studies" class="subject-chip">&#x1F4BC; Business Studies</a>
+        <a href="games.html#sociology" class="subject-chip">&#x1F465; Sociology</a>
+        <a href="games.html#religious-studies" class="subject-chip">&#x1F54C; Religious Studies</a>
+        <a href="games.html#pe" class="subject-chip">&#x1F3C3; PE &amp; Sport Science</a>
+        <a href="games.html#music" class="subject-chip">&#x1F3B5; Music</a>
+        <a href="games.html#art" class="subject-chip">&#x1F3A8; Art &amp; Design</a>
+        <a href="games.html#design-technology" class="subject-chip">&#x1F527; Design Technology</a>
+        <a href="games.html#environmental-science" class="subject-chip">&#x1F331; Environmental Science</a>
+        <a href="games.html#astronomy" class="subject-chip">&#x1F52D; Astronomy</a>
+        <a href="games.html#french" class="subject-chip">&#x1F1EB;&#x1F1F7; French</a>
+        <a href="games.html#german" class="subject-chip">&#x1F1E9;&#x1F1EA; German</a>
+        <a href="games.html#spanish" class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</a>
+        <a href="games.html#drama" class="subject-chip">&#x1F3AD; Drama</a>
+        <a href="games.html#food-technology" class="subject-chip">&#x1F373; Food Technology</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
   <div class="tab-bar-wrap" id="tab-bar-wrap">
     <div class="container">
       <ul class="tab-bar" id="tab-bar">
@@ -239,98 +444,642 @@
     </div>
   </div>
 
-  <!-- ── Tab Panels ────────────────────── -->
+  <!-- TAB PANELS -->
   <div id="tab-panels">
 
-    <!-- ════════════ ABOUT ════════════ -->
+    <!-- ABOUT TAB (contains original feature showcase) -->
     <div class="tab-panel active" id="panel-about">
-      <div class="container">
 
-        <h2 class="panel-title" style="margin-bottom: 0.75rem;">A place to experiment with learning</h2>
-        <p style="color: var(--ink-mid); max-width: 56ch; margin-bottom: 2.5rem; font-size: 1rem;">ClassCraft is a free collection of revision resources. We try out new ideas for study and teaching &mdash; games, tools, and formats designed to make revision fun, effective, and worth your time. No login, no subscription, no ads.</p>
-
-        <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;" class="about-grid">
-
-          <div class="feature-card">
-            <span class="feature-card-num">160+</span>
-            <h3>Revision Games</h3>
-            <p>Memory Match, Sort It, Quiz, Timeline and Label the Diagram &mdash; seven formats across 25 subjects. Free, instant, no login.</p>
-            <a href="games.html" class="feature-card-link">Browse games &rarr;</a>
+  <!-- FEATURE: GAMES -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-text">
+          <p class="feature-eyebrow">160+ games &middot; 25 subjects &middot; 7 formats</p>
+          <h2>Games that make<br>the content stick.</h2>
+          <p>Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects. Open any game in your browser right now. No account, no app, no fuss.</p>
+          <div class="feature-tags">
+            <span class="tag">Memory Match</span>
+            <span class="tag">Sort It</span>
+            <span class="tag">Quiz</span>
+            <span class="tag">Timeline</span>
+            <span class="tag">Label the Diagram</span>
           </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">4,600+</span>
-            <h3>Terminology Tester</h3>
-            <p>Vocabulary flashcards, quizzes and games covering 25 subjects and 12 exam boards including AQA, Edexcel, OCR and IB.</p>
-            <a href="vocab-hub/vocab-hub.html" class="feature-card-link">Start testing &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">600</span>
-            <h3>Roleplay Stories</h3>
-            <p>Interactive narratives with exam-style questions woven into the story. 20 subjects, KS3 to A-Level.</p>
-            <a href="roleplay.html" class="feature-card-link">Explore stories &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">24</span>
-            <h3>Simulations</h3>
-            <p>Interactive classroom activities from Mars Colony Survival to Election Campaign &mdash; KS3, GCSE and A-Level.</p>
-            <a href="simulations.html" class="feature-card-link">See simulations &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">22</span>
-            <h3>Draw It</h3>
-            <p>Study a labelled diagram, then recreate it on a pixel grid from memory. 15 subjects from Biology to Music.</p>
-            <a href="draw-it.html" class="feature-card-link">Try Draw It &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">&#x2600;&#xFE0F;</span>
-            <h3>Homeroom</h3>
-            <p>Daily rotating dashboard for classrooms &mdash; Word of the Day, Maths Problem, Guess the Flag and more. Two sets available.</p>
-            <a href="homeroom.html" class="feature-card-link">Open Homeroom &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">&#x1F30D;</span>
-            <h3>Language Vocab</h3>
-            <p>Study, test, and stretch your French, German, Spanish, and English vocabulary with flashcards, quizzes, and fill-in-the-blank.</p>
-            <a href="vocab-hub/vocab.html" class="feature-card-link">Vocab trainer &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">&#x1F33F;</span>
-            <h3>Nature Guide</h3>
-            <p>Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
-            <a href="nature.html" class="feature-card-link">Explore nature &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">&#x1F4DA;</span>
-            <h3>Books</h3>
-            <p>GCSE, A-Level and IB revision guides by James R. Martin, available on Amazon. 50+ titles across multiple subjects.</p>
-            <a href="books.html" class="feature-card-link">View books &rarr;</a>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-card-num">&#x1F602;</span>
-            <h3>Subject Jokes</h3>
-            <p>Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
-            <a href="jokes.html" class="feature-card-link">Have a laugh &rarr;</a>
-          </div>
-
+          <a href="games.html" class="btn btn-accent">Find your subject &rarr;</a>
         </div>
-
-        <div style="margin-top: 3rem; padding: 2rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px;">
-          <h3 style="margin-bottom: 0.5rem;">Subjects covered</h3>
-          <p style="color: var(--ink-mid); font-size: 0.9rem; line-height: 1.8;">Biology, Chemistry, Physics, Maths, English Language, English Literature, History, Geography, Psychology, Economics, Computer Science, Business Studies, Sociology, Religious Studies, PE &amp; Sport Science, Music, Art &amp; Design, Design Technology, Environmental Science, Astronomy, French, German, Spanish, Drama, Food Technology</p>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.4rem">
+              <!-- Score bar -->
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.2rem;">
+                <span style="font-size:0.6rem;color:#8080a0;letter-spacing:0.08em;text-transform:uppercase">Memory Match — Genetics</span>
+                <span style="font-size:0.6rem;color:#4ade9a;font-weight:600">4 matched</span>
+              </div>
+              <!-- Memory grid 4x4 -->
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.35rem;flex:1">
+                <!-- matched pair -->
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Allele</div>
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Alt. form of a gene</div>
+                <!-- face down -->
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <!-- flipped -->
+                <div style="background:#3a3a6a;border:1px solid #7b6fff88;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#c0b8ff;line-height:1.2">Dominant</div>
+                <!-- matched pair -->
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Meiosis</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Produces gametes</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <!-- flipped -->
+                <div style="background:#3a3a6a;border:1px solid #7b6fff88;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#c0b8ff;line-height:1.2">Expressed when 2 copies present</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <!-- matched pair -->
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Genotype</div>
+                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
+                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Genetic makeup</div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
+  </section>
 
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: TERMINOLOGY TESTER -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid flip">
+        <div class="feature-text">
+          <p class="feature-eyebrow">4,600+ terms &middot; 12 exam boards</p>
+          <h2>Know every term<br>before the exam.</h2>
+          <p>Choose your subject, pick your exam board, select a topic &mdash; then practice with Flashcard Pairs, Quiz, Hangman, Anagram, Crossword or Term Guess. AQA, Edexcel, OCR, Cambridge IGCSE, IB and more.</p>
+          <div class="feature-tags">
+            <span class="tag">Flashcard Pairs</span>
+            <span class="tag">Hangman</span>
+            <span class="tag">Anagram</span>
+            <span class="tag">Crossword</span>
+            <span class="tag">Term Guess</span>
+            <span class="tag">Quiz</span>
+          </div>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Test yourself now &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.5rem;align-items:center;justify-content:center">
+              <!-- Context clue -->
+              <div style="font-size:0.58rem;color:#8080a0;text-align:center;letter-spacing:0.06em;text-transform:uppercase">AQA Biology &mdash; Hangman</div>
+              <div style="font-size:0.6rem;color:#a0a0c0;text-align:center;font-style:italic;padding:0 0.5rem">"A change in the DNA base sequence"</div>
+
+              <!-- Gallows SVG -->
+              <svg viewBox="0 0 120 90" style="width:60%;max-width:140px;flex-shrink:0">
+                <!-- Gallows structure -->
+                <line x1="10" y1="85" x2="80" y2="85" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="30" y1="85" x2="30" y2="10" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="30" y1="10" x2="70" y2="10" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="70" y1="10" x2="70" y2="22" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Head -->
+                <circle cx="70" cy="28" r="6" fill="none" stroke="#e05050" stroke-width="2"/>
+                <!-- Body -->
+                <line x1="70" y1="34" x2="70" y2="55" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Left arm -->
+                <line x1="70" y1="38" x2="58" y2="48" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Right arm -->
+                <line x1="70" y1="38" x2="82" y2="48" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Left leg -->
+                <line x1="70" y1="55" x2="60" y2="68" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
+                <!-- Right leg — missing, one guess left -->
+              </svg>
+
+              <!-- Word display: MUTATION — M_T_T__N -->
+              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">M</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">T</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">T</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">N</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
+              </div>
+
+              <!-- Wrong guesses -->
+              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap;margin-top:0.1rem">
+                <span style="font-size:0.6rem;color:#8080a0">Wrong:</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">E</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">S</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">R</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">D</span>
+                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">L</span>
+              </div>
+
+              <!-- Lives remaining -->
+              <div style="font-size:0.58rem;color:#f0a030;text-align:center">1 guess remaining</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: JOKES -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-text">
+          <p class="feature-eyebrow">Take a break</p>
+          <h2>Curriculum jokes your<br>teacher will pretend not to find funny.</h2>
+          <p>Sometimes you just need a laugh. A growing collection of subject jokes across every curriculum area &mdash; the best kind of procrastination.</p>
+          <a href="jokes.html" class="btn btn-accent">Have a laugh &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.4rem;padding:0.6rem">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.1rem">
+                <span style="font-size:0.5rem;color:#8080a0;letter-spacing:0.08em;text-transform:uppercase">Subject Jokes</span>
+                <span style="font-size:0.5rem;padding:0.15rem 0.4rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">Random</span>
+              </div>
+              <div style="display:flex;gap:0.25rem;margin-bottom:0.2rem;flex-wrap:wrap">
+                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#3a3a5a;color:#c0b8ff;border-radius:10px">Biology</span>
+                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#8b5e3c;color:#f5efe6;border-radius:10px;border-bottom:1px solid #c4956a">Physics</span>
+                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#3a3a5a;color:#c0b8ff;border-radius:10px">History</span>
+                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#3a3a5a;color:#c0b8ff;border-radius:10px">Maths</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;flex:1">
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
+                  <img src="jokes/physics/joke_01.jpg" alt="Physics joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
+                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">Physics &middot; #04</div>
+                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">Why can&rsquo;t you trust atoms?</div>
+                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">They make up everything.</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
+                  <img src="jokes/biology/joke_01.jpg" alt="Biology joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
+                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">Biology &middot; #12</div>
+                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">What did the cell say when it stubbed its toe?</div>
+                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">Mitosis!</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
+                  <img src="jokes/history/joke_01.jpg" alt="History joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
+                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">History &middot; #07</div>
+                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">Why was the maths book sad?</div>
+                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">Too many problems.</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
+                  <img src="jokes/maths/joke_01.jpg" alt="Maths joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
+                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">Economics &middot; #03</div>
+                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">What do you call a fake noodle?</div>
+                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">An impasta.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- SIMULATION -->
+  <section class="feature" style="padding-bottom:5rem">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div><p class="section-label">Featured</p><h2 style="margin:0">Simulation</h2></div>
+        <a href="simulations.html" class="btn">View All</a>
+      </div>
+      <div class="sim-feature">
+        <img src="simulations/thumbnails/science_gcse.jpg" alt="Mars Colony Survival simulation" class="sim-img" />
+        <div>
+          <p class="card-label">Science &middot; GCSE &middot; Interactive Simulation</p>
+          <h2 style="font-size:clamp(1.4rem,4vw,2rem);margin-bottom:1rem;">Mars Colony Survival</h2>
+          <p style="color:var(--ink-mid);margin-bottom:1.5rem;font-size:0.95rem;">Teams manage a colony on Mars, applying scientific reasoning to life support, resource management, and survival decisions as the colony faces mounting crises. 7 rounds, live leaderboard &mdash; open in any browser, no setup needed.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="simulations/Mars_Colony_Survival_GCSE.html" target="_blank" class="btn btn-accent">Launch Simulation</a>
+            <a href="simulations.html" class="btn">All Simulations</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- BOOKS -->
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div><p class="section-label">Publications</p><h2 style="margin:0">Books</h2></div>
+        <a href="books.html" class="btn">View All</a>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-biology.png" alt="GCSE Biology" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Biology</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-chemistry.png" alt="GCSE Chemistry" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Chemistry</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-mathematics.png" alt="GCSE Mathematics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Mathematics</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+        <div class="card">
+          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-physics.png" alt="GCSE Physics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
+          <p class="card-label">GCSE &middot; Physics</p>
+          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
+          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: DRAW IT -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid flip">
+        <div class="feature-text">
+          <p class="feature-eyebrow">22 diagrams &middot; 15 subjects</p>
+          <h2>Sketch it from memory.</h2>
+          <p>Study a labelled diagram, then recreate it on a pixel grid. From plant cells to piano keyboards &mdash; a hands-on way to learn the diagrams that come up in exams.</p>
+          <div class="feature-tags">
+            <span class="tag">Biology</span>
+            <span class="tag">Chemistry</span>
+            <span class="tag">Physics</span>
+            <span class="tag">Geography</span>
+            <span class="tag">Music</span>
+            <span class="tag">+ 10 more</span>
+          </div>
+          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.3rem;padding:0.6rem">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="font-size:0.5rem;color:#8080a0;text-transform:uppercase;letter-spacing:0.08em">Draw It &mdash; Plant Cell</span>
+                <div style="display:flex;gap:0.2rem">
+                  <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">Guided</span>
+                  <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">Memory</span>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;flex:1;margin-top:0.2rem">
+                <div style="background:#f5efe6;border-radius:4px;padding:0.3rem;display:flex;flex-direction:column;gap:0.2rem">
+                  <div style="font-size:0.4rem;color:#8a7a6a;text-transform:uppercase;letter-spacing:0.06em;text-align:center">Reference</div>
+                  <svg viewBox="0 0 80 70" style="width:100%;flex:1">
+                    <rect x="5" y="5" width="70" height="60" rx="2" fill="#a8d44a" stroke="#7ab032" stroke-width="1.5"/>
+                    <rect x="10" y="10" width="60" height="50" rx="1" fill="#c8f06a"/>
+                    <ellipse cx="40" cy="35" rx="12" ry="10" fill="#f5cba7" stroke="#d4a574" stroke-width="1"/>
+                    <circle cx="40" cy="35" r="4" fill="#d4764e"/>
+                    <ellipse cx="56" cy="35" rx="6" ry="12" fill="#aee4f5" stroke="#7cc4d5" stroke-width="0.8"/>
+                    <rect x="14" y="48" width="8" height="3" rx="1" fill="#6ab04c"/>
+                    <rect x="24" y="48" width="8" height="3" rx="1" fill="#6ab04c"/>
+                  </svg>
+                </div>
+                <div style="background:#f5efe6;border-radius:4px;padding:0.3rem;display:flex;flex-direction:column;gap:0.2rem">
+                  <div style="font-size:0.4rem;color:#8a7a6a;text-transform:uppercase;letter-spacing:0.06em;text-align:center">Your drawing</div>
+                  <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:1px;flex:1;aspect-ratio:1">
+                    <div style="background:#e0d3c0"></div><div style="background:#e0d3c0"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#e0d3c0"></div><div style="background:#e0d3c0"></div>
+                    <div style="background:#e0d3c0"></div><div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div><div style="background:#e0d3c0"></div>
+                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div>
+                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#d4764e"></div><div style="background:#d4764e"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#aee4f5"></div><div style="background:#a8d44a"></div>
+                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#d4764e"></div><div style="background:#d4764e"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#aee4f5"></div><div style="background:#a8d44a"></div>
+                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div>
+                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#6ab04c"></div><div style="background:#6ab04c"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#6ab04c"></div><div style="background:#6ab04c"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div>
+                    <div style="background:#e0d3c0"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#e0d3c0"></div>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.2rem;justify-content:center;margin-top:0.15rem">
+                <div style="width:14px;height:14px;border-radius:3px;background:#a8d44a;border:1.5px solid #4a4a6a"></div>
+                <div style="width:14px;height:14px;border-radius:3px;background:#c8f06a"></div>
+                <div style="width:14px;height:14px;border-radius:3px;background:#f5cba7"></div>
+                <div style="width:14px;height:14px;border-radius:3px;background:#d4764e"></div>
+                <div style="width:14px;height:14px;border-radius:3px;background:#aee4f5"></div>
+                <div style="width:14px;height:14px;border-radius:3px;background:#6ab04c"></div>
+                <div style="width:14px;height:14px;border-radius:3px;background:#ede4d6;border:1px solid #aaa"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: ROLEPLAY STORIES -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-text">
+          <p class="feature-eyebrow">600 stories &middot; 20 subjects &middot; KS3 to A-Level</p>
+          <h2>Learn through stories.</h2>
+          <p>Step into a role and solve real exam-style problems woven into a narrative. From defusing a physics crisis to running a business startup &mdash; every story is built around the curriculum.</p>
+          <div class="feature-tags">
+            <span class="tag">Interactive narrative</span>
+            <span class="tag">Exam-style questions</span>
+            <span class="tag">Worked solutions</span>
+          </div>
+          <a href="roleplay.html" class="btn btn-accent">Explore stories &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.4rem;padding:0.6rem">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="font-size:0.5rem;color:#8080a0;text-transform:uppercase;letter-spacing:0.08em">Roleplay Stories</span>
+              </div>
+              <div style="display:flex;gap:0.2rem;margin-bottom:0.1rem">
+                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">All Levels</span>
+                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">KS3</span>
+                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">GCSE</span>
+                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">A-Level</span>
+              </div>
+              <div style="font-size:0.55rem;color:#c0b8ff;font-weight:600;margin-top:0.1rem">&#x269B;&#xFE0F; Physics <span style="font-size:0.42rem;color:#8080a0;font-weight:400">&mdash; 30 stories</span></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.3rem;flex:1">
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
+                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#e8f5e9;color:#2e7d32;border-radius:6px;align-self:flex-start">KS3</span>
+                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Spy Meet</div>
+                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Speed, Distance, Time</div>
+                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
+                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#ede7f6;color:#5e35b1;border-radius:6px;align-self:flex-start">GCSE</span>
+                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Runaway Train</div>
+                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Kinetic Energy</div>
+                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
+                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#fff3e0;color:#e65100;border-radius:6px;align-self:flex-start">A-Level</span>
+                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Gravity Assist</div>
+                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Gravitational Fields</div>
+                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
+                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#e8f5e9;color:#2e7d32;border-radius:6px;align-self:flex-start">KS3</span>
+                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Escape Artist</div>
+                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Forces &amp; Motion</div>
+                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
+                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#ede7f6;color:#5e35b1;border-radius:6px;align-self:flex-start">GCSE</span>
+                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Blackout</div>
+                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Electricity</div>
+                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
+                </div>
+                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
+                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#fff3e0;color:#e65100;border-radius:6px;align-self:flex-start">A-Level</span>
+                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Fusion Reactor</div>
+                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Nuclear Physics</div>
+                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: HOMEROOM -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid flip">
+        <div class="feature-text">
+          <p class="feature-eyebrow">2 sets &middot; 24 daily tiles &middot; auto-rotating</p>
+          <h2>Start the day<br>with Homeroom.</h2>
+          <p>A full-screen morning dashboard for classrooms. Word of the Day, Maths Problem, Guess the Flag, On This Day and more &mdash; all rotating daily with no setup needed.</p>
+          <div class="feature-tags">
+            <span class="tag">Word of the Day</span>
+            <span class="tag">Maths Problem</span>
+            <span class="tag">Guess the Flag</span>
+            <span class="tag">On This Day</span>
+          </div>
+          <a href="homeroom.html" class="btn btn-accent">Open Homeroom &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="padding:0;gap:0;display:flex;flex-direction:column">
+              <div style="background:#1c1712;padding:0.4rem 0.6rem;display:flex;justify-content:space-between;align-items:center">
+                <span style="font-size:0.5rem;color:#f5efe6;font-weight:600">Class<span style="color:#c4956a">Craft</span></span>
+                <span style="font-size:0.42rem;color:#8a7a6a;font-style:italic">Monday, 18 May 2026</span>
+                <span style="font-size:0.38rem;color:#8a7a6a">Set A</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:3px;padding:3px;flex:1;background:#1c1712">
+                <div style="background:#ede4d6;border-top:2px solid #4a7ab5;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Word of the Day</div>
+                  <div style="font-size:0.6rem;color:#1c1712;font-weight:600;font-style:italic">Ubiquitous</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #7a5aa0;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Idiom</div>
+                  <div style="font-size:0.42rem;color:#1c1712;font-style:italic;line-height:1.2">&ldquo;Break the ice&rdquo;</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #4a7ab5;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Maths</div>
+                  <div style="font-size:0.48rem;color:#1c1712;font-weight:500">x&sup2; + 5x = 14</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #8b5e3c;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Joke</div>
+                  <div style="font-size:0.38rem;color:#1c1712;line-height:1.2">Why did Pi get its licence revoked?</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #8b5e3c;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Quote</div>
+                  <div style="font-size:0.36rem;color:#1c1712;font-style:italic;line-height:1.2">&ldquo;To be or not to be&rdquo;</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #4a8a5a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">On This Day</div>
+                  <div style="font-size:0.7rem;color:#1c1712;font-weight:600">1969</div>
+                  <div style="font-size:0.32rem;color:#4a3f33">Moon landing</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #a04040;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Born Today</div>
+                  <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Bertrand Russell</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #3a8a8a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Science Fact</div>
+                  <div style="font-size:0.36rem;color:#1c1712;line-height:1.2">Octopuses have three hearts</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #3a8a8a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Guess the Flag</div>
+                  <div style="font-size:1rem">&#x1F1EF;&#x1F1F5;</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #4a8a5a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Element</div>
+                  <div style="font-size:0.8rem;color:#1c1712;font-weight:600;font-style:italic">Fe</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #4a7ab5;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">French</div>
+                  <div style="font-size:0.5rem;color:#1c1712;font-weight:600;font-style:italic">Papillon</div>
+                </div>
+                <div style="background:#ede4d6;border-top:2px solid #a04040;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Chinese</div>
+                  <div style="font-size:0.9rem;color:#1c1712">&#x9F99;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- FEATURE: NATURE GUIDE -->
+  <section class="feature">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-text">
+          <p class="feature-eyebrow">7 regions &middot; UK &amp; Ireland</p>
+          <h2>Explore nature<br>across the UK.</h2>
+          <p>Photo guides to wildlife and landscapes across seven regions &mdash; from Scotland to South England, Wales to Northern Ireland. A different kind of learning resource.</p>
+          <div class="feature-tags">
+            <span class="tag">Scotland</span>
+            <span class="tag">North England</span>
+            <span class="tag">Wales</span>
+            <span class="tag">South England</span>
+            <span class="tag">+ 3 more</span>
+          </div>
+          <a href="nature.html" class="btn btn-accent">Explore nature &rarr;</a>
+        </div>
+        <div class="feature-visual">
+          <div class="mock-panel">
+            <div class="mock-bar">
+              <div class="mock-dot" style="background:#e05050"></div>
+              <div class="mock-dot" style="background:#e0a030"></div>
+              <div class="mock-dot" style="background:#4ade9a"></div>
+            </div>
+            <div class="mock-body" style="gap:0.3rem;padding:0.6rem">
+              <div style="font-size:0.5rem;color:#8080a0;text-transform:uppercase;letter-spacing:0.08em">Nature Guide</div>
+              <div style="display:grid;grid-template-columns:1fr 2fr;gap:0.4rem;flex:1">
+                <div style="display:flex;flex-direction:column;gap:0.25rem">
+                  <div style="border-radius:4px;flex:1;overflow:hidden">
+                    <img src="nature/scotland/pine-marten.jpg" alt="Pine Marten" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px" />
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:0.15rem">
+                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#ede4d6;border-radius:3px;color:#1c1712;display:flex;align-items:center;gap:0.2rem;border:1px solid #8b5e3c"><div style="width:4px;height:4px;border-radius:50%;background:#4a7ab5"></div>Scotland</div>
+                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#3a3a5a;border-radius:3px;color:#a0a0c0;display:flex;align-items:center;gap:0.2rem"><div style="width:4px;height:4px;border-radius:50%;background:#4a8a5a"></div>North England</div>
+                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#3a3a5a;border-radius:3px;color:#a0a0c0;display:flex;align-items:center;gap:0.2rem"><div style="width:4px;height:4px;border-radius:50%;background:#a04040"></div>Wales</div>
+                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#3a3a5a;border-radius:3px;color:#a0a0c0;display:flex;align-items:center;gap:0.2rem"><div style="width:4px;height:4px;border-radius:50%;background:#7a5aa0"></div>South England</div>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem">
+                  <div style="display:flex;gap:0.2rem">
+                    <span style="font-size:0.38rem;padding:0.1rem 0.3rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">All</span>
+                    <span style="font-size:0.38rem;padding:0.1rem 0.3rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">Birds</span>
+                    <span style="font-size:0.38rem;padding:0.1rem 0.3rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">Mammals</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.25rem;flex:1">
+                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+                      <img src="nature/scotland/golden-eagle.jpg" alt="Golden Eagle" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
+                      <div style="padding:0.2rem 0.25rem">
+                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Golden Eagle</div>
+                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Aquila chrysaetos</div>
+                      </div>
+                    </div>
+                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+                      <img src="nature/scotland/red-deer.jpg" alt="Red Deer" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
+                      <div style="padding:0.2rem 0.25rem">
+                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Red Deer</div>
+                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Cervus elaphus</div>
+                      </div>
+                    </div>
+                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+                      <img src="nature/scotland/red-squirrel.jpg" alt="Red Squirrel" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
+                      <div style="padding:0.2rem 0.25rem">
+                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Red Squirrel</div>
+                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Sciurus vulgaris</div>
+                      </div>
+                    </div>
+                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+                      <img src="nature/scotland/puffin.jpg" alt="Atlantic Puffin" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
+                      <div style="padding:0.2rem 0.25rem">
+                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Atlantic Puffin</div>
+                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Fratercula arctica</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" style="margin:0" /></div>
+
+  <!-- AI SECTION -->
+  <section class="ai-section">
+    <div class="container">
+      <div style="max-width:52ch;margin-bottom:3rem;">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">A place to experiment with learning</h2>
+        <p style="color:var(--ink-mid);">We try out new ideas for study and teaching resources &mdash; games, tools, and formats designed to make revision genuinely fun and effective.</p>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-card"><h3>Always experimenting</h3><p>From pixel diagram sketchers to interactive simulations &mdash; we keep building new ways to help students learn and teachers teach.</p></div>
+        <div class="ai-card"><h3>Nothing to sign up for</h3><p>Open a game, start a quiz, test your vocabulary &mdash; it all works instantly in your browser. No accounts, no tracking, no ads.</p></div>
+        <div class="ai-card"><h3>Always growing</h3><p>New games and features added regularly. The Terminology Tester covers 12 exam boards &mdash; including AQA, Edexcel, OCR, Cambridge IGCSE and IB.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="container" style="text-align:center;">
+      <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;">Get in Touch</p>
+      <h2 style="color:var(--parchment);margin-bottom:1rem;">Want to get in touch?</h2>
+      <p style="color:rgba(245,239,230,0.6);margin:0 auto 2rem;max-width:50ch;font-size:0.95rem;">Questions, feedback, or just want to say the Economics joke made you laugh &mdash; feel free to get in touch.</p>
+      <a href="#contact" class="btn" style="border-color:var(--parchment);color:var(--parchment);" onclick="activateTab('contact'); return false;">Get in Touch</a>
+    </div>
+  </div>
+
+    </div>
     <!-- ════════════ KS3 ════════════ -->
     <div class="tab-panel" id="panel-ks3">
       <div class="container">
@@ -1181,10 +1930,10 @@
 
   </div><!-- /tab-panels -->
 
-  <!-- ── Footer ─────────────────────────── -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by James Martin</p>
+      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="#contributors" style="color:inherit;text-decoration:underline;text-underline-offset:3px;" onclick="activateTab('contributors'); return false;">James Martin</a></p>
     </div>
   </footer>
 
@@ -1280,12 +2029,6 @@
       });
     });
 
-    // Explore Resources button
-    document.getElementById('explore-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      activateTab('about');
-    });
-
     // ── Sub-tab system ──
     document.querySelectorAll('.sub-tab-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -1349,6 +2092,516 @@
     });
 
   })();
+
+    /* ── Hero Pac-Man mini-game + quiz ── */
+    (function() {
+      const canvas = document.getElementById('hero-pacman');
+      const ctx = canvas.getContext('2d');
+      const gameEl = document.getElementById('hero-game');
+      const ctaEl = document.getElementById('hero-cta');
+      const quizOverlay = document.getElementById('quiz-overlay');
+      const quizContent = document.getElementById('quiz-content');
+
+      /* Detect touch device and update CTA */
+      const dpadEl = document.getElementById('hero-dpad');
+      const isTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+      if (isTouch) {
+        ctaEl.textContent = 'Tap to play';
+      }
+
+      /* ── Maze: 0=wall, 1=dot, 2=empty, 3=red dot ── */
+      const MAZE_TEMPLATE = [
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0],
+        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
+        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
+        [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+        [0,1,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0],
+        [0,1,1,1,1,0,1,1,1,1,2,1,1,1,1,0,1,1,1,1,0],
+        [0,0,0,0,1,0,0,0,2,0,2,0,2,0,0,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,0,0,2,2,2,0,0,2,0,1,0,0,0,0],
+        [1,1,1,1,1,1,2,0,2,2,2,2,2,0,2,1,1,1,1,1,1],
+        [0,0,0,0,1,0,2,0,2,2,2,2,2,0,2,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,0,0,0,0,0,0,0,2,0,1,0,0,0,0],
+        [0,0,0,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,0,0,0],
+        [0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0],
+        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
+        [0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0],
+        [0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0],
+        [0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0],
+        [0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0],
+        [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      ];
+
+      /* Deep-copy maze so dots can be eaten */
+      let maze;
+      function resetMaze() {
+        maze = MAZE_TEMPLATE.map(row => row.slice());
+        /* Place 3 red dots at spread-out positions */
+        maze[2][5] = 3;
+        maze[14][15] = 3;
+        maze[20][10] = 3;
+      }
+      resetMaze();
+
+      const ROWS = 22, COLS = 21;
+
+      /* ── Entity state ── */
+      const PAC_START = {r:16, c:10};
+      const pac = {
+        r: PAC_START.r, c: PAC_START.c,
+        tr: PAC_START.r, tc: PAC_START.c,  /* target cell */
+        pr: PAC_START.r, pc: PAC_START.c,  /* previous cell (for lerp) */
+        t: 1,                              /* interpolation 0..1 */
+        dir: 0,                            /* 0=right,1=down,2=left,3=up */
+        nextDir: -1,
+        mouthOpen: 0,
+        speed: 6                           /* cells per second */
+      };
+
+      const GHOST_START = [
+        {r:10, c:9},
+        {r:10, c:10},
+        {r:10, c:11}
+      ];
+      const GHOST_COLORS = ['#ff6b6b','#7b6fff','#ff9f43'];
+      let ghosts;
+
+      function resetGhosts() {
+        ghosts = GHOST_START.map((s, i) => ({
+          r: s.r, c: s.c,
+          tr: s.r, tc: s.c,
+          pr: s.r, pc: s.c,
+          t: 1,
+          dir: 0,
+          speed: 4.5,
+          color: GHOST_COLORS[i]
+        }));
+      }
+      resetGhosts();
+
+      /* Direction vectors: right, down, left, up */
+      const DR = [0, 1, 0, -1];
+      const DC = [1, 0, -1, 0];
+
+      /* ── Game state ── */
+      let started = false;
+      let paused = false;
+      let lastTime = 0;
+      let redDotsEaten = 0;
+      let qIndex = 0;
+      let gameFinished = false;
+
+      /* ── Quiz questions ── */
+      const questions = [
+        { q: 'Do you ever find revision boring?', opts: ['Yes, always', 'Sometimes', 'Not really'] },
+        { q: 'Do you procrastinate and delay your revision?', opts: ['All the time', 'More than I should', 'Occasionally'] },
+        { q: 'Would you revise more if it felt like playing a game?', opts: ['Definitely', 'Probably', 'Worth a try'] }
+      ];
+
+      /* ── Helper: can move into cell? ── */
+      function canMove(r, c) {
+        /* Wrap horizontal tunnel */
+        if (c < 0) c = COLS - 1;
+        if (c >= COLS) c = 0;
+        if (r < 0 || r >= ROWS) return false;
+        return maze[r][c] !== 0;
+      }
+
+      /* ── Sizing ── */
+      let cellW, cellH, W, H;
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        W = rect.width;
+        H = rect.height;
+        cellW = W / COLS;
+        cellH = H / ROWS;
+        /* If not started yet, draw static frame */
+        if (!started) drawFrame(0);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* ── Drawing ── */
+      function drawFrame(time) {
+        const dpr = window.devicePixelRatio || 1;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        /* Background */
+        ctx.fillStyle = '#0f1117';
+        ctx.fillRect(0, 0, W, H);
+
+        /* Walls & dots */
+        for (let r = 0; r < ROWS; r++) {
+          for (let c = 0; c < COLS; c++) {
+            const x = c * cellW, y = r * cellH;
+            const cell = maze[r][c];
+            if (cell === 0) {
+              ctx.fillStyle = '#1a1d37';
+              ctx.fillRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
+              ctx.strokeStyle = '#252560';
+              ctx.lineWidth = 0.5;
+              ctx.strokeRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
+            } else if (cell === 1) {
+              ctx.beginPath();
+              ctx.arc(x + cellW / 2, y + cellH / 2, cellW * 0.1, 0, Math.PI * 2);
+              ctx.fillStyle = 'rgba(255,255,255,0.5)';
+              ctx.fill();
+            } else if (cell === 3) {
+              /* Red dot with glow */
+              const cx = x + cellW / 2, cy = y + cellH / 2;
+              ctx.beginPath();
+              ctx.arc(cx, cy, cellW * 0.28, 0, Math.PI * 2);
+              ctx.strokeStyle = 'rgba(255,107,107,0.3)';
+              ctx.lineWidth = 1.5;
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.arc(cx, cy, cellW * 0.2, 0, Math.PI * 2);
+              ctx.fillStyle = '#ff6b6b';
+              ctx.fill();
+            }
+          }
+        }
+
+        /* ── Draw ghosts ── */
+        ghosts.forEach(g => {
+          const lerpR = g.pr + (g.tr - g.pr) * g.t;
+          let lerpC = g.pc + (g.tc - g.pc) * g.t;
+          /* Handle tunnel wrap for rendering */
+          if (Math.abs(g.tc - g.pc) > COLS / 2) {
+            if (g.tc < g.pc) lerpC = g.pc + ((g.tc + COLS) - g.pc) * g.t;
+            else lerpC = g.pc + ((g.tc - COLS) - g.pc) * g.t;
+            if (lerpC >= COLS) lerpC -= COLS;
+            if (lerpC < 0) lerpC += COLS;
+          }
+          const gx = lerpC * cellW + cellW / 2;
+          const gy = lerpR * cellH + cellH / 2;
+          const gr = cellW * 0.38;
+
+          /* Ghost body */
+          ctx.beginPath();
+          ctx.arc(gx, gy - gr * 0.15, gr, Math.PI, 0, false);
+          ctx.lineTo(gx + gr, gy + gr * 0.6);
+          const segs = 3, segW = (gr * 2) / segs;
+          for (let i = 0; i < segs; i++) {
+            ctx.quadraticCurveTo(
+              gx + gr - segW * i - segW * 0.5, gy + gr * (i % 2 === 0 ? 0.2 : 0.8),
+              gx + gr - segW * (i + 1), gy + gr * 0.6
+            );
+          }
+          ctx.closePath();
+          ctx.fillStyle = g.color;
+          ctx.fill();
+
+          /* Eyes */
+          const eyeOff = gr * 0.28;
+          const eyeDirC = DC[g.dir] * gr * 0.08;
+          const eyeDirR = DR[g.dir] * gr * 0.08;
+          [gx - eyeOff, gx + eyeOff].forEach(ex => {
+            ctx.beginPath();
+            ctx.arc(ex, gy - gr * 0.2, gr * 0.2, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(ex + eyeDirC, gy - gr * 0.2 + eyeDirR, gr * 0.1, 0, Math.PI * 2);
+            ctx.fillStyle = '#1a1d27';
+            ctx.fill();
+          });
+        });
+
+        /* ── Draw Pac-Man ── */
+        const pLerpR = pac.pr + (pac.tr - pac.pr) * pac.t;
+        let pLerpC = pac.pc + (pac.tc - pac.pc) * pac.t;
+        if (Math.abs(pac.tc - pac.pc) > COLS / 2) {
+          if (pac.tc < pac.pc) pLerpC = pac.pc + ((pac.tc + COLS) - pac.pc) * pac.t;
+          else pLerpC = pac.pc + ((pac.tc - COLS) - pac.pc) * pac.t;
+          if (pLerpC >= COLS) pLerpC -= COLS;
+          if (pLerpC < 0) pLerpC += COLS;
+        }
+        const px = pLerpC * cellW + cellW / 2;
+        const py = pLerpR * cellH + cellH / 2;
+        const pr = cellW * 0.42;
+
+        /* Mouth animation */
+        const mouthAngle = 0.25 * Math.PI * (0.5 + 0.5 * Math.sin(pac.mouthOpen));
+        /* Direction angle: 0=right, pi/2=down, pi=left, -pi/2=up */
+        const dirAngles = [0, Math.PI / 2, Math.PI, -Math.PI / 2];
+        const baseAngle = dirAngles[pac.dir];
+
+        ctx.beginPath();
+        ctx.arc(px, py, pr, baseAngle + mouthAngle, baseAngle + Math.PI * 2 - mouthAngle);
+        ctx.lineTo(px, py);
+        ctx.closePath();
+        ctx.fillStyle = '#FFD700';
+        ctx.fill();
+
+        /* Eye position relative to direction */
+        const eyeAngle = baseAngle - Math.PI / 4;
+        const eyeX = px + Math.cos(eyeAngle) * pr * 0.35;
+        const eyeY = py + Math.sin(eyeAngle) * pr * 0.35;
+        ctx.beginPath();
+        ctx.arc(eyeX, eyeY, pr * 0.12, 0, Math.PI * 2);
+        ctx.fillStyle = '#0f1117';
+        ctx.fill();
+      }
+
+      /* ── Movement logic ── */
+      function wrapC(c) {
+        if (c < 0) return COLS - 1;
+        if (c >= COLS) return 0;
+        return c;
+      }
+
+      function moveEntity(ent, dt) {
+        ent.t += dt * ent.speed;
+        if (ent.t >= 1) {
+          ent.t = 1;
+          ent.r = ent.tr;
+          ent.c = wrapC(ent.tc);
+          return true; /* arrived at target */
+        }
+        return false;
+      }
+
+      function pickNextCell(ent, preferredDir) {
+        const nr = ent.r + DR[preferredDir];
+        const nc = wrapC(ent.c + DC[preferredDir]);
+        if (canMove(nr, nc)) {
+          ent.pr = ent.r; ent.pc = ent.c;
+          ent.tr = nr; ent.tc = nc;
+          ent.dir = preferredDir;
+          ent.t = 0;
+          return true;
+        }
+        return false;
+      }
+
+      /* Ghost AI: random at intersections, biased toward pac */
+      function ghostAI(g) {
+        const opposite = (g.dir + 2) % 4;
+        let options = [];
+        for (let d = 0; d < 4; d++) {
+          if (d === opposite) continue;
+          const nr = g.r + DR[d];
+          const nc = wrapC(g.c + DC[d]);
+          if (canMove(nr, nc)) options.push(d);
+        }
+        /* If no options (dead end), allow reverse */
+        if (options.length === 0) {
+          const nr = g.r + DR[opposite];
+          const nc = wrapC(g.c + DC[opposite]);
+          if (canMove(nr, nc)) options.push(opposite);
+        }
+        if (options.length === 0) return;
+
+        /* Bias toward pacman 30% of the time */
+        if (Math.random() < 0.3) {
+          let bestDir = options[0], bestDist = Infinity;
+          options.forEach(d => {
+            const nr = g.r + DR[d];
+            const nc = wrapC(g.c + DC[d]);
+            const dist = Math.abs(nr - pac.r) + Math.abs(nc - pac.c);
+            if (dist < bestDist) { bestDist = dist; bestDir = d; }
+          });
+          pickNextCell(g, bestDir);
+        } else {
+          pickNextCell(g, options[Math.floor(Math.random() * options.length)]);
+        }
+      }
+
+      /* ── Collision check ── */
+      function checkGhostCollision() {
+        for (const g of ghosts) {
+          /* Use visual positions for collision */
+          const pRow = pac.pr + (pac.tr - pac.pr) * pac.t;
+          const pCol = pac.pc + (pac.tc - pac.pc) * pac.t;
+          const gRow = g.pr + (g.tr - g.pr) * g.t;
+          const gCol = g.pc + (g.tc - g.pc) * g.t;
+          const dist = Math.sqrt((pRow - gRow) ** 2 + (pCol - gCol) ** 2);
+          if (dist < 0.8) {
+            /* Reset pacman to start */
+            pac.r = PAC_START.r; pac.c = PAC_START.c;
+            pac.tr = PAC_START.r; pac.tc = PAC_START.c;
+            pac.pr = PAC_START.r; pac.pc = PAC_START.c;
+            pac.t = 1;
+            pac.nextDir = -1;
+            return;
+          }
+        }
+      }
+
+      /* ── Dot eating ── */
+      function eatDot() {
+        const cell = maze[pac.r][pac.c];
+        if (cell === 1) {
+          maze[pac.r][pac.c] = 2;
+        } else if (cell === 3) {
+          maze[pac.r][pac.c] = 2;
+          redDotsEaten++;
+          paused = true;
+          showQuestion(qIndex);
+        }
+      }
+
+      /* ── Quiz ── */
+      function showQuestion(i) {
+        if (i >= questions.length) { showResult(); return; }
+        const q = questions[i];
+        let html = '<div class="quiz-q">' + q.q + '</div><div class="quiz-options">';
+        q.opts.forEach(function(o) {
+          html += '<div class="quiz-opt" onclick="window._quizNext()">' + o + '</div>';
+        });
+        html += '</div>';
+        quizContent.innerHTML = html;
+        quizOverlay.classList.add('active');
+      }
+
+      function showResult() {
+        gameFinished = true;
+        quizContent.innerHTML =
+          '<div class="quiz-result">' +
+            '<span class="quiz-result-emoji">&#x1F3AE;</span>' +
+            '<div class="quiz-result-heading">This site is for you!</div>' +
+            '<p class="quiz-result-sub">160+ free revision games, quizzes and tools designed to make studying feel less like a chore.</p>' +
+            '<a href="games.html" class="quiz-result-btn">Start Playing &rarr;</a>' +
+          '</div>';
+        quizOverlay.classList.add('active');
+      }
+
+      window._quizNext = function() {
+        qIndex++;
+        if (qIndex >= questions.length) {
+          showResult();
+          return;
+        }
+        quizOverlay.classList.remove('active');
+        paused = false;
+        lastTime = performance.now();
+      };
+
+      /* ── Game loop ── */
+      function gameLoop(timestamp) {
+        if (!started || gameFinished) return;
+        if (paused) { requestAnimationFrame(gameLoop); return; }
+
+        const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
+        lastTime = timestamp;
+
+        /* Pac-Man mouth animation */
+        pac.mouthOpen += dt * 14;
+
+        /* Move Pac-Man */
+        if (pac.t >= 1) {
+          /* Try queued direction first */
+          let moved = false;
+          if (pac.nextDir >= 0) {
+            moved = pickNextCell(pac, pac.nextDir);
+            if (moved) pac.nextDir = -1;
+          }
+          /* Otherwise continue current direction */
+          if (!moved) {
+            pickNextCell(pac, pac.dir);
+          }
+          eatDot();
+        } else {
+          moveEntity(pac, dt);
+          if (pac.t >= 1) eatDot();
+        }
+
+        /* Move ghosts */
+        ghosts.forEach(g => {
+          if (g.t >= 1) {
+            ghostAI(g);
+          } else {
+            moveEntity(g, dt);
+          }
+        });
+
+        /* Check collisions */
+        if (!paused) checkGhostCollision();
+
+        /* Draw */
+        drawFrame(timestamp);
+
+        requestAnimationFrame(gameLoop);
+      }
+
+      /* ── Input ── */
+      const KEY_MAP = {
+        ArrowRight: 0, ArrowDown: 1, ArrowLeft: 2, ArrowUp: 3,
+        d: 0, D: 0, s: 1, S: 1, a: 2, A: 2, w: 3, W: 3
+      };
+
+      gameEl.addEventListener('keydown', function(e) {
+        if (!started || paused || gameFinished) return;
+        const dir = KEY_MAP[e.key];
+        if (dir !== undefined) {
+          e.preventDefault();
+          pac.nextDir = dir;
+        }
+      });
+
+      /* Touch / swipe controls */
+      let touchStartX = 0, touchStartY = 0;
+      gameEl.addEventListener('touchstart', function(e) {
+        if (!started) return;
+        const t = e.touches[0];
+        touchStartX = t.clientX;
+        touchStartY = t.clientY;
+      }, {passive: true});
+
+      gameEl.addEventListener('touchend', function(e) {
+        if (!started || paused || gameFinished) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - touchStartX;
+        const dy = t.clientY - touchStartY;
+        const absDx = Math.abs(dx), absDy = Math.abs(dy);
+        if (Math.max(absDx, absDy) < 10) return;
+        if (absDx > absDy) {
+          pac.nextDir = dx > 0 ? 0 : 2;
+        } else {
+          pac.nextDir = dy > 0 ? 1 : 3;
+        }
+      }, {passive: true});
+
+      /* ── D-pad buttons (touch devices) ── */
+      dpadEl.querySelectorAll('.dp').forEach(function(btn) {
+        /* Use touchstart for instant response — no 300ms delay */
+        btn.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!started || paused || gameFinished) return;
+          pac.nextDir = parseInt(this.getAttribute('data-dir'));
+        });
+        /* Also support click for hybrid devices */
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (!started || paused || gameFinished) return;
+          pac.nextDir = parseInt(this.getAttribute('data-dir'));
+        });
+      });
+
+      /* ── Start on click ── */
+      gameEl.addEventListener('click', function(e) {
+        if (gameFinished && e.target.closest('.quiz-result-btn')) return;
+        if (e.target.closest('.dp')) return; /* Don't restart on D-pad tap */
+        if (started) return;
+        started = true;
+        ctaEl.style.display = 'none';
+        if (isTouch) dpadEl.classList.add('active');
+        gameEl.focus();
+        lastTime = performance.now();
+        requestAnimationFrame(gameLoop);
+      });
+
+      /* Initial static draw */
+      drawFrame(0);
+    })();
   </script>
 
 </body>
