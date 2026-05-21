@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vocab — ClassCraft</title>
   <meta name="description" content="Learn and test vocabulary for French, German, Spanish and English at KS3, GCSE, A-Level, IELTS/TOEFL and GRE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
   <style>
     /* ── Page hero ─────────────────────────── */
@@ -576,30 +579,9 @@
 </head>
 <body>
 
-<!-- ════════ NAV ════════ -->
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">Class<span>Craft</span></a>
-    <div class="nav-overlay" id="nav-overlay"></div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../simulations.html">Simulations</a></li>
-      <li><a href="../books.html">Books</a></li>
-      <li><a href="../jokes.html">Jokes</a></li>
-      <li><a href="../games.html">Games</a></li>
-      <li><a href="../draw-it.html">Draw It</a></li>
-      <li><a href="../roleplay.html">Roleplay</a></li>
-      <li><a href="vocab-hub.html">Terms</a></li>
-      <li><a href="vocab.html" class="active">Vocab</a></li>
-      <li><a href="../homeroom.html">Homeroom</a></li>
-      <li><a href="../nature.html">Nature</a></li>
-      <li><a href="../about.html">Contributors</a></li>
-      <li><a href="../contact.html">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="nav-slot"></div>
 
+<main>
 <!-- ════════ HERO ════════ -->
 <header class="vocab-hero">
   <div class="container">
@@ -613,18 +595,46 @@
 <section class="vocab-body">
   <div class="container" id="app"></div>
 </section>
+</main>
 
-<!-- ════════ FOOTER ════════ -->
-<footer><div class="container"><p>&copy; <span id="year"></span> ClassCraft &middot; classcraft.co.uk</p></div></footer>
+<div id="footer-slot"></div>
 
-<!-- ════════ DATA ════════ -->
-<script src="vocab-data.js"></script>
-<script src="vocab-english.js"></script>
+<script src="../nav.js"></script>
 
 <!-- ════════ APP ════════ -->
 <script>
 (function() {
   "use strict";
+
+  /* ── Global VOCAB object — populated on demand ── */
+  if (typeof window.VOCAB === 'undefined') window.VOCAB = {};
+  var VOCAB = window.VOCAB;
+
+  /* ── Lazy script loader ──────────────── */
+  var loadedScripts = {};
+  function loadVocabScript(src) {
+    if (loadedScripts[src]) return loadedScripts[src];
+    loadedScripts[src] = new Promise(function(resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = function() { reject(new Error('Failed to load ' + src)); };
+      document.head.appendChild(s);
+    });
+    return loadedScripts[src];
+  }
+
+  var LANG_SCRIPTS = {
+    french:  ['vocab-lazy-french.js'],
+    german:  ['vocab-lazy-german.js'],
+    spanish: ['vocab-lazy-spanish.js'],
+    english: ['vocab-lazy-english-base.js', 'vocab-english.js']
+  };
+
+  function ensureLanguageLoaded(lang) {
+    var scripts = LANG_SCRIPTS[lang] || [];
+    return Promise.all(scripts.map(loadVocabScript));
+  }
 
   /* ── Helpers ──────────────────────────── */
   const $ = (s, p) => (p || document).querySelector(s);
@@ -732,12 +742,24 @@
 
     app.querySelectorAll(".sel-card").forEach(c => {
       c.addEventListener("click", () => {
-        state.language = c.dataset.lang;
-        if (state.language === "english") {
-          showEnglishLevels();
-        } else {
-          showLevels();
-        }
+        const lang = c.dataset.lang;
+        state.language = lang;
+
+        // Show loading state on the card
+        c.style.opacity = '0.6';
+        c.querySelector('.card-title').textContent = 'Loading…';
+
+        ensureLanguageLoaded(lang).then(() => {
+          if (state.language === "english") {
+            showEnglishLevels();
+          } else {
+            showLevels();
+          }
+        }).catch(() => {
+          c.style.opacity = '1';
+          c.querySelector('.card-title').textContent = LANGUAGES.find(l => l.key === lang).label;
+          alert('Failed to load vocabulary data. Please check your connection and try again.');
+        });
       });
     });
   }
@@ -1653,17 +1675,6 @@
 
   /* ── Boot ─────────────────────────────── */
   showLanguages();
-
-  /* ── Mobile menu ─────────────────────── */
-  const toggle = document.getElementById("nav-toggle");
-  const links = document.getElementById("nav-links");
-  const overlay = document.getElementById("nav-overlay");
-  function openMenu() { toggle.classList.add("open"); links.classList.add("open"); overlay.classList.add("open"); document.body.style.overflow="hidden"; }
-  function closeMenu() { toggle.classList.remove("open"); links.classList.remove("open"); overlay.classList.remove("open"); document.body.style.overflow=""; }
-  toggle.addEventListener("click", () => toggle.classList.contains("open") ? closeMenu() : openMenu());
-  overlay.addEventListener("click", closeMenu);
-  links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-  document.getElementById("year").textContent = new Date().getFullYear();
 
 })();
 </script>

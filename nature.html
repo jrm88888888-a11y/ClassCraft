@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nature — UK &amp; Ireland Flora, Fauna &amp; Fungi — ClassCraft</title>
   <meta name="description" content="Explore the wildlife of the UK and Ireland — click a region to discover native flora, fauna and fungi with photos, habitat notes and curriculum links."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css"/>
   <style>
     /* ── Hero ────────────────────────────────── */
@@ -261,7 +264,7 @@ function renderContent() {
       // Show photo if local file exists, fall back to placeholder
       const imgHtml = `<div class="species-img">
         <div class="species-placeholder" style="display:none">${CAT_ICONS[activeCat]}</div>
-        <img src="${s.img}" alt="${s.common}"
+        <img src="${s.img}" alt="${s.common}" loading="lazy"
           onerror="this.style.display='none';this.previousElementSibling.style.display='flex'" />
         <span class="species-cat-badge">${s.category}</span>
       </div>`;
