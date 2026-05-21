@@ -4,64 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClassCraft — Free GCSE &amp; A-Level Revision Resources</title>
-  <meta name="description" content="Free GCSE and A-Level revision resources — 160 games, 3,500+ vocabulary flashcards, quizzes and more across Biology, Chemistry, Physics, Maths, History, Geography, English, Psychology and Economics. No login needed." />
+  <meta name="description" content="Free GCSE and A-Level revision resources — 160+ games, 4,600+ vocabulary flashcards, quizzes and more across 25 subjects. No login needed." />
   <link rel="stylesheet" href="style.css" />
   <style>
 
-    /* Hero */
-    .hero { padding: 2.5rem 0 0; position: relative; overflow: hidden; }
+    /* ── Hero ───────────────────────────── */
+    .hero { padding: 3rem 0 0; position: relative; overflow: hidden; }
     .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,94,60,0.08) 0%, transparent 70%); pointer-events: none; }
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
-    .hero-text { text-align: center; }
+    .hero-text { text-align: center; max-width: 640px; margin: 0 auto; }
     .hero-label { display: inline-block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--rule); padding: 0.3rem 0.85rem; border-radius: 20px; margin-bottom: 1.25rem; }
-    .hero h1 { font-size: clamp(2rem, 7vw, 4.2rem); max-width: 16ch; margin: 0 auto 1rem; line-height: 1.08; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 4.2rem); margin: 0 auto 1rem; line-height: 1.08; }
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-sub { font-size: 0.95rem; color: var(--ink-mid); max-width: 48ch; margin: 0 auto 1.75rem; line-height: 1.7; }
-    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0; }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
     .btn-lg { padding: 0.75rem 1.5rem; font-size: 0.82rem; }
 
-    /* Pacman game embed */
-    .hero-game { position: relative; background: #0f1117; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(28,23,18,0.15); aspect-ratio: 21/22; width: 100%; max-width: 300px; margin: 0 auto; cursor: pointer; }
-    .hero-game canvas { display: block; width: 100%; height: 100%; }
-    .hero-game-cta { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); background: rgba(74,222,154,0.9); color: #0f1117; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; pointer-events: none; animation: ctaPulse 2s ease-in-out infinite; white-space: nowrap; }
-    @keyframes ctaPulse { 0%,100%{opacity:1;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(-3px)} }
-
-    /* Mobile D-pad — hidden by default, shown via JS adding .active on touch devices */
-    .hero-dpad {
-      display: none; position: absolute; bottom: 0.6rem; right: 0.6rem; z-index: 10;
-      width: 96px; height: 96px;
-      grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px;
-    }
-    .hero-dpad.active { display: grid; }
-    .dp { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; color: rgba(255,255,255,0.75); font-size: 0.72rem; display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; touch-action: manipulation; padding: 0; }
-    .dp:active { background: rgba(123,111,255,0.4); border-color: rgba(123,111,255,0.7); color: #fff; }
-    .dp[data-dir="3"] { grid-column: 2; grid-row: 1; }
-    .dp[data-dir="2"] { grid-column: 1; grid-row: 2; }
-    .dp[data-dir="0"] { grid-column: 3; grid-row: 2; }
-    .dp[data-dir="1"] { grid-column: 2; grid-row: 3; }
-
-    /* Quiz overlay inside game */
-    .quiz-overlay { position: absolute; inset: 0; background: rgba(15,17,23,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-    .quiz-overlay.active { opacity: 1; pointer-events: auto; }
-    .quiz-q { font-family: var(--font-display); font-size: clamp(0.9rem, 3.5vw, 1.3rem); font-weight: 600; color: #e8eaf0; text-align: center; margin-bottom: 0.75rem; line-height: 1.3; }
-    .quiz-options { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 280px; }
-    .quiz-opt { background: #1a1d27; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.5rem 0.85rem; color: #e8eaf0; font-family: var(--font-body); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: center; }
-    .quiz-opt:hover { border-color: #7b6fff; background: rgba(123,111,255,0.12); }
-    .quiz-result { text-align: center; }
-    .quiz-result-emoji { font-size: 2rem; display: block; margin-bottom: 0.35rem; }
-    .quiz-result-heading { font-family: var(--font-display); font-size: clamp(1.1rem, 3.5vw, 1.6rem); font-weight: 600; color: #4ade9a; margin-bottom: 0.3rem; }
-    .quiz-result-sub { font-size: 0.78rem; color: #8b90a8; margin-bottom: 0.75rem; max-width: 260px; }
-    .quiz-result-btn { display: inline-block; background: #4ade9a; color: #0f1117; font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.25rem; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-    .quiz-result-btn:hover { background: #6ef0b0; color: #0f1117; }
-
-    /* Student quotes strip */
-    .hero-quotes { padding: 2rem 0; margin-top: 2rem; border-top: 1px solid var(--rule); }
-    .quotes-row { display: flex; flex-direction: column; gap: 1.25rem; align-items: stretch; }
-    .quote-card { position: relative; padding-left: 1.25rem; border-left: 2px solid var(--accent-light); }
-    .quote-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 0.35rem; }
-    .quote-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
-
-    /* Stats bar (below quotes) */
+    /* Stats bar */
     .stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; max-width: 700px; margin: 0 auto; }
     .stat { padding: 1rem 0.75rem; text-align: center; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
     .stat:nth-child(2n) { border-right: none; }
@@ -69,117 +27,144 @@
     .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
     .stat-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
 
-    /* ── Tablet (768px+) ── */
     @media (min-width: 768px) {
-      .hero { padding: 3.5rem 0 0; }
-      .hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
-      .hero-text { text-align: left; }
-      .hero h1 { margin: 0 0 1.25rem; }
-      .hero-sub { margin: 0 0 2rem; }
-      .hero-btns { justify-content: flex-start; }
-      .hero-game { max-width: 360px; margin: 0 0 0 auto; border-radius: 14px; box-shadow: 0 20px 60px rgba(28,23,18,0.18); }
+      .hero { padding: 4.5rem 0 0; }
       .btn-lg { padding: 0.85rem 1.75rem; font-size: 0.88rem; }
-      .hero-quotes { margin-top: 2.5rem; padding: 2.5rem 0; }
-      .quotes-row { flex-direction: row; gap: 2rem; justify-content: center; align-items: flex-start; }
-      .quote-card { flex: 1; max-width: 380px; }
-      .quote-text { font-size: 1.15rem; }
       .stats-bar { display: flex; flex-wrap: nowrap; }
       .stat { flex: 1; padding: 1.25rem 1rem; border-bottom: none; border-right: 1px solid var(--rule); }
       .stat:nth-child(2n) { border-right: 1px solid var(--rule); }
       .stat:last-child { border-right: none; }
       .stat-num { font-size: 2.2rem; }
-      .quiz-overlay { padding: 1.5rem; }
-      .quiz-q { font-size: clamp(1rem, 2.5vw, 1.3rem); }
     }
 
-    /* ── Large desktop (1024px+) ── */
-    @media (min-width: 1024px) {
-      .hero { padding: 4rem 0 0; }
-      .hero-grid { gap: 3.5rem; }
-      .hero-game { max-width: 420px; }
-      .btn-lg { padding: 0.85rem 2rem; font-size: 0.9rem; }
-      .hero-quotes { margin-top: 3rem; }
-    }
+    /* ── Main Tab Bar ──────────────────── */
+    .tab-bar-wrap { background: var(--parchment); border-bottom: 1px solid var(--rule); z-index: 150; transition: box-shadow 0.3s ease; }
+    .tab-bar-wrap.sticky { position: sticky; top: 0; box-shadow: 0 2px 12px rgba(28,23,18,0.08); }
+    .tab-bar { display: flex; overflow-x: auto; white-space: nowrap; gap: 0; padding: 0; margin: 0; list-style: none; scrollbar-width: none; -ms-overflow-style: none; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab-bar li { flex-shrink: 0; }
+    .tab-btn { display: inline-block; font-family: var(--font-body); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); padding: 0.9rem 1.1rem; border: none; background: none; cursor: pointer; position: relative; transition: color var(--transition); white-space: nowrap; }
+    .tab-btn:hover { color: var(--ink); }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after { content: ""; position: absolute; bottom: 0; left: 0.5rem; right: 0.5rem; height: 2px; background: var(--accent); border-radius: 2px; }
 
-    /* Features */
-    .feature { padding: 3rem 0; }
-    .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
     @media (min-width: 768px) {
-      .feature { padding: 4rem 0; }
-      .feature-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
-      .feature-grid.flip .feature-text { order: 1; }
-      .feature-grid.flip .feature-visual { order: 0; }
+      .tab-bar { justify-content: center; }
+      .tab-btn { padding: 0.9rem 1.4rem; font-size: 0.75rem; }
     }
-    @media (min-width: 1024px) {
-      .feature { padding: 5rem 0; }
-      .feature-grid { gap: 5rem; }
-    }
-    .feature-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-    .feature h2 { font-size: clamp(1.6rem, 4vw, 2.8rem); margin-bottom: 0.75rem; line-height: 1.1; }
-    .feature p { color: var(--ink-mid); margin-bottom: 1.25rem; font-size: 0.95rem; }
-    @media (min-width: 768px) { .feature p { font-size: 1rem; } }
+
+    /* ── Tab Panels ────────────────────── */
+    .tab-panel { display: none; padding: 3rem 0; }
+    .tab-panel.active { display: block; }
+
+    /* ── Sub-tab Bar ───────────────────── */
+    .sub-tab-bar { display: flex; overflow-x: auto; white-space: nowrap; gap: 0.35rem; padding: 0 0 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--rule); list-style: none; scrollbar-width: none; -ms-overflow-style: none; }
+    .sub-tab-bar::-webkit-scrollbar { display: none; }
+    .sub-tab-btn { display: inline-block; font-family: var(--font-body); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); padding: 0.5rem 0.85rem; border: 1px solid var(--parchment-deep); background: var(--parchment); border-radius: 20px; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
+    .sub-tab-btn:hover { border-color: var(--accent-light); color: var(--ink-mid); }
+    .sub-tab-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(139,94,60,0.06); }
+
+    .sub-panel { display: none; }
+    .sub-panel.active { display: block; }
+
+    /* ── Feature tags ──────────────────── */
     .feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
     .tag { font-size: 0.65rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 20px; border: 1px solid var(--rule); color: var(--ink-mid); letter-spacing: 0.05em; }
-    @media (min-width: 768px) { .tag { font-size: 0.68rem; padding: 0.3rem 0.75rem; } }
 
-    /* Mock panels */
-    .mock-panel { background: #1a1a2e; border-radius: 10px; overflow: hidden; box-shadow: 0 12px 40px rgba(28,23,18,0.15); aspect-ratio: 4/3; display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; }
-    @media (min-width: 768px) { .mock-panel { border-radius: 14px; box-shadow: 0 20px 60px rgba(28,23,18,0.18); max-width: none; margin: 0; } }
-    .mock-bar { background: #13131f; padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0; }
-    @media (min-width: 768px) { .mock-bar { padding: 0.6rem 1rem; gap: 0.4rem; } }
-    .mock-dot { width: 8px; height: 8px; border-radius: 50%; }
-    @media (min-width: 768px) { .mock-dot { width: 10px; height: 10px; } }
-    .mock-body { flex: 1; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; overflow: hidden; }
-    .game-card-mock { background: #252540; border-radius: 8px; padding: 0.65rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
-    .game-badge-mock { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
-    .game-title-mock { font-size: 0.72rem; color: #d0c8ff; font-family: var(--font-display); font-weight: 600; }
-    .vocab-subject-mock { background: #252540; border-radius: 8px; padding: 0.5rem 0.75rem; display: flex; align-items: center; justify-content: space-between; }
-    .vocab-subject-name { font-size: 0.65rem; color: #c0b8ff; font-weight: 600; }
-    .vocab-count { font-size: 0.55rem; color: #8080a0; }
-    .vocab-game-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
-    .vocab-pill { font-size: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 600; }
-    .joke-bubble { background: #252540; border-radius: 10px; padding: 0.75rem 1rem; }
-    .joke-q { font-size: 0.65rem; color: #c0b8ff; margin-bottom: 0.4rem; line-height: 1.4; }
-    .joke-a { font-size: 0.62rem; color: #4ade9a; font-style: italic; }
-    .joke-subject { font-size: 0.5rem; color: #6060a0; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
-
-    /* Subjects strip */
-    .subjects-strip { background: var(--parchment-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1.5rem 0; }
-    .subjects-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-align: center; margin-bottom: 1rem; }
-    .subjects-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
-    .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
+    /* ── Subject chips ─────────────────── */
+    .subject-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.5rem; }
+    .subject-chip { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.75rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 20px; color: var(--ink-mid); text-decoration: none; transition: border-color var(--transition), color var(--transition); }
     .subject-chip:hover { border-color: var(--accent); color: var(--accent); }
-    @media (min-width: 768px) {
-      .subjects-strip { padding: 2rem 0; }
-      .subjects-list { gap: 0.6rem; }
-      .subject-chip { font-size: 0.78rem; padding: 0.4rem 1rem; }
-    }
 
-    /* AI section */
-    .ai-section { padding: 3rem 0; background: var(--parchment-mid); border-top: 1px solid var(--rule); }
-    .ai-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-    .ai-card { padding: 1.25rem; background: var(--parchment); border: 1px solid var(--parchment-deep); border-radius: 10px; }
-    .ai-card h3 { margin-bottom: 0.4rem; font-size: 1rem; }
-    .ai-card p { font-size: 0.85rem; color: var(--ink-mid); }
-    @media (min-width: 768px) {
-      .ai-section { padding: 5rem 0; }
-      .ai-grid { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
-      .ai-card { padding: 1.5rem; }
-      .ai-card h3 { font-size: 1.1rem; }
-      .ai-card p { font-size: 0.88rem; }
-    }
+    /* ── Panel content ─────────────────── */
+    .panel-title { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.5rem; }
+    .panel-desc { color: var(--ink-mid); font-size: 0.95rem; max-width: 60ch; margin-bottom: 1.25rem; line-height: 1.7; }
 
-    /* Sim */
-    .sim-feature { display: grid; grid-template-columns: 1fr; gap: 1.5rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; overflow: hidden; padding: 1.25rem; align-items: center; }
-    .sim-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; display: block; }
-    @media (min-width: 768px) {
-      .sim-feature { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; border-radius: 12px; }
+    /* ── Language cards ─────────────────── */
+    .lang-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .lang-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.25rem; text-align: center; text-decoration: none; color: var(--ink); transition: border-color var(--transition), transform var(--transition); }
+    .lang-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
+    .lang-flag { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .lang-name { font-family: var(--font-display); font-size: 1.1rem; }
+
+    /* ── Simulation cards ──────────────── */
+    .sim-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
+    @media (min-width: 600px) { .sim-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .sim-grid { grid-template-columns: repeat(3, 1fr); } }
+    .sim-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.25rem; transition: border-color var(--transition), transform var(--transition); }
+    .sim-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
+    .sim-card-level { display: inline-block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 12px; margin-bottom: 0.5rem; }
+    .sim-card-level.ks3 { background: rgba(59,130,246,0.12); color: #3b82f6; }
+    .sim-card-level.gcse { background: rgba(139,94,60,0.12); color: var(--accent); }
+    .sim-card-level.a-level { background: rgba(16,185,129,0.12); color: #10b981; }
+    .sim-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+    .sim-card-subject { font-size: 0.68rem; color: var(--ink-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .sim-card p { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 0.75rem; }
+    .sim-card-link { font-size: 0.75rem; font-weight: 500; color: var(--accent); }
+
+    /* ── Homeroom section ──────────────── */
+    .homeroom-block { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--rule); }
+    .homeroom-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* ── International cards ────────────── */
+    .intl-cards { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (min-width: 600px) { .intl-cards { grid-template-columns: 1fr 1fr; } }
+    .intl-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.5rem; }
+    .intl-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .intl-card p { font-size: 0.88rem; color: var(--ink-mid); }
+
+    /* ── Contributor card ──────────────── */
+    .contributor-card { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (min-width: 768px) { .contributor-card { grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; } }
+    .contributor-photo img { width: 100%; max-width: 220px; border-radius: 12px; display: block; box-shadow: 0 8px 30px rgba(28,23,18,0.12); }
+    .contributor-info h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.5rem; }
+    .contributor-info p { color: var(--ink-mid); margin-bottom: 0.75rem; font-size: 0.95rem; max-width: 54ch; }
+    .contributor-creds { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .contributor-creds li { font-size: 0.78rem; color: var(--ink-mid); background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 6px; padding: 0.35rem 0.75rem; }
+
+    /* ── Overview grid ─────────────────── */
+    .overview-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+    @media (min-width: 600px) { .overview-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .overview-grid { grid-template-columns: repeat(3, 1fr); } }
+    .overview-card { background: var(--parchment-mid); border: 1px solid var(--parchment-deep); border-radius: 10px; padding: 1.5rem; }
+    .overview-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .overview-card p { font-size: 0.85rem; color: var(--ink-mid); }
+    .overview-num { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--accent); line-height: 1; display: block; margin-bottom: 0.25rem; }
+
+    /* ── Contact form ──────────────────── */
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .form-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); }
+    .form-input, .form-select, .form-textarea {
+      background: var(--parchment-mid); border: 1px solid var(--parchment-deep); color: var(--ink);
+      font-family: var(--font-body); font-size: 1rem; font-weight: 300; padding: 0.85rem 1rem;
+      width: 100%; transition: border-color var(--transition); outline: none; -webkit-appearance: none; border-radius: 0;
     }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { min-height: 140px; resize: vertical; }
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; background-color: var(--parchment-mid);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 560px) { .form-row { grid-template-columns: 1fr 1fr; } }
+    .form-success { display: none; text-align: center; padding: 3rem 2rem; background: var(--parchment-mid); border: 1px solid var(--parchment-deep); }
+    .form-success h3 { margin-bottom: 0.75rem; }
+    .form-success p { color: var(--ink-mid); font-size: 0.95rem; }
+    .info-block { border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+
+    .contact-layout { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+    @media (min-width: 768px) { .contact-layout { grid-template-columns: 2fr 1fr; gap: 4rem; } }
+
+    /* ── Parents section ───────────────── */
+    .parents-content p { color: var(--ink-mid); font-size: 0.95rem; max-width: 60ch; margin-bottom: 1rem; line-height: 1.7; }
 
   </style>
 </head>
 <body>
 
+  <!-- ── Nav ───────────────────────────── -->
   <nav>
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Class<span>Craft</span></a>
@@ -188,72 +173,33 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="simulations.html">Simulations</a></li>
-        <li><a href="books.html">Books</a></li>
-        <li><a href="jokes.html">Jokes</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="draw-it.html">Draw It</a></li>
-        <li><a href="roleplay.html">Roleplay</a></li>
-        <li><a href="vocab-hub/vocab-hub.html">Terms</a></li>
-        <li><a href="vocab-hub/vocab.html">Vocab</a></li>
-        <li><a href="homeroom.html">Homeroom</a></li>
-        <li><a href="nature.html">Nature</a></li>
-        <li><a href="about.html">Contributors</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="active" data-nav="home">Home</a></li>
+        <li><a href="#ks3" data-nav="ks3">KS3</a></li>
+        <li><a href="#gcse" data-nav="gcse">GCSE</a></li>
+        <li><a href="#a-level" data-nav="a-level">A-Level</a></li>
+        <li><a href="#ibdp" data-nav="ibdp">IBDP</a></li>
+        <li><a href="#international" data-nav="international">International</a></li>
+        <li><a href="#teachers" data-nav="teachers">Teachers</a></li>
+        <li><a href="#parents" data-nav="parents">Parents</a></li>
+        <li><a href="#contributors" data-nav="contributors">Contributors</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- ── Hero ──────────────────────────── -->
+  <section class="hero" id="hero">
     <div class="container">
-      <div class="hero-grid">
-
-        <!-- Left: text -->
-        <div class="hero-text">
-          <span class="hero-label fade-up fade-up-1">Free &middot; No login &middot; No account needed</span>
-          <h1 class="fade-up fade-up-2">Your revision,<br><em>sorted.</em></h1>
-          <p class="hero-sub fade-up fade-up-3">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser. We experiment with new ways to make GCSE and A-Level revision fun, effective, and worth your time.</p>
-          <div class="hero-btns fade-up fade-up-4">
-            <a href="games.html" class="btn btn-accent btn-lg">Start Playing &rarr;</a>
-            <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
-          </div>
-        </div>
-
-        <!-- Right: Pacman game -->
-        <div class="hero-game" id="hero-game" tabindex="0" style="outline:none">
-          <canvas id="hero-pacman"></canvas>
-          <div class="hero-game-cta" id="hero-cta">Click to play &middot; Arrow keys to move</div>
-          <!-- Mobile D-pad -->
-          <div class="hero-dpad" id="hero-dpad">
-            <button class="dp" data-dir="3" aria-label="Up">&#x25B2;</button>
-            <button class="dp" data-dir="2" aria-label="Left">&#x25C0;</button>
-            <button class="dp" data-dir="0" aria-label="Right">&#x25B6;</button>
-            <button class="dp" data-dir="1" aria-label="Down">&#x25BC;</button>
-          </div>
-          <div class="quiz-overlay" id="quiz-overlay">
-            <div id="quiz-content"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Student quotes -->
-      <div class="hero-quotes fade-up fade-up-4">
-        <div class="quotes-row">
-          <div class="quote-card">
-            <div class="quote-text">&ldquo;This is a fun way to revise.&rdquo;</div>
-            <div class="quote-name">Billy &mdash; Student</div>
-          </div>
-          <div class="quote-card">
-            <div class="quote-text">&ldquo;This makes it easier to sit down and start studying.&rdquo;</div>
-            <div class="quote-name">Tina &mdash; Student</div>
-          </div>
+      <div class="hero-text">
+        <span class="hero-label fade-up fade-up-1">Free &middot; No login &middot; No account needed</span>
+        <h1 class="fade-up fade-up-2">Your revision, <em>sorted.</em></h1>
+        <p class="hero-sub fade-up fade-up-3">Games, flashcards, quizzes, timelines and more &mdash; all free, all in your browser.</p>
+        <div class="hero-btns fade-up fade-up-4">
+          <a href="#ks3" class="btn btn-accent btn-lg" id="explore-btn">Explore Resources &rarr;</a>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-lg">Terminology Tester</a>
         </div>
       </div>
 
-      <!-- Stats -->
       <div class="stats-bar fade-up fade-up-4" style="margin-top: 2.5rem; margin-bottom: 0;">
         <div class="stat"><span class="stat-num">160+</span><span class="stat-label">Revision Games</span></div>
         <div class="stat"><span class="stat-num">4,600+</span><span class="stat-label">Vocab Terms</span></div>
@@ -263,1196 +209,1044 @@
     </div>
   </section>
 
-  <!-- SUBJECTS STRIP -->
-  <div class="subjects-strip">
+  <!-- ── Main Tab Bar ──────────────────── -->
+  <div class="tab-bar-wrap" id="tab-bar-wrap">
     <div class="container">
-      <p class="subjects-label">Subjects covered</p>
-      <div class="subjects-list">
-        <a href="games.html#biology" class="subject-chip">&#x1F9EC; Biology</a>
-        <a href="games.html#chemistry" class="subject-chip">&#x2697;&#xFE0F; Chemistry</a>
-        <a href="games.html#physics" class="subject-chip">&#x269B;&#xFE0F; Physics</a>
-        <a href="games.html#maths" class="subject-chip">&#x1F4D0; Maths</a>
-        <a href="games.html#english-language" class="subject-chip">&#x1F4DD; English Language</a>
-        <a href="games.html#english-literature" class="subject-chip">&#x1F4D6; English Literature</a>
-        <a href="games.html#history" class="subject-chip">&#x1F3DB;&#xFE0F; History</a>
-        <a href="games.html#geography" class="subject-chip">&#x1F30D; Geography</a>
-        <a href="games.html#psychology" class="subject-chip">&#x1F9E0; Psychology</a>
-        <a href="games.html#economics" class="subject-chip">&#x1F4CA; Economics</a>
-        <a href="games.html#computer-science" class="subject-chip">&#x1F4BB; Computer Science</a>
-        <a href="games.html#business-studies" class="subject-chip">&#x1F4BC; Business Studies</a>
-        <a href="games.html#sociology" class="subject-chip">&#x1F465; Sociology</a>
-        <a href="games.html#religious-studies" class="subject-chip">&#x1F54C; Religious Studies</a>
-        <a href="games.html#pe" class="subject-chip">&#x1F3C3; PE &amp; Sport Science</a>
-        <a href="games.html#music" class="subject-chip">&#x1F3B5; Music</a>
-        <a href="games.html#art" class="subject-chip">&#x1F3A8; Art &amp; Design</a>
-        <a href="games.html#design-technology" class="subject-chip">&#x1F527; Design Technology</a>
-        <a href="games.html#environmental-science" class="subject-chip">&#x1F331; Environmental Science</a>
-        <a href="games.html#astronomy" class="subject-chip">&#x1F52D; Astronomy</a>
-        <a href="games.html#french" class="subject-chip">&#x1F1EB;&#x1F1F7; French</a>
-        <a href="games.html#german" class="subject-chip">&#x1F1E9;&#x1F1EA; German</a>
-        <a href="games.html#spanish" class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</a>
-        <a href="games.html#drama" class="subject-chip">&#x1F3AD; Drama</a>
-        <a href="games.html#food-technology" class="subject-chip">&#x1F373; Food Technology</a>
-      </div>
+      <ul class="tab-bar" id="tab-bar">
+        <li><button class="tab-btn active" data-tab="ks3">KS3</button></li>
+        <li><button class="tab-btn" data-tab="gcse">GCSE</button></li>
+        <li><button class="tab-btn" data-tab="a-level">A-Level</button></li>
+        <li><button class="tab-btn" data-tab="ibdp">IBDP</button></li>
+        <li><button class="tab-btn" data-tab="international">International</button></li>
+        <li><button class="tab-btn" data-tab="teachers">Teachers</button></li>
+        <li><button class="tab-btn" data-tab="parents">Parents</button></li>
+        <li><button class="tab-btn" data-tab="contributors">Contributors</button></li>
+        <li><button class="tab-btn" data-tab="contact">Contact</button></li>
+      </ul>
     </div>
   </div>
 
-  <!-- FEATURE: GAMES -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid">
-        <div class="feature-text">
-          <p class="feature-eyebrow">160+ games &middot; 25 subjects &middot; 7 formats</p>
-          <h2>Games that make<br>the content stick.</h2>
-          <p>Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects. Open any game in your browser right now. No account, no app, no fuss.</p>
+  <!-- ── Tab Panels ────────────────────── -->
+  <div id="tab-panels">
+
+    <!-- ════════════ KS3 ════════════ -->
+    <div class="tab-panel active" id="panel-ks3">
+      <div class="container">
+        <ul class="sub-tab-bar" data-level="ks3">
+          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
+          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
+          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
+          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
+          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
+          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
+          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
+        </ul>
+
+        <div class="sub-panel active" data-level="ks3" data-sub="games">
+          <h2 class="panel-title">Revision Games</h2>
+          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
           <div class="feature-tags">
-            <span class="tag">Memory Match</span>
-            <span class="tag">Sort It</span>
-            <span class="tag">Quiz</span>
-            <span class="tag">Timeline</span>
-            <span class="tag">Label the Diagram</span>
+            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
+            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
           </div>
-          <a href="games.html" class="btn btn-accent">Find your subject &rarr;</a>
-        </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
-            </div>
-            <div class="mock-body" style="gap:0.4rem">
-              <!-- Score bar -->
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.2rem;">
-                <span style="font-size:0.6rem;color:#8080a0;letter-spacing:0.08em;text-transform:uppercase">Memory Match — Genetics</span>
-                <span style="font-size:0.6rem;color:#4ade9a;font-weight:600">4 matched</span>
-              </div>
-              <!-- Memory grid 4x4 -->
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.35rem;flex:1">
-                <!-- matched pair -->
-                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Allele</div>
-                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Alt. form of a gene</div>
-                <!-- face down -->
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <!-- flipped -->
-                <div style="background:#3a3a6a;border:1px solid #7b6fff88;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#c0b8ff;line-height:1.2">Dominant</div>
-                <!-- matched pair -->
-                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Meiosis</div>
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Produces gametes</div>
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <!-- flipped -->
-                <div style="background:#3a3a6a;border:1px solid #7b6fff88;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#c0b8ff;line-height:1.2">Expressed when 2 copies present</div>
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <!-- matched pair -->
-                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Genotype</div>
-                <div style="background:#252540;border:1px solid #3a3a6a;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;font-size:0.9rem">?</div>
-                <div style="background:#1a3a2a;border:1px solid #4ade9a44;border-radius:6px;padding:0.3rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:0.52rem;color:#4ade9a;line-height:1.2">Genetic makeup</div>
-              </div>
-            </div>
+          <div class="subject-chips">
+            <span class="subject-chip">&#x1F9EC; Biology</span>
+            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
+            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
+            <span class="subject-chip">&#x1F4D0; Maths</span>
+            <span class="subject-chip">&#x1F4DD; English Language</span>
+            <span class="subject-chip">&#x1F4D6; English Literature</span>
+            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
+            <span class="subject-chip">&#x1F30D; Geography</span>
+            <span class="subject-chip">&#x1F9E0; Psychology</span>
+            <span class="subject-chip">&#x1F4CA; Economics</span>
+            <span class="subject-chip">&#x1F4BB; Computer Science</span>
+            <span class="subject-chip">&#x1F4BC; Business Studies</span>
+            <span class="subject-chip">&#x1F465; Sociology</span>
+            <span class="subject-chip">&#x1F54C; Religious Studies</span>
+            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
+            <span class="subject-chip">&#x1F3B5; Music</span>
+            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
+            <span class="subject-chip">&#x1F527; Design Technology</span>
+            <span class="subject-chip">&#x1F331; Environmental Science</span>
+            <span class="subject-chip">&#x1F52D; Astronomy</span>
+            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
+            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
+            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
+            <span class="subject-chip">&#x1F3AD; Drama</span>
+            <span class="subject-chip">&#x1F373; Food Technology</span>
           </div>
+          <a href="games.html" class="btn btn-accent">Browse KS3 Games &rarr;</a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- FEATURE: TERMINOLOGY TESTER -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid flip">
-        <div class="feature-text">
-          <p class="feature-eyebrow">4,600+ terms &middot; 12 exam boards</p>
-          <h2>Know every term<br>before the exam.</h2>
-          <p>Choose your subject, pick your exam board, select a topic &mdash; then practice with Flashcard Pairs, Quiz, Hangman, Anagram, Crossword or Term Guess. AQA, Edexcel, OCR, Cambridge IGCSE, IB and more.</p>
+        <div class="sub-panel" data-level="ks3" data-sub="terms">
+          <h2 class="panel-title">Terminology Tester</h2>
+          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
           <div class="feature-tags">
-            <span class="tag">Flashcard Pairs</span>
-            <span class="tag">Hangman</span>
-            <span class="tag">Anagram</span>
-            <span class="tag">Crossword</span>
-            <span class="tag">Term Guess</span>
-            <span class="tag">Quiz</span>
+            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
+            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
+            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
           </div>
-          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Test yourself now &rarr;</a>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
         </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
-            </div>
-            <div class="mock-body" style="gap:0.5rem;align-items:center;justify-content:center">
-              <!-- Context clue -->
-              <div style="font-size:0.58rem;color:#8080a0;text-align:center;letter-spacing:0.06em;text-transform:uppercase">AQA Biology &mdash; Hangman</div>
-              <div style="font-size:0.6rem;color:#a0a0c0;text-align:center;font-style:italic;padding:0 0.5rem">"A change in the DNA base sequence"</div>
 
-              <!-- Gallows SVG -->
-              <svg viewBox="0 0 120 90" style="width:60%;max-width:140px;flex-shrink:0">
-                <!-- Gallows structure -->
-                <line x1="10" y1="85" x2="80" y2="85" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="30" y1="85" x2="30" y2="10" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="30" y1="10" x2="70" y2="10" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="70" y1="10" x2="70" y2="22" stroke="#4a4a6a" stroke-width="2.5" stroke-linecap="round"/>
-                <!-- Head -->
-                <circle cx="70" cy="28" r="6" fill="none" stroke="#e05050" stroke-width="2"/>
-                <!-- Body -->
-                <line x1="70" y1="34" x2="70" y2="55" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
-                <!-- Left arm -->
-                <line x1="70" y1="38" x2="58" y2="48" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
-                <!-- Right arm -->
-                <line x1="70" y1="38" x2="82" y2="48" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
-                <!-- Left leg -->
-                <line x1="70" y1="55" x2="60" y2="68" stroke="#e05050" stroke-width="2" stroke-linecap="round"/>
-                <!-- Right leg — missing, one guess left -->
-              </svg>
-
-              <!-- Word display: MUTATION — M_T_T__N -->
-              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap">
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">M</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">T</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">T</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#3a3a6a">&nbsp;</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem"><span style="font-size:0.75rem;font-weight:700;color:#c0b8ff">N</span><div style="width:12px;height:1.5px;background:#6060a0"></div></div>
-              </div>
-
-              <!-- Wrong guesses -->
-              <div style="display:flex;gap:0.3rem;justify-content:center;flex-wrap:wrap;margin-top:0.1rem">
-                <span style="font-size:0.6rem;color:#8080a0">Wrong:</span>
-                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">E</span>
-                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">S</span>
-                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">R</span>
-                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">D</span>
-                <span style="font-size:0.6rem;color:#e05050;text-decoration:line-through">L</span>
-              </div>
-
-              <!-- Lives remaining -->
-              <div style="font-size:0.58rem;color:#f0a030;text-align:center">1 guess remaining</div>
-            </div>
+        <div class="sub-panel" data-level="ks3" data-sub="vocab">
+          <h2 class="panel-title">Language Vocabulary Trainer</h2>
+          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
+          <div class="lang-cards">
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
           </div>
+          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- FEATURE: JOKES -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid">
-        <div class="feature-text">
-          <p class="feature-eyebrow">Take a break</p>
-          <h2>Curriculum jokes your<br>teacher will pretend not to find funny.</h2>
-          <p>Sometimes you just need a laugh. A growing collection of subject jokes across every curriculum area &mdash; the best kind of procrastination.</p>
-          <a href="jokes.html" class="btn btn-accent">Have a laugh &rarr;</a>
-        </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
-            </div>
-            <div class="mock-body" style="gap:0.4rem;padding:0.6rem">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.1rem">
-                <span style="font-size:0.5rem;color:#8080a0;letter-spacing:0.08em;text-transform:uppercase">Subject Jokes</span>
-                <span style="font-size:0.5rem;padding:0.15rem 0.4rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">Random</span>
-              </div>
-              <div style="display:flex;gap:0.25rem;margin-bottom:0.2rem;flex-wrap:wrap">
-                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#3a3a5a;color:#c0b8ff;border-radius:10px">Biology</span>
-                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#8b5e3c;color:#f5efe6;border-radius:10px;border-bottom:1px solid #c4956a">Physics</span>
-                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#3a3a5a;color:#c0b8ff;border-radius:10px">History</span>
-                <span style="font-size:0.42rem;padding:0.12rem 0.35rem;background:#3a3a5a;color:#c0b8ff;border-radius:10px">Maths</span>
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;flex:1">
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
-                  <img src="jokes/physics/joke_01.jpg" alt="Physics joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
-                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">Physics &middot; #04</div>
-                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">Why can&rsquo;t you trust atoms?</div>
-                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">They make up everything.</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
-                  <img src="jokes/biology/joke_01.jpg" alt="Biology joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
-                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">Biology &middot; #12</div>
-                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">What did the cell say when it stubbed its toe?</div>
-                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">Mitosis!</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
-                  <img src="jokes/history/joke_01.jpg" alt="History joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
-                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">History &middot; #07</div>
-                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">Why was the maths book sad?</div>
-                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">Too many problems.</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.2rem">
-                  <img src="jokes/maths/joke_01.jpg" alt="Maths joke" style="width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;display:block" />
-                  <div style="font-size:0.42rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.06em">Economics &middot; #03</div>
-                  <div style="font-size:0.48rem;color:#1c1712;font-weight:600;line-height:1.3">What do you call a fake noodle?</div>
-                  <div style="font-size:0.42rem;color:#4a3f33;font-style:italic;line-height:1.3">An impasta.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- SIMULATION -->
-  <section class="feature" style="padding-bottom:5rem">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
-        <div><p class="section-label">Featured</p><h2 style="margin:0">Simulation</h2></div>
-        <a href="simulations.html" class="btn">View All</a>
-      </div>
-      <div class="sim-feature">
-        <img src="simulations/thumbnails/science_gcse.jpg" alt="Mars Colony Survival simulation" class="sim-img" />
-        <div>
-          <p class="card-label">Science &middot; GCSE &middot; Interactive Simulation</p>
-          <h2 style="font-size:clamp(1.4rem,4vw,2rem);margin-bottom:1rem;">Mars Colony Survival</h2>
-          <p style="color:var(--ink-mid);margin-bottom:1.5rem;font-size:0.95rem;">Teams manage a colony on Mars, applying scientific reasoning to life support, resource management, and survival decisions as the colony faces mounting crises. 7 rounds, live leaderboard &mdash; open in any browser, no setup needed.</p>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-            <a href="simulations/Mars_Colony_Survival_GCSE.html" target="_blank" class="btn btn-accent">Launch Simulation</a>
-            <a href="simulations.html" class="btn">All Simulations</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- BOOKS -->
-  <section class="section">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
-        <div><p class="section-label">Publications</p><h2 style="margin:0">Books</h2></div>
-        <a href="books.html" class="btn">View All</a>
-      </div>
-      <div class="grid-4">
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-biology.png" alt="GCSE Biology" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
-          <p class="card-label">GCSE &middot; Biology</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
-        </div>
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-chemistry.png" alt="GCSE Chemistry" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
-          <p class="card-label">GCSE &middot; Chemistry</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
-        </div>
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-mathematics.png" alt="GCSE Mathematics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
-          <p class="card-label">GCSE &middot; Mathematics</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
-        </div>
-        <div class="card">
-          <div class="card-thumb" style="aspect-ratio:3/4;padding:0;margin-bottom:var(--space-sm);"><img src="cover-physics.png" alt="GCSE Physics" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;background:var(--parchment-deep);" /></div>
-          <p class="card-label">GCSE &middot; Physics</p>
-          <h3 class="card-title">100 AI Prompts for Smarter Revision</h3>
-          <a href="books.html" class="btn btn-accent" style="font-size:0.68rem;padding:0.6rem 1rem;">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- FEATURE: DRAW IT -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid flip">
-        <div class="feature-text">
-          <p class="feature-eyebrow">22 diagrams &middot; 15 subjects</p>
-          <h2>Sketch it from memory.</h2>
-          <p>Study a labelled diagram, then recreate it on a pixel grid. From plant cells to piano keyboards &mdash; a hands-on way to learn the diagrams that come up in exams.</p>
+        <div class="sub-panel" data-level="ks3" data-sub="stories">
+          <h2 class="panel-title">Roleplay Stories</h2>
+          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
           <div class="feature-tags">
-            <span class="tag">Biology</span>
-            <span class="tag">Chemistry</span>
-            <span class="tag">Physics</span>
-            <span class="tag">Geography</span>
-            <span class="tag">Music</span>
-            <span class="tag">+ 10 more</span>
+            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
           </div>
+          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ks3" data-sub="jokes">
+          <h2 class="panel-title">Subject Jokes</h2>
+          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
+          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ks3" data-sub="drawit">
+          <h2 class="panel-title">Draw It</h2>
+          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
           <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
         </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
-            </div>
-            <div class="mock-body" style="gap:0.3rem;padding:0.6rem">
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-size:0.5rem;color:#8080a0;text-transform:uppercase;letter-spacing:0.08em">Draw It &mdash; Plant Cell</span>
-                <div style="display:flex;gap:0.2rem">
-                  <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">Guided</span>
-                  <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">Memory</span>
-                </div>
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;flex:1;margin-top:0.2rem">
-                <div style="background:#f5efe6;border-radius:4px;padding:0.3rem;display:flex;flex-direction:column;gap:0.2rem">
-                  <div style="font-size:0.4rem;color:#8a7a6a;text-transform:uppercase;letter-spacing:0.06em;text-align:center">Reference</div>
-                  <svg viewBox="0 0 80 70" style="width:100%;flex:1">
-                    <rect x="5" y="5" width="70" height="60" rx="2" fill="#a8d44a" stroke="#7ab032" stroke-width="1.5"/>
-                    <rect x="10" y="10" width="60" height="50" rx="1" fill="#c8f06a"/>
-                    <ellipse cx="40" cy="35" rx="12" ry="10" fill="#f5cba7" stroke="#d4a574" stroke-width="1"/>
-                    <circle cx="40" cy="35" r="4" fill="#d4764e"/>
-                    <ellipse cx="56" cy="35" rx="6" ry="12" fill="#aee4f5" stroke="#7cc4d5" stroke-width="0.8"/>
-                    <rect x="14" y="48" width="8" height="3" rx="1" fill="#6ab04c"/>
-                    <rect x="24" y="48" width="8" height="3" rx="1" fill="#6ab04c"/>
-                  </svg>
-                </div>
-                <div style="background:#f5efe6;border-radius:4px;padding:0.3rem;display:flex;flex-direction:column;gap:0.2rem">
-                  <div style="font-size:0.4rem;color:#8a7a6a;text-transform:uppercase;letter-spacing:0.06em;text-align:center">Your drawing</div>
-                  <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:1px;flex:1;aspect-ratio:1">
-                    <div style="background:#e0d3c0"></div><div style="background:#e0d3c0"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#e0d3c0"></div><div style="background:#e0d3c0"></div>
-                    <div style="background:#e0d3c0"></div><div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div><div style="background:#e0d3c0"></div>
-                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div>
-                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#d4764e"></div><div style="background:#d4764e"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#aee4f5"></div><div style="background:#a8d44a"></div>
-                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#d4764e"></div><div style="background:#d4764e"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#aee4f5"></div><div style="background:#a8d44a"></div>
-                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#f5cba7"></div><div style="background:#f5cba7"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div>
-                    <div style="background:#a8d44a"></div><div style="background:#c8f06a"></div><div style="background:#6ab04c"></div><div style="background:#6ab04c"></div><div style="background:#c8f06a"></div><div style="background:#c8f06a"></div><div style="background:#6ab04c"></div><div style="background:#6ab04c"></div><div style="background:#c8f06a"></div><div style="background:#a8d44a"></div>
-                    <div style="background:#e0d3c0"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#a8d44a"></div><div style="background:#e0d3c0"></div>
-                  </div>
-                </div>
-              </div>
-              <div style="display:flex;gap:0.2rem;justify-content:center;margin-top:0.15rem">
-                <div style="width:14px;height:14px;border-radius:3px;background:#a8d44a;border:1.5px solid #4a4a6a"></div>
-                <div style="width:14px;height:14px;border-radius:3px;background:#c8f06a"></div>
-                <div style="width:14px;height:14px;border-radius:3px;background:#f5cba7"></div>
-                <div style="width:14px;height:14px;border-radius:3px;background:#d4764e"></div>
-                <div style="width:14px;height:14px;border-radius:3px;background:#aee4f5"></div>
-                <div style="width:14px;height:14px;border-radius:3px;background:#6ab04c"></div>
-                <div style="width:14px;height:14px;border-radius:3px;background:#ede4d6;border:1px solid #aaa"></div>
-              </div>
-            </div>
-          </div>
+
+        <div class="sub-panel" data-level="ks3" data-sub="nature">
+          <h2 class="panel-title">Nature Guide</h2>
+          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
+          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
         </div>
       </div>
     </div>
-  </section>
 
-  <div class="container"><hr class="rule" style="margin:0" /></div>
+    <!-- ════════════ GCSE ════════════ -->
+    <div class="tab-panel" id="panel-gcse">
+      <div class="container">
+        <ul class="sub-tab-bar" data-level="gcse">
+          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
+          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
+          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
+          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
+          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
+          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
+          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
+          <li><button class="sub-tab-btn" data-sub="books">Books</button></li>
+        </ul>
 
-  <!-- FEATURE: ROLEPLAY STORIES -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid">
-        <div class="feature-text">
-          <p class="feature-eyebrow">600 stories &middot; 20 subjects &middot; KS3 to A-Level</p>
-          <h2>Learn through stories.</h2>
-          <p>Step into a role and solve real exam-style problems woven into a narrative. From defusing a physics crisis to running a business startup &mdash; every story is built around the curriculum.</p>
+        <div class="sub-panel active" data-level="gcse" data-sub="games">
+          <h2 class="panel-title">Revision Games</h2>
+          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
           <div class="feature-tags">
-            <span class="tag">Interactive narrative</span>
-            <span class="tag">Exam-style questions</span>
-            <span class="tag">Worked solutions</span>
+            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
+            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
           </div>
-          <a href="roleplay.html" class="btn btn-accent">Explore stories &rarr;</a>
-        </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
-            </div>
-            <div class="mock-body" style="gap:0.4rem;padding:0.6rem">
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-size:0.5rem;color:#8080a0;text-transform:uppercase;letter-spacing:0.08em">Roleplay Stories</span>
-              </div>
-              <div style="display:flex;gap:0.2rem;margin-bottom:0.1rem">
-                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">All Levels</span>
-                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">KS3</span>
-                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">GCSE</span>
-                <span style="font-size:0.42rem;padding:0.12rem 0.4rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">A-Level</span>
-              </div>
-              <div style="font-size:0.55rem;color:#c0b8ff;font-weight:600;margin-top:0.1rem">&#x269B;&#xFE0F; Physics <span style="font-size:0.42rem;color:#8080a0;font-weight:400">&mdash; 30 stories</span></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.3rem;flex:1">
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
-                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#e8f5e9;color:#2e7d32;border-radius:6px;align-self:flex-start">KS3</span>
-                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Spy Meet</div>
-                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Speed, Distance, Time</div>
-                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
-                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#ede7f6;color:#5e35b1;border-radius:6px;align-self:flex-start">GCSE</span>
-                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Runaway Train</div>
-                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Kinetic Energy</div>
-                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
-                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#fff3e0;color:#e65100;border-radius:6px;align-self:flex-start">A-Level</span>
-                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Gravity Assist</div>
-                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Gravitational Fields</div>
-                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
-                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#e8f5e9;color:#2e7d32;border-radius:6px;align-self:flex-start">KS3</span>
-                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Escape Artist</div>
-                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Forces &amp; Motion</div>
-                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
-                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#ede7f6;color:#5e35b1;border-radius:6px;align-self:flex-start">GCSE</span>
-                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Blackout</div>
-                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Electricity</div>
-                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
-                </div>
-                <div style="background:#ede4d6;border-radius:4px;padding:0.35rem;display:flex;flex-direction:column;gap:0.15rem">
-                  <span style="font-size:0.38rem;padding:0.08rem 0.25rem;background:#fff3e0;color:#e65100;border-radius:6px;align-self:flex-start">A-Level</span>
-                  <div style="font-size:0.46rem;color:#1c1712;font-weight:600;line-height:1.2">The Fusion Reactor</div>
-                  <div style="font-size:0.36rem;color:#8a7a6a;line-height:1.2">Nuclear Physics</div>
-                  <div style="font-size:0.36rem;color:#8b5e3c;margin-top:auto">Play &rarr;</div>
-                </div>
-              </div>
-            </div>
+          <div class="subject-chips">
+            <span class="subject-chip">&#x1F9EC; Biology</span>
+            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
+            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
+            <span class="subject-chip">&#x1F4D0; Maths</span>
+            <span class="subject-chip">&#x1F4DD; English Language</span>
+            <span class="subject-chip">&#x1F4D6; English Literature</span>
+            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
+            <span class="subject-chip">&#x1F30D; Geography</span>
+            <span class="subject-chip">&#x1F9E0; Psychology</span>
+            <span class="subject-chip">&#x1F4CA; Economics</span>
+            <span class="subject-chip">&#x1F4BB; Computer Science</span>
+            <span class="subject-chip">&#x1F4BC; Business Studies</span>
+            <span class="subject-chip">&#x1F465; Sociology</span>
+            <span class="subject-chip">&#x1F54C; Religious Studies</span>
+            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
+            <span class="subject-chip">&#x1F3B5; Music</span>
+            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
+            <span class="subject-chip">&#x1F527; Design Technology</span>
+            <span class="subject-chip">&#x1F331; Environmental Science</span>
+            <span class="subject-chip">&#x1F52D; Astronomy</span>
+            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
+            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
+            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
+            <span class="subject-chip">&#x1F3AD; Drama</span>
+            <span class="subject-chip">&#x1F373; Food Technology</span>
           </div>
+          <a href="games.html" class="btn btn-accent">Browse GCSE Games &rarr;</a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- FEATURE: HOMEROOM -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid flip">
-        <div class="feature-text">
-          <p class="feature-eyebrow">2 sets &middot; 24 daily tiles &middot; auto-rotating</p>
-          <h2>Start the day<br>with Homeroom.</h2>
-          <p>A full-screen morning dashboard for classrooms. Word of the Day, Maths Problem, Guess the Flag, On This Day and more &mdash; all rotating daily with no setup needed.</p>
+        <div class="sub-panel" data-level="gcse" data-sub="terms">
+          <h2 class="panel-title">Terminology Tester</h2>
+          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
           <div class="feature-tags">
-            <span class="tag">Word of the Day</span>
-            <span class="tag">Maths Problem</span>
-            <span class="tag">Guess the Flag</span>
-            <span class="tag">On This Day</span>
+            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
+            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
+            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
           </div>
-          <a href="homeroom.html" class="btn btn-accent">Open Homeroom &rarr;</a>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
         </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
-            </div>
-            <div class="mock-body" style="padding:0;gap:0;display:flex;flex-direction:column">
-              <div style="background:#1c1712;padding:0.4rem 0.6rem;display:flex;justify-content:space-between;align-items:center">
-                <span style="font-size:0.5rem;color:#f5efe6;font-weight:600">Class<span style="color:#c4956a">Craft</span></span>
-                <span style="font-size:0.42rem;color:#8a7a6a;font-style:italic">Monday, 18 May 2026</span>
-                <span style="font-size:0.38rem;color:#8a7a6a">Set A</span>
-              </div>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:3px;padding:3px;flex:1;background:#1c1712">
-                <div style="background:#ede4d6;border-top:2px solid #4a7ab5;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Word of the Day</div>
-                  <div style="font-size:0.6rem;color:#1c1712;font-weight:600;font-style:italic">Ubiquitous</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #7a5aa0;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Idiom</div>
-                  <div style="font-size:0.42rem;color:#1c1712;font-style:italic;line-height:1.2">&ldquo;Break the ice&rdquo;</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #4a7ab5;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Maths</div>
-                  <div style="font-size:0.48rem;color:#1c1712;font-weight:500">x&sup2; + 5x = 14</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #8b5e3c;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Joke</div>
-                  <div style="font-size:0.38rem;color:#1c1712;line-height:1.2">Why did Pi get its licence revoked?</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #8b5e3c;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Quote</div>
-                  <div style="font-size:0.36rem;color:#1c1712;font-style:italic;line-height:1.2">&ldquo;To be or not to be&rdquo;</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #4a8a5a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">On This Day</div>
-                  <div style="font-size:0.7rem;color:#1c1712;font-weight:600">1969</div>
-                  <div style="font-size:0.32rem;color:#4a3f33">Moon landing</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #a04040;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Born Today</div>
-                  <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Bertrand Russell</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #3a8a8a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Science Fact</div>
-                  <div style="font-size:0.36rem;color:#1c1712;line-height:1.2">Octopuses have three hearts</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #3a8a8a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Guess the Flag</div>
-                  <div style="font-size:1rem">&#x1F1EF;&#x1F1F5;</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #4a8a5a;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Element</div>
-                  <div style="font-size:0.8rem;color:#1c1712;font-weight:600;font-style:italic">Fe</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #4a7ab5;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">French</div>
-                  <div style="font-size:0.5rem;color:#1c1712;font-weight:600;font-style:italic">Papillon</div>
-                </div>
-                <div style="background:#ede4d6;border-top:2px solid #a04040;border-radius:3px;padding:0.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-                  <div style="font-size:0.32rem;color:#8b5e3c;text-transform:uppercase;letter-spacing:0.05em">Chinese</div>
-                  <div style="font-size:0.9rem;color:#1c1712">&#x9F99;</div>
-                </div>
-              </div>
-            </div>
+
+        <div class="sub-panel" data-level="gcse" data-sub="vocab">
+          <h2 class="panel-title">Language Vocabulary Trainer</h2>
+          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
+          <div class="lang-cards">
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
           </div>
+          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="container"><hr class="rule" style="margin:0" /></div>
-
-  <!-- FEATURE: NATURE GUIDE -->
-  <section class="feature">
-    <div class="container">
-      <div class="feature-grid">
-        <div class="feature-text">
-          <p class="feature-eyebrow">7 regions &middot; UK &amp; Ireland</p>
-          <h2>Explore nature<br>across the UK.</h2>
-          <p>Photo guides to wildlife and landscapes across seven regions &mdash; from Scotland to South England, Wales to Northern Ireland. A different kind of learning resource.</p>
+        <div class="sub-panel" data-level="gcse" data-sub="stories">
+          <h2 class="panel-title">Roleplay Stories</h2>
+          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
           <div class="feature-tags">
-            <span class="tag">Scotland</span>
-            <span class="tag">North England</span>
-            <span class="tag">Wales</span>
-            <span class="tag">South England</span>
-            <span class="tag">+ 3 more</span>
+            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
           </div>
-          <a href="nature.html" class="btn btn-accent">Explore nature &rarr;</a>
+          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
         </div>
-        <div class="feature-visual">
-          <div class="mock-panel">
-            <div class="mock-bar">
-              <div class="mock-dot" style="background:#e05050"></div>
-              <div class="mock-dot" style="background:#e0a030"></div>
-              <div class="mock-dot" style="background:#4ade9a"></div>
+
+        <div class="sub-panel" data-level="gcse" data-sub="jokes">
+          <h2 class="panel-title">Subject Jokes</h2>
+          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
+          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="gcse" data-sub="drawit">
+          <h2 class="panel-title">Draw It</h2>
+          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
+          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="gcse" data-sub="nature">
+          <h2 class="panel-title">Nature Guide</h2>
+          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
+          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="gcse" data-sub="books">
+          <h2 class="panel-title">Revision Books</h2>
+          <p class="panel-desc">GCSE, A-Level and IB revision guides by James R. Martin. Available on Amazon.</p>
+          <a href="books.html" class="btn btn-accent">View Books &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════ A-Level ════════════ -->
+    <div class="tab-panel" id="panel-a-level">
+      <div class="container">
+        <ul class="sub-tab-bar" data-level="a-level">
+          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
+          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
+          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
+          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
+          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
+          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
+          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
+          <li><button class="sub-tab-btn" data-sub="books">Books</button></li>
+        </ul>
+
+        <div class="sub-panel active" data-level="a-level" data-sub="games">
+          <h2 class="panel-title">Revision Games</h2>
+          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
+          <div class="feature-tags">
+            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
+            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
+          </div>
+          <div class="subject-chips">
+            <span class="subject-chip">&#x1F9EC; Biology</span>
+            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
+            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
+            <span class="subject-chip">&#x1F4D0; Maths</span>
+            <span class="subject-chip">&#x1F4DD; English Language</span>
+            <span class="subject-chip">&#x1F4D6; English Literature</span>
+            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
+            <span class="subject-chip">&#x1F30D; Geography</span>
+            <span class="subject-chip">&#x1F9E0; Psychology</span>
+            <span class="subject-chip">&#x1F4CA; Economics</span>
+            <span class="subject-chip">&#x1F4BB; Computer Science</span>
+            <span class="subject-chip">&#x1F4BC; Business Studies</span>
+            <span class="subject-chip">&#x1F465; Sociology</span>
+            <span class="subject-chip">&#x1F54C; Religious Studies</span>
+            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
+            <span class="subject-chip">&#x1F3B5; Music</span>
+            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
+            <span class="subject-chip">&#x1F527; Design Technology</span>
+            <span class="subject-chip">&#x1F331; Environmental Science</span>
+            <span class="subject-chip">&#x1F52D; Astronomy</span>
+            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
+            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
+            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
+            <span class="subject-chip">&#x1F3AD; Drama</span>
+            <span class="subject-chip">&#x1F373; Food Technology</span>
+          </div>
+          <a href="games.html" class="btn btn-accent">Browse A-Level Games &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="terms">
+          <h2 class="panel-title">Terminology Tester</h2>
+          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
+          <div class="feature-tags">
+            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
+            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
+            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
+          </div>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="vocab">
+          <h2 class="panel-title">Language Vocabulary Trainer</h2>
+          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
+          <div class="lang-cards">
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
+          </div>
+          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="stories">
+          <h2 class="panel-title">Roleplay Stories</h2>
+          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
+          <div class="feature-tags">
+            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
+          </div>
+          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="jokes">
+          <h2 class="panel-title">Subject Jokes</h2>
+          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
+          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="drawit">
+          <h2 class="panel-title">Draw It</h2>
+          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
+          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="nature">
+          <h2 class="panel-title">Nature Guide</h2>
+          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
+          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="a-level" data-sub="books">
+          <h2 class="panel-title">Revision Books</h2>
+          <p class="panel-desc">GCSE, A-Level and IB revision guides by James R. Martin. Available on Amazon.</p>
+          <a href="books.html" class="btn btn-accent">View Books &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════ IBDP ════════════ -->
+    <div class="tab-panel" id="panel-ibdp">
+      <div class="container">
+        <ul class="sub-tab-bar" data-level="ibdp">
+          <li><button class="sub-tab-btn active" data-sub="games">Games</button></li>
+          <li><button class="sub-tab-btn" data-sub="terms">Terms</button></li>
+          <li><button class="sub-tab-btn" data-sub="vocab">Vocab</button></li>
+          <li><button class="sub-tab-btn" data-sub="stories">Stories</button></li>
+          <li><button class="sub-tab-btn" data-sub="jokes">Jokes</button></li>
+          <li><button class="sub-tab-btn" data-sub="drawit">Draw It</button></li>
+          <li><button class="sub-tab-btn" data-sub="nature">Nature</button></li>
+          <li><button class="sub-tab-btn" data-sub="books">Books</button></li>
+        </ul>
+
+        <div class="sub-panel active" data-level="ibdp" data-sub="games">
+          <h2 class="panel-title">Revision Games</h2>
+          <p class="panel-desc">Memory Match, Sort It, Quiz, Timeline, Label the Diagram and more &mdash; seven formats across 25 subjects.</p>
+          <div class="feature-tags">
+            <span class="tag">Memory Match</span><span class="tag">Sort It</span><span class="tag">Quiz</span>
+            <span class="tag">Timeline</span><span class="tag">Label the Diagram</span><span class="tag">Connect the Dots</span><span class="tag">Fill the Gaps</span>
+          </div>
+          <div class="subject-chips">
+            <span class="subject-chip">&#x1F9EC; Biology</span>
+            <span class="subject-chip">&#x2697;&#xFE0F; Chemistry</span>
+            <span class="subject-chip">&#x269B;&#xFE0F; Physics</span>
+            <span class="subject-chip">&#x1F4D0; Maths</span>
+            <span class="subject-chip">&#x1F4DD; English Language</span>
+            <span class="subject-chip">&#x1F4D6; English Literature</span>
+            <span class="subject-chip">&#x1F3DB;&#xFE0F; History</span>
+            <span class="subject-chip">&#x1F30D; Geography</span>
+            <span class="subject-chip">&#x1F9E0; Psychology</span>
+            <span class="subject-chip">&#x1F4CA; Economics</span>
+            <span class="subject-chip">&#x1F4BB; Computer Science</span>
+            <span class="subject-chip">&#x1F4BC; Business Studies</span>
+            <span class="subject-chip">&#x1F465; Sociology</span>
+            <span class="subject-chip">&#x1F54C; Religious Studies</span>
+            <span class="subject-chip">&#x1F3C3; PE &amp; Sport Science</span>
+            <span class="subject-chip">&#x1F3B5; Music</span>
+            <span class="subject-chip">&#x1F3A8; Art &amp; Design</span>
+            <span class="subject-chip">&#x1F527; Design Technology</span>
+            <span class="subject-chip">&#x1F331; Environmental Science</span>
+            <span class="subject-chip">&#x1F52D; Astronomy</span>
+            <span class="subject-chip">&#x1F1EB;&#x1F1F7; French</span>
+            <span class="subject-chip">&#x1F1E9;&#x1F1EA; German</span>
+            <span class="subject-chip">&#x1F1EA;&#x1F1F8; Spanish</span>
+            <span class="subject-chip">&#x1F3AD; Drama</span>
+            <span class="subject-chip">&#x1F373; Food Technology</span>
+          </div>
+          <a href="games.html" class="btn btn-accent">Browse IBDP Games &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="terms">
+          <h2 class="panel-title">Terminology Tester</h2>
+          <p class="panel-desc">4,600+ vocabulary flashcards and games covering 25 subjects. Choose your exam board, pick a topic, then test yourself.</p>
+          <div class="feature-tags">
+            <span class="tag">Flashcard Pairs</span><span class="tag">Hangman</span><span class="tag">Anagram</span>
+            <span class="tag">Crossword</span><span class="tag">Term Guess</span><span class="tag">Quiz</span>
+            <span class="tag">Space Invaders</span><span class="tag">Pac-Man</span>
+          </div>
+          <a href="vocab-hub/vocab-hub.html" class="btn btn-accent">Start Testing &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="vocab">
+          <h2 class="panel-title">Language Vocabulary Trainer</h2>
+          <p class="panel-desc">Study, test, and stretch your language vocabulary with flashcards, multiple choice, and fill-in-the-blank exercises.</p>
+          <div class="lang-cards">
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EB;&#x1F1F7;</span><span class="lang-name">French</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1E9;&#x1F1EA;</span><span class="lang-name">German</span></a>
+            <a href="vocab-hub/vocab.html" class="lang-card"><span class="lang-flag">&#x1F1EA;&#x1F1F8;</span><span class="lang-name">Spanish</span></a>
+          </div>
+          <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="stories">
+          <h2 class="panel-title">Roleplay Stories</h2>
+          <p class="panel-desc">600 interactive narratives with exam-style questions woven into the story. Step into a role and solve real problems.</p>
+          <div class="feature-tags">
+            <span class="tag">Interactive narrative</span><span class="tag">Exam-style questions</span><span class="tag">Worked solutions</span>
+          </div>
+          <a href="roleplay.html" class="btn btn-accent">Explore Stories &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="jokes">
+          <h2 class="panel-title">Subject Jokes</h2>
+          <p class="panel-desc">Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
+          <a href="jokes.html" class="btn btn-accent">Have a Laugh &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="drawit">
+          <h2 class="panel-title">Draw It</h2>
+          <p class="panel-desc">Study a labelled diagram, then recreate it on a pixel grid from memory. 22 diagrams across 15 subjects.</p>
+          <a href="draw-it.html" class="btn btn-accent">Try Draw It &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="nature">
+          <h2 class="panel-title">Nature Guide</h2>
+          <p class="panel-desc">Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
+          <a href="nature.html" class="btn btn-accent">Explore Nature &rarr;</a>
+        </div>
+
+        <div class="sub-panel" data-level="ibdp" data-sub="books">
+          <h2 class="panel-title">Revision Books</h2>
+          <p class="panel-desc">GCSE, A-Level and IB revision guides by James R. Martin. Available on Amazon.</p>
+          <a href="books.html" class="btn btn-accent">View Books &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════ International ════════════ -->
+    <div class="tab-panel" id="panel-international">
+      <div class="container">
+        <h2 class="panel-title">International English</h2>
+        <p class="panel-desc">Prepare for IELTS, TOEFL, and GRE exams with our vocabulary trainer.</p>
+        <div class="intl-cards">
+          <div class="intl-card">
+            <h3>IELTS / TOEFL</h3>
+            <p>Academic English for university admissions &mdash; study, test, and stretch your vocabulary across high, medium, and low frequency word bands.</p>
+          </div>
+          <div class="intl-card">
+            <h3>GRE</h3>
+            <p>Graduate-level verbal reasoning vocabulary &mdash; 772 words across three frequency bands.</p>
+          </div>
+        </div>
+        <a href="vocab-hub/vocab.html" class="btn btn-accent">Start Vocab Trainer &rarr;</a>
+      </div>
+    </div>
+
+    <!-- ════════════ Teachers ════════════ -->
+    <div class="tab-panel" id="panel-teachers">
+      <div class="container">
+        <h2 class="panel-title">For Teachers</h2>
+        <p class="panel-desc">24 interactive classroom simulations from Mars Colony Survival to Election Campaign &mdash; KS3, GCSE and A-Level. Open in any browser, no setup needed.</p>
+
+        <div class="sim-grid">
+
+          <!-- Business Studies -->
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Dragon's Den Startup</h3>
+            <p class="sim-card-subject">Business Studies</p>
+            <p>Pitch a startup idea to a panel of investors. Build a business plan, handle objections, and secure funding.</p>
+            <a href="simulations/Dragons_Den_Startup_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- Computer Science -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Robot Factory</h3>
+            <p class="sim-card-subject">Computer Science</p>
+            <p>Program robots on a factory floor. Debug logic errors and optimise production lines.</p>
+            <a href="simulations/Robot_Factory_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Startup CTO</h3>
+            <p class="sim-card-subject">Computer Science</p>
+            <p>Lead the tech team of a growing startup. Make architecture decisions under real-world constraints.</p>
+            <a href="simulations/Startup_CTO_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>AI Ethics Board</h3>
+            <p class="sim-card-subject">Computer Science</p>
+            <p>Chair an ethics board reviewing AI deployment proposals. Balance innovation with responsibility.</p>
+            <a href="simulations/AI_Ethics_Board_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- Economics -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Market Traders</h3>
+            <p class="sim-card-subject">Economics</p>
+            <p>Run a market stall. Set prices, manage stock, and respond to changing demand.</p>
+            <a href="simulations/Market_Traders_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Island Economy</h3>
+            <p class="sim-card-subject">Economics</p>
+            <p>Manage a small island economy. Control fiscal and monetary policy to maintain stability.</p>
+            <a href="simulations/Island_Economy_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Hedge Fund Challenge</h3>
+            <p class="sim-card-subject">Economics</p>
+            <p>Run a hedge fund through volatile markets. Analyse data, manage risk, and maximise returns.</p>
+            <a href="simulations/Hedge_Fund_Challenge_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- English -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Newsroom Deadline</h3>
+            <p class="sim-card-subject">English</p>
+            <p>Run a newsroom under deadline pressure. Write headlines, verify sources, and publish stories.</p>
+            <a href="simulations/Newsroom_Deadline_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Courtroom Drama</h3>
+            <p class="sim-card-subject">English</p>
+            <p>Take on the role of a barrister. Build arguments, cross-examine witnesses, and deliver a closing statement.</p>
+            <a href="simulations/Courtroom_Drama_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Publishing House</h3>
+            <p class="sim-card-subject">English</p>
+            <p>Run a publishing house. Commission authors, edit manuscripts, and decide what gets published.</p>
+            <a href="simulations/Publishing_House_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- Geography -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>River Valley Settlement</h3>
+            <p class="sim-card-subject">Geography</p>
+            <p>Choose where to build a settlement along a river valley. Balance resources, flood risk, and access.</p>
+            <a href="simulations/River_Valley_Settlement_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Megacity Mayor</h3>
+            <p class="sim-card-subject">Geography</p>
+            <p>Govern a rapidly growing megacity. Manage housing, transport, and environmental challenges.</p>
+            <a href="simulations/Megacity_Mayor_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Climate Summit Negotiator</h3>
+            <p class="sim-card-subject">Geography</p>
+            <p>Represent a nation at a global climate summit. Negotiate emissions targets and funding commitments.</p>
+            <a href="simulations/Climate_Summit_Negotiator_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- History -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Castle Under Siege</h3>
+            <p class="sim-card-subject">History</p>
+            <p>Defend a medieval castle under siege. Manage supplies, deploy defences, and negotiate with attackers.</p>
+            <a href="simulations/Castle_Under_Siege_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Weimar Republic Crisis</h3>
+            <p class="sim-card-subject">History</p>
+            <p>Navigate the political crises of the Weimar Republic. Make decisions that shape Germany's future.</p>
+            <a href="simulations/Weimar_Republic_Crisis_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Cold War Brinkmanship</h3>
+            <p class="sim-card-subject">History</p>
+            <p>Manage a Cold War crisis. Balance diplomacy, intelligence, and military readiness without triggering conflict.</p>
+            <a href="simulations/Cold_War_Brinkmanship_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- Science -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Ecosystem Architects</h3>
+            <p class="sim-card-subject">Science</p>
+            <p>Design and manage a balanced ecosystem. Introduce species, monitor populations, and maintain biodiversity.</p>
+            <a href="simulations/Ecosystem_Architects_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Rocket Launch Programme</h3>
+            <p class="sim-card-subject">Science</p>
+            <p>Lead a rocket launch programme. Calculate trajectories, manage fuel, and hit orbital targets.</p>
+            <a href="simulations/Rocket_Launch_Programme_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level gcse">GCSE</span>
+            <h3>Mars Colony Survival</h3>
+            <p class="sim-card-subject">Science</p>
+            <p>Establish and maintain a colony on Mars. Manage oxygen, water, food, and energy systems.</p>
+            <a href="simulations/Mars_Colony_Survival_GCSE.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Pandemic Response Lab</h3>
+            <p class="sim-card-subject">Science</p>
+            <p>Lead a public health response to a disease outbreak. Analyse data, allocate resources, and advise policy.</p>
+            <a href="simulations/Pandemic_Response_Lab_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- Politics / General -->
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Global Trade War</h3>
+            <p class="sim-card-subject">Economics / Politics</p>
+            <p>Navigate an escalating global trade war. Set tariffs, negotiate deals, and protect your economy.</p>
+            <a href="simulations/Global_Trade_War_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level a-level">A-Level</span>
+            <h3>Election Campaign</h3>
+            <p class="sim-card-subject">Politics</p>
+            <p>Run a full election campaign. Craft policy, manage media, and win over voters.</p>
+            <a href="simulations/Election_Campaign_A-level.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <!-- Additional KS3 simulations from folder -->
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Community Council</h3>
+            <p class="sim-card-subject">Citizenship</p>
+            <p>Sit on a community council and make decisions about local issues, budgets, and priorities.</p>
+            <a href="simulations/Community_Council_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+          <div class="sim-card">
+            <span class="sim-card-level ks3">KS3</span>
+            <h3>Theme Park Tycoon</h3>
+            <p class="sim-card-subject">Business Studies</p>
+            <p>Design and manage a theme park. Balance investment, visitor satisfaction, and profitability.</p>
+            <a href="simulations/Theme_Park_Tycoon_KS3.html" class="sim-card-link">Launch &rarr;</a>
+          </div>
+
+        </div>
+
+        <!-- Homeroom -->
+        <div class="homeroom-block">
+          <h2 class="panel-title">Homeroom</h2>
+          <p class="panel-desc">A full-screen morning dashboard for classrooms. Word of the Day, Maths Problem, Guess the Flag, On This Day and more &mdash; all rotating daily.</p>
+          <div class="homeroom-btns">
+            <a href="homeroom.html" class="btn btn-accent">Open Set A &rarr;</a>
+            <a href="homeroom2.html" class="btn">Open Set B &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════════════ Parents ════════════ -->
+    <div class="tab-panel" id="panel-parents">
+      <div class="container">
+        <h2 class="panel-title">For Parents</h2>
+        <div class="parents-content">
+          <p>ClassCraft is a free collection of revision resources designed to make studying for GCSE and A-Level engaging, varied, and effective. All resources are free, require no login, and work in any browser.</p>
+          <p>Your child can access 160+ revision games, 4,600+ vocabulary flashcards, 600 roleplay stories, and more across 25 subjects &mdash; from Biology to Economics.</p>
+          <p>If you have any questions about ClassCraft, would like to discuss tutoring options, or have any other queries, we'd love to hear from you.</p>
+        </div>
+        <a href="#contact" class="btn btn-accent" onclick="activateTab('contact'); return false;">Get in Touch &rarr;</a>
+      </div>
+    </div>
+
+    <!-- ════════════ Contributors ════════════ -->
+    <div class="tab-panel" id="panel-contributors">
+      <div class="container">
+        <h2 class="panel-title">The people behind ClassCraft.</h2>
+        <p class="panel-desc">ClassCraft is a free collection of revision resources where we experiment with new ways to make studying fun, varied, and effective.</p>
+
+        <div class="contributor-card" style="margin-top: 2rem;">
+          <div class="contributor-photo">
+            <img src="james-martin.png" alt="James Martin" />
+          </div>
+          <div class="contributor-info">
+            <h2>James Martin</h2>
+            <p>Physics teacher. Taught in secondary schools and universities in the UK and abroad. Publishes revision guides on Amazon as James R. Martin.</p>
+            <p>Built ClassCraft as a free set of revision tools &mdash; games, simulations, stories, and flashcards across 25 subjects. No login, no subscription.</p>
+            <ul class="contributor-creds">
+              <li>MSci Physics &mdash; Bristol</li>
+              <li>PGCE &mdash; Oxford</li>
+              <li>Published Author</li>
+              <li>KS3, GCSE &amp; A-Level</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="rule" />
+
+        <p class="section-label">What&rsquo;s available</p>
+        <h3 style="margin-bottom: 0.5rem;">Everything on the site</h3>
+        <div class="overview-grid">
+          <div class="overview-card">
+            <span class="overview-num">160+</span>
+            <h3>Revision Games</h3>
+            <p>Memory Match, Sort It, Quiz, Timeline and Label the Diagram &mdash; seven formats across 25 subjects. Free, instant, no login.</p>
+            <a href="games.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Browse games &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">4,600+</span>
+            <h3>Terminology Tester</h3>
+            <p>Vocabulary flashcards, quizzes and games covering 25 subjects and 12 exam boards including AQA, Edexcel, OCR and IB.</p>
+            <a href="vocab-hub/vocab-hub.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Start testing &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">600</span>
+            <h3>Roleplay Stories</h3>
+            <p>Interactive narratives with exam-style questions woven into the story. 20 subjects, KS3 to A-Level.</p>
+            <a href="roleplay.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Explore stories &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">24</span>
+            <h3>Simulations</h3>
+            <p>Interactive classroom activities from Mars Colony Survival to Election Campaign &mdash; KS3, GCSE and A-Level.</p>
+            <a href="#teachers" style="font-size:0.8rem;color:var(--accent);font-weight:500;" onclick="activateTab('teachers'); return false;">See simulations &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">22</span>
+            <h3>Draw It</h3>
+            <p>Study a labelled diagram, then recreate it on a pixel grid from memory. 15 subjects from Biology to Music.</p>
+            <a href="draw-it.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Try Draw It &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">&#x2600;&#xFE0F;</span>
+            <h3>Homeroom</h3>
+            <p>Daily rotating dashboard for classrooms &mdash; Word of the Day, Maths Problem, Guess the Flag and more. Two sets available.</p>
+            <a href="homeroom.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Open Homeroom &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">&#x1F33F;</span>
+            <h3>Nature Guide</h3>
+            <p>Photo guides to wildlife and landscapes across seven UK and Ireland regions.</p>
+            <a href="nature.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Explore nature &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">&#x1F4DA;</span>
+            <h3>Books</h3>
+            <p>GCSE, A-Level and IB revision guides by James R. Martin, available on Amazon.</p>
+            <a href="books.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">View books &rarr;</a>
+          </div>
+          <div class="overview-card">
+            <span class="overview-num">&#x1F602;</span>
+            <h3>Subject Jokes</h3>
+            <p>Curriculum-linked jokes across 20 subjects. The best kind of revision break.</p>
+            <a href="jokes.html" style="font-size:0.8rem;color:var(--accent);font-weight:500;">Have a laugh &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════ Contact ════════════ -->
+    <div class="tab-panel" id="panel-contact">
+      <div class="container">
+        <h2 class="panel-title">Contact</h2>
+        <p class="panel-desc">Whether you're an educator, institution, or publisher &mdash; we'd like to hear from you.</p>
+
+        <div class="contact-layout">
+          <!-- Form -->
+          <div>
+            <div class="form-success" id="form-success">
+              <h3>Message received</h3>
+              <p>Thank you for getting in touch. We'll respond within two working days.</p>
             </div>
-            <div class="mock-body" style="gap:0.3rem;padding:0.6rem">
-              <div style="font-size:0.5rem;color:#8080a0;text-transform:uppercase;letter-spacing:0.08em">Nature Guide</div>
-              <div style="display:grid;grid-template-columns:1fr 2fr;gap:0.4rem;flex:1">
-                <div style="display:flex;flex-direction:column;gap:0.25rem">
-                  <div style="border-radius:4px;flex:1;overflow:hidden">
-                    <img src="nature/scotland/pine-marten.jpg" alt="Pine Marten" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:4px" />
-                  </div>
-                  <div style="display:flex;flex-direction:column;gap:0.15rem">
-                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#ede4d6;border-radius:3px;color:#1c1712;display:flex;align-items:center;gap:0.2rem;border:1px solid #8b5e3c"><div style="width:4px;height:4px;border-radius:50%;background:#4a7ab5"></div>Scotland</div>
-                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#3a3a5a;border-radius:3px;color:#a0a0c0;display:flex;align-items:center;gap:0.2rem"><div style="width:4px;height:4px;border-radius:50%;background:#4a8a5a"></div>North England</div>
-                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#3a3a5a;border-radius:3px;color:#a0a0c0;display:flex;align-items:center;gap:0.2rem"><div style="width:4px;height:4px;border-radius:50%;background:#a04040"></div>Wales</div>
-                    <div style="font-size:0.38rem;padding:0.15rem 0.3rem;background:#3a3a5a;border-radius:3px;color:#a0a0c0;display:flex;align-items:center;gap:0.2rem"><div style="width:4px;height:4px;border-radius:50%;background:#7a5aa0"></div>South England</div>
-                  </div>
+
+            <form class="contact-form" id="contact-form"
+              action="https://formspree.io/f/xqenwavy"
+              method="POST">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Name</label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required />
                 </div>
-                <div style="display:flex;flex-direction:column;gap:0.25rem">
-                  <div style="display:flex;gap:0.2rem">
-                    <span style="font-size:0.38rem;padding:0.1rem 0.3rem;background:#8b5e3c;color:#f5efe6;border-radius:10px">All</span>
-                    <span style="font-size:0.38rem;padding:0.1rem 0.3rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">Birds</span>
-                    <span style="font-size:0.38rem;padding:0.1rem 0.3rem;background:#3a3a5a;color:#a0a0c0;border-radius:10px">Mammals</span>
-                  </div>
-                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.25rem;flex:1">
-                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
-                      <img src="nature/scotland/golden-eagle.jpg" alt="Golden Eagle" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
-                      <div style="padding:0.2rem 0.25rem">
-                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Golden Eagle</div>
-                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Aquila chrysaetos</div>
-                      </div>
-                    </div>
-                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
-                      <img src="nature/scotland/red-deer.jpg" alt="Red Deer" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
-                      <div style="padding:0.2rem 0.25rem">
-                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Red Deer</div>
-                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Cervus elaphus</div>
-                      </div>
-                    </div>
-                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
-                      <img src="nature/scotland/red-squirrel.jpg" alt="Red Squirrel" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
-                      <div style="padding:0.2rem 0.25rem">
-                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Red Squirrel</div>
-                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Sciurus vulgaris</div>
-                      </div>
-                    </div>
-                    <div style="background:#ede4d6;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
-                      <img src="nature/scotland/puffin.jpg" alt="Atlantic Puffin" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" />
-                      <div style="padding:0.2rem 0.25rem">
-                        <div style="font-size:0.42rem;color:#1c1712;font-weight:600">Atlantic Puffin</div>
-                        <div style="font-size:0.32rem;color:#8a7a6a;font-style:italic">Fratercula arctica</div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="form-label" for="organisation">Organisation (optional)</label>
+                <input class="form-input" type="text" id="organisation" name="organisation" placeholder="School, university, company..." />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subject">Enquiry type</label>
+                <select class="form-select" id="subject" name="subject" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="simulations">Simulations</option>
+                  <option value="books">Books &amp; Publications</option>
+                  <option value="workshops">Workshops &amp; Training</option>
+                  <option value="tutoring">Tutoring</option>
+                  <option value="institutional">Institutional Partnership</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your enquiry..." required></textarea>
+              </div>
+
+              <div>
+                <button type="submit" class="btn btn-accent" style="width: 100%;">Send Message</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Side info -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; padding-top: 0.25rem;">
+            <div>
+              <p class="section-label" style="margin-bottom: 0.6rem;">Response time</p>
+              <p style="font-size: 0.9rem; color: var(--ink-mid);">We aim to respond to all enquiries within two working days.</p>
+            </div>
+            <div class="info-block">
+              <p class="section-label" style="margin-bottom: 0.6rem;">Simulations</p>
+              <p style="font-size: 0.9rem; color: var(--ink-mid);">Interested in a bespoke simulation? We develop custom interactive tools to order.</p>
+            </div>
+            <div class="info-block">
+              <p class="section-label" style="margin-bottom: 0.6rem;">Books</p>
+              <p style="font-size: 0.9rem; color: var(--ink-mid);">For bulk orders, inspection copies, or to register interest in forthcoming titles.</p>
+            </div>
+            <div class="info-block">
+              <p class="section-label" style="margin-bottom: 0.6rem;">Workshops</p>
+              <p style="font-size: 0.9rem; color: var(--ink-mid);">Professional development for educators and institutions. Details coming soon.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <div class="container"><hr class="rule" style="margin:0" /></div>
+  </div><!-- /tab-panels -->
 
-  <!-- AI SECTION -->
-  <section class="ai-section">
-    <div class="container">
-      <div style="max-width:52ch;margin-bottom:3rem;">
-        <p class="section-label">What We Do</p>
-        <h2 class="section-title">A place to experiment with learning</h2>
-        <p style="color:var(--ink-mid);">We try out new ideas for study and teaching resources &mdash; games, tools, and formats designed to make revision genuinely fun and effective.</p>
-      </div>
-      <div class="ai-grid">
-        <div class="ai-card"><h3>Always experimenting</h3><p>From pixel diagram sketchers to interactive simulations &mdash; we keep building new ways to help students learn and teachers teach.</p></div>
-        <div class="ai-card"><h3>Nothing to sign up for</h3><p>Open a game, start a quiz, test your vocabulary &mdash; it all works instantly in your browser. No accounts, no tracking, no ads.</p></div>
-        <div class="ai-card"><h3>Always growing</h3><p>New games and features added regularly. The Terminology Tester covers 12 exam boards &mdash; including AQA, Edexcel, OCR, Cambridge IGCSE and IB.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA STRIP -->
-  <div class="cta-strip">
-    <div class="container" style="text-align:center;">
-      <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1rem;">Get in Touch</p>
-      <h2 style="color:var(--parchment);margin-bottom:1rem;">Want to get in touch?</h2>
-      <p style="color:rgba(245,239,230,0.6);margin:0 auto 2rem;max-width:50ch;font-size:0.95rem;">Questions, feedback, or just want to say the Economics joke made you laugh &mdash; feel free to get in touch.</p>
-      <a href="contact.html" class="btn" style="border-color:var(--parchment);color:var(--parchment);">Get in Touch</a>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
+  <!-- ── Footer ─────────────────────────── -->
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by <a href="about.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">James Martin</a></p>
+      <p>&copy; <span id="year"></span> ClassCraft &nbsp;&middot;&nbsp; classcraft.co.uk &nbsp;&middot;&nbsp; Created by James Martin</p>
     </div>
   </footer>
 
   <script>
-    const toggle  = document.getElementById("nav-toggle");
-    const links   = document.getElementById("nav-links");
-    const overlay = document.getElementById("nav-overlay");
-    function openMenu()  { toggle.classList.add("open");    links.classList.add("open");    overlay.classList.add("open");    document.body.style.overflow="hidden"; }
-    function closeMenu() { toggle.classList.remove("open"); links.classList.remove("open"); overlay.classList.remove("open"); document.body.style.overflow=""; }
-    toggle.addEventListener("click", () => toggle.classList.contains("open") ? closeMenu() : openMenu());
-    overlay.addEventListener("click", closeMenu);
-    links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-    document.getElementById("year").textContent = new Date().getFullYear();
+  (function() {
+    // ── Year ──
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* ── Hero Pac-Man mini-game + quiz ── */
-    (function() {
-      const canvas = document.getElementById('hero-pacman');
-      const ctx = canvas.getContext('2d');
-      const gameEl = document.getElementById('hero-game');
-      const ctaEl = document.getElementById('hero-cta');
-      const quizOverlay = document.getElementById('quiz-overlay');
-      const quizContent = document.getElementById('quiz-content');
+    // ── Nav hamburger ──
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    const overlay = document.getElementById('nav-overlay');
 
-      /* Detect touch device and update CTA */
-      const dpadEl = document.getElementById('hero-dpad');
-      const isTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-      if (isTouch) {
-        ctaEl.textContent = 'Tap to play';
-      }
+    function openMenu() {
+      toggle.classList.add('open');
+      links.classList.add('open');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', function() {
+      toggle.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
 
-      /* ── Maze: 0=wall, 1=dot, 2=empty, 3=red dot ── */
-      const MAZE_TEMPLATE = [
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0],
-        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
-        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
-        [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-        [0,1,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0],
-        [0,1,1,1,1,0,1,1,1,1,2,1,1,1,1,0,1,1,1,1,0],
-        [0,0,0,0,1,0,0,0,2,0,2,0,2,0,0,0,1,0,0,0,0],
-        [0,0,0,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,0,0,0],
-        [0,0,0,0,1,0,2,0,0,2,2,2,0,0,2,0,1,0,0,0,0],
-        [1,1,1,1,1,1,2,0,2,2,2,2,2,0,2,1,1,1,1,1,1],
-        [0,0,0,0,1,0,2,0,2,2,2,2,2,0,2,0,1,0,0,0,0],
-        [0,0,0,0,1,0,2,0,0,0,0,0,0,0,2,0,1,0,0,0,0],
-        [0,0,0,0,1,0,2,2,2,2,2,2,2,2,2,0,1,0,0,0,0],
-        [0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0],
-        [0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0],
-        [0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0],
-        [0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0],
-        [0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0],
-        [0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0],
-        [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-      ];
+    // ── Tab system ──
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
+    const tabBarWrap = document.getElementById('tab-bar-wrap');
 
-      /* Deep-copy maze so dots can be eaten */
-      let maze;
-      function resetMaze() {
-        maze = MAZE_TEMPLATE.map(row => row.slice());
-        /* Place 3 red dots at spread-out positions */
-        maze[2][5] = 3;
-        maze[14][15] = 3;
-        maze[20][10] = 3;
-      }
-      resetMaze();
-
-      const ROWS = 22, COLS = 21;
-
-      /* ── Entity state ── */
-      const PAC_START = {r:16, c:10};
-      const pac = {
-        r: PAC_START.r, c: PAC_START.c,
-        tr: PAC_START.r, tc: PAC_START.c,  /* target cell */
-        pr: PAC_START.r, pc: PAC_START.c,  /* previous cell (for lerp) */
-        t: 1,                              /* interpolation 0..1 */
-        dir: 0,                            /* 0=right,1=down,2=left,3=up */
-        nextDir: -1,
-        mouthOpen: 0,
-        speed: 6                           /* cells per second */
-      };
-
-      const GHOST_START = [
-        {r:10, c:9},
-        {r:10, c:10},
-        {r:10, c:11}
-      ];
-      const GHOST_COLORS = ['#ff6b6b','#7b6fff','#ff9f43'];
-      let ghosts;
-
-      function resetGhosts() {
-        ghosts = GHOST_START.map((s, i) => ({
-          r: s.r, c: s.c,
-          tr: s.r, tc: s.c,
-          pr: s.r, pc: s.c,
-          t: 1,
-          dir: 0,
-          speed: 4.5,
-          color: GHOST_COLORS[i]
-        }));
-      }
-      resetGhosts();
-
-      /* Direction vectors: right, down, left, up */
-      const DR = [0, 1, 0, -1];
-      const DC = [1, 0, -1, 0];
-
-      /* ── Game state ── */
-      let started = false;
-      let paused = false;
-      let lastTime = 0;
-      let redDotsEaten = 0;
-      let qIndex = 0;
-      let gameFinished = false;
-
-      /* ── Quiz questions ── */
-      const questions = [
-        { q: 'Do you ever find revision boring?', opts: ['Yes, always', 'Sometimes', 'Not really'] },
-        { q: 'Do you procrastinate and delay your revision?', opts: ['All the time', 'More than I should', 'Occasionally'] },
-        { q: 'Would you revise more if it felt like playing a game?', opts: ['Definitely', 'Probably', 'Worth a try'] }
-      ];
-
-      /* ── Helper: can move into cell? ── */
-      function canMove(r, c) {
-        /* Wrap horizontal tunnel */
-        if (c < 0) c = COLS - 1;
-        if (c >= COLS) c = 0;
-        if (r < 0 || r >= ROWS) return false;
-        return maze[r][c] !== 0;
-      }
-
-      /* ── Sizing ── */
-      let cellW, cellH, W, H;
-      function resize() {
-        const rect = canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        W = rect.width;
-        H = rect.height;
-        cellW = W / COLS;
-        cellH = H / ROWS;
-        /* If not started yet, draw static frame */
-        if (!started) drawFrame(0);
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      /* ── Drawing ── */
-      function drawFrame(time) {
-        const dpr = window.devicePixelRatio || 1;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        /* Background */
-        ctx.fillStyle = '#0f1117';
-        ctx.fillRect(0, 0, W, H);
-
-        /* Walls & dots */
-        for (let r = 0; r < ROWS; r++) {
-          for (let c = 0; c < COLS; c++) {
-            const x = c * cellW, y = r * cellH;
-            const cell = maze[r][c];
-            if (cell === 0) {
-              ctx.fillStyle = '#1a1d37';
-              ctx.fillRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
-              ctx.strokeStyle = '#252560';
-              ctx.lineWidth = 0.5;
-              ctx.strokeRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
-            } else if (cell === 1) {
-              ctx.beginPath();
-              ctx.arc(x + cellW / 2, y + cellH / 2, cellW * 0.1, 0, Math.PI * 2);
-              ctx.fillStyle = 'rgba(255,255,255,0.5)';
-              ctx.fill();
-            } else if (cell === 3) {
-              /* Red dot with glow */
-              const cx = x + cellW / 2, cy = y + cellH / 2;
-              ctx.beginPath();
-              ctx.arc(cx, cy, cellW * 0.28, 0, Math.PI * 2);
-              ctx.strokeStyle = 'rgba(255,107,107,0.3)';
-              ctx.lineWidth = 1.5;
-              ctx.stroke();
-              ctx.beginPath();
-              ctx.arc(cx, cy, cellW * 0.2, 0, Math.PI * 2);
-              ctx.fillStyle = '#ff6b6b';
-              ctx.fill();
-            }
-          }
-        }
-
-        /* ── Draw ghosts ── */
-        ghosts.forEach(g => {
-          const lerpR = g.pr + (g.tr - g.pr) * g.t;
-          let lerpC = g.pc + (g.tc - g.pc) * g.t;
-          /* Handle tunnel wrap for rendering */
-          if (Math.abs(g.tc - g.pc) > COLS / 2) {
-            if (g.tc < g.pc) lerpC = g.pc + ((g.tc + COLS) - g.pc) * g.t;
-            else lerpC = g.pc + ((g.tc - COLS) - g.pc) * g.t;
-            if (lerpC >= COLS) lerpC -= COLS;
-            if (lerpC < 0) lerpC += COLS;
-          }
-          const gx = lerpC * cellW + cellW / 2;
-          const gy = lerpR * cellH + cellH / 2;
-          const gr = cellW * 0.38;
-
-          /* Ghost body */
-          ctx.beginPath();
-          ctx.arc(gx, gy - gr * 0.15, gr, Math.PI, 0, false);
-          ctx.lineTo(gx + gr, gy + gr * 0.6);
-          const segs = 3, segW = (gr * 2) / segs;
-          for (let i = 0; i < segs; i++) {
-            ctx.quadraticCurveTo(
-              gx + gr - segW * i - segW * 0.5, gy + gr * (i % 2 === 0 ? 0.2 : 0.8),
-              gx + gr - segW * (i + 1), gy + gr * 0.6
-            );
-          }
-          ctx.closePath();
-          ctx.fillStyle = g.color;
-          ctx.fill();
-
-          /* Eyes */
-          const eyeOff = gr * 0.28;
-          const eyeDirC = DC[g.dir] * gr * 0.08;
-          const eyeDirR = DR[g.dir] * gr * 0.08;
-          [gx - eyeOff, gx + eyeOff].forEach(ex => {
-            ctx.beginPath();
-            ctx.arc(ex, gy - gr * 0.2, gr * 0.2, 0, Math.PI * 2);
-            ctx.fillStyle = '#fff';
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(ex + eyeDirC, gy - gr * 0.2 + eyeDirR, gr * 0.1, 0, Math.PI * 2);
-            ctx.fillStyle = '#1a1d27';
-            ctx.fill();
-          });
-        });
-
-        /* ── Draw Pac-Man ── */
-        const pLerpR = pac.pr + (pac.tr - pac.pr) * pac.t;
-        let pLerpC = pac.pc + (pac.tc - pac.pc) * pac.t;
-        if (Math.abs(pac.tc - pac.pc) > COLS / 2) {
-          if (pac.tc < pac.pc) pLerpC = pac.pc + ((pac.tc + COLS) - pac.pc) * pac.t;
-          else pLerpC = pac.pc + ((pac.tc - COLS) - pac.pc) * pac.t;
-          if (pLerpC >= COLS) pLerpC -= COLS;
-          if (pLerpC < 0) pLerpC += COLS;
-        }
-        const px = pLerpC * cellW + cellW / 2;
-        const py = pLerpR * cellH + cellH / 2;
-        const pr = cellW * 0.42;
-
-        /* Mouth animation */
-        const mouthAngle = 0.25 * Math.PI * (0.5 + 0.5 * Math.sin(pac.mouthOpen));
-        /* Direction angle: 0=right, pi/2=down, pi=left, -pi/2=up */
-        const dirAngles = [0, Math.PI / 2, Math.PI, -Math.PI / 2];
-        const baseAngle = dirAngles[pac.dir];
-
-        ctx.beginPath();
-        ctx.arc(px, py, pr, baseAngle + mouthAngle, baseAngle + Math.PI * 2 - mouthAngle);
-        ctx.lineTo(px, py);
-        ctx.closePath();
-        ctx.fillStyle = '#FFD700';
-        ctx.fill();
-
-        /* Eye position relative to direction */
-        const eyeAngle = baseAngle - Math.PI / 4;
-        const eyeX = px + Math.cos(eyeAngle) * pr * 0.35;
-        const eyeY = py + Math.sin(eyeAngle) * pr * 0.35;
-        ctx.beginPath();
-        ctx.arc(eyeX, eyeY, pr * 0.12, 0, Math.PI * 2);
-        ctx.fillStyle = '#0f1117';
-        ctx.fill();
-      }
-
-      /* ── Movement logic ── */
-      function wrapC(c) {
-        if (c < 0) return COLS - 1;
-        if (c >= COLS) return 0;
-        return c;
-      }
-
-      function moveEntity(ent, dt) {
-        ent.t += dt * ent.speed;
-        if (ent.t >= 1) {
-          ent.t = 1;
-          ent.r = ent.tr;
-          ent.c = wrapC(ent.tc);
-          return true; /* arrived at target */
-        }
-        return false;
-      }
-
-      function pickNextCell(ent, preferredDir) {
-        const nr = ent.r + DR[preferredDir];
-        const nc = wrapC(ent.c + DC[preferredDir]);
-        if (canMove(nr, nc)) {
-          ent.pr = ent.r; ent.pc = ent.c;
-          ent.tr = nr; ent.tc = nc;
-          ent.dir = preferredDir;
-          ent.t = 0;
-          return true;
-        }
-        return false;
-      }
-
-      /* Ghost AI: random at intersections, biased toward pac */
-      function ghostAI(g) {
-        const opposite = (g.dir + 2) % 4;
-        let options = [];
-        for (let d = 0; d < 4; d++) {
-          if (d === opposite) continue;
-          const nr = g.r + DR[d];
-          const nc = wrapC(g.c + DC[d]);
-          if (canMove(nr, nc)) options.push(d);
-        }
-        /* If no options (dead end), allow reverse */
-        if (options.length === 0) {
-          const nr = g.r + DR[opposite];
-          const nc = wrapC(g.c + DC[opposite]);
-          if (canMove(nr, nc)) options.push(opposite);
-        }
-        if (options.length === 0) return;
-
-        /* Bias toward pacman 30% of the time */
-        if (Math.random() < 0.3) {
-          let bestDir = options[0], bestDist = Infinity;
-          options.forEach(d => {
-            const nr = g.r + DR[d];
-            const nc = wrapC(g.c + DC[d]);
-            const dist = Math.abs(nr - pac.r) + Math.abs(nc - pac.c);
-            if (dist < bestDist) { bestDist = dist; bestDir = d; }
-          });
-          pickNextCell(g, bestDir);
-        } else {
-          pickNextCell(g, options[Math.floor(Math.random() * options.length)]);
-        }
-      }
-
-      /* ── Collision check ── */
-      function checkGhostCollision() {
-        for (const g of ghosts) {
-          /* Use visual positions for collision */
-          const pRow = pac.pr + (pac.tr - pac.pr) * pac.t;
-          const pCol = pac.pc + (pac.tc - pac.pc) * pac.t;
-          const gRow = g.pr + (g.tr - g.pr) * g.t;
-          const gCol = g.pc + (g.tc - g.pc) * g.t;
-          const dist = Math.sqrt((pRow - gRow) ** 2 + (pCol - gCol) ** 2);
-          if (dist < 0.8) {
-            /* Reset pacman to start */
-            pac.r = PAC_START.r; pac.c = PAC_START.c;
-            pac.tr = PAC_START.r; pac.tc = PAC_START.c;
-            pac.pr = PAC_START.r; pac.pc = PAC_START.c;
-            pac.t = 1;
-            pac.nextDir = -1;
-            return;
-          }
-        }
-      }
-
-      /* ── Dot eating ── */
-      function eatDot() {
-        const cell = maze[pac.r][pac.c];
-        if (cell === 1) {
-          maze[pac.r][pac.c] = 2;
-        } else if (cell === 3) {
-          maze[pac.r][pac.c] = 2;
-          redDotsEaten++;
-          paused = true;
-          showQuestion(qIndex);
-        }
-      }
-
-      /* ── Quiz ── */
-      function showQuestion(i) {
-        if (i >= questions.length) { showResult(); return; }
-        const q = questions[i];
-        let html = '<div class="quiz-q">' + q.q + '</div><div class="quiz-options">';
-        q.opts.forEach(function(o) {
-          html += '<div class="quiz-opt" onclick="window._quizNext()">' + o + '</div>';
-        });
-        html += '</div>';
-        quizContent.innerHTML = html;
-        quizOverlay.classList.add('active');
-      }
-
-      function showResult() {
-        gameFinished = true;
-        quizContent.innerHTML =
-          '<div class="quiz-result">' +
-            '<span class="quiz-result-emoji">&#x1F3AE;</span>' +
-            '<div class="quiz-result-heading">This site is for you!</div>' +
-            '<p class="quiz-result-sub">160+ free revision games, quizzes and tools designed to make studying feel less like a chore.</p>' +
-            '<a href="games.html" class="quiz-result-btn">Start Playing &rarr;</a>' +
-          '</div>';
-        quizOverlay.classList.add('active');
-      }
-
-      window._quizNext = function() {
-        qIndex++;
-        if (qIndex >= questions.length) {
-          showResult();
-          return;
-        }
-        quizOverlay.classList.remove('active');
-        paused = false;
-        lastTime = performance.now();
-      };
-
-      /* ── Game loop ── */
-      function gameLoop(timestamp) {
-        if (!started || gameFinished) return;
-        if (paused) { requestAnimationFrame(gameLoop); return; }
-
-        const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
-        lastTime = timestamp;
-
-        /* Pac-Man mouth animation */
-        pac.mouthOpen += dt * 14;
-
-        /* Move Pac-Man */
-        if (pac.t >= 1) {
-          /* Try queued direction first */
-          let moved = false;
-          if (pac.nextDir >= 0) {
-            moved = pickNextCell(pac, pac.nextDir);
-            if (moved) pac.nextDir = -1;
-          }
-          /* Otherwise continue current direction */
-          if (!moved) {
-            pickNextCell(pac, pac.dir);
-          }
-          eatDot();
-        } else {
-          moveEntity(pac, dt);
-          if (pac.t >= 1) eatDot();
-        }
-
-        /* Move ghosts */
-        ghosts.forEach(g => {
-          if (g.t >= 1) {
-            ghostAI(g);
-          } else {
-            moveEntity(g, dt);
-          }
-        });
-
-        /* Check collisions */
-        if (!paused) checkGhostCollision();
-
-        /* Draw */
-        drawFrame(timestamp);
-
-        requestAnimationFrame(gameLoop);
-      }
-
-      /* ── Input ── */
-      const KEY_MAP = {
-        ArrowRight: 0, ArrowDown: 1, ArrowLeft: 2, ArrowUp: 3,
-        d: 0, D: 0, s: 1, S: 1, a: 2, A: 2, w: 3, W: 3
-      };
-
-      gameEl.addEventListener('keydown', function(e) {
-        if (!started || paused || gameFinished) return;
-        const dir = KEY_MAP[e.key];
-        if (dir !== undefined) {
-          e.preventDefault();
-          pac.nextDir = dir;
-        }
+    function activateTab(tabId, pushState) {
+      // Main tabs
+      tabBtns.forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+      });
+      tabPanels.forEach(function(panel) {
+        panel.classList.toggle('active', panel.id === 'panel-' + tabId);
       });
 
-      /* Touch / swipe controls */
-      let touchStartX = 0, touchStartY = 0;
-      gameEl.addEventListener('touchstart', function(e) {
-        if (!started) return;
-        const t = e.touches[0];
-        touchStartX = t.clientX;
-        touchStartY = t.clientY;
-      }, {passive: true});
+      // Nav link highlighting
+      navLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('data-nav') === tabId);
+      });
 
-      gameEl.addEventListener('touchend', function(e) {
-        if (!started || paused || gameFinished) return;
-        const t = e.changedTouches[0];
-        const dx = t.clientX - touchStartX;
-        const dy = t.clientY - touchStartY;
-        const absDx = Math.abs(dx), absDy = Math.abs(dy);
-        if (Math.max(absDx, absDy) < 10) return;
-        if (absDx > absDy) {
-          pac.nextDir = dx > 0 ? 0 : 2;
+      // Update hash
+      if (pushState !== false) {
+        history.replaceState(null, '', '#' + tabId);
+      }
+
+      // Scroll tab button into view
+      var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabId + '"]');
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      // Scroll to tab bar
+      if (pushState !== false) {
+        tabBarWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Make activateTab globally accessible for inline onclick handlers
+    window.activateTab = activateTab;
+
+    // Main tab clicks
+    tabBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        activateTab(btn.getAttribute('data-tab'));
+      });
+    });
+
+    // Nav link clicks
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var nav = link.getAttribute('data-nav');
+        closeMenu();
+        if (nav === 'home') {
+          history.replaceState(null, '', window.location.pathname);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          // Reset nav highlight
+          navLinks.forEach(function(l) { l.classList.remove('active'); });
+          link.classList.add('active');
         } else {
-          pac.nextDir = dy > 0 ? 1 : 3;
+          activateTab(nav);
         }
-      }, {passive: true});
+      });
+    });
 
-      /* ── D-pad buttons (touch devices) ── */
-      dpadEl.querySelectorAll('.dp').forEach(function(btn) {
-        /* Use touchstart for instant response — no 300ms delay */
-        btn.addEventListener('touchstart', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          if (!started || paused || gameFinished) return;
-          pac.nextDir = parseInt(this.getAttribute('data-dir'));
+    // Explore Resources button
+    document.getElementById('explore-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      activateTab('ks3');
+    });
+
+    // ── Sub-tab system ──
+    document.querySelectorAll('.sub-tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var bar = btn.closest('.sub-tab-bar') || btn.closest('ul');
+        var level = bar.getAttribute('data-level');
+        var sub = btn.getAttribute('data-sub');
+
+        // Toggle sub-tab buttons within this bar
+        bar.querySelectorAll('.sub-tab-btn').forEach(function(b) {
+          b.classList.toggle('active', b === btn);
         });
-        /* Also support click for hybrid devices */
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          if (!started || paused || gameFinished) return;
-          pac.nextDir = parseInt(this.getAttribute('data-dir'));
+
+        // Toggle sub-panels within this level's panel
+        var panel = document.getElementById('panel-' + level);
+        panel.querySelectorAll('.sub-panel').forEach(function(sp) {
+          sp.classList.toggle('active', sp.getAttribute('data-sub') === sub && sp.getAttribute('data-level') === level);
         });
       });
+    });
 
-      /* ── Start on click ── */
-      gameEl.addEventListener('click', function(e) {
-        if (gameFinished && e.target.closest('.quiz-result-btn')) return;
-        if (e.target.closest('.dp')) return; /* Don't restart on D-pad tap */
-        if (started) return;
-        started = true;
-        ctaEl.style.display = 'none';
-        if (isTouch) dpadEl.classList.add('active');
-        gameEl.focus();
-        lastTime = performance.now();
-        requestAnimationFrame(gameLoop);
+    // ── Sticky tab bar ──
+    var heroSection = document.getElementById('hero');
+    function checkSticky() {
+      var heroBottom = heroSection.getBoundingClientRect().bottom;
+      tabBarWrap.classList.toggle('sticky', heroBottom <= 52);
+    }
+    window.addEventListener('scroll', checkSticky, { passive: true });
+    checkSticky();
+
+    // ── Hash on load ──
+    var hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById('panel-' + hash)) {
+      activateTab(hash, false);
+    }
+
+    // ── Hash change ──
+    window.addEventListener('hashchange', function() {
+      var h = window.location.hash.replace('#', '');
+      if (h && document.getElementById('panel-' + h)) {
+        activateTab(h);
+      }
+    });
+
+    // ── Contact form ──
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('form-success');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
       });
+      if (response.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    });
 
-      /* Initial static draw */
-      drawFrame(0);
-    })();
+  })();
   </script>
 
 </body>
